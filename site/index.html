@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PFlow Order, vos clients commandent sur WhatsApp, vous régalez</title>
+<meta name="description" content="La commande directe sur WhatsApp pour les snacks, pizzerias, burgers, tacos, bokits et pâtisseries de Guadeloupe. 0 % de commission, 0 appli. Mise en place dès 390 €.">
+<meta property="og:title" content="PFlow Order, vos clients commandent. Vous régalez.">
+<meta property="og:description" content="Vos clients ouvrent votre menu depuis WhatsApp. Vous recevez leurs commandes, complètes, sur un seul écran. 0 % de commission.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pflow.fr">
+<meta name="theme-color" content="#0A1238">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A1238;
+    --bg2:#0E1A4F;
+    --surface:#111C57;
+    --surface2:#172466;
+    --ink:#F4F6FF;
+    --muted:#A6AFD6;
+    --rule:rgba(255,255,255,.09);
+    --bleu:#4C7DFF;
+    --rose:#FF5FA8;
+    --rose2:#FF8AC4;
+    --wa:#22C55E;
+    --wa-ink:#052012;
+    --ombre:0 30px 80px rgba(2,6,30,.65);
+    --r:24px;
+    --tit:'Syne',sans-serif;
+    --txt:'Manrope',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--txt);
+    font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px;position:relative;z-index:2;}
+  h1,h2,h3{font-family:var(--tit);letter-spacing:-.02em;line-height:1.02;}
+  h2{font-size:2.7rem;font-weight:800;max-width:14ch;}
+  h2 .r{color:var(--rose);}
+  h2 .b{color:var(--bleu);}
+  .st{
+    font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);
+    margin-bottom:16px;display:flex;align-items:center;gap:10px;
+  }
+  .st::before{content:"";width:22px;height:2px;background:var(--rose);border-radius:2px;}
+  .lead{color:var(--muted);font-size:1.05rem;max-width:50ch;}
+  section{padding:104px 0;position:relative;}
+
+  /* reveals */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s);}
+  .rv.on{opacity:1;transform:none;}
+
+  /* fonds vivants */
+  .blob{
+    position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;opacity:.55;
+    animation:derive 18s ease-in-out infinite alternate;
+  }
+  .blob.b1{background:var(--bleu);}
+  .blob.b2{background:var(--rose);animation-duration:24s;animation-direction:alternate-reverse;}
+  @keyframes derive{from{transform:translate(0,0) scale(1);}to{transform:translate(-60px,50px) scale(1.15);}}
+  .grain{
+    position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:34px 34px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 100%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 20%,transparent 100%);
+  }
+
+  /* boutons */
+  .btn{
+    position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:800;border-radius:999px;padding:15px 28px;font-size:.95rem;
+    border:none;cursor:pointer;font-family:var(--txt);
+    transition:transform .2s ease,box-shadow .25s ease,background .2s ease,border-color .2s ease,color .2s ease;
+  }
+  .btn::after{
+    content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-18deg);transition:left .65s ease;pointer-events:none;
+  }
+  .btn:hover::after{left:150%;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:scale(.97);}
+  .btn.wa{background:var(--wa);color:var(--wa-ink);box-shadow:0 14px 34px -14px var(--wa);}
+  .btn.wa svg{width:18px;height:18px;fill:currentColor;}
+  .btn.ghost{border:1px solid rgba(255,255,255,.2);color:var(--ink);}
+  .btn.ghost:hover{border-color:var(--rose);color:var(--rose2);}
+
+  /* intro */
+  .intro{
+    position:fixed;inset:0;z-index:100;background:var(--bg);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;
+    transition:opacity .7s ease,visibility .7s;
+  }
+  .intro.off{opacity:0;visibility:hidden;}
+  .intro .mots{font-family:var(--tit);font-weight:800;font-size:clamp(2.2rem,7vw,5.6rem);letter-spacing:-.03em;line-height:1;text-align:center;}
+  .intro .mots span{display:block;opacity:0;transform:translateY(30px);animation:mot .8s cubic-bezier(.2,.8,.2,1) forwards;}
+  .intro .mots span:nth-child(2){animation-delay:.55s;color:var(--rose);}
+  @keyframes mot{to{opacity:1;transform:none;}}
+  .intro .passer{
+    position:absolute;bottom:34px;right:34px;background:none;border:1px solid rgba(255,255,255,.2);
+    color:var(--muted);border-radius:999px;padding:9px 16px;font-size:.8rem;cursor:pointer;font-family:var(--txt);
+  }
+  .intro .passer:hover{color:var(--ink);border-color:var(--ink);}
+  .intro .barre{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--rose);animation:barre 2.8s linear forwards;}
+  @keyframes barre{to{width:100%;}}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:60;background:rgba(10,18,56,.72);backdrop-filter:blur(16px);
+    border-bottom:1px solid transparent;transition:border-color .3s ease;
+  }
+  nav.colle{border-bottom-color:var(--rule);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;transition:height .3s ease;}
+  nav.colle .wrap{height:64px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--tit);font-weight:800;font-size:1.15rem;letter-spacing:-.01em;}
+  .logo img{height:36px;width:auto;}
+  .logo .txt{display:none;}
+  .logo.sansimg img{display:none;}
+  .logo.sansimg .txt{display:inline;}
+  .logo .txt i{font-style:normal;color:var(--rose);}
+  nav .links{display:flex;gap:30px;font-size:.9rem;position:absolute;left:50%;transform:translateX(-50%);}
+  nav .links a{text-decoration:none;color:var(--muted);position:relative;padding:4px 0;}
+  nav .links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rose);transition:width .25s ease;}
+  nav .links a:hover{color:var(--ink);}
+  nav .links a:hover::after{width:100%;}
+  nav .btn{padding:11px 20px;font-size:.86rem;}
+
+  /* hero */
+  .hero{padding:80px 0 90px;position:relative;overflow:hidden;min-height:92vh;display:flex;align-items:center;}
+  .hero .blob.b1{width:640px;height:640px;top:-260px;right:-160px;}
+  .hero .blob.b2{width:520px;height:520px;bottom:-260px;left:-200px;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;width:100%;}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;margin-bottom:22px;}
+  .hero h1 .l{display:block;overflow:hidden;}
+  .hero h1 .l span{display:block;transform:translateY(110%);animation:monte .9s cubic-bezier(.2,.8,.2,1) forwards;}
+  .hero h1 .l:nth-child(2) span{animation-delay:.12s;}
+  .hero h1 .l:nth-child(3) span{animation-delay:.24s;color:var(--rose);}
+  @keyframes monte{to{transform:none;}}
+  .hero .lead{margin-bottom:32px;}
+  .hero .lead b{color:var(--ink);}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px;}
+  .preuves{display:flex;gap:34px;flex-wrap:wrap;}
+  .preuve .k{font-family:var(--tit);font-size:2rem;font-weight:800;line-height:1;letter-spacing:-.03em;}
+  .preuve .k i{font-style:normal;color:var(--rose);}
+  .preuve .l{font-size:.8rem;color:var(--muted);margin-top:4px;}
+
+  /* scene telephone */
+  .scene{position:relative;max-width:360px;margin:0 auto;perspective:1200px;}
+  .phone{
+    position:relative;z-index:2;background:#0B141A;border:1px solid rgba(255,255,255,.12);
+    border-radius:34px;padding:14px 12px 16px;box-shadow:var(--ombre);
+    transform:rotateY(-8deg) rotateX(4deg);transition:transform .6s ease;
+    animation:flotte 7s ease-in-out infinite;
+  }
+  @keyframes flotte{0%,100%{translate:0 0;}50%{translate:0 -10px;}}
+  .scene:hover .phone{transform:rotateY(0) rotateX(0);}
+  .phone .ptop{display:flex;align-items:center;gap:10px;padding:6px 8px 12px;border-bottom:1px solid #1E2A30;margin-bottom:12px;}
+  .phone .ptop .avatar{width:34px;height:34px;border-radius:50%;background:var(--bleu);font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center;}
+  .phone .ptop .nom{font-size:.88rem;font-weight:700;}
+  .phone .ptop .etat{font-size:.72rem;color:#7BAE9A;}
+  .flux{display:flex;flex-direction:column;gap:8px;min-height:330px;}
+  .msg{
+    max-width:86%;padding:9px 12px;border-radius:12px;font-size:.83rem;line-height:1.4;
+    opacity:0;transform:translateY(10px) scale(.98);transition:opacity .4s ease,transform .4s cubic-bezier(.2,.9,.3,1.4);
+  }
+  .msg.on{opacity:1;transform:none;}
+  .msg.in{background:#1F2C34;align-self:flex-start;border-top-left-radius:3px;}
+  .msg.out{background:#134D37;align-self:flex-end;border-top-right-radius:3px;}
+  .msg .h{font-size:.66rem;color:#8FB8A6;margin-top:4px;text-align:right;}
+  .msg .lien{display:block;margin-top:7px;background:#0E3A29;border:1px solid #1E5C44;border-radius:9px;padding:7px 10px;font-weight:700;font-size:.8rem;color:#9FE3C3;text-align:center;}
+  .msg.sys{align-self:center;background:transparent;border:1px dashed #2E4A3E;color:#8FB8A6;font-size:.72rem;padding:6px 12px;border-radius:10px;text-align:center;}
+  .typing{align-self:flex-end;background:#134D37;border-radius:12px;border-top-right-radius:3px;padding:11px 14px;display:none;gap:4px;}
+  .typing.on{display:flex;}
+  .typing i{width:6px;height:6px;border-radius:50%;background:#8FB8A6;animation:tp 1s infinite;}
+  .typing i:nth-child(2){animation-delay:.15s;}.typing i:nth-child(3){animation-delay:.3s;}
+  @keyframes tp{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+  .cmd{
+    position:absolute;left:-110px;bottom:40px;width:250px;z-index:3;
+    background:var(--surface2);border:1px solid rgba(255,255,255,.14);border-radius:18px;
+    padding:14px 16px;box-shadow:var(--ombre);
+    opacity:0;transform:translateY(-16px) rotate(-3deg);
+    transition:opacity .5s ease,transform .5s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .cmd.on{opacity:1;transform:rotate(-3deg);}
+  .cmd .t{font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:5px;}
+  .cmd .n{font-family:var(--tit);font-size:1.1rem;font-weight:800;}
+  .cmd .d{font-size:.76rem;color:var(--muted);}
+  .cmd .ok{position:absolute;top:-11px;right:-11px;width:26px;height:26px;border-radius:50%;background:var(--wa);color:var(--wa-ink);font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;animation:sonne 2.6s ease-in-out infinite;}
+  @keyframes sonne{0%,88%,100%{transform:scale(1);}92%{transform:scale(1.25);}96%{transform:scale(.94);}}
+
+  /* avant / apres */
+  .duel{display:grid;grid-template-columns:1fr auto 1fr;gap:26px;align-items:stretch;}
+  .duel .vs{
+    align-self:center;font-family:var(--tit);font-weight:800;font-size:.8rem;letter-spacing:.14em;
+    color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);
+  }
+  .panneau{
+    background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:26px 26px 28px;
+    min-height:420px;position:relative;overflow:hidden;
+  }
+  .panneau .et{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;display:flex;justify-content:space-between;gap:12px;}
+  .panneau.avant .et{color:#FF8A8A;}
+  .panneau.apres .et{color:var(--wa);}
+  .panneau .et span{color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none;}
+  .chaos{display:flex;flex-direction:column;gap:8px;}
+  .bulle{
+    align-self:flex-start;max-width:84%;background:#1F2C34;border-radius:12px;border-top-left-radius:3px;
+    padding:8px 12px;font-size:.82rem;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;
+  }
+  .bulle.on{opacity:1;transform:none;}
+  .bulle small{display:block;font-size:.66rem;color:#8FB8A6;margin-top:2px;}
+  .panneau.avant.tremble{animation:tremble .5s ease;}
+  @keyframes tremble{0%,100%{transform:translateX(0);}20%{transform:translateX(-5px) rotate(-.4deg);}40%{transform:translateX(5px) rotate(.4deg);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+  .panneau .mot{position:absolute;left:26px;right:26px;bottom:24px;font-family:var(--tit);font-weight:800;font-size:1.25rem;line-height:1.15;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;}
+  .panneau .mot.on{opacity:1;transform:none;}
+  .panneau .mot b{color:var(--rose);}
+  .panneau.apres .mot b{color:var(--wa);}
+  .ticket-net{
+    background:var(--bg);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px 18px 16px;
+    opacity:0;transform:scale(.92) translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1.3);
+  }
+  .ticket-net.on{opacity:1;transform:none;}
+  .ticket-net .haut{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;}
+  .ticket-net .num{font-family:var(--tit);font-size:1.5rem;font-weight:800;}
+  .ticket-net .num i{font-style:normal;color:var(--rose);}
+  .ticket-net .mode{font-size:.72rem;font-weight:700;color:var(--muted);background:var(--surface2);padding:4px 10px;border-radius:999px;}
+  .ticket-net .lg{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--rule);font-size:.86rem;}
+  .ticket-net .lg small{display:block;color:var(--muted);font-size:.74rem;}
+  .ticket-net .tot{display:flex;justify-content:space-between;padding-top:10px;margin-top:4px;border-top:1px solid var(--rule);font-weight:800;}
+  .ticket-net .ok{margin-top:12px;font-size:.78rem;color:var(--wa);font-weight:700;display:flex;align-items:center;gap:6px;}
+  .ticket-net .ok::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wa);animation:blink 1.6s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
+
+  /* bandeau */
+  .bandeau{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:hidden;padding:16px 0;background:var(--bg2);}
+  .piste{display:flex;width:max-content;animation:defile 36s linear infinite;}
+  .bandeau:hover .piste{animation-play-state:paused;}
+  .piste span{display:flex;align-items:center;gap:34px;padding-right:34px;font-family:var(--tit);font-weight:700;font-size:1rem;color:var(--muted);white-space:nowrap;}
+  .piste span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0;}
+  @keyframes defile{to{transform:translateX(-50%);}}
+
+  /* etapes */
+  .etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .etape{
+    background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);padding:34px 30px;min-height:260px;
+    display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transform-style:preserve-3d;transition:border-color .25s ease,box-shadow .25s ease;
+  }
+  .etape:hover{border-color:rgba(255,95,168,.5);box-shadow:var(--ombre);}
+  .etape .num{font-family:var(--tit);font-size:3.4rem;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22);margin-bottom:auto;}
+  .etape h3{font-size:1.35rem;font-weight:800;margin:26px 0 8px;}
+  .etape p{font-size:.92rem;color:var(--muted);}
+  .etape.rose{background:linear-gradient(160deg,var(--rose) 0%,#FF3D8F 100%);border-color:transparent;color:#1B0A14;}
+  .etape.rose .num{-webkit-text-stroke:1px rgba(27,10,20,.4);}
+  .etape.rose p{color:rgba(27,10,20,.75);}
+
+  /* demo */
+  .demo{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:start;position:relative;}
+  .demo .lab{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;justify-content:space-between;}
+  .demo .lab b{color:var(--rose);}
+  .carte{max-width:380px;background:#0F1846;border:1px solid rgba(255,255,255,.12);border-radius:28px;overflow:hidden;box-shadow:var(--ombre);}
+  .carte .ctop{padding:18px 20px 14px;border-bottom:1px solid var(--rule);}
+  .carte .ctop .r{font-family:var(--tit);font-weight:800;font-size:1rem;}
+  .carte .ctop .o{font-size:.74rem;color:var(--wa);font-weight:700;}
+  .chips{display:flex;gap:8px;padding:14px 20px;overflow:auto;scrollbar-width:none;}
+  .chip{font-size:.74rem;font-weight:700;padding:6px 13px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap;cursor:pointer;transition:.25s;}
+  .chip.on{background:var(--rose);border-color:var(--rose);color:#1B0A14;}
+  .prods{padding:4px 16px 16px;display:flex;flex-direction:column;gap:10px;}
+  .prod{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;background:var(--surface2);border:1px solid var(--rule);border-radius:16px;padding:10px;transition:transform .2s ease,border-color .2s ease;}
+  .prod:hover{transform:translateX(3px);border-color:rgba(255,95,168,.5);}
+  .prod .ph{width:60px;height:60px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--bleu),var(--rose));position:relative;}
+  .prod .ph img{width:100%;height:100%;object-fit:cover;}
+  .prod .ph.noimg img{display:none;}
+  .prod .pn{font-weight:700;font-size:.86rem;line-height:1.25;}
+  .prod .pp{font-size:.78rem;color:var(--muted);margin-top:2px;}
+  .prod button{width:34px;height:34px;border-radius:50%;border:none;cursor:pointer;background:var(--rose);color:#1B0A14;font-size:1.15rem;font-weight:800;line-height:1;transition:transform .15s ease;}
+  .prod button.invite{animation:invite 2.2s ease-in-out infinite;}
+  @keyframes invite{0%,100%{box-shadow:0 0 0 0 rgba(255,95,168,.35);}50%{box-shadow:0 0 0 10px transparent;transform:scale(1.08);}}
+  .prod button:active{transform:scale(.88);}
+  .panier{margin:0 16px 18px;background:var(--wa);border-radius:999px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;color:var(--wa-ink);font-weight:800;font-size:.9rem;cursor:pointer;border:none;width:calc(100% - 32px);font-family:var(--txt);transition:transform .25s cubic-bezier(.2,.9,.3,1.4),opacity .25s;}
+  .panier.bump{transform:scale(1.05);}
+  .panier:disabled{opacity:.45;cursor:default;}
+  .panier .pc{font-size:.8rem;font-weight:600;opacity:.75;}
+  .hint{margin-top:14px;font-size:.8rem;color:var(--rose2);font-weight:700;}
+  .board{background:var(--surface);border:1px solid var(--rule);padding:20px;border-radius:var(--r);box-shadow:var(--ombre);}
+  .board .btop{display:flex;justify-content:space-between;align-items:center;padding:0 4px 14px;border-bottom:1px solid var(--rule);margin-bottom:14px;}
+  .board .btop .t{font-family:var(--tit);font-weight:800;font-size:.95rem;}
+  .board .btop .live{font-size:.72rem;font-weight:700;color:var(--wa);display:flex;align-items:center;gap:6px;}
+  .board .btop .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wa);animation:blink 1.6s infinite;}
+  .board .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .board .col h4{font-size:.72rem;font-weight:700;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:8px;display:flex;justify-content:space-between;}
+  .board .col h4 b{color:var(--rose);font-weight:800;min-width:18px;text-align:center;border-radius:999px;background:rgba(255,95,168,.12);}
+  .board .col .colonne{min-height:200px;display:flex;flex-direction:column;gap:8px;}
+  .ticket{background:var(--surface2);border:1px solid var(--rule);border-radius:12px;padding:9px 10px;font-size:.73rem;line-height:1.35;transition:opacity .45s ease,transform .45s ease,border-color .45s ease,box-shadow .45s ease;}
+  .ticket b{display:block;font-weight:800;font-size:.78rem;}
+  .ticket span{color:var(--muted);}
+  .ticket.enter{opacity:0;transform:translateY(-12px);}
+  .ticket.hot{border-color:var(--rose);box-shadow:0 0 0 3px rgba(255,95,168,.18);}
+  .ticket.leave{opacity:0;transform:translateY(8px);}
+  .vol{position:fixed;z-index:80;pointer-events:none;background:var(--rose);color:#1B0A14;font-family:var(--tit);font-weight:800;font-size:.9rem;padding:10px 16px;border-radius:999px;box-shadow:0 14px 34px -10px var(--rose);}
+  .demo .note{margin-top:16px;font-size:.78rem;color:var(--muted);}
+
+  /* benefices */
+  .benef{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .ben{background:var(--surface);border:1px solid var(--rule);border-radius:18px;padding:22px 18px;font-weight:700;font-size:.92rem;display:flex;gap:10px;align-items:flex-start;line-height:1.3;transition:transform .25s ease,border-color .25s ease;}
+  .ben:hover{transform:translateY(-5px);border-color:rgba(34,197,94,.5);}
+  .ben::before{content:"\2713";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--wa);color:var(--wa-ink);font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:-1px;}
+
+  /* premier client */
+  .client{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--rule);border-radius:var(--r);padding:44px 46px;position:relative;overflow:hidden;}
+  .client .blob{width:360px;height:360px;right:-120px;top:-120px;opacity:.35;}
+  .client .qui{font-family:var(--tit);font-size:2.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.05;}
+  .client .qui i{font-style:italic;color:var(--rose);}
+  .client p{color:var(--muted);margin:14px 0 22px;max-width:40ch;}
+  .client .ig{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);border-bottom:1px solid var(--rose);padding-bottom:2px;}
+  .client .ig:hover{color:var(--rose2);}
+  .client .photo{aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,var(--bleu),var(--rose));box-shadow:var(--ombre);position:relative;z-index:1;}
+  .client .photo img{width:100%;height:100%;object-fit:cover;}
+  .client .photo.noimg img{display:none;}
+  .client .photo .tag{position:absolute;left:16px;bottom:14px;background:rgba(10,18,56,.85);backdrop-filter:blur(6px);border:1px solid var(--rule);border-radius:999px;padding:6px 14px;font-size:.74rem;font-weight:700;color:var(--wa);}
+
+  /* tarifs */
+  .formule{background:linear-gradient(160deg,var(--rose) 0%,#FF3D8F 100%);border-radius:var(--r);color:#1B0A14;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;padding:42px 44px;box-shadow:0 30px 70px -22px var(--rose);}
+  .formule h3{font-size:1.7rem;font-weight:800;margin-bottom:4px;}
+  .formule .sous{font-size:.92rem;margin-bottom:22px;opacity:.78;}
+  .formule ul{list-style:none;font-size:.92rem;font-weight:600;}
+  .formule li{padding:9px 0 9px 24px;position:relative;border-top:1px solid rgba(27,10,20,.16);}
+  .formule li:first-child{border-top:none;}
+  .formule li::before{content:"";position:absolute;left:0;top:18px;width:8px;height:8px;border-radius:50%;background:#1B0A14;}
+  .prixbloc{background:var(--bg);color:var(--ink);border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;}
+  .prixbloc .zero{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.4);color:var(--wa);border-radius:999px;padding:7px 14px;font-size:.78rem;font-weight:800;margin-bottom:20px;}
+  .prixbloc .lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--muted);margin-bottom:8px;}
+  .prixbloc .p{font-family:var(--tit);font-size:2.8rem;font-weight:800;letter-spacing:-.03em;line-height:1;}
+  .prixbloc .p small{font-family:var(--txt);font-size:.9rem;font-weight:600;color:var(--muted);letter-spacing:0;}
+  .prixbloc .d{font-size:.82rem;color:var(--muted);margin-top:8px;line-height:1.45;}
+  .prixbloc .filet{height:1px;margin:24px 0;background:var(--rule);}
+  .prixbloc .btn{margin-top:26px;justify-content:center;}
+  .optitre{margin:56px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
+  .optitre h3{font-size:1.6rem;font-weight:800;}
+  .optitre p{font-size:.9rem;color:var(--muted);max-width:44ch;}
+  .options{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .opt{background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:24px 20px;transition:transform .25s ease,border-color .25s ease;}
+  .opt:hover{transform:translateY(-6px);border-color:rgba(255,95,168,.5);}
+  .opt .op{font-family:var(--tit);font-size:1.5rem;font-weight:800;color:var(--rose);line-height:1;}
+  .opt h4{font-weight:800;font-size:.98rem;margin:12px 0 6px;}
+  .opt p{font-size:.82rem;color:var(--muted);}
+  .tarifnote{margin-top:22px;font-size:.82rem;color:var(--muted);max-width:70ch;}
+
+  /* faq */
+  .faqgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start;}
+  .faqbox{border:1px solid var(--rule);border-radius:var(--r);padding:6px 26px;background:var(--surface);}
+  details{border-bottom:1px solid var(--rule);}
+  details:last-child{border-bottom:none;}
+  summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:800;font-size:1rem;display:flex;justify-content:space-between;gap:20px;transition:color .2s ease;}
+  summary:hover{color:var(--rose2);}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--rose);font-weight:800;font-size:1.3rem;flex-shrink:0;transition:transform .25s ease;}
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{padding:0 0 20px;color:var(--muted);font-size:.93rem;max-width:60ch;animation:ouvre .35s ease;}
+  @keyframes ouvre{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+
+  /* final */
+  .final{padding:130px 0;text-align:center;position:relative;overflow:hidden;}
+  .final .blob.b1{width:560px;height:560px;left:50%;margin-left:-280px;bottom:-320px;opacity:.5;}
+  .final h2{max-width:16ch;margin:0 auto 30px;font-size:clamp(2.4rem,5.5vw,4.2rem);}
+  .final .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .final .rep{margin-top:18px;font-size:.86rem;color:var(--muted);}
+
+  footer{border-top:1px solid var(--rule);padding:32px 0 46px;color:var(--muted);font-size:.84rem;}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  footer a{color:var(--muted);text-decoration:none;}
+  footer a:hover{color:var(--rose2);}
+
+  /* flottant */
+  .flot{position:fixed;right:18px;bottom:18px;z-index:70;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(34,197,94,.45);transition:transform .18s ease;}
+  .flot:hover{transform:scale(1.07) rotate(-6deg);}
+  .flot svg{width:28px;height:28px;fill:#fff;}
+  .flot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pulse 2.4s ease-out infinite;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.65);opacity:0;}}
+
+  @media(max-width:1000px){
+    nav .links{display:none;}
+    .hero .wrap,.demo,.client,.faqgrid,.formule{grid-template-columns:1fr;}
+    .duel{grid-template-columns:1fr;}
+    .duel .vs{writing-mode:horizontal-tb;transform:none;text-align:center;}
+    .benef{grid-template-columns:repeat(2,1fr);}
+    .options{grid-template-columns:repeat(2,1fr);}
+    h2{max-width:none;}
+  }
+  @media(max-width:700px){
+    section{padding:70px 0;}
+    .hero{padding:44px 0 60px;min-height:0;}
+    h2{font-size:2rem;}
+    .etapes{grid-template-columns:1fr;}
+    .cmd{left:auto;right:-6px;bottom:-26px;width:220px;}
+    .scene{max-width:320px;}
+    .phone{transform:none;}
+    .benef,.options{grid-template-columns:1fr;}
+    .formule{padding:28px 22px;gap:24px;}
+    .client{padding:28px 22px;}
+    .final{padding:80px 0;}
+    nav .btn{padding:10px 16px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .rv,.msg,.cmd,.bulle,.ticket-net,.panneau .mot{opacity:1;transform:none;transition:none;}
+    .blob,.phone,.piste,.flot::after,.cmd .ok,.prod button.invite,.intro .barre{animation:none;}
+    .hero h1 .l span{animation:none;transform:none;}
+    .intro{display:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- intro, une fois par visite -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="mots"><span>Le rush.</span><span>Sans le bruit.</span></div>
+  <button class="passer" id="passer" type="button">Passer</button>
+  <div class="barre"></div>
+</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" id="logo" href="#top">
+      <img src="images/logo.png" alt="PFlow Order" onerror="this.parentNode.classList.add('sansimg')">
+      <span class="txt">P<i>Flow</i> Order</span>
+    </a>
+    <div class="links">
+      <a href="#concept">Le concept</a>
+      <a href="#demo">La démo</a>
+      <a href="#tarifs">Les tarifs</a>
+      <a href="#faq">Vos questions</a>
+    </div>
+    <a class="btn wa lienwa" data-txt="Bonjour PFlow, je veux une démo de PFlow Order pour mon établissement." href="#">Demander une démo</a>
+  </div>
+</nav>
+
+<a class="flot lienwa" data-txt="Bonjour PFlow, je veux en savoir plus sur PFlow Order." href="#" aria-label="Discuter sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm0 17c-1.6 0-3.1-.5-4.4-1.3l-.3-.2-2.8.8.8-2.7-.2-.3c-.9-1.3-1.4-2.9-1.4-4.5C3.7 7.3 7.4 3.6 12 3.6s8.3 3.7 8.3 8.3-3.7 7.6-8.3 7.6zm4.6-5.7c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="grain"></div>
+  <div class="wrap">
+    <div>
+      <div class="st">La commande directe sur WhatsApp</div>
+      <h1><span class="l"><span>Vos clients</span></span><span class="l"><span>commandent.</span></span><span class="l"><span>Vous régalez.</span></span></h1>
+      <p class="lead">Vos clients ouvrent votre menu depuis <b>WhatsApp</b>. Vous recevez leurs commandes, complètes, sur <b>un seul écran</b>.</p>
+      <div class="ctas">
+        <a class="btn wa lienwa" data-txt="Bonjour PFlow, je veux une démo de PFlow Order pour mon établissement." href="#"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>Demander une démo</a>
+        <a class="btn ghost" href="#demo">Essayer la démo</a>
+      </div>
+      <div class="preuves">
+        <div class="preuve"><div class="k"><i>0</i> %</div><div class="l">de commission</div></div>
+        <div class="preuve"><div class="k"><i>0</i> appli</div><div class="l">à télécharger</div></div>
+        <div class="preuve"><div class="k"><i>1</i> écran</div><div class="l">pour toutes vos commandes</div></div>
+      </div>
+    </div>
+    <div class="scene" id="scene">
+      <div class="phone">
+        <div class="ptop"><div class="avatar">MB</div><div><div class="nom">Maison Burger</div><div class="etat">en ligne</div></div></div>
+        <div class="flux" id="flux">
+          <div class="msg in">Bonsoir, je peux commander ?<div class="h">19:02</div></div>
+          <div class="msg out">Bonsoir ! Commandez en 30 secondes sur notre menu :<span class="lien">Ouvrir le menu</span><div class="h">19:02</div></div>
+          <div class="msg sys">Le client compose son panier</div>
+          <div class="msg out">Commande #024 confirmée. 2 Smash Bacon, prête à 19h30.<div class="h">19:06</div></div>
+          <div class="msg out">C'est prêt, à tout de suite.<div class="h">19:28</div></div>
+          <div class="msg in">Parfait, j'arrive !<div class="h">19:29</div></div>
+          <div class="typing" id="typing"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="cmd" id="cmd">
+        <span class="ok">&#10003;</span>
+        <div class="t">Sur votre écran</div>
+        <div class="n">Commande #024</div>
+        <div class="d">2 Smash Bacon, sans oignons, 19h30</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ AVANT / APRES ============ -->
+<section id="concept">
+  <div class="wrap">
+    <div class="st rv">19:02, le coup de feu</div>
+    <h2 class="rv">Beaucoup de messages. <span class="r">Où est la commande ?</span></h2>
+    <div class="duel" style="margin-top:44px">
+      <div class="panneau avant rv" id="avant">
+        <div class="et">Sans PFlow <span>Le téléphone du restaurant</span></div>
+        <div class="chaos" id="chaos">
+          <div class="bulle">Vous êtes ouverts ?<small>Camille</small></div>
+          <div class="bulle">Je voudrais 2 burgers<small>Alex</small></div>
+          <div class="bulle">Sans oignons svp<small>Alex</small></div>
+          <div class="bulle">Vous livrez au Gosier ?<small>Sarah</small></div>
+          <div class="bulle">Je peux payer comment ?<small>Sam</small></div>
+          <div class="bulle">Je peux changer ma commande ?<small>Camille</small></div>
+          <div class="bulle">Allô ? ???<small>Alex</small></div>
+        </div>
+        <div class="mot" id="motAvant">Sept messages. <b>Zéro commande claire.</b></div>
+      </div>
+      <div class="vs rv" style="--d:.1s">contre</div>
+      <div class="panneau apres rv" style="--d:.15s">
+        <div class="et">Avec PFlow <span>Votre écran</span></div>
+        <div class="ticket-net" id="ticketNet">
+          <div class="haut"><div class="num">#<i>024</i></div><div class="mode">À emporter</div></div>
+          <div class="lg"><div>2 &times; Smash Bacon<small>Sans oignons</small></div><div>25,00 &euro;</div></div>
+          <div class="lg"><div>Client<small>Alex, retrait 19h30</small></div><div></div></div>
+          <div class="tot"><span>Total</span><span>25,00 &euro;</span></div>
+          <div class="ok">Prête à être préparée</div>
+        </div>
+        <div class="mot" id="motApres">Une commande claire. <b>Une équipe qui respire.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bandeau" aria-hidden="true">
+  <div class="piste">
+    <span>Pizzerias</span><span>Burgers</span><span>Tacos</span><span>Bokits</span><span>Snacks</span><span>Pâtisseries</span><span>Food trucks</span><span>Traiteurs</span><span>Glaciers</span>
+    <span>Pizzerias</span><span>Burgers</span><span>Tacos</span><span>Bokits</span><span>Snacks</span><span>Pâtisseries</span><span>Food trucks</span><span>Traiteurs</span><span>Glaciers</span>
+  </div>
+</div>
+
+<!-- ============ 3 ETAPES ============ -->
+<section id="comment">
+  <div class="wrap">
+    <div class="st rv">Comment ça marche</div>
+    <h2 class="rv">3 étapes. <span class="b">C'est tout.</span></h2>
+    <div class="etapes" style="margin-top:44px">
+      <div class="etape tilt rv"><div class="num">01</div><h3>Il vous écrit sur WhatsApp.</h3><p>Votre client reçoit le lien de votre menu. Rien à installer.</p></div>
+      <div class="etape rose tilt rv" style="--d:.12s"><div class="num">02</div><h3>Il compose sa commande.</h3><p>Produits, options, panier. Tout est clair, en 30 secondes.</p></div>
+      <div class="etape tilt rv" style="--d:.24s"><div class="num">03</div><h3>Vous recevez. Vous préparez.</h3><p>La commande arrive sur votre écran, complète. Le client est prévenu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO ============ -->
+<section id="demo">
+  <div class="blob b2" style="width:480px;height:480px;right:-200px;top:20%;opacity:.3"></div>
+  <div class="wrap">
+    <div class="st rv">À vous de jouer</div>
+    <h2 class="rv">Commandez ici. <span class="r">Recevez juste là.</span></h2>
+    <p class="lead rv" style="margin:14px 0 40px">Ajoutez un produit, validez, et regardez la commande arriver en cuisine.</p>
+    <div class="demo">
+      <div class="rv">
+        <div class="lab"><b>01 / Votre client</b><span>Menu personnalisé</span></div>
+        <div class="carte">
+          <div class="ctop"><div class="r">Maison Burger</div><div class="o">Ouvert, retrait dès 19h30</div></div>
+          <div class="chips"><span class="chip on">Burgers</span><span class="chip">Tacos</span><span class="chip">Bokits</span><span class="chip">Desserts</span><span class="chip">Boissons</span></div>
+          <div class="prods">
+            <div class="prod"><div class="ph"><img src="images/plat-burger.jpg" data-fb="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=60&auto=format&fit=crop" alt="" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"></div><div><div class="pn">Smash Bacon</div><div class="pp">Double steak, cheddar, bacon</div></div><button type="button" class="invite" data-nom="Smash Bacon" data-prix="12.5" aria-label="Ajouter">+</button></div>
+            <div class="prod"><div class="ph"><img src="images/plat-tacos.jpg" data-fb="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&q=60&auto=format&fit=crop" alt="" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"></div><div><div class="pn">Tacos Poulet</div><div class="pp">Sauce fromagère, frites</div></div><button type="button" data-nom="Tacos Poulet" data-prix="10" aria-label="Ajouter">+</button></div>
+            <div class="prod"><div class="ph"><img src="images/plat-pizza.jpg" data-fb="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=60&auto=format&fit=crop" alt="" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"></div><div><div class="pn">Pizza Chèvre Miel</div><div class="pp">Base crème, miel péyi</div></div><button type="button" data-nom="Pizza Chèvre Miel" data-prix="11" aria-label="Ajouter">+</button></div>
+            <div class="prod"><div class="ph"><img src="images/plat-cookie.jpg" data-fb="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&q=60&auto=format&fit=crop" alt="" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"></div><div><div class="pn">Cookie Coco</div><div class="pp">Fait maison, 90 g</div></div><button type="button" data-nom="Cookie Coco" data-prix="3.5" aria-label="Ajouter">+</button></div>
+          </div>
+          <button class="panier" id="panier" type="button" disabled><span class="pc" id="pcount">Votre panier est vide</span><span id="ptotal">Valider</span></button>
+        </div>
+        <div class="hint">Appuyez sur +, puis validez.</div>
+      </div>
+      <div class="rv" style="--d:.12s">
+        <div class="lab"><b>02 / Votre restaurant</b><span>PFlow Order</span></div>
+        <div class="board" id="board">
+          <div class="btop"><span class="t">Commandes du service</span><span class="live">En direct</span></div>
+          <div class="cols">
+            <div class="col"><h4>Nouvelles <b id="c1">0</b></h4><div class="colonne" id="z1"></div></div>
+            <div class="col"><h4>En préparation <b id="c2">0</b></h4><div class="colonne" id="z2"></div></div>
+            <div class="col"><h4>Prêtes <b id="c3">0</b></h4><div class="colonne" id="z3"></div></div>
+          </div>
+        </div>
+        <div class="note">Démonstration fictive. Aucune commande réelle, aucun paiement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CE QUE CA CHANGE ============ -->
+<section id="change" style="padding-top:0">
+  <div class="wrap">
+    <div class="st rv">Ce que ça change</div>
+    <h2 class="rv">Plus clair. <span class="b">Pour tout le monde.</span></h2>
+    <div class="benef" style="margin-top:40px">
+      <div class="ben rv">Des commandes structurées</div>
+      <div class="ben rv" style="--d:.08s">Moins d'allers-retours</div>
+      <div class="ben rv" style="--d:.16s">Une image plus pro</div>
+      <div class="ben rv" style="--d:.24s">Vos clients restent vos clients</div>
+      <div class="ben rv" style="--d:.32s">Tout sur un seul écran</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREMIER CLIENT ============ -->
+<section id="client" style="padding-top:0">
+  <div class="wrap">
+    <div class="client rv">
+      <div class="blob b2"></div>
+      <div style="position:relative;z-index:1">
+        <div class="st">Déjà adopté</div>
+        <div class="qui">Cookies <i>An Nou.</i></div>
+        <p>Notre premier client. Une pâtisserie de Guadeloupe qui prend ses commandes sur WhatsApp, sans une seule commission.</p>
+        <a class="ig" href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener">Voir Cookies An Nou sur Instagram &rarr;</a>
+      </div>
+      <div class="photo"><img src="images/client-cookies.jpg" data-fb="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900&q=60&auto=format&fit=crop" alt="Cookies An Nou" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"><span class="tag">Client PFlow Order</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section id="tarifs">
+  <div class="wrap">
+    <div class="st rv">Combien ça coûte</div>
+    <h2 class="rv">Un prix clair. <span class="r">Comme vos commandes.</span></h2>
+    <p class="lead rv" style="margin:14px 0 40px">Votre solution pour commencer, un accompagnement pour la faire vivre. Aucune commission PFlow sur vos ventes.</p>
+    <div class="formule rv">
+      <div>
+        <h3>PFlow Order</h3>
+        <div class="sous">Votre système de commande, créé et installé de A à Z.</div>
+        <ul>
+          <li>Mini-page de commande à l'image de votre restaurant</li>
+          <li>Menu, produits, options et panier</li>
+          <li>Parcours de commande depuis WhatsApp</li>
+          <li>Dashboard de réception et de suivi</li>
+          <li>Formation, mise en ligne et tests complets</li>
+          <li>Hébergement, maintenance et support</li>
+        </ul>
+      </div>
+      <div class="prixbloc">
+        <span class="zero">0 % de commission</span>
+        <div class="lab">Création et mise en place</div>
+        <div class="p">390 &euro;</div>
+        <div class="d">Paiement unique.</div>
+        <div class="filet"></div>
+        <div class="lab">Ensuite</div>
+        <div class="p">29 &euro;<small> / mois</small></div>
+        <div class="d">Sans engagement, résiliable à tout moment.</div>
+        <a class="btn wa lienwa" data-txt="Bonjour PFlow, je veux lancer PFlow Order pour mon établissement." href="#">Demander ma démo</a>
+      </div>
+    </div>
+    <div class="optitre rv">
+      <h3>Les options, quand vous en avez besoin</h3>
+      <p>La base est déjà complète. Le reste est à la carte, ajouté à la mise en place.</p>
+    </div>
+    <div class="options">
+      <div class="opt rv"><div class="op">+69 &euro;</div><h4>Zones de livraison</h4><p>Vos zones, frais et minimums de commande.</p></div>
+      <div class="opt rv" style="--d:.06s"><div class="op">+79 &euro;</div><h4>Paiement en ligne</h4><p>Vos clients règlent via votre compte de paiement.</p></div>
+      <div class="opt rv" style="--d:.12s"><div class="op">+79 &euro;</div><h4>Relance des paniers</h4><p>Un panier oublié reçoit un rappel automatique.</p></div>
+      <div class="opt rv" style="--d:.18s"><div class="op">+59 &euro;</div><h4>Avis Google</h4><p>Après la commande, une invitation à laisser un avis.</p></div>
+      <div class="opt rv" style="--d:.24s"><div class="op">dès 290 &euro;</div><h4>Mini-site</h4><p>Menu, horaires, adresse et bouton Commander.</p></div>
+    </div>
+    <div class="tarifnote rv">Les frais éventuels de paiement et de services tiers sont distincts et précisés au devis.</div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="faqgrid">
+      <div>
+        <div class="st rv">Vos questions</div>
+        <h2 class="rv">On fait <span class="b">le point ?</span></h2>
+        <p class="lead rv" style="margin-top:14px">Et pour tout le reste, on répond sur WhatsApp dans la journée.</p>
+      </div>
+      <div class="faqbox rv">
+        <details><summary>Est-ce adapté à mon établissement ?</summary><p>Snacks, pizzerias, burgers, tacos, bokits, pâtisseries, food trucks : si vous prenez des commandes directes, oui. On vérifie ensemble que le parcours colle à votre menu et à votre organisation.</p></details>
+        <details><summary>Mes clients doivent-ils télécharger une application ?</summary><p>Non. Depuis WhatsApp, ils ouvrent le lien de votre menu dans leur navigateur, composent leur panier et valident. Rien à installer, aucun compte à créer.</p></details>
+        <details><summary>Je garde mon numéro WhatsApp ?</summary><p>Oui, ou on vous crée un numéro professionnel dédié. Dans les deux cas vous pouvez reprendre la main à tout moment : l'automatisation gère le répétitif, jamais votre relation client.</p></details>
+        <details><summary>Combien de temps pour être en ligne ?</summary><p>Vous fournissez votre menu, vos photos et vos horaires. On s'occupe de tout le reste, formation comprise. Le calendrier est confirmé dès notre premier échange.</p></details>
+        <details><summary>Que comprend l'abonnement ?</summary><p>Le fonctionnement, l'hébergement, la maintenance et l'accompagnement courant. Les services tiers, comme le paiement en ligne, sont précisés séparément.</p></details>
+        <details><summary>Je peux ajouter des options plus tard ?</summary><p>Oui. Paiement en ligne, livraison, avis Google : on les ajoute quand votre activité en a besoin, sans changer de solution.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final">
+  <div class="blob b1"></div><div class="grain"></div>
+  <div class="wrap">
+    <div class="st rv" style="justify-content:center">Moins de messages. Plus de temps pour régaler.</div>
+    <h2 class="rv">Le rush ne disparaîtra pas. <span class="r">Le désordre, si.</span></h2>
+    <div class="ctas rv">
+      <a class="btn wa lienwa" data-txt="Bonjour PFlow, je veux une démo de PFlow Order pour mon établissement." href="#">Demander ma démo</a>
+      <a class="btn ghost" href="#tarifs">Revoir les tarifs</a>
+    </div>
+    <div class="rep rv">Un message avec le nom de votre établissement suffit. Réponse dans la journée.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>PFlow Order, Guadeloupe. Food, people, flow.</div>
+    <div><a href="#" class="lienwa" data-txt="Bonjour PFlow.">WhatsApp</a> &nbsp;&nbsp; <a href="#tarifs">Tarifs</a> &nbsp;&nbsp; <a href="#faq">FAQ</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ================= REGLAGES ================= */
+  var NUMERO="590691266853"; /* numero WhatsApp de PFlow, sans + ni espaces */
+  var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* liens WhatsApp : un seul numero a changer ci-dessus */
+  document.querySelectorAll(".lienwa").forEach(function(a){
+    a.href="https://wa.me/"+NUMERO+"?text="+encodeURIComponent(a.getAttribute("data-txt")||"Bonjour PFlow.");
+  });
+
+  /* ---- intro, une fois par visite ---- */
+  var intro=document.getElementById("intro");
+  if(intro){
+    var vue=false;
+    try{vue=sessionStorage.getItem("pflow-intro")==="1";}catch(e){}
+    window.__delaiHero=(vue||reduced)?600:3400;
+    function fermer(){intro.classList.add("off");try{sessionStorage.setItem("pflow-intro","1");}catch(e){}}
+    if(vue||reduced){intro.classList.add("off");}
+    else{setTimeout(fermer,3000);document.getElementById("passer").addEventListener("click",fermer);}
+  }
+
+  /* ---- nav ---- */
+  var nav=document.getElementById("nav");
+  function majNav(){nav.classList.toggle("colle",window.scrollY>12);}
+  majNav();window.addEventListener("scroll",majNav,{passive:true});
+
+  /* ---- reveals ---- */
+  var rvs=document.querySelectorAll(".rv");
+  if(reduced||!("IntersectionObserver" in window)){rvs.forEach(function(e){e.classList.add("on");});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target);}});},{threshold:.15});
+    rvs.forEach(function(e){io.observe(e);});
+  }
+
+  /* ---- inclinaison 3D des cartes au survol ---- */
+  if(!reduced&&window.matchMedia("(hover:hover)").matches){
+    document.querySelectorAll(".tilt").forEach(function(c){
+      c.addEventListener("pointermove",function(ev){
+        var r=c.getBoundingClientRect();
+        var x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;
+        c.style.transform="rotateY("+(x*10)+"deg) rotateX("+(-y*10)+"deg) translateY(-4px)";
+      });
+      c.addEventListener("pointerleave",function(){c.style.transform="";});
+    });
+  }
+
+  /* ---- hero : conversation qui se joue ---- */
+  var flux=document.getElementById("flux"),typing=document.getElementById("typing"),cmd=document.getElementById("cmd");
+  if(flux){
+    var msgs=[].slice.call(flux.querySelectorAll(".msg"));
+    if(reduced){msgs.forEach(function(m){m.classList.add("on");});cmd.classList.add("on");}
+    else{
+      var i=0;
+      function suivant(){
+        if(i>=msgs.length)return;
+        var m=msgs[i],resto=m.classList.contains("out");
+        function montrer(){
+          typing.classList.remove("on");m.classList.add("on");
+          if(i===3)setTimeout(function(){cmd.classList.add("on");},500);
+          i++;setTimeout(suivant,i===3?1400:900);
+        }
+        if(resto){flux.insertBefore(typing,m);typing.classList.add("on");setTimeout(montrer,850);}
+        else setTimeout(montrer,150);
+      }
+      setTimeout(suivant,window.__delaiHero||3400);
+    }
+  }
+
+  /* ---- avant / apres : le chaos puis la commande nette, en boucle ---- */
+  var avant=document.getElementById("avant"),bulles=[].slice.call(document.querySelectorAll("#chaos .bulle"));
+  var motAvant=document.getElementById("motAvant"),motApres=document.getElementById("motApres"),ticketNet=document.getElementById("ticketNet");
+  var duelActif=false,duelTimer=null;
+  function jouerDuel(){
+    bulles.forEach(function(b){b.classList.remove("on");});
+    motAvant.classList.remove("on");motApres.classList.remove("on");ticketNet.classList.remove("on");
+    bulles.forEach(function(b,n){setTimeout(function(){b.classList.add("on");},400+n*520);});
+    var fin=400+bulles.length*520;
+    setTimeout(function(){avant.classList.add("tremble");setTimeout(function(){avant.classList.remove("tremble");},600);motAvant.classList.add("on");},fin);
+    setTimeout(function(){ticketNet.classList.add("on");},fin+900);
+    setTimeout(function(){motApres.classList.add("on");},fin+1500);
+  }
+  if(avant){
+    if(reduced){bulles.forEach(function(b){b.classList.add("on");});motAvant.classList.add("on");motApres.classList.add("on");ticketNet.classList.add("on");}
+    else{
+      var iod=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting&&!duelActif){duelActif=true;jouerDuel();duelTimer=setInterval(jouerDuel,9500);}
+          else if(!e.isIntersecting&&duelActif){duelActif=false;clearInterval(duelTimer);}
+        });
+      },{threshold:.35});
+      iod.observe(avant);
+    }
+  }
+
+  /* ---- demo : le panier, puis la commande qui vole jusqu'au dashboard ---- */
+  var lignes=[],total=0;
+  var panier=document.getElementById("panier"),pcount=document.getElementById("pcount"),ptotal=document.getElementById("ptotal");
+  var z1=document.getElementById("z1"),z2=document.getElementById("z2"),z3=document.getElementById("z3");
+  var c1=document.getElementById("c1"),c2=document.getElementById("c2"),c3=document.getElementById("c3");
+  var num=23;
+  function maj(){c1.textContent=z1.children.length;c2.textContent=z2.children.length;c3.textContent=z3.children.length;}
+  function pose(zone,t,haut){
+    if(reduced){haut?zone.prepend(t):zone.appendChild(t);return;}
+    t.classList.add("enter");haut?zone.prepend(t):zone.appendChild(t);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){t.classList.remove("enter");});});
+  }
+  function retire(t,fin){
+    if(reduced){t.remove();fin&&fin();return;}
+    t.classList.add("leave");setTimeout(function(){t.remove();fin&&fin();},400);
+  }
+  function ticket(txt,hot){
+    var t=document.createElement("div");t.className="ticket"+(hot?" hot":"");
+    var d=new Date(),h=d.getHours(),mn=d.getMinutes();
+    t.innerHTML="<b>#0"+num+", "+h+"h"+(mn<10?"0":"")+mn+"</b><span>"+txt+"</span>";
+    return t;
+  }
+  document.querySelectorAll(".prod button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".prod button.invite").forEach(function(x){x.classList.remove("invite");});
+      lignes.push(b.getAttribute("data-nom"));total+=parseFloat(b.getAttribute("data-prix"));
+      pcount.textContent=lignes.length+(lignes.length>1?" articles":" article");
+      ptotal.textContent="Valider, "+total.toFixed(2).replace(".",",")+" \u20AC";
+      panier.disabled=false;
+      panier.classList.remove("bump");void panier.offsetWidth;panier.classList.add("bump");
+    });
+  });
+  document.querySelectorAll(".chip").forEach(function(ch){
+    ch.addEventListener("click",function(){document.querySelectorAll(".chip").forEach(function(x){x.classList.remove("on");});ch.classList.add("on");});
+  });
+  panier.addEventListener("click",function(){
+    if(!lignes.length)return;
+    num++;
+    var resume={};lignes.forEach(function(l){resume[l]=(resume[l]||0)+1;});
+    var txt=Object.keys(resume).map(function(k){return resume[k]+" "+k;}).join(", ")+", "+total.toFixed(2).replace(".",",")+" \u20AC";
+    var depart=panier.getBoundingClientRect(),arrivee=z1.getBoundingClientRect();
+    function poser(){
+      z1.querySelectorAll(".hot").forEach(function(x){x.classList.remove("hot");});
+      pose(z1,ticket(txt,true),true);maj();
+      if(z1.children.length>3)retire(z1.lastElementChild,maj);
+      lignes=[];total=0;pcount.textContent="Votre panier est vide";ptotal.textContent="Valider";panier.disabled=true;
+    }
+    if(reduced||!("animate" in document.body)){poser();return;}
+    var v=document.createElement("div");v.className="vol";v.textContent="Commande #0"+num;
+    document.body.appendChild(v);
+    var vb=v.getBoundingClientRect();
+    var x0=depart.left+depart.width/2-vb.width/2,y0=depart.top+depart.height/2-vb.height/2;
+    var x1=arrivee.left+12,y1=arrivee.top+8;
+    v.style.left=x0+"px";v.style.top=y0+"px";
+    var anim=v.animate([
+      {transform:"translate(0,0) scale(1)",opacity:1},
+      {transform:"translate("+((x1-x0)*.5)+"px,"+((y1-y0)*.5-90)+"px) scale(1.08)",opacity:1,offset:.5},
+      {transform:"translate("+(x1-x0)+"px,"+(y1-y0)+"px) scale(.85)",opacity:.2}
+    ],{duration:900,easing:"cubic-bezier(.3,.8,.3,1)"});
+    anim.onfinish=function(){v.remove();poser();};
+  });
+  /* le service tourne tout seul en fond */
+  if(z1){
+    var plats=["1 Tacos Poulet, 10,00 \u20AC","3 Bokits poulet, 21,00 \u20AC","2 Smash Bacon, 25,00 \u20AC","1 Pizza Chèvre Miel, 11,00 \u20AC","4 Cookies Coco, 14,00 \u20AC"];
+    var k=0;
+    function fond(){var t=ticket(plats[k%plats.length],false);k++;return t;}
+    pose(z1,fond(),false);pose(z2,fond(),false);pose(z2,fond(),false);pose(z3,fond(),false);maj();
+    if(!reduced){
+      var actif=false,timer=null;
+      function cycle(){
+        if(z3.children.length>=3)retire(z3.lastElementChild,maj);
+        if(z2.children.length>=2)retire(z2.lastElementChild,function(){pose(z3,fond(),true);maj();});
+        if(z1.children.length>=2)retire(z1.lastElementChild,function(){pose(z2,fond(),true);maj();});
+        setTimeout(function(){pose(z1,fond(),false);maj();},700);
+      }
+      var vb2=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting&&!actif){actif=true;timer=setInterval(cycle,5200);}
+        else if(!e.isIntersecting&&actif){actif=false;clearInterval(timer);}
+      });},{threshold:.3});
+      vb2.observe(document.getElementById("board"));
+    }
+  }
+})();
+</script>
+</body>
+</html>

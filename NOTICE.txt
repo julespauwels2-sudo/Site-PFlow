@@ -1,0 +1,66 @@
+PFLOW ORDER, NOUVEAU SITE (v7, refonte complete)
+================================================
+
+OU POSER LE FICHIER (repo btprecruit-crm)
+-----------------------------------------
+site/index.html   -> remplace le site/index.html en ligne. Seul fichier de ce zip.
+
+A POSER A LA MAIN DANS site/images/ (facultatif mais conseille)
+---------------------------------------------------------------
+logo.png              le nouveau logo PFlow (le fichier brand-transparent.png du site
+                      ChatGPT fait l'affaire, renomme en logo.png). Tant qu'il n'est pas
+                      la, le site affiche "PFlow Order" en texte, rien ne casse.
+client-cookies.jpg    une photo de Cookies An Nou (produit ou devanture). Sans elle,
+                      une photo de cookies generique s'affiche.
+plat-burger.jpg, plat-tacos.jpg, plat-pizza.jpg, plat-cookie.jpg
+                      photos des 4 produits de la demo. Sans elles, photos generiques.
+
+DEUX POINTS A TRANCHER (ils se changent en 10 secondes)
+-------------------------------------------------------
+1. LE NUMERO WHATSAPP. Le site ChatGPT de Jules utilise +590 691 26 68 53, l'ancien site
+   utilisait 0690 93 81 08. J'ai mis 590691266853 (celui du site de Jules). Pour changer :
+   tout en haut du <script>, ligne var NUMERO="590691266853". Un seul endroit, tous les
+   boutons suivent.
+2. L'ABONNEMENT. Ta fiche disait 29 euros/mois, le site ChatGPT de Jules affiche
+   39 euros/mois. J'ai garde 29. Pour passer a 39 : section tarifs, bloc prix,
+   chercher "29 &euro;".
+
+CE QUE J'AI PRIS DE CHAQUE COTE
+-------------------------------
+Du site ChatGPT (Jules) : la promesse "Vos clients commandent. Vous regalez.", l'intro
+"Le rush. Sans le bruit." (3 s, passable, une fois par visite), le duel AVANT / APRES
+(le telephone du resto qui se remplit de messages contre une commande nette), la demo
+cote a cote client / restaurant, le premier client Cookies An Nou, les couleurs bleu
+nuit + rose du nouveau logo, la phrase finale "Le rush ne disparaitra pas. Le desordre, si."
+Du site Claude : la conversation WhatsApp qui se joue toute seule dans le hero, le
+dashboard vivant, la carte cliquable, les tarifs avec formule + 5 options, la FAQ.
+Des concurrents : "0 % de commission" en preuve n.1 (chatfood, chataigne), le telephone
+en 3D qui se redresse au survol (chataigne), le bandeau des types d'etablissements, le
+CTA "Demander une demo" partout, un seul produit clair.
+
+CE QUI EST NOUVEAU DANS LES ANIMATIONS
+--------------------------------------
+- Titre du hero qui monte ligne par ligne, telephone en 3D qui flotte et se redresse
+  a la souris, halos bleu et rose qui derivent, grain de fond.
+- Duel avant / apres joue en boucle : 7 messages qui s'empilent, le panneau tremble,
+  puis la commande #024 apparait a droite, propre. Rejoue toutes les 9,5 s tant qu'on
+  la regarde.
+- Demo : quand on valide le panier, une pastille "Commande #024" VOLE de la carte
+  jusqu'a la colonne "Nouvelles" du dashboard, le ticket s'y pose en surbrillance.
+  En fond, le service tourne tout seul (tickets qui passent de Nouvelles a Preparation
+  a Pretes).
+- Cartes des 3 etapes inclinees en 3D selon la position de la souris.
+- Boutons avec reflet, bandeau defilant, FAQ en fondu, nav qui se compacte.
+- Tout se coupe si le visiteur a demande moins d'animations dans son systeme.
+
+CE QUI A DISPARU VOLONTAIREMENT
+-------------------------------
+- Plus aucune mention de QR code, ni du mot "lolo" (consignes du 15 sept.).
+- Plus de lien externe vers dashboard.pflow.fr : le dashboard est integre dans la demo.
+- Plus de theme clair/sombre ni de mascotte : un seul site, simple, aux couleurs du logo.
+- Textes divises par trois. Chaque section = un sur-titre, un titre, une phrase.
+
+STRUCTURE FINALE (dans l'ordre)
+-------------------------------
+Intro > Hero > Avant/Apres > Bandeau > 3 etapes > Demo interactive > Ce que ca change
+> Premier client > Tarifs + options > FAQ > Appel final > Pied de page.
