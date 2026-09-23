@@ -1,33 +1,50 @@
-PFLOW ORDER, SITE V9.2 : BARRE DE NAVIGATION CORRIGEE
-=====================================================
+PFLOW ORDER, SITE V10 : OFFRE FONDATEUR + 49 EUROS/MOIS
+=======================================================
 
-OU POSER LE FICHIER (repo btprecruit-crm)
------------------------------------------
-site/index.html   -> remplace le site/index.html en ligne. Seul fichier.
+OU POSER LE FICHIER
+-------------------
+site/index.html -> remplace site/index.html dans le repo (dossier site/, comme la derniere fois).
 
-LA CAUSE DU BUG DE LA BARRE
+FACULTATIF : site/images/logo-cookiesannou.png = le logo rond de Cookies An Nou (carre,
+au moins 100 x 100 px). Tant qu'il n'est pas la, une pastille marron "CA" s'affiche.
+
+1. PREMIER CLIENT, EN DISCRET
+-----------------------------
+La grande section Cookies An Nou (photo + texte) est supprimee. A la place, une simple
+ligne sous les pilules du hero : "Deja adopte par [logo] Cookies An Nou", qui renvoie
+vers leur Instagram.
+
+2. PRIX : 49 EUROS PAR MOIS
 ---------------------------
-Quand on descend dans la page, la barre recoit la classe "colle" (pour son ombre).
-Or "colle" etait AUSSI le nom du bloc qui fait coller l'iPhone de la section solution,
-regle a 110 px du haut. Resultat : des le premier scroll la barre descendait a 110 px
-sur ordinateur et se decrochait completement sur telephone. Le bloc de l'iPhone
-s'appelle maintenant "tel-fixe", la barre reste collee en haut.
-Verifie cette fois au rendu reel dans un navigateur, ordinateur (1440 px) et
-telephone (390 px), en haut de page et apres scroll : barre a 0 px, fixe.
+Le tarif normal de l'abonnement passe a 49 euros/mois. La creation reste a 390 euros.
 
-AUTRES CORRECTIFS TROUVES AU RENDU
-----------------------------------
-- Liens de la barre : remis dans le flux normal, ne peuvent plus chevaucher le logo.
-- iPhone de la section solution (fond navy) : les textes des ecrans etaient blancs sur
-  blanc (heritage du fond sombre). Ils sont maintenant lisibles.
-- iPhone du hero : le premier message du client est affiche tout de suite, le telephone
-  n'est plus jamais vide ; l'etiquette "PFlow repond tout seul" passe au-dessus du
-  telephone au lieu de masquer le nom du restaurant.
-- Section corail : titre elargi, il tient sur 3 lignes au lieu de 5.
-- Telephone : la demo et le dashboard debordaient de 24 px a droite (scroll de travers).
-  Corrige, zero debordement.
+3. L'OFFRE FONDATEUR
+--------------------
+Principe : les 10 premiers etablissements paient 29 euros/mois A VIE au lieu de 49.
+Le passage a 49 euros rend l'offre credible (vraie remise de 20 euros/mois, 240 euros/an),
+et le "a vie" donne une vraie raison de signer maintenant plutot que dans 3 mois.
+Ou elle apparait :
+- Un ruban fixe tout en haut, sur toutes les pages : "Offre Fondateur : 29 euros/mois a vie
+  au lieu de 49 euros, reservee aux 10 premiers etablissements" + pastille rose "Plus que 9
+  places". Un clic dessus descend aux tarifs. Version courte sur telephone.
+- Dans le bloc prix : cadre rose "Offre Fondateur", 29 euros en grand, 49 euros barre, "Bloque
+  a vie", une jauge qui se remplit a l'arrivee a l'ecran et 10 cases (les places prises en
+  navy). Bouton "Reserver ma place Fondateur" qui ouvre WhatsApp avec un message deja ecrit.
+- Dans l'appel final : "Plus que 9 places au tarif Fondateur".
+- Une question dans la FAQ explique les regles.
+
+LE SEUL REGLAGE A TENIR A JOUR (important)
+------------------------------------------
+Tout en haut du dernier <script> :
+  var PLACES_TOTAL=10;
+  var PLACES_PRISES=1;   <- Cookies An Nou compte pour 1
+A chaque nouveau client Fondateur, passer PLACES_PRISES a 2, 3, etc. Ruban, jauge, cases
+et textes se mettent a jour tout seuls. Quand PLACES_PRISES atteint 10, l'offre disparait
+d'elle-meme : ruban cache, prix affiche 49 euros, bouton "Commencer maintenant".
+L'offre doit rester vraie : ne jamais afficher moins de places que la realite. C'est ce
+qui la rend forte, et une fausse rarete se voit vite dans un petit marche comme la
+Guadeloupe.
 
 TOUJOURS A TRANCHER
 -------------------
-- Numero WhatsApp : var NUMERO="590691266853". Ancien : 0690 93 81 08.
-- Abonnement : 29 euros/mois ici, 39 sur le site de Jules. Chercher "29 &euro;".
+Numero WhatsApp : var NUMERO="590691266853" dans le meme bloc de reglages.

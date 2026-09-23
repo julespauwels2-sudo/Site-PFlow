@@ -25,8 +25,8 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--white);color:var(--ink);font-family:var(--txt);font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .8s ease;padding-top:78px;}
-  html{scroll-padding-top:90px;}
+  body{background:var(--white);color:var(--ink);font-family:var(--txt);font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .8s ease;padding-top:118px;}
+  html{scroll-padding-top:130px;}
   body[data-fond="coral"]{background:var(--coral);}
   body[data-fond="navy"]{background:var(--navy);}
   a{color:inherit;}
@@ -81,8 +81,45 @@
   .intro .barre{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--pink);animation:barre 3.6s linear forwards;}
   @keyframes barre{to{width:100%;}}
 
+
+  /* ===== OFFRE FONDATEUR ===== */
+  .ruban{position:fixed;top:0;left:0;right:0;z-index:61;height:40px;display:flex;align-items:center;justify-content:center;gap:12px;
+    background:linear-gradient(90deg,var(--navy) 0%,#2A1B6B 50%,var(--navy) 100%);color:#fff;font-size:.84rem;font-weight:700;text-decoration:none;padding:0 16px;overflow:hidden;}
+  .ruban::after{content:"";position:absolute;top:0;left:-40%;width:30%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-18deg);animation:balaye 4.5s ease-in-out infinite;}
+  @keyframes balaye{0%{left:-40%;}60%,100%{left:140%;}}
+  .ruban .pt{width:8px;height:8px;border-radius:50%;background:var(--pink2);box-shadow:0 0 0 0 rgba(255,124,203,.7);animation:pulsep 1.8s infinite;flex-shrink:0;}
+  @keyframes pulsep{0%{box-shadow:0 0 0 0 rgba(255,124,203,.7);}70%{box-shadow:0 0 0 8px rgba(255,124,203,0);}100%{box-shadow:0 0 0 0 rgba(255,124,203,0);}}
+  .ruban b{color:var(--pink2);}
+  .ruban .fl{background:var(--pink);border-radius:999px;padding:4px 12px;font-size:.76rem;white-space:nowrap;}
+  .ruban .court{display:none;}
+  .fondateur{position:relative;border:2px solid var(--pink);border-radius:20px;padding:22px 20px 20px;margin-bottom:22px;background:linear-gradient(160deg,rgba(255,79,181,.07),rgba(116,221,251,.07));}
+  .fondateur .badge{position:absolute;top:-13px;left:18px;background:linear-gradient(180deg,#FF74C6,var(--pink));color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:999px;box-shadow:0 8px 18px -8px var(--pink);}
+  .fondateur .ligne-prix{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .fondateur .barre-prix{font-family:var(--tit);font-size:1.5rem;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:3px;}
+  .fondateur .vie{font-size:.86rem;font-weight:800;color:var(--pink);margin-top:6px;}
+  .jauge{margin-top:16px;}
+  .jauge .txt{display:flex;justify-content:space-between;font-size:.76rem;font-weight:800;margin-bottom:7px;}
+  .jauge .txt>span:last-child{color:var(--pink);}
+  .jauge .rail{height:9px;border-radius:999px;background:rgba(16,27,77,.08);overflow:hidden;}
+  .jauge .rempli{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--pink));transition:width 1.6s cubic-bezier(.2,.8,.2,1);}
+  .jauge .places{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .jauge .places i{width:18px;height:18px;border-radius:6px;background:rgba(16,27,77,.08);}
+  .jauge .places i.prise{background:var(--navy);}
+  .jauge .places i.prise::after{content:"";display:block;width:6px;height:6px;margin:6px;border-radius:50%;background:var(--pink2);}
+  .apres-fond{font-size:.8rem;color:var(--muted);margin-top:8px;}
+  .fondateur.fini{border-color:var(--rule);}
+  /* premier client, version discrete */
+  .adopte{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:.8rem;color:var(--muted);font-weight:700;}
+  .adopte a{display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#fff;border:1px solid var(--rule);border-radius:999px;padding:5px 14px 5px 5px;box-shadow:var(--ombre-s);color:var(--navy);transition:transform .2s ease,border-color .2s ease;}
+  .adopte a:hover{transform:translateY(-2px);border-color:var(--pink);}
+  .adopte img{width:30px;height:30px;border-radius:50%;object-fit:cover;background:#F3E6D8;}
+  .adopte .mono{width:30px;height:30px;border-radius:50%;display:none;align-items:center;justify-content:center;background:linear-gradient(135deg,#C68A4E,#8A5A2B);color:#fff;font-family:var(--tit);font-weight:700;font-size:.78rem;}
+  .adopte a.sansimg img{display:none;}
+  .adopte a.sansimg .mono{display:flex;}
+  .adopte .nomc{font-family:var(--tit);font-weight:700;font-size:.92rem;}
+
   /* nav */
-  nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
+  nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
   nav.colle{border-bottom-color:var(--rule);box-shadow:0 8px 30px rgba(16,27,77,.08);}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:16px;}
   .logo{flex-shrink:0;}
@@ -175,7 +212,7 @@
 
   /* solution (fond navy) : iphone colle + etapes */
   .histoire{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start;margin-top:56px;}
-  .tel-fixe{position:sticky;top:110px;display:flex;justify-content:center;}
+  .tel-fixe{position:sticky;top:150px;display:flex;justify-content:center;}
   .ecr{position:absolute;inset:0;opacity:0;transform:scale(.96);transition:opacity .6s ease,transform .6s ease;}
   .ecr.on{opacity:1;transform:none;}
   .ecr.clair{color:var(--navy);background:var(--white);padding:52px 14px 16px;display:flex;flex-direction:column;}
@@ -254,18 +291,6 @@
   .vol{position:fixed;z-index:80;pointer-events:none;background:linear-gradient(180deg,#FF74C6,var(--pink));color:#fff;font-family:var(--tit);font-weight:700;font-size:.95rem;padding:10px 16px;border-radius:999px;box-shadow:0 14px 34px -10px var(--pink);}
   .demo .note{margin-top:16px;font-size:.78rem;color:var(--muted);}
 
-  /* client */
-  .client{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:44px 46px;position:relative;overflow:hidden;}
-  .client .qui{font-family:var(--tit);font-size:2.6rem;font-weight:700;line-height:1.05;}
-  .client .qui i{font-style:normal;color:var(--pink);}
-  .client p{color:var(--muted);margin:14px 0 22px;max-width:40ch;}
-  .client .ig{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:.9rem;color:var(--navy);border-bottom:2px solid var(--pink);padding-bottom:2px;}
-  .client .ig:hover{color:var(--pink);}
-  .client .photo{aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,var(--cyan),var(--pink));box-shadow:var(--ombre);position:relative;z-index:1;}
-  .client .photo img{width:100%;height:100%;object-fit:cover;}
-  .client .photo.noimg img{display:none;}
-  .client .photo .tag{position:absolute;left:16px;bottom:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:6px 14px;font-size:.74rem;font-weight:800;color:var(--navy);box-shadow:var(--ombre-s);}
-
   /* tarifs */
   .tarifs-grille{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch;}
   .formule{background:linear-gradient(150deg,var(--navy2),var(--navy));color:#fff;border-radius:var(--r);padding:40px 42px;box-shadow:var(--ombre);position:relative;overflow:hidden;display:flex;flex-direction:column;}
@@ -278,7 +303,7 @@
   .formule li{padding:8px 0 8px 26px;position:relative;break-inside:avoid;}
   .formule li::before{content:"\2713";position:absolute;left:0;top:9px;width:18px;height:18px;border-radius:50%;background:var(--pink);color:#fff;font-size:.66rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
   .formule .zero{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:.9rem;}
-  .formule .zero i{font-style:normal;font-family:var(--tit);font-size:1.6rem;color:var(--cyan);}
+  .formule .zero i{white-space:nowrap;flex-shrink:0;font-style:normal;font-family:var(--tit);font-size:1.6rem;color:var(--cyan);}
   .prixbloc{background:#fff;border-radius:var(--r);box-shadow:var(--ombre);padding:36px 34px;display:flex;flex-direction:column;border:1px solid var(--rule);}
   .prixbloc .lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--muted);margin-bottom:8px;}
   .prixbloc .p{font-family:var(--tit);font-size:3.2rem;font-weight:700;line-height:1;}
@@ -347,6 +372,9 @@
     .formule ul{columns:1;}
   }
   @media(max-width:700px){
+    .ruban .long{display:none;}
+    .ruban .court{display:inline;}
+    .ruban{font-size:.78rem;gap:8px;}
     section{padding:72px 0;}
     .hero{padding:36px 0 60px;min-height:0;}
     h2{font-size:2.1rem;}
@@ -367,7 +395,8 @@
   }
   @media(prefers-reduced-motion:reduce){
     .rv,.ecr,.pas,.m,.recu{opacity:1;transform:none;transition:none;}
-    .bulle,.scene .iphone,.piste,.rang,.flot::after,.prod button.invite,.intro .ib,.intro img,.intro .ligne,.intro .barre{animation:none;}
+    .bulle,.scene .iphone,.piste,.rang,.flot::after,.prod button.invite,.intro .ib,.intro img,.intro .ligne,.intro .barre,.ruban::after,.ruban .pt{animation:none;}
+    .jauge .rempli{transition:none;}
     .hero h1 .l span{animation:none;transform:none;}
     .intro{display:none;}
     html{scroll-behavior:auto;}
@@ -392,6 +421,13 @@
   <div class="barre"></div>
 </div>
 <script>poseLogos();</script>
+
+<a class="ruban" href="#tarifs" id="ruban">
+  <span class="pt"></span>
+  <span class="long">Offre Fondateur : <b>29 € / mois à vie</b> au lieu de 49 €, réservée aux <span class="js-total">10</span> premiers établissements.</span>
+  <span class="court">Fondateur : <b>29 €/mois à vie</b></span>
+  <span class="fl">Plus que <span class="js-reste">9</span> places</span>
+</a>
 
 <nav id="nav">
   <div class="wrap">
@@ -427,6 +463,12 @@
         <span class="pill"><i>0 %</i> de commission</span>
         <span class="pill"><i>0</i> appli à installer</span>
         <span class="pill"><i>24h/24</i> réponse automatique</span>
+      </div>
+      <div class="adopte">Déjà adopté par
+        <a href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener" id="lienClient">
+          <img src="images/logo-cookiesannou.png" alt="Cookies An Nou" onerror="this.parentNode.classList.add('sansimg')"><span class="mono">CA</span>
+          <span class="nomc">Cookies An Nou</span>
+        </a>
       </div>
     </div>
     <div class="scene">
@@ -590,21 +632,6 @@
   </div>
 </section>
 
-<!-- ============ CLIENT ============ -->
-<section id="client" data-fond="blanc" style="padding-top:0">
-  <div class="wrap">
-    <div class="client glass rv">
-      <div>
-        <div class="st">Déjà adopté</div>
-        <div class="qui">Cookies <i>An Nou.</i></div>
-        <p>Notre premier client. Une pâtisserie de Guadeloupe qui prend désormais ses commandes sur WhatsApp, automatiquement, sans une seule commission.</p>
-        <a class="ig" href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener">Voir Cookies An Nou sur Instagram &rarr;</a>
-      </div>
-      <div class="photo"><img src="images/client-cookies.jpg" data-fb="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900&q=60&auto=format&fit=crop" alt="Cookies An Nou" loading="lazy" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb='';}else{this.parentNode.classList.add('noimg')}"><span class="tag">Client PFlow Order</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ TARIFS ============ -->
 <section id="tarifs" data-fond="blanc">
   <div class="wrap">
@@ -632,10 +659,19 @@
         <div class="p">390 &euro;</div>
         <div class="d">Paiement unique.</div>
         <div class="filet"></div>
-        <div class="lab">Ensuite</div>
-        <div class="p">29 &euro;<small> / mois</small></div>
-        <div class="d">Sans engagement, résiliable à tout moment.</div>
-        <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux lancer PFlow Order pour mon établissement." href="#">Commencer maintenant &rarr;</a>
+        <div class="lab" style="margin-bottom:20px">Ensuite, chaque mois</div>
+        <div class="fondateur" id="fondateur">
+          <span class="badge" id="fondBadge">Offre Fondateur</span>
+          <div class="ligne-prix"><div class="p" id="prixMois">29 &euro;<small> / mois</small></div><span class="barre-prix" id="prixBarre">49 &euro;</span></div>
+          <div class="vie" id="fondVie">Bloqué à vie, pour les <span class="js-total">10</span> premiers établissements.</div>
+          <div class="jauge">
+            <div class="txt"><span><span class="js-prises">1</span> / <span class="js-total">10</span> places prises</span><span>Plus que <span class="js-reste">9</span></span></div>
+            <div class="rail"><div class="rempli" id="rempli"></div></div>
+            <div class="places" id="places"></div>
+          </div>
+        </div>
+        <div class="d">Tarif normal : 49 &euro; / mois. Sans engagement, résiliable à tout moment.</div>
+        <a class="btn pink lienwa" id="ctaFondateur" data-txt="Bonjour PFlow, je veux réserver ma place Fondateur à 29 euros par mois pour mon établissement." href="#">Réserver ma place Fondateur &rarr;</a>
       </div>
     </div>
     <div class="optitre rv">
@@ -668,6 +704,7 @@
         <details><summary>Je garde mon numéro WhatsApp ?</summary><p>Oui, ou on vous crée un numéro professionnel dédié. Dans les deux cas vous pouvez reprendre la main à tout moment : l'automatisation gère le répétitif, jamais votre relation client.</p></details>
         <details><summary>Combien de temps pour être en ligne ?</summary><p>Vous fournissez votre menu, vos photos et vos horaires. On s'occupe de tout le reste, formation comprise. Le calendrier est confirmé dès notre premier échange.</p></details>
         <details><summary>Que comprend l'abonnement ?</summary><p>Le fonctionnement, l'hébergement, la maintenance et l'accompagnement courant. Les services tiers, comme le paiement en ligne, sont précisés séparément.</p></details>
+        <details><summary>Comment fonctionne l'offre Fondateur ?</summary><p>Les 10 premiers établissements qui rejoignent PFlow Order paient 29 € par mois au lieu de 49 €, et ce tarif est bloqué tant qu'ils restent clients. Une fois les 10 places prises, l'offre s'arrête et le tarif normal s'applique à tous les nouveaux clients.</p></details>
         <details><summary>Je peux ajouter des options plus tard ?</summary><p>Oui. Paiement en ligne, livraison, avis Google : on les ajoute quand votre activité en a besoin, sans changer de solution.</p></details>
       </div>
     </div>
@@ -682,10 +719,10 @@
     <h2 class="rv">La commande devient fluide. <span class="p">Votre restaurant grandit.</span></h2>
     <div class="sig rv">Good food flows further.</div>
     <div class="ctas rv">
-      <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux essayer PFlow Order pour mon établissement." href="#">Commencer maintenant &rarr;</a>
+      <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux réserver ma place Fondateur à 29 euros par mois pour mon établissement." href="#">Réserver ma place Fondateur &rarr;</a>
       <a class="btn blanc lienwa" data-txt="Bonjour PFlow, j'ai une question sur PFlow Order." href="#">Poser une question sur WhatsApp</a>
     </div>
-    <div class="rep rv">Un message avec le nom de votre établissement suffit. On vous répond dans la journée, on vous montre, vous décidez.</div>
+    <div class="rep rv">Un message avec le nom de votre établissement suffit. <b style="color:#fff">Plus que <span class="js-reste">9</span> places au tarif Fondateur, 29 € / mois à vie.</b></div>
   </div>
 </section>
 
@@ -702,7 +739,36 @@ poseLogos();
 (function(){
   /* ================= REGLAGES ================= */
   var NUMERO="590691266853"; /* numero WhatsApp de PFlow, sans + ni espaces */
+  var PLACES_TOTAL=10;       /* nombre de places Fondateur */
+  var PLACES_PRISES=1;       /* A METTRE A JOUR a chaque nouveau client (Cookies An Nou = 1) */
   var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+  /* ---- offre Fondateur : compteurs, jauge, fin automatique ---- */
+  var reste=Math.max(PLACES_TOTAL-PLACES_PRISES,0);
+  document.querySelectorAll(".js-total").forEach(function(e){e.textContent=PLACES_TOTAL;});
+  document.querySelectorAll(".js-prises").forEach(function(e){e.textContent=Math.min(PLACES_PRISES,PLACES_TOTAL);});
+  document.querySelectorAll(".js-reste").forEach(function(e){e.textContent=reste;});
+  var places=document.getElementById("places");
+  if(places){for(var p=0;p<PLACES_TOTAL;p++){var c=document.createElement("i");if(p<PLACES_PRISES)c.className="prise";places.appendChild(c);}}
+  var rempli=document.getElementById("rempli");
+  if(rempli){
+    var pct=Math.min(PLACES_PRISES/PLACES_TOTAL,1)*100;
+    if(reduced||!("IntersectionObserver" in window)){rempli.style.width=pct+"%";}
+    else{var ioj=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){rempli.style.width=pct+"%";ioj.unobserve(e.target);}});},{threshold:.5});ioj.observe(rempli);}
+  }
+  if(reste===0){
+    /* offre terminee : on bascule tout sur le tarif normal */
+    var rub=document.getElementById("ruban");if(rub)rub.style.display="none";
+    document.getElementById("nav").style.top="0";document.body.style.paddingTop="78px";
+    var f=document.getElementById("fondateur");f.classList.add("fini");
+    document.getElementById("fondBadge").textContent="Offre Fondateur terminée";
+    document.getElementById("prixMois").innerHTML="49 &euro;<small> / mois</small>";
+    document.getElementById("prixBarre").style.display="none";
+    document.getElementById("fondVie").textContent="Les "+PLACES_TOTAL+" places Fondateur ont toutes été prises.";
+    var cta=document.getElementById("ctaFondateur");cta.textContent="Commencer maintenant \u2192";cta.setAttribute("data-txt","Bonjour PFlow, je veux lancer PFlow Order pour mon établissement.");
+    document.querySelectorAll(".rep b").forEach(function(e){e.style.display="none";});
+  }
 
   document.querySelectorAll(".lienwa").forEach(function(a){
     a.href="https://wa.me/"+NUMERO+"?text="+encodeURIComponent(a.getAttribute("data-txt")||"Bonjour PFlow.");
