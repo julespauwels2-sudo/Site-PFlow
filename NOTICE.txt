@@ -1,4 +1,4 @@
-PFLOW ORDER, SITE V10 : OFFRE FONDATEUR + 49 EUROS/MOIS
+PFLOW ORDER, SITE V10.2 : OFFRE FONDATEUR SUR LA MISE EN PLACE, 49 EUROS/MOIS
 =======================================================
 
 OU POSER LE FICHIER
@@ -16,22 +16,15 @@ vers leur Instagram.
 
 2. PRIX : 49 EUROS PAR MOIS
 ---------------------------
-Le tarif normal de l'abonnement passe a 49 euros/mois. La creation reste a 390 euros.
-
-3. L'OFFRE FONDATEUR
+Le tarif normal de l'abonnement passe a 49 euros/mois. La creatio3. L'OFFRE FONDATEUR
 --------------------
-Principe : les 10 premiers etablissements paient 29 euros/mois A VIE au lieu de 49.
-Le passage a 49 euros rend l'offre credible (vraie remise de 20 euros/mois, 240 euros/an),
-et le "a vie" donne une vraie raison de signer maintenant plutot que dans 3 mois.
-Ou elle apparait :
-- Un ruban fixe tout en haut, sur toutes les pages : "Offre Fondateur : 29 euros/mois a vie
-  au lieu de 49 euros, reservee aux 10 premiers etablissements" + pastille rose "Plus que 9
-  places". Un clic dessus descend aux tarifs. Version courte sur telephone.
-- Dans le bloc prix : cadre rose "Offre Fondateur", 29 euros en grand, 49 euros barre, "Bloque
-  a vie", une jauge qui se remplit a l'arrivee a l'ecran et 10 cases (les places prises en
-  navy). Bouton "Reserver ma place Fondateur" qui ouvre WhatsApp avec un message deja ecrit.
-- Dans l'appel final : "Plus que 9 places au tarif Fondateur".
-- Une question dans la FAQ explique les regles.
+Les 10 premiers etablissements paient la mise en place 290 euros au lieu de 390 euros,
+soit 100 euros d'economie. L'abonnement reste a 49 euros/mois pour tout le monde,
+Fondateurs compris : le recurrent n'est jamais remise.
+Ou elle apparait : ruban fixe en haut ("mise en place a 290 euros au lieu de 390 euros"
++ "Plus que 9 places"), cadre rose Fondateur dans le bloc prix avec 390 euros barre,
+jauge et 10 cases, bouton "Reserver ma place Fondateur" qui ouvre WhatsApp avec le
+message ecrit, rappel dans l'appel final, question dans la FAQ.
 
 LE SEUL REGLAGE A TENIR A JOUR (important)
 ------------------------------------------
@@ -40,7 +33,7 @@ Tout en haut du dernier <script> :
   var PLACES_PRISES=1;   <- Cookies An Nou compte pour 1
 A chaque nouveau client Fondateur, passer PLACES_PRISES a 2, 3, etc. Ruban, jauge, cases
 et textes se mettent a jour tout seuls. Quand PLACES_PRISES atteint 10, l'offre disparait
-d'elle-meme : ruban cache, prix affiche 49 euros, bouton "Commencer maintenant".
+d'elle-meme : ruban cache, mise en place affichee 390 euros, bouton "Commencer maintenant".
 L'offre doit rester vraie : ne jamais afficher moins de places que la realite. C'est ce
 qui la rend forte, et une fausse rarete se voit vite dans un petit marche comme la
 Guadeloupe.
