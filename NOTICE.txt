@@ -1,25 +1,32 @@
-PFLOW ORDER, SITE V11.1 : CORRECTIF FOND CORAIL / NAVY
-======================================================
+PFLOW ORDER, SITE V11.2 : TOUTE LA PAGE CHANGE DE COULEUR, SANS BUG
+===================================================================
 
 OU POSER LE FICHIER
 -------------------
 site/index.html -> remplace site/index.html dans le repo (dossier site/).
 
-LA CAUSE
---------
-Le fond corail et le fond navy n'etaient pas peints par les sections elles-memes :
-c'etait le fond de TOUTE la page qui changeait de couleur quand une section passait au
-milieu de l'ecran, avec un fondu de 0,8 seconde. Resultat au scroll : pendant le fondu,
-ou quand deux sections etaient visibles en meme temps, le haut ou le bas de l'ecran
-prenait la mauvaise couleur (corail qui deborde, navy qui arrive trop tot).
+CE QUI REVIENT
+--------------
+L'effet facon chwit : quand on arrive sur "Trop d'appels", TOUTE la page passe en corail,
+puis toute la page passe en navy sur "PFlow repond a votre place", puis revient au blanc.
 
-LE CORRECTIF
-------------
-Chaque section peint maintenant son propre fond : la section "Trop d'appels" est corail,
-la section "PFlow repond a votre place" et l'appel final sont navy, le reste blanc.
-La couleur change pile a la frontiere entre deux sections, sans retard, a n'importe quelle
-vitesse de scroll. Le script qui changeait la couleur de la page a ete supprime.
-Verifie au rendu reel a 5 positions de scroll autour du corail et du navy, sur ordinateur
-et sur telephone.
+LES 3 CAUSES DES BUGS, ET CE QUI LES CORRIGE
+--------------------------------------------
+1. La detection ratait des passages. Elle reposait sur un observateur qui ne reagissait
+   qu'a une bande de 10 % au centre de l'ecran : en scrollant vite, la bande sautait
+   par-dessus une section et la page restait sur la mauvaise couleur.
+   -> Remplace par un calcul a chaque image de scroll : la section qui couvre la ligne a
+   55 % de la hauteur d'ecran donne la couleur. Impossible de rater un passage, meme en
+   scroll tres rapide (teste en rafale jusqu'a la section suivante).
+2. Des morceaux gardaient l'ancienne couleur. Les degrades sur les bords des messages qui
+   defilent etaient codes en corail en dur, les textes des sections corail et navy en
+   blanc en dur : sur fond blanc ils disparaissaient, sur fond navy le corail restait.
+   -> Tout passe maintenant par 5 couleurs de page (fond, texte, texte doux, filets,
+   voiles) qui changent ensemble : fond, textes, bordures et degrades basculent d'un bloc.
+3. Le fondu n'etait pas synchronise : le fond fondait en 0,8 s mais le reste changeait
+   d'un coup.
+   -> Les 5 couleurs sont declarees comme couleurs animables : tout fond ensemble, en
+   0,7 s, en meme temps.
 
-Rien d'autre ne change.
+Verifie au rendu reel sur ordinateur et telephone : corail, navy et retour au blanc,
+haut et bas de l'ecran toujours de la meme couleur, textes lisibles pendant le fondu.
