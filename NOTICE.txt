@@ -1,43 +1,41 @@
-PFLOW ORDER, SITE V10.2 : OFFRE FONDATEUR SUR LA MISE EN PLACE, 49 EUROS/MOIS
-=======================================================
+PFLOW ORDER, SITE V11 : MOINS DE TEXTE + "POURQUOI COMMANDER EN DIRECT ?"
+========================================================================
 
 OU POSER LE FICHIER
 -------------------
-site/index.html -> remplace site/index.html dans le repo (dossier site/, comme la derniere fois).
+site/index.html -> remplace site/index.html dans le repo (dossier site/).
 
-FACULTATIF : site/images/logo-cookiesannou.png = le logo rond de Cookies An Nou (carre,
-au moins 100 x 100 px). Tant qu'il n'est pas la, une pastille marron "CA" s'affiche.
+1. TEXTE COUPE PARTOUT
+---------------------
+- Hero : plus de sur-titre, une seule phrase sous le titre : "PFlow repond, envoie votre
+  menu et vous livre la commande complete, sur un seul ecran."
+- Section corail : le titre devient "Trop d'appels. / Trop de messages." sur deux lignes,
+  sans paragraphe. Les messages clients qui defilent font le reste. Chiffres raccourcis.
+- Section navy (l'iPhone qui change d'ecran) : plus de paragraphe d'intro, les 4 etapes
+  tiennent en une ligne chacune : "Il ecrit. PFlow repond." / "Il choisit." /
+  "Il valide." / "Vous preparez."
+- Demo : "Ajoutez. Validez. Regardez."  Tarifs : "Aucune commission. Jamais."
+  FAQ : "Le reste, on en parle sur WhatsApp."
 
-1. PREMIER CLIENT, EN DISCRET
------------------------------
-La grande section Cookies An Nou (photo + texte) est supprimee. A la place, une simple
-ligne sous les pilules du hero : "Deja adopte par [logo] Cookies An Nou", qui renvoie
-vers leur Instagram.
+2. NOUVELLE SECTION "POURQUOI COMMANDER EN DIRECT ?"
+---------------------------------------------------
+Elle remplace les 3 cartes Commander / Developper / Fideliser (qui etaient surtout du
+texte). Tout passe par le visuel :
+- A gauche "Plateforme type Uber Eats" : une commande de 25 euros. A l'arrivee a l'ecran,
+  une barre hachuree corail "-30 %" mange la commande et le montant "Vous touchez" descend
+  de 25,00 a 17,50 euros sous les yeux du visiteur. 3 croix : le client est a la plateforme,
+  vos prix gonfles, noye parmi 100 restos.
+- Pastille "VS" au milieu.
+- A droite "PFlow Order, en direct" (cadre rose) : la meme commande, barre pleine, vous
+  touchez 25,00 euros. 3 coches : le client est a vous, vos prix et votre marge, votre
+  marque et votre lien.
+- En dessous, en grand : "100 commandes a 25 euros : jusqu'a 750 euros gardes chez vous",
+  le 750 compte de 0 a 750.
+- Petite ligne d'honnetete : "Commission des plateformes de livraison : jusqu'a 30 % selon
+  la formule."
+- Lien ajoute dans le menu du haut : "Pourquoi en direct".
 
-2. PRIX : 49 EUROS PAR MOIS
----------------------------
-Le tarif normal de l'abonnement passe a 49 euros/mois. La creatio3. L'OFFRE FONDATEUR
---------------------
-Les 10 premiers etablissements paient la mise en place 290 euros au lieu de 390 euros,
-soit 100 euros d'economie. L'abonnement reste a 49 euros/mois pour tout le monde,
-Fondateurs compris : le recurrent n'est jamais remise.
-Ou elle apparait : ruban fixe en haut ("mise en place a 290 euros au lieu de 390 euros"
-+ "Plus que 9 places"), cadre rose Fondateur dans le bloc prix avec 390 euros barre,
-jauge et 10 cases, bouton "Reserver ma place Fondateur" qui ouvre WhatsApp avec le
-message ecrit, rappel dans l'appel final, question dans la FAQ.
-
-LE SEUL REGLAGE A TENIR A JOUR (important)
-------------------------------------------
-Tout en haut du dernier <script> :
-  var PLACES_TOTAL=10;
-  var PLACES_PRISES=1;   <- Cookies An Nou compte pour 1
-A chaque nouveau client Fondateur, passer PLACES_PRISES a 2, 3, etc. Ruban, jauge, cases
-et textes se mettent a jour tout seuls. Quand PLACES_PRISES atteint 10, l'offre disparait
-d'elle-meme : ruban cache, mise en place affichee 390 euros, bouton "Commencer maintenant".
-L'offre doit rester vraie : ne jamais afficher moins de places que la realite. C'est ce
-qui la rend forte, et une fausse rarete se voit vite dans un petit marche comme la
-Guadeloupe.
-
-TOUJOURS A TRANCHER
--------------------
-Numero WhatsApp : var NUMERO="590691266853" dans le meme bloc de reglages.
+INCHANGE
+--------
+Intro, offre Fondateur (290 euros au lieu de 390, 49 euros/mois), demo interactive, tarifs,
+FAQ. Reglages toujours en haut du dernier script : NUMERO et PLACES_PRISES.

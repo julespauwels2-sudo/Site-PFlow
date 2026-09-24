@@ -118,6 +118,37 @@
   .adopte a.sansimg .mono{display:flex;}
   .adopte .nomc{font-family:var(--tit);font-weight:700;font-size:.92rem;}
 
+
+  /* ===== POURQUOI COMMANDER EN DIRECT ===== */
+  .duel2{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch;margin-top:44px;}
+  .cote{background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:30px 30px 26px;box-shadow:var(--ombre-s);}
+  .cote.direct{border:2px solid var(--pink);box-shadow:0 24px 60px -24px rgba(255,79,181,.45);}
+  .cote .et{font-family:var(--tit);font-weight:700;font-size:1.3rem;margin-bottom:18px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .cote .et small{font-family:var(--txt);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .cote.direct .et small{color:var(--pink);}
+  .cote .cmd25{font-size:.86rem;font-weight:700;color:var(--muted);margin-bottom:10px;}
+  .cote .cmd25 b{color:var(--navy);}
+  .rail2{height:46px;border-radius:14px;overflow:hidden;display:flex;background:rgba(16,27,77,.06);}
+  .rail2 .vous{height:100%;width:100%;background:linear-gradient(90deg,var(--navy2),var(--navy));transition:width 1.4s cubic-bezier(.2,.8,.2,1) .3s;}
+  .cote.direct .rail2 .vous{background:linear-gradient(90deg,var(--cyan),var(--blue),var(--pink));}
+  .rail2 .com{height:100%;width:0;background:repeating-linear-gradient(135deg,var(--coral) 0 10px,#FF8585 10px 20px);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.86rem;white-space:nowrap;overflow:hidden;transition:width 1.4s cubic-bezier(.2,.8,.2,1) .3s;}
+  .duel2.joue .plat .rail2 .vous{width:70%;}
+  .duel2.joue .plat .rail2 .com{width:30%;}
+  .cote .touche{margin-top:16px;font-size:.9rem;font-weight:700;color:var(--muted);}
+  .cote .touche b{display:block;font-family:var(--tit);font-size:3rem;line-height:1.05;color:var(--navy);}
+  .cote.plat .touche b{color:var(--coral);}
+  .cote.direct .touche b{color:var(--pink);}
+  .cote ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:9px;}
+  .cote li{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.92rem;}
+  .cote li::before{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;}
+  .cote.plat li::before{content:"\2715";background:var(--coral);}
+  .cote.direct li::before{content:"\2713";background:var(--wa);}
+  .cote.plat li{color:var(--muted);}
+  .vs2{align-self:center;font-family:var(--tit);font-weight:700;font-size:1.1rem;width:54px;height:54px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--ombre);}
+  .gros{margin-top:40px;text-align:center;font-family:var(--tit);font-weight:600;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.2;}
+  .gros b{color:var(--pink);font-weight:700;}
+  .note-com{text-align:center;font-size:.76rem;color:var(--muted);margin-top:10px;}
+
   /* nav */
   nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
   nav.colle{border-bottom-color:var(--rule);box-shadow:0 8px 30px rgba(16,27,77,.08);}
@@ -207,7 +238,7 @@
   .rang span small{display:block;font-size:.66rem;color:var(--muted);font-weight:700;}
   .chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:54px;}
   .ch{border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:24px;background:rgba(255,255,255,.1);}
-  .ch b{display:block;font-family:var(--tit);font-size:2.6rem;font-weight:700;line-height:1;}
+  .ch b{display:block;font-family:var(--tit);font-size:2.2rem;font-weight:700;line-height:1.05;white-space:nowrap;}
   .ch span{font-size:.9rem;opacity:.9;}
 
   /* solution (fond navy) : iphone colle + etapes */
@@ -366,6 +397,8 @@
     .hero .wrap,.demo,.client,.faqgrid,.histoire,.tarifs-grille{grid-template-columns:1fr;}
     .tel-fixe{position:relative;top:0;}
     .trio,.chiffres{grid-template-columns:1fr;}
+    .duel2{grid-template-columns:1fr;}
+    .vs2{justify-self:center;}
     .options{grid-template-columns:repeat(2,1fr);}
     h2{max-width:none;}
     .pas{min-height:0;opacity:1;}
@@ -382,6 +415,8 @@
     .recu{width:220px;right:-4px;bottom:-10px;}
     .legende{top:0;}
     .options{grid-template-columns:1fr;}
+    .ch b{font-size:1.8rem;}
+    .cote{padding:24px 20px;}
     .formule,.client,.prixbloc{padding:28px 22px;}
     .board{padding:14px;}
     .board .cols{gap:6px;}
@@ -397,6 +432,7 @@
     .rv,.ecr,.pas,.m,.recu{opacity:1;transform:none;transition:none;}
     .bulle,.scene .iphone,.piste,.rang,.flot::after,.prod button.invite,.intro .ib,.intro img,.intro .ligne,.intro .barre,.ruban::after,.ruban .pt{animation:none;}
     .jauge .rempli{transition:none;}
+    .rail2 .vous,.rail2 .com{transition:none;}
     .hero h1 .l span{animation:none;transform:none;}
     .intro{display:none;}
     html{scroll-behavior:auto;}
@@ -434,6 +470,7 @@
     <a class="logo" href="#top"><img src="" data-logo="wide" alt="PFlow Order"></a>
     <div class="links">
       <a href="#solution">Comment ça marche</a>
+      <a href="#direct">Pourquoi en direct</a>
       <a href="#demo">Démo</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#faq">Questions</a>
@@ -452,9 +489,8 @@
   <div class="halo c"></div>
   <div class="wrap">
     <div>
-      <div class="st">Snacks, pizzerias, burgers, tacos, bokits, pâtisseries. Guadeloupe.</div>
       <h1><span class="l"><span>Vos clients commandent</span></span><span class="l"><span>sur WhatsApp.</span></span></h1>
-      <p class="lead">PFlow leur répond à votre place, leur envoie votre menu, et vous livre <b>chaque commande, complète, sur un seul écran</b>. Sans appli à installer. Sans commission sur vos ventes.</p>
+      <p class="lead">PFlow répond, envoie votre menu et vous livre <b>la commande complète, sur un seul écran</b>.</p>
       <div class="ctas">
         <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux essayer PFlow Order pour mon établissement." href="#">Commencer maintenant &rarr;</a>
         <a class="btn ghost" href="#demo">Tester la démo</a>
@@ -508,8 +544,7 @@
 <section class="probleme" id="probleme" data-fond="coral">
   <div class="wrap">
     <div class="st rv">Vendredi soir, 19h02</div>
-    <h2 class="rv">Trop d'appels. Trop de messages. Et la commande, elle est où ?</h2>
-    <p class="lead rv">Chaque message sans réponse, c'est un client qui commande ailleurs. Et pendant ce temps, vous avez les deux mains en cuisine.</p>
+    <h2 class="rv">Trop d'appels.<br>Trop de messages.</h2>
     <div class="chaos rv">
       <div class="rang">
         <span>Vous êtes ouverts ?<small>Camille, maintenant</small></span><span>Je voudrais 2 burgers<small>Alex, maintenant</small></span><span>Sans oignons svp<small>Alex, maintenant</small></span><span>Vous livrez au Gosier ?<small>Sarah, maintenant</small></span><span>Je peux payer comment ?<small>Sam, maintenant</small></span><span>Allô ? ???<small>Alex, maintenant</small></span>
@@ -522,8 +557,8 @@
     </div>
     <div class="chiffres">
       <div class="ch rv"><b>1 appel manqué</b><span>= 1 vente perdue</span></div>
-      <div class="ch rv" style="--d:.1s"><b>7 messages</b><span>pour une seule commande</span></div>
-      <div class="ch rv" style="--d:.2s"><b>0 minute</b><span>pour répondre pendant le rush</span></div>
+      <div class="ch rv" style="--d:.1s"><b>7 messages</b><span>pour 1 commande</span></div>
+      <div class="ch rv" style="--d:.2s"><b>0 minute</b><span>pour répondre en plein rush</span></div>
     </div>
   </div>
 </section>
@@ -533,7 +568,6 @@
   <div class="wrap">
     <div class="st rv">La solution</div>
     <h2 class="rv">PFlow répond à votre place. <span class="p" style="color:var(--pink2)">Instantanément.</span></h2>
-    <p class="lead rv" style="margin-top:16px">Une réponse automatique WhatsApp branchée sur votre menu. Vous ne tapez rien, vous ne recopiez rien : vous cuisinez, PFlow prend les commandes.</p>
     <div class="histoire">
       <div class="tel-fixe rv">
         <div class="iphone" id="telSolution">
@@ -572,25 +606,39 @@
         </div>
       </div>
       <div>
-        <div class="pas on"><div class="n">01 / WHATSAPP, 22H14</div><h3>Il vous écrit, PFlow répond.</h3><p>En cuisine, en plein rush ou après la fermeture : la réponse part en une seconde, avec le lien de votre menu. Aucune appli, aucun compte.</p></div>
-        <div class="pas"><div class="n">02 / VOTRE MENU</div><h3>Il choisit, à son rythme.</h3><p>Vos produits, vos prix, vos suppléments, vos photos. Plus de "sans oignons ?" à retrouver dans 40 messages : tout est écrit, une fois.</p></div>
-        <div class="pas"><div class="n">03 / LA VALIDATION</div><h3>Un panier vérifié.</h3><p>Quoi, combien, pour quand, sur place ou à emporter. Le client confirme, PFlow lui renvoie le récapitulatif et le numéro de commande.</p></div>
-        <div class="pas"><div class="n">04 / VOTRE ÉCRAN</div><h3>À vous, chef.</h3><p>La commande #024 tombe sur votre écran, complète et numérotée. Un clic quand c'est prêt : le client est prévenu, il arrive.</p></div>
+        <div class="pas on"><div class="n">01 / WHATSAPP</div><h3>Il écrit. PFlow répond.</h3><p>En 1 seconde, avec votre menu.</p></div>
+        <div class="pas"><div class="n">02 / VOTRE MENU</div><h3>Il choisit.</h3><p>Vos plats, vos photos, vos options.</p></div>
+        <div class="pas"><div class="n">03 / VALIDATION</div><h3>Il valide.</h3><p>Récap et numéro de commande envoyés.</p></div>
+        <div class="pas"><div class="n">04 / VOTRE ÉCRAN</div><h3>Vous préparez.</h3><p>Tout tombe sur votre écran.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PILIERS ============ -->
-<section id="piliers" data-fond="blanc">
+<!-- ============ POURQUOI EN DIRECT ============ -->
+<section id="direct" data-fond="blanc">
   <div class="wrap">
-    <div class="st rv">Commander &middot; Développer &middot; Fidéliser</div>
-    <h2 class="rv">Des outils simples pour <span class="p">des restaurants plus forts.</span></h2>
-    <div class="trio" style="margin-top:44px">
-      <div class="carte glass rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 11h-13zM9 11v4M15 11v4M8 7l1-3h6l1 3"/></svg></div><h3>Commander</h3><p>Des commandes complètes et numérotées, sur un seul écran. Zéro recopie, zéro vocal à réécouter, zéro erreur de saisie.</p></div>
-      <div class="carte glass rv" style="--d:.1s"><div class="ico p"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div><h3>Développer</h3><p>Vos clients commandent même quand personne ne peut décrocher. 0 % de commission : chaque euro encaissé reste chez vous.</p></div>
-      <div class="carte glass rv" style="--d:.2s"><div class="ico n"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg></div><h3>Fidéliser</h3><p>Le client est prévenu à chaque étape et revient. En option : relance des paniers oubliés et invitation à laisser un avis Google.</p></div>
+    <div class="st rv">Commande directe</div>
+    <h2 class="rv">Pourquoi commander <span class="p">en direct ?</span></h2>
+    <div class="duel2" id="duel2">
+      <div class="cote plat rv">
+        <div class="et">Plateforme <small>type Uber Eats</small></div>
+        <div class="cmd25">Commande de <b>25,00 &euro;</b></div>
+        <div class="rail2"><div class="vous"></div><div class="com">-30 %</div></div>
+        <div class="touche">Vous touchez<b id="touchePlat">25,00 &euro;</b></div>
+        <ul><li>Le client est à la plateforme</li><li>Vos prix gonflés</li><li>Noyé parmi 100 restos</li></ul>
+      </div>
+      <div class="vs2 rv">VS</div>
+      <div class="cote direct rv" style="--d:.12s">
+        <div class="et">PFlow Order <small>en direct</small></div>
+        <div class="cmd25">Commande de <b>25,00 &euro;</b></div>
+        <div class="rail2"><div class="vous"></div></div>
+        <div class="touche">Vous touchez<b>25,00 &euro;</b></div>
+        <ul><li>Le client est à vous</li><li>Vos prix, votre marge</li><li>Votre marque, votre lien</li></ul>
+      </div>
     </div>
+    <div class="gros rv">100 commandes à 25 € : jusqu'à <b><span id="gain750">750</span> €</b> gardés chez vous.</div>
+    <div class="note-com rv">Commission des plateformes de livraison : jusqu'à 30 % selon la formule.</div>
   </div>
 </section>
 
@@ -599,7 +647,7 @@
   <div class="wrap">
     <div class="st rv">À vous de jouer</div>
     <h2 class="rv">Commandez ici. <span class="p">Recevez juste là.</span></h2>
-    <p class="lead rv" style="margin:14px 0 40px">Faites comme votre client : ajoutez un produit, validez, et regardez la commande arriver en cuisine.</p>
+    <p class="lead rv" style="margin:14px 0 40px">Ajoutez. Validez. Regardez.</p>
     <div class="demo">
       <div class="rv">
         <div class="lab"><b>01 / Votre client</b><span>Menu personnalisé</span></div>
@@ -637,7 +685,7 @@
   <div class="wrap">
     <div class="st rv">Tarifs</div>
     <h2 class="rv">Un prix clair. <span class="p">Comme vos commandes.</span></h2>
-    <p class="lead rv" style="margin:14px 0 40px">Un paiement pour créer votre système, un petit abonnement pour le faire vivre. Et aucune commission, jamais.</p>
+    <p class="lead rv" style="margin:14px 0 40px">Aucune commission. Jamais.</p>
     <div class="tarifs-grille">
       <div class="formule rv">
         <div class="halo c"></div>
@@ -696,7 +744,7 @@
       <div>
         <div class="st rv">Vos questions</div>
         <h2 class="rv">On fait <span class="p">le point ?</span></h2>
-        <p class="lead rv" style="margin-top:14px">Et pour tout le reste, on répond sur WhatsApp dans la journée.</p>
+        <p class="lead rv" style="margin-top:14px">Le reste, on en parle sur WhatsApp.</p>
       </div>
       <div class="faqbox glass rv">
         <details><summary>Est-ce adapté à mon établissement ?</summary><p>Snacks, pizzerias, burgers, tacos, bokits, pâtisseries, food trucks : si vous prenez des commandes directes, oui. On vérifie ensemble que le parcours colle à votre menu et à votre organisation.</p></details>
@@ -828,6 +876,27 @@ poseLogos();
       }
       msgs[0].classList.add("on");
       setTimeout(jouer,delaiHero);
+    }
+  }
+
+  /* ---- pourquoi en direct : la commission mange la commande ---- */
+  var duel2=document.getElementById("duel2"),touche=document.getElementById("touchePlat"),g750=document.getElementById("gain750");
+  function compte(el,de,a,dec,suffixe,duree){
+    var t0=null;
+    function pas(t){if(!t0)t0=t;var p=Math.min((t-t0)/duree,1),e=1-Math.pow(1-p,3),v=de+(a-de)*e;
+      el.textContent=(dec?v.toFixed(2).replace(".",","):Math.round(v))+suffixe;if(p<1)requestAnimationFrame(pas);}
+    requestAnimationFrame(pas);
+  }
+  if(duel2){
+    if(reduced||!("IntersectionObserver" in window)){duel2.classList.add("joue");touche.textContent="17,50 \u20AC";}
+    else{
+      g750.textContent="0";
+      var iod2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+        duel2.classList.add("joue");
+        setTimeout(function(){compte(touche,25,17.5,true," \u20AC",1400);},300);
+        setTimeout(function(){compte(g750,0,750,false,"",1600);},1400);
+        iod2.unobserve(e.target);}});},{threshold:.4});
+      iod2.observe(duel2);
     }
   }
 
