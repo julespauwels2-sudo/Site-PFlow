@@ -1,32 +1,38 @@
-PFLOW ORDER, SITE V11.2 : TOUTE LA PAGE CHANGE DE COULEUR, SANS BUG
-===================================================================
+PFLOW ORDER, SITE V12 : FOND QUI SUIT LE SCROLL (FACON CHWIT) + NUMEROS DE COMMANDE
+===================================================================================
 
 OU POSER LE FICHIER
 -------------------
 site/index.html -> remplace site/index.html dans le repo (dossier site/).
+Pense a faire Ctrl + F5 apres le deploiement : sur ta capture, c'etait encore une
+ancienne version (fond corail qui s'arrete net sur une bande navy).
 
-CE QUI REVIENT
---------------
-L'effet facon chwit : quand on arrive sur "Trop d'appels", TOUTE la page passe en corail,
-puis toute la page passe en navy sur "PFlow repond a votre place", puis revient au blanc.
+1. LE FOND, COMME SUR CHWIT
+---------------------------
+Avant : la couleur basculait d'un coup quand une section passait au centre, puis
+fondait pendant 0,7 seconde. D'ou les decalages.
+Maintenant : la couleur n'est plus un fondu dans le temps, c'est un melange calcule a
+partir de la position de scroll, exactement comme chwit (le rose-mauve que tu vois sur
+tes captures chwit, c'est le melange entre deux couleurs pendant le passage).
+- Quand le haut de la section "Trop d'appels" monte de 85 % a 35 % de l'ecran, toute la
+  page passe progressivement du blanc au corail.
+- Meme chose du corail au navy sur "PFlow repond a votre place", puis du navy au blanc.
+- Tu peux t'arreter au milieu : la page reste dans la couleur intermediaire. Tu remontes :
+  la couleur repart en arriere. Scroll rapide ou lent, la couleur suit le doigt, sans
+  retard et sans saut. Mesure au rendu reel tous les 100 px : degrade continu.
+- Textes, filets, cartes chiffrees et bords des messages qui defilent changent avec le
+  fond. Les cartes blanches (pilules, tarifs, demo, FAQ) gardent leur texte navy pour
+  rester lisibles quelle que soit la couleur de la page.
 
-LES 3 CAUSES DES BUGS, ET CE QUI LES CORRIGE
---------------------------------------------
-1. La detection ratait des passages. Elle reposait sur un observateur qui ne reagissait
-   qu'a une bande de 10 % au centre de l'ecran : en scrollant vite, la bande sautait
-   par-dessus une section et la page restait sur la mauvaise couleur.
-   -> Remplace par un calcul a chaque image de scroll : la section qui couvre la ligne a
-   55 % de la hauteur d'ecran donne la couleur. Impossible de rater un passage, meme en
-   scroll tres rapide (teste en rafale jusqu'a la section suivante).
-2. Des morceaux gardaient l'ancienne couleur. Les degrades sur les bords des messages qui
-   defilent etaient codes en corail en dur, les textes des sections corail et navy en
-   blanc en dur : sur fond blanc ils disparaissaient, sur fond navy le corail restait.
-   -> Tout passe maintenant par 5 couleurs de page (fond, texte, texte doux, filets,
-   voiles) qui changent ensemble : fond, textes, bordures et degrades basculent d'un bloc.
-3. Le fondu n'etait pas synchronise : le fond fondait en 0,8 s mais le reste changeait
-   d'un coup.
-   -> Les 5 couleurs sont declarees comme couleurs animables : tout fond ensemble, en
-   0,7 s, en meme temps.
-
-Verifie au rendu reel sur ordinateur et telephone : corail, navy et retour au blanc,
-haut et bas de l'ecran toujours de la meme couleur, textes lisibles pendant le fondu.
+2. NUMEROS DE COMMANDE DANS LA DEMO
+-----------------------------------
+Avant : toutes les commandes affichaient #023, et en passant d'une colonne a l'autre une
+commande etait remplacee par une nouvelle.
+Maintenant :
+- Depart : #018 dans Pretes (il y a 16 min), #019 et #020 en preparation, #021 dans
+  Nouvelles (il y a 3 min), avec des heures coherentes.
+- Chaque nouvelle commande prend le numero suivant : #022, #023, #024...
+- La commande passee par le visiteur prend aussi le numero suivant, et la pastille qui
+  vole affiche ce meme numero.
+- Une commande garde son numero en avancant : #021 passe de Nouvelles a En preparation
+  puis a Pretes, avec la plus recente toujours en haut de chaque colonne.

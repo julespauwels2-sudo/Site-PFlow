@@ -25,15 +25,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  @property --page{syntax:'<color>';inherits:true;initial-value:#F8F7FB;}
-  @property --fg{syntax:'<color>';inherits:true;initial-value:#101B4D;}
-  @property --fg-soft{syntax:'<color>';inherits:true;initial-value:#5E6690;}
-  @property --ligne{syntax:'<color>';inherits:true;initial-value:rgba(16,27,77,.12);}
-  @property --voile{syntax:'<color>';inherits:true;initial-value:rgba(16,27,77,.03);}
-  body{--page:#F8F7FB;--fg:#101B4D;--fg-soft:#5E6690;--ligne:rgba(16,27,77,.12);--voile:rgba(16,27,77,.03);
-    transition:--page .7s ease,--fg .7s ease,--fg-soft .7s ease,--ligne .7s ease,--voile .7s ease,background-color .7s ease,color .7s ease;}
-  body[data-fond="coral"]{--page:#FF6B6B;--fg:#FFFFFF;--fg-soft:rgba(255,255,255,.88);--ligne:rgba(255,255,255,.4);--voile:rgba(255,255,255,.12);}
-  body[data-fond="navy"]{--page:#101B4D;--fg:#FFFFFF;--fg-soft:rgba(255,255,255,.72);--ligne:rgba(255,255,255,.18);--voile:rgba(255,255,255,.06);}
+  body{--page:#F8F7FB;--fg:#101B4D;--fg-soft:#5E6690;--ligne:rgba(16,27,77,.12);--voile:rgba(16,27,77,.03);}
   body{background:var(--page);color:var(--fg);font-family:var(--txt);font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:118px;}
   html{scroll-padding-top:130px;}
   a{color:inherit;}
@@ -153,6 +145,9 @@
   .gros{margin-top:40px;text-align:center;font-family:var(--tit);font-weight:600;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.2;}
   .gros b{color:var(--pink);font-weight:700;}
   .note-com{text-align:center;font-size:.76rem;color:var(--muted);margin-top:10px;}
+
+  /* les cartes blanches gardent un texte navy, quelle que soit la couleur de la page */
+  .glass,.pill,.opt,.prixbloc,.cote,.ticket,.menu,.faqbox,.bandeau{color:var(--navy);}
 
   /* nav */
   nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
@@ -842,28 +837,42 @@ poseLogos();
   function majNav(){nav.classList.toggle("colle",window.scrollY>12);}
   majNav();window.addEventListener("scroll",majNav,{passive:true});
 
-  /* ---- toute la page change de couleur selon la section au centre de l'ecran ----
-     Calcule a chaque image de scroll (pas d'observateur qui peut rater un evenement) :
-     la section qui couvre la ligne a 55 % de la hauteur d'ecran donne la couleur. */
-  var zones=[].slice.call(document.querySelectorAll("header[data-fond],section[data-fond]")),attente=false;
+  /* ---- toute la page change de couleur au scroll, facon chwit ----
+     La couleur n'est pas un fondu dans le temps : c'est un melange calcule a partir de la
+     position de scroll. Quand le haut d'une section monte de 85 % a 35 % de la hauteur
+     d'ecran, la page passe progressivement de la couleur de la section precedente a la
+     sienne. On peut remonter, s'arreter au milieu, scroller vite : la couleur suit
+     exactement le doigt, sans retard ni saut. */
+  var THEMES={
+    blanc:{page:[248,247,251,1],fg:[16,27,77,1],soft:[94,102,144,1],ligne:[16,27,77,.12],voile:[16,27,77,.03]},
+    coral:{page:[255,107,107,1],fg:[255,255,255,1],soft:[255,255,255,.88],ligne:[255,255,255,.4],voile:[255,255,255,.12]},
+    navy:{page:[16,27,77,1],fg:[255,255,255,1],soft:[255,255,255,.72],ligne:[255,255,255,.18],voile:[255,255,255,.06]}
+  };
+  var zones=[].slice.call(document.querySelectorAll("header[data-fond],section[data-fond]")),attente=false,dernier="";
+  function mix(a,b,t){return "rgba("+Math.round(a[0]+(b[0]-a[0])*t)+","+Math.round(a[1]+(b[1]-a[1])*t)+","+Math.round(a[2]+(b[2]-a[2])*t)+","+(a[3]+(b[3]-a[3])*t).toFixed(3)+")";}
   function majFond(){
     attente=false;
-    var ligne=window.innerHeight*.55,actif=null;
-    for(var z=0;z<zones.length;z++){
-      var r=zones[z].getBoundingClientRect();
-      if(r.top<=ligne&&r.bottom>ligne){actif=zones[z];break;}
-    }
-    if(!actif){
-      /* entre deux zones (bandeau, pied de page) : on prend la plus proche au-dessus */
-      for(var y=zones.length-1;y>=0;y--){if(zones[y].getBoundingClientRect().top<=ligne){actif=zones[y];break;}}
-    }
-    var f=actif?actif.getAttribute("data-fond"):"blanc";
-    if(document.body.getAttribute("data-fond")!==f)document.body.setAttribute("data-fond",f);
+    var H=window.innerHeight,debut=H*.85,fin=H*.35,idx=0;
+    for(var z=0;z<zones.length;z++){if(zones[z].getBoundingClientRect().top<=debut)idx=z;}
+    var cur=THEMES[zones[idx].getAttribute("data-fond")]||THEMES.blanc;
+    var prev=idx>0?(THEMES[zones[idx-1].getAttribute("data-fond")]||THEMES.blanc):cur;
+    var top=zones[idx].getBoundingClientRect().top;
+    var t=idx===0?1:Math.min(Math.max((debut-top)/(debut-fin),0),1);
+    t=t*t*(3-2*t); /* adoucissement */
+    var cle=idx+":"+t.toFixed(3);
+    if(cle===dernier)return;dernier=cle;
+    var st=document.body.style;
+    st.setProperty("--page",mix(prev.page,cur.page,t));
+    st.setProperty("--fg",mix(prev.fg,cur.fg,t));
+    st.setProperty("--fg-soft",mix(prev.soft,cur.soft,t));
+    st.setProperty("--ligne",mix(prev.ligne,cur.ligne,t));
+    st.setProperty("--voile",mix(prev.voile,cur.voile,t));
+    document.body.setAttribute("data-fond",t>.5?zones[idx].getAttribute("data-fond"):(idx>0?zones[idx-1].getAttribute("data-fond"):"blanc"));
   }
   function demande(){if(!attente){attente=true;requestAnimationFrame(majFond);}}
   window.addEventListener("scroll",demande,{passive:true});
-  window.addEventListener("resize",demande);
-  window.addEventListener("load",majFond);
+  window.addEventListener("resize",function(){dernier="";demande();});
+  window.addEventListener("load",function(){dernier="";majFond();});
   majFond();
 
   /* ---- reveals ---- */
@@ -938,7 +947,8 @@ poseLogos();
   var panier=document.getElementById("panier"),pcount=document.getElementById("pcount"),ptotal=document.getElementById("ptotal");
   var z1=document.getElementById("z1"),z2=document.getElementById("z2"),z3=document.getElementById("z3");
   var c1=document.getElementById("c1"),c2=document.getElementById("c2"),c3=document.getElementById("c3");
-  var num=23;
+  var num=17; /* dernier numero attribue : chaque nouvelle commande prend le suivant */
+  function numero(n){return "#"+(n<100?"0":"")+n;}
   function maj(){c1.textContent=z1.children.length;c2.textContent=z2.children.length;c3.textContent=z3.children.length;}
   function pose(zone,t,haut){
     if(reduced){haut?zone.prepend(t):zone.appendChild(t);return;}
@@ -949,10 +959,18 @@ poseLogos();
     if(reduced){t.remove();fin&&fin();return;}
     t.classList.add("leave");setTimeout(function(){t.remove();fin&&fin();},400);
   }
-  function ticket(txt,hot){
+  /* deplace LA MEME commande d'une colonne a la suivante (elle garde son numero) */
+  function deplace(de,vers){
+    var t=de.lastElementChild;if(!t)return;
+    if(reduced){t.classList.remove("hot");vers.prepend(t);maj();return;}
+    t.classList.add("leave");
+    setTimeout(function(){t.classList.remove("leave","hot");pose(vers,t,true);maj();},400);
+  }
+  function ticket(txt,hot,ilya){
+    num++;
     var t=document.createElement("div");t.className="ticket"+(hot?" hot":"");
-    var d=new Date(),h=d.getHours(),mn=d.getMinutes();
-    t.innerHTML="<b>#0"+num+", "+h+"h"+(mn<10?"0":"")+mn+"</b><span>"+txt+"</span>";
+    var d=new Date(Date.now()-(ilya||0)*60000),h=d.getHours(),mn=d.getMinutes();
+    t.innerHTML="<b>"+numero(num)+", "+h+"h"+(mn<10?"0":"")+mn+"</b><span>"+txt+"</span>";
     return t;
   }
   document.querySelectorAll(".prod button").forEach(function(b){
@@ -970,18 +988,17 @@ poseLogos();
   });
   panier.addEventListener("click",function(){
     if(!lignes.length)return;
-    num++;
     var resume={};lignes.forEach(function(l){resume[l]=(resume[l]||0)+1;});
     var txt=Object.keys(resume).map(function(k){return resume[k]+" "+k;}).join(", ")+", "+total.toFixed(2).replace(".",",")+" \u20AC";
     var depart=panier.getBoundingClientRect(),arrivee=z1.getBoundingClientRect();
     function poser(){
       z1.querySelectorAll(".hot").forEach(function(x){x.classList.remove("hot");});
       pose(z1,ticket(txt,true),true);maj();
-      if(z1.children.length>3)retire(z1.lastElementChild,maj);
+      if(z1.children.length>3)deplace(z1,z2);
       lignes=[];total=0;pcount.textContent="Votre panier est vide";ptotal.textContent="Valider";panier.disabled=true;
     }
     if(reduced||!("animate" in document.body)){poser();return;}
-    var v=document.createElement("div");v.className="vol";v.textContent="Commande #0"+num;
+    var v=document.createElement("div");v.className="vol";v.textContent="Commande "+numero(num+1);
     document.body.appendChild(v);
     var vb=v.getBoundingClientRect();
     var x0=depart.left+depart.width/2-vb.width/2,y0=depart.top+depart.height/2-vb.height/2;
@@ -997,15 +1014,18 @@ poseLogos();
   if(z1){
     var plats=["1 Tacos Poulet, 10,00 \u20AC","3 Bokits poulet, 21,00 \u20AC","2 Smash Bacon, 25,00 \u20AC","1 Pizza Chèvre Miel, 11,00 \u20AC","4 Cookies Coco, 14,00 \u20AC"];
     var k=0;
-    function fond(){var t=ticket(plats[k%plats.length],false);k++;return t;}
-    pose(z1,fond(),false);pose(z2,fond(),false);pose(z2,fond(),false);pose(z3,fond(),false);maj();
+    function fond(ilya){var t=ticket(plats[k%plats.length],false,ilya);k++;return t;}
+    /* etat de depart coherent : #018 la plus ancienne (prete), #021 la plus recente (nouvelle) */
+    pose(z3,fond(16),false);
+    pose(z2,fond(11),false);pose(z2,fond(7),true);
+    pose(z1,fond(3),false);maj();
     if(!reduced){
       var actif=false,timer=null;
       function cycle(){
         if(z3.children.length>=3)retire(z3.lastElementChild,maj);
-        if(z2.children.length>=2)retire(z2.lastElementChild,function(){pose(z3,fond(),true);maj();});
-        if(z1.children.length>=2)retire(z1.lastElementChild,function(){pose(z2,fond(),true);maj();});
-        setTimeout(function(){pose(z1,fond(),false);maj();},700);
+        if(z2.children.length>=2)deplace(z2,z3);
+        if(z1.children.length>=2)deplace(z1,z2);
+        setTimeout(function(){z1.querySelectorAll(".hot").forEach(function(x){x.classList.remove("hot");});pose(z1,fond(0),true);maj();},700);
       }
       var vb2=new IntersectionObserver(function(es){es.forEach(function(e){
         if(e.isIntersecting&&!actif){actif=true;timer=setInterval(cycle,5200);}
