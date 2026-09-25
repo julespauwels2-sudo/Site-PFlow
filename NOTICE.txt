@@ -1,38 +1,76 @@
-PFLOW ORDER, SITE V12 : FOND QUI SUIT LE SCROLL (FACON CHWIT) + NUMEROS DE COMMANDE
-===================================================================================
+PFLOW ORDER, SITE V13 : BOUTONS, MOBILE, PAGES LEGALES
+======================================================
 
-OU POSER LE FICHIER
--------------------
-site/index.html -> remplace site/index.html dans le repo (dossier site/).
-Pense a faire Ctrl + F5 apres le deploiement : sur ta capture, c'etait encore une
-ancienne version (fond corail qui s'arrete net sur une bande navy).
+OU POSER LES FICHIERS (tous dans le dossier site/ du repo)
+----------------------------------------------------------
+site/index.html              -> remplace l'existant
+site/mentions-legales.html   -> NOUVEAU
+site/confidentialite.html    -> NOUVEAU
+site/cgv.html                -> NOUVEAU
 
-1. LE FOND, COMME SUR CHWIT
+A FAIRE AVANT DE PUBLIER (2 minutes)
+------------------------------------
+1. LES DEUX NUMEROS : dans site/index.html, en haut du dernier <script> :
+     var NUMERO_CONTACT="590691266853";  -> ton numero perso (format 590 + 9 chiffres, sans + ni espace)
+     var NUMERO_DEMO="590691266853";     -> le numero WhatsApp du bot UChat "PFlow Order"
+     var MOT_DEMO="DEMO";                -> le message pre-rempli envoye au bot
+   Pour que la demo parte toute seule : dans UChat, ouvre le bot PFlow Order et ajoute
+   un declencheur par mot-cle "DEMO" qui lance le parcours de commande.
+2. LES CASES JAUNES des 3 pages legales : ouvre chaque fichier, cherche "mark class" :
+   chaque zone jaune est une info que seul Jules peut donner (nom ou raison sociale,
+   forme juridique, adresse, SIRET, immatriculation, TVA ou "293 B", e-mail,
+   telephone, directeur de la publication ; dans les CGV : HT ou 293 B, echeances et
+   moyen de paiement, tribunal ; dans la confidentialite : autres outils utilises).
+   Remplace le texte ET supprime les balises <mark class="todo">[ ... ]</mark>.
+   Les CGV sont un modele solide mais a faire relire par un comptable ou un juriste.
+
+1. LES DEUX BOUTONS DU HAUT
 ---------------------------
-Avant : la couleur basculait d'un coup quand une section passait au centre, puis
-fondait pendant 0,7 seconde. D'ou les decalages.
-Maintenant : la couleur n'est plus un fondu dans le temps, c'est un melange calcule a
-partir de la position de scroll, exactement comme chwit (le rose-mauve que tu vois sur
-tes captures chwit, c'est le melange entre deux couleurs pendant le passage).
-- Quand le haut de la section "Trop d'appels" monte de 85 % a 35 % de l'ecran, toute la
-  page passe progressivement du blanc au corail.
-- Meme chose du corail au navy sur "PFlow repond a votre place", puis du navy au blanc.
-- Tu peux t'arreter au milieu : la page reste dans la couleur intermediaire. Tu remontes :
-  la couleur repart en arriere. Scroll rapide ou lent, la couleur suit le doigt, sans
-  retard et sans saut. Mesure au rendu reel tous les 100 px : degrade continu.
-- Textes, filets, cartes chiffrees et bords des messages qui defilent changent avec le
-  fond. Les cartes blanches (pilules, tarifs, demo, FAQ) gardent leur texte navy pour
-  rester lisibles quelle que soit la couleur de la page.
+- "Tester la demo" passe en bouton principal rose, avec l'icone WhatsApp qui pulse
+  et un sous-titre "Sur votre WhatsApp, en 30 secondes" : il ouvre WhatsApp sur le bot
+  de demo avec "DEMO" deja ecrit. C'est l'action la moins engageante, donc la plus
+  cliquee : le prospect vit le produit sur son propre telephone.
+- "Commencer maintenant" en navy, sous-titre "On vous repond dans la journee", fleche
+  qui glisse au survol : il ouvre WhatsApp sur TON numero avec un message deja ecrit.
+- Reflet lumineux qui passe sur les deux boutons toutes les 4 secondes.
+- Tous les "Commencer", "Reserver ma place Fondateur" et "Poser une question" vont sur
+  ton numero ; tous les "Tester la demo" (menu, barre mobile, section demo) vont sur le bot.
+- Nouveau lien sous la demo interactive : "Et en vrai ? Testez-le sur votre WhatsApp".
 
-2. NUMEROS DE COMMANDE DANS LA DEMO
------------------------------------
-Avant : toutes les commandes affichaient #023, et en passant d'une colonne a l'autre une
-commande etait remplacee par une nouvelle.
-Maintenant :
-- Depart : #018 dans Pretes (il y a 16 min), #019 et #020 en preparation, #021 dans
-  Nouvelles (il y a 3 min), avec des heures coherentes.
-- Chaque nouvelle commande prend le numero suivant : #022, #023, #024...
-- La commande passee par le visiteur prend aussi le numero suivant, et la pastille qui
-  vole affiche ce meme numero.
-- Une commande garde son numero en avancant : #021 passe de Nouvelles a En preparation
-  puis a Pretes, avec la plus recente toujours en haut de chaque colonne.
+2. MENU DU HAUT
+---------------
+Comment ca marche / Pourquoi en direct / Tarifs / Questions. Le lien Demo est retire.
+Le bouton de droite devient "Tester la demo".
+
+3. EXPERIENCE MOBILE
+--------------------
+- Menu burger : plein ecran, gros liens, et les deux boutons en bas du pouce.
+- Hero : titre plus grand, boutons pleine largeur, pilules qui defilent au doigt.
+- Barre d'action collee en bas de l'ecran ("Tester la demo" / "Commencer") qui apparait
+  des qu'on a depasse les boutons du haut et se cache sur l'appel final. Le rond
+  WhatsApp flottant est retire sur mobile (doublon).
+- "Comment ca marche" : le telephone en haut, et les 4 etapes deviennent des cartes qui
+  glissent au doigt ; l'ecran du telephone change avec la carte, points de navigation
+  en dessous, et defilement automatique tant qu'on ne touche pas.
+- Chiffres corail et options tarifaires : cartes qui glissent au doigt au lieu d'une
+  longue colonne.
+- Verifie au rendu reel en 390 px, sans debordement ni erreur.
+
+4. NETTOYAGE
+------------
+"Food . People . Flow" et "Good food flows further." sont retires.
+
+5. PAGES LEGALES
+----------------
+- Mentions legales : editeur, hebergeur (Vercel), activite reservee aux professionnels,
+  propriete intellectuelle, credit Unsplash, demonstrations fictives.
+- Politique de confidentialite : donnees reellement collectees (echanges WhatsApp,
+  demo, clients, journaux), finalites et bases legales, durees (3 ans prospects, 5 ans
+  clients, 10 ans compta), sous-traitants (WhatsApp, UChat, Vercel), Google Fonts et
+  Unsplash, droits et CNIL, et le cas des donnees des clients des restaurants
+  (PFlow sous-traitant).
+- Cookies : le site n'en pose aucun (ni pub, ni audience) : pas de bandeau necessaire.
+- CGV professionnels : prix (390 / 290 Fondateur / 49 par mois / options), 0 %
+  commission, paiement et penalites legales de retard, abonnement sans engagement,
+  obligations, responsabilite, RGPD sous-traitant, propriete, litiges.
+- Pied de page : copyright + liens vers les 3 pages.

@@ -149,6 +149,53 @@
   /* les cartes blanches gardent un texte navy, quelle que soit la couleur de la page */
   .glass,.pill,.opt,.prixbloc,.cote,.ticket,.menu,.faqbox,.bandeau{color:var(--navy);}
 
+
+  /* ===== CTA du hero ===== */
+  .cta2{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:12px;padding:10px 24px 10px 10px;border-radius:999px;text-decoration:none;font-family:var(--txt);transition:transform .2s ease,box-shadow .25s ease;}
+  .cta2:hover{transform:translateY(-3px);}
+  .cta2:active{transform:scale(.97);}
+  .cta2::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);animation:reflet 3.8s ease-in-out infinite;pointer-events:none;}
+  @keyframes reflet{0%,55%{left:-130%;}85%,100%{left:150%;}}
+  .cta2 .ic{position:relative;flex-shrink:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.22);}
+  .cta2 .ic svg{width:22px;height:22px;fill:#fff;}
+  .cta2.cdemo .ic::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:onde 2s ease-out infinite;}
+  @keyframes onde{0%{transform:scale(1);opacity:.9;}100%{transform:scale(1.6);opacity:0;}}
+  .cta2 .tx{display:flex;flex-direction:column;line-height:1.15;text-align:left;}
+  .cta2 .tx b{font-size:1.02rem;font-weight:800;}
+  .cta2 .tx small{font-size:.74rem;font-weight:600;opacity:.85;margin-top:2px;}
+  @media(min-width:701px){.hero .ctas.ctas{flex-wrap:nowrap;}.cta2{padding-right:20px;}.cta2 .tx small,.cta2 .tx b{white-space:nowrap;}}
+  .cta2 .fl{font-size:1.2rem;font-weight:800;margin-left:4px;transition:transform .2s ease;}
+  .cta2:hover .fl{transform:translateX(5px);}
+  .cta2.cdemo{background:linear-gradient(180deg,#FF74C6 0%,var(--pink) 55%,#F03CA5 100%);color:#fff;box-shadow:0 16px 34px -12px rgba(255,79,181,.7),inset 0 1px 0 rgba(255,255,255,.55);}
+  .cta2.go{background:var(--navy);color:#fff;padding-left:24px;box-shadow:0 16px 34px -14px rgba(16,27,77,.6);}
+  .cta2.go .ic{display:none;}
+  .envrai{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:#fff;border:1px solid var(--rule);border-radius:999px;padding:8px 18px 8px 8px;text-decoration:none;color:var(--navy);font-weight:800;font-size:.88rem;box-shadow:var(--ombre-s);transition:transform .2s ease,border-color .2s ease;}
+  .envrai:hover{transform:translateY(-2px);border-color:var(--pink);}
+  .envrai i{width:32px;height:32px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;}
+  .envrai i svg{width:18px;height:18px;fill:#fff;}
+
+  /* ===== menu mobile ===== */
+  .burger{display:none;width:44px;height:44px;border-radius:14px;border:1px solid var(--rule);background:#fff;cursor:pointer;position:relative;flex-shrink:0;}
+  .burger span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:var(--navy);transition:transform .3s ease,top .3s ease,opacity .2s;}
+  .burger span:nth-child(1){top:16px;}.burger span:nth-child(2){top:25px;}
+  body.menu-ouvert .burger span:nth-child(1){top:21px;transform:rotate(45deg);}
+  body.menu-ouvert .burger span:nth-child(2){top:21px;transform:rotate(-45deg);}
+  nav .droite{display:flex;align-items:center;gap:10px;}
+  .menu-mob{position:fixed;inset:0;z-index:59;background:var(--white);padding:140px 26px 40px;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .3s ease,transform .3s ease,visibility .3s;}
+  body.menu-ouvert .menu-mob{opacity:1;visibility:visible;transform:none;}
+  .menu-mob a.lien{font-family:var(--tit);font-weight:700;font-size:2rem;color:var(--navy);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+  .menu-mob a.lien::after{content:"\2192";color:var(--pink);font-size:1.4rem;}
+  .menu-mob .bas{margin-top:auto;display:flex;flex-direction:column;gap:10px;}
+  .menu-mob .bas .cta2{justify-content:center;}
+
+  /* ===== barre d'action mobile ===== */
+  .barre-mob{display:none;}
+  .dots{display:none;}
+
+  /* ===== pied de page legal ===== */
+  footer .legal{width:100%;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);margin-top:22px;padding-top:18px;font-size:.78rem;}
+  footer .legal a{font-weight:600;}
+
   /* nav */
   nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
   nav.colle{border-bottom-color:var(--rule);box-shadow:0 8px 30px rgba(16,27,77,.08);}
@@ -373,7 +420,6 @@
   .final img{width:min(360px,70vw);margin:0 auto 30px;}
   .final h2{max-width:18ch;margin:0 auto 12px;font-size:clamp(2.3rem,5vw,3.8rem);}
   .final h2 .p{color:var(--pink2);}
-  .final .sig{font-family:var(--tit);font-weight:500;color:var(--fg-soft);font-size:1.15rem;margin-bottom:30px;}
   .final .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
   .final .rep{margin-top:18px;font-size:.86rem;color:var(--fg-soft);}
   .final .rep b{color:var(--fg);}
@@ -381,8 +427,6 @@
   footer{padding:30px 0 44px;color:rgba(255,255,255,.65);font-size:.84rem;background:var(--navy3);position:relative;z-index:2;}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
   footer img{height:34px;width:auto;}
-  footer .fpf{font-weight:800;letter-spacing:.2em;font-size:.72rem;color:#fff;}
-  footer .fpf i{font-style:normal;color:var(--pink2);padding:0 6px;}
   footer a{color:rgba(255,255,255,.7);text-decoration:none;font-weight:700;}
   footer a:hover{color:var(--pink2);}
 
@@ -401,7 +445,19 @@
     .vs2{justify-self:center;}
     .options{grid-template-columns:repeat(2,1fr);}
     h2{max-width:none;}
-    .pas{min-height:0;opacity:1;}
+    .pas{min-height:0;}
+    .burger{display:block;}
+    .dots{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+    .dots button{width:8px;height:8px;border-radius:999px;border:none;padding:0;background:var(--ligne);cursor:pointer;transition:width .3s ease,background .3s ease;}
+    .dots button.on{width:26px;background:var(--pink);}
+    .histoire{gap:26px;}
+    .etapes-liste{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -24px;padding:4px 24px 6px;scrollbar-width:none;}
+    .etapes-liste::-webkit-scrollbar{display:none;}
+    .pas{flex:0 0 78%;scroll-snap-align:center;border-left:none;border:1px solid var(--ligne);border-radius:20px;padding:20px 20px 18px;background:var(--voile);opacity:.5;transition:opacity .3s ease,border-color .3s ease;}
+    .pas.on{opacity:1;border-color:var(--pink);}
+    .pas::before{display:none;}
+    .pas h3{font-size:1.45rem;}
+    .tel-fixe .iphone{width:250px;}
     .formule ul{columns:1;}
   }
   @media(max-width:700px){
@@ -425,12 +481,41 @@
     .board .col h4{font-size:.62rem;flex-direction:column;gap:4px;}
     .menu{max-width:none;}
     .final{padding:80px 0;}
+    .hero{padding:26px 0 40px;}
+    .hero h1{font-size:clamp(2.3rem,11vw,3rem);margin-bottom:14px;}
+    .hero .lead{font-size:1.02rem;margin-bottom:22px;}
+    .hero .ctas{flex-direction:column;align-items:stretch;margin-bottom:22px;}
+    .cta2{justify-content:flex-start;}
+    .cta2 .fl{margin-left:auto;}
+    .pills{flex-wrap:nowrap;overflow-x:auto;margin:0 -24px;padding:4px 24px 8px;scrollbar-width:none;}
+    .pills::-webkit-scrollbar{display:none;}
+    .pill{white-space:nowrap;flex-shrink:0;}
+    .adopte{margin-top:14px;}
+    .scene{padding:44px 0 34px;}
+    .iphone{width:250px;}
+    .chiffres{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:40px -24px 0;padding:4px 24px 8px;scrollbar-width:none;}
+    .chiffres::-webkit-scrollbar{display:none;}
+    .ch{flex:0 0 74%;scroll-snap-align:center;}
+    .options{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -24px;padding:6px 24px 10px;scrollbar-width:none;}
+    .options::-webkit-scrollbar{display:none;}
+    .opt{flex:0 0 72%;scroll-snap-align:center;}
+    .cote .touche b{font-size:2.4rem;}
+    .gros{font-size:1.35rem;}
+    .flot{display:none;}
+    body{padding-bottom:84px;}
+    .barre-mob{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:65;gap:8px;padding:8px;border-radius:22px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 40px -12px rgba(16,27,77,.4);border:1px solid rgba(255,255,255,.9);transform:translateY(140%);transition:transform .4s cubic-bezier(.2,.8,.2,1);}
+    .barre-mob.on{transform:none;}
+    .barre-mob a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:16px;padding:13px 10px;font-weight:800;font-size:.9rem;text-decoration:none;color:#fff;}
+    .barre-mob a svg{width:18px;height:18px;fill:#fff;}
+    .barre-mob .d{background:linear-gradient(180deg,#FF74C6,var(--pink));}
+    .barre-mob .g{background:var(--navy);}
+    footer{padding-bottom:110px;}
     nav .btn{padding:10px 16px;}
     .logo img{height:38px;}
   }
   @media(prefers-reduced-motion:reduce){
     .rv,.ecr,.pas,.m,.recu{opacity:1;transform:none;transition:none;}
-    .bulle,.scene .iphone,.piste,.rang,.flot::after,.prod button.invite,.intro .ib,.intro img,.intro .ligne,.intro .barre,.ruban::after,.ruban .pt{animation:none;}
+    .cta2::after,.cta2.cdemo .ic::before,.bulle,.scene .iphone,.piste,.rang,.flot::after,.prod button.invite,.intro .ib,.intro img,.intro .ligne,.intro .barre,.ruban::after,.ruban .pt{animation:none;}
     .jauge .rempli{transition:none;}
     .rail2 .vous,.rail2 .com{transition:none;}
     .hero h1 .l span{animation:none;transform:none;}
@@ -471,13 +556,25 @@
     <div class="links">
       <a href="#solution">Comment ça marche</a>
       <a href="#direct">Pourquoi en direct</a>
-      <a href="#demo">Démo</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#faq">Questions</a>
     </div>
-    <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux essayer PFlow Order pour mon établissement." href="#">Essayer</a>
+    <div class="droite">
+      <a class="btn pink liendemo" data-txt="DEMO" href="#">Tester la démo</a>
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    </div>
   </div>
 </nav>
+<div class="menu-mob" id="menuMob">
+  <a class="lien" href="#solution">Comment ça marche</a>
+  <a class="lien" href="#direct">Pourquoi en direct</a>
+  <a class="lien" href="#tarifs">Tarifs</a>
+  <a class="lien" href="#faq">Questions</a>
+  <div class="bas">
+    <a class="cta2 cdemo liendemo" data-txt="DEMO" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></span><span class="tx"><b>Tester la démo</b><small>Sur votre WhatsApp, en 30 secondes</small></span></a>
+    <a class="cta2 go lienwa" data-txt="Bonjour, je veux mettre en place PFlow Order dans mon établissement." href="#"><span class="tx"><b>Commencer maintenant</b><small>On vous répond dans la journée</small></span><span class="fl">&rarr;</span></a>
+  </div>
+</div>
 <script>poseLogos();</script>
 
 <a class="flot lienwa" data-txt="Bonjour PFlow, je veux en savoir plus sur PFlow Order." href="#" aria-label="Discuter sur WhatsApp">
@@ -492,8 +589,8 @@
       <h1><span class="l"><span>Vos clients commandent</span></span><span class="l"><span>sur WhatsApp.</span></span></h1>
       <p class="lead">PFlow répond, envoie votre menu et vous livre <b>la commande complète, sur un seul écran</b>.</p>
       <div class="ctas">
-        <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux essayer PFlow Order pour mon établissement." href="#">Commencer maintenant &rarr;</a>
-        <a class="btn ghost" href="#demo">Tester la démo</a>
+        <a class="cta2 cdemo liendemo" data-txt="DEMO" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></span><span class="tx"><b>Tester la démo</b><small>Sur votre WhatsApp, en 30 secondes</small></span></a>
+        <a class="cta2 go lienwa" data-txt="Bonjour, je veux mettre en place PFlow Order dans mon établissement." href="#"><span class="tx"><b>Commencer maintenant</b><small>On vous répond dans la journée</small></span><span class="fl">&rarr;</span></a>
       </div>
       <div class="pills">
         <span class="pill"><i>0 %</i> de commission</span>
@@ -606,10 +703,13 @@
         </div>
       </div>
       <div>
+        <div class="etapes-liste" id="etapesListe">
         <div class="pas on"><div class="n">01 / WHATSAPP</div><h3>Il écrit. PFlow répond.</h3><p>En 1 seconde, avec votre menu.</p></div>
         <div class="pas"><div class="n">02 / VOTRE MENU</div><h3>Il choisit.</h3><p>Vos plats, vos photos, vos options.</p></div>
         <div class="pas"><div class="n">03 / VALIDATION</div><h3>Il valide.</h3><p>Récap et numéro de commande envoyés.</p></div>
         <div class="pas"><div class="n">04 / VOTRE ÉCRAN</div><h3>Vous préparez.</h3><p>Tout tombe sur votre écran.</p></div>
+        </div>
+        <div class="dots" id="dots"><button type="button" class="on" aria-label="Étape 1"></button><button type="button" aria-label="Étape 2"></button><button type="button" aria-label="Étape 3"></button><button type="button" aria-label="Étape 4"></button></div>
       </div>
     </div>
   </div>
@@ -675,6 +775,7 @@
           </div>
         </div>
         <div class="note">Démonstration fictive. Aucune commande réelle, aucun paiement.</div>
+        <a class="envrai liendemo" data-txt="DEMO" href="#"><i><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></i>Et en vrai ? Testez-le sur votre WhatsApp &rarr;</a>
       </div>
     </div>
   </div>
@@ -764,8 +865,7 @@
   <div class="bulle"></div><div class="bulle rose"></div>
   <div class="wrap">
     <img class="rv" src="" data-logo="blanc" alt="PFlow Order">
-    <h2 class="rv">La commande devient fluide. <span class="p">Votre restaurant grandit.</span></h2>
-    <div class="sig rv">Good food flows further.</div>
+    <h2 class="rv" style="margin-bottom:30px">La commande devient fluide. <span class="p">Votre restaurant grandit.</span></h2>
     <div class="ctas rv">
       <a class="btn pink lienwa" data-txt="Bonjour PFlow, je veux réserver ma place Fondateur (mise en place à 290 euros) pour mon établissement." href="#">Réserver ma place Fondateur &rarr;</a>
       <a class="btn blanc lienwa" data-txt="Bonjour PFlow, j'ai une question sur PFlow Order." href="#">Poser une question sur WhatsApp</a>
@@ -774,11 +874,19 @@
   </div>
 </section>
 
+<div class="barre-mob" id="barreMob">
+  <a class="d liendemo" data-txt="DEMO" href="#"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>Tester la démo</a>
+  <a class="g lienwa" data-txt="Bonjour, je veux mettre en place PFlow Order dans mon établissement." href="#">Commencer &rarr;</a>
+</div>
+
 <footer>
   <div class="wrap">
     <img src="" data-logo="blanc" alt="PFlow Order">
-    <div class="fpf">Food<i>&middot;</i>People<i>&middot;</i>Flow</div>
     <div><a href="#" class="lienwa" data-txt="Bonjour PFlow.">WhatsApp</a> &nbsp;&nbsp; <a href="#tarifs">Tarifs</a> &nbsp;&nbsp; <a href="#faq">FAQ</a></div>
+    <div class="legal">
+      <span>&copy; <span id="annee">2026</span> PFlow Order. Service réservé aux professionnels.</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> &nbsp;&middot;&nbsp; <a href="confidentialite.html">Confidentialité</a> &nbsp;&middot;&nbsp; <a href="cgv.html">CGV</a></span>
+    </div>
   </div>
 </footer>
 
@@ -786,7 +894,9 @@
 poseLogos();
 (function(){
   /* ================= REGLAGES ================= */
-  var NUMERO="590691266853"; /* numero WhatsApp de PFlow, sans + ni espaces */
+  var NUMERO_CONTACT="590691266853"; /* TON numero perso : "Commencer maintenant", offre Fondateur, questions */
+  var NUMERO_DEMO="590691266853";    /* numero WhatsApp du BOT de demo (UChat) : tous les boutons "Tester la demo" */
+  var MOT_DEMO="DEMO";               /* message pre-rempli qui declenche le parcours de demo dans le bot */
   var PLACES_TOTAL=10;       /* nombre de places Fondateur */
   var PLACES_PRISES=1;       /* A METTRE A JOUR a chaque nouveau client (Cookies An Nou = 1) */
   var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -820,8 +930,30 @@ poseLogos();
   }
 
   document.querySelectorAll(".lienwa").forEach(function(a){
-    a.href="https://wa.me/"+NUMERO+"?text="+encodeURIComponent(a.getAttribute("data-txt")||"Bonjour PFlow.");
+    a.href="https://wa.me/"+NUMERO_CONTACT+"?text="+encodeURIComponent(a.getAttribute("data-txt")||"Bonjour PFlow.");
+    a.target="_blank";a.rel="noopener";
   });
+  document.querySelectorAll(".liendemo").forEach(function(a){
+    a.href="https://wa.me/"+NUMERO_DEMO+"?text="+encodeURIComponent(MOT_DEMO);
+    a.target="_blank";a.rel="noopener";
+  });
+  var an=document.getElementById("annee");if(an)an.textContent=new Date().getFullYear();
+
+  /* ---- menu mobile ---- */
+  var burger=document.getElementById("burger");
+  if(burger){
+    burger.addEventListener("click",function(){var o=document.body.classList.toggle("menu-ouvert");burger.setAttribute("aria-label",o?"Fermer le menu":"Ouvrir le menu");});
+    document.querySelectorAll("#menuMob a").forEach(function(a){a.addEventListener("click",function(){document.body.classList.remove("menu-ouvert");});});
+  }
+
+  /* ---- barre d'action mobile : apparait apres le hero, disparait sur l'appel final ---- */
+  var barreMob=document.getElementById("barreMob"),heroCtas=document.querySelector(".hero .ctas"),finalS=document.querySelector(".final");
+  if(barreMob&&"IntersectionObserver" in window){
+    var heroVu=true,finalVu=false;
+    function majBarre(){barreMob.classList.toggle("on",!heroVu&&!finalVu);}
+    new IntersectionObserver(function(es){heroVu=es[0].isIntersecting;majBarre();}).observe(heroCtas);
+    new IntersectionObserver(function(es){finalVu=es[0].isIntersecting;majBarre();},{threshold:.2}).observe(finalS);
+  }
 
   /* ---- intro ---- */
   var intro=document.getElementById("intro"),delaiHero=600;
@@ -937,10 +1069,30 @@ poseLogos();
     pas.forEach(function(p,i){p.classList.toggle("on",i===k);});
     ecrans.forEach(function(e){e.classList.toggle("on",parseInt(e.getAttribute("data-pas"),10)===k);});
   }
-  if(pas.length&&!reduced&&"IntersectionObserver" in window){
+  var dots=[].slice.call(document.querySelectorAll("#dots button")),liste=document.getElementById("etapesListe");
+  var mobile=window.matchMedia("(max-width:1000px)").matches;
+  function montreTout(k){montrePas(k);dots.forEach(function(d,i){d.classList.toggle("on",i===k);});}
+  if(!("IntersectionObserver" in window)||reduced&&!mobile){pas.forEach(function(p){p.classList.add("on");});montrePas(3);}
+  else if(!mobile){
     var iop=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)montrePas(pas.indexOf(e.target));});},{rootMargin:"-40% 0px -45% 0px",threshold:0});
     pas.forEach(function(p){iop.observe(p);});
-  }else{pas.forEach(function(p){p.classList.add("on");});montrePas(3);}
+  }else{
+    /* mobile : on glisse les cartes, l'ecran du telephone suit ; defilement auto tant qu'on ne touche pas */
+    var iom=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)montreTout(pas.indexOf(e.target));});},{root:liste,threshold:.6});
+    pas.forEach(function(p){iom.observe(p);});
+    function va(k){liste.scrollTo({left:pas[k].offsetLeft-liste.offsetLeft-24,behavior:reduced?"auto":"smooth"});}
+    dots.forEach(function(d,k){d.addEventListener("click",function(){stopAuto();va(k);});});
+    var auto=null,touche=false,courant=0;
+    function stopAuto(){touche=true;if(auto){clearInterval(auto);auto=null;}}
+    liste.addEventListener("touchstart",stopAuto,{passive:true});
+    liste.addEventListener("pointerdown",stopAuto);
+    if(!reduced){
+      new IntersectionObserver(function(es){
+        if(es[0].isIntersecting&&!auto&&!touche){auto=setInterval(function(){courant=(pas.findIndex(function(p){return p.classList.contains("on");})+1)%pas.length;va(courant);},3200);}
+        else if(!es[0].isIntersecting&&auto){clearInterval(auto);auto=null;}
+      },{threshold:.5}).observe(document.getElementById("telSolution"));
+    }
+  }
 
   /* ---- demo ---- */
   var lignes=[],total=0;
