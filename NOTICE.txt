@@ -1,76 +1,56 @@
-PFLOW ORDER, SITE V13 : BOUTONS, MOBILE, PAGES LEGALES
-======================================================
+PFLOW ORDER, SITE V14 : PREUVES, CALCULATEUR, NOUVEAUX TARIFS, MOBILE
+=====================================================================
 
-OU POSER LES FICHIERS (tous dans le dossier site/ du repo)
-----------------------------------------------------------
-site/index.html              -> remplace l'existant
-site/mentions-legales.html   -> NOUVEAU
-site/confidentialite.html    -> NOUVEAU
-site/cgv.html                -> NOUVEAU
+OU POSER LES FICHIERS (dossier site/ du repo, comme d'habitude)
+---------------------------------------------------------------
+site/index.html             -> remplace l'existant
+site/cgv.html               -> remplace l'existant (nouveaux prix)
+site/confidentialite.html   -> remplace l'existant (Stripe, Instagram/Messenger, Uber Direct)
+mentions-legales.html ne change pas : inutile de le renvoyer.
 
-A FAIRE AVANT DE PUBLIER (2 minutes)
-------------------------------------
-1. LES DEUX NUMEROS : dans site/index.html, en haut du dernier <script> :
-     var NUMERO_CONTACT="590691266853";  -> ton numero perso (format 590 + 9 chiffres, sans + ni espace)
-     var NUMERO_DEMO="590691266853";     -> le numero WhatsApp du bot UChat "PFlow Order"
-     var MOT_DEMO="DEMO";                -> le message pre-rempli envoye au bot
-   Pour que la demo parte toute seule : dans UChat, ouvre le bot PFlow Order et ajoute
-   un declencheur par mot-cle "DEMO" qui lance le parcours de commande.
-2. LES CASES JAUNES des 3 pages legales : ouvre chaque fichier, cherche "mark class" :
-   chaque zone jaune est une info que seul Jules peut donner (nom ou raison sociale,
-   forme juridique, adresse, SIRET, immatriculation, TVA ou "293 B", e-mail,
-   telephone, directeur de la publication ; dans les CGV : HT ou 293 B, echeances et
-   moyen de paiement, tribunal ; dans la confidentialite : autres outils utilises).
-   Remplace le texte ET supprime les balises <mark class="todo">[ ... ]</mark>.
-   Les CGV sont un modele solide mais a faire relire par un comptable ou un juriste.
+REGLAGES (en haut du dernier <script> de index.html)
+----------------------------------------------------
+  var STATS={messages:155,clients:79,minutesParMessage:1};
+     Chiffres reels de Cookies An Nou (UChat, 30 derniers jours). A mettre a jour quand
+     tu veux : le temps gagne se recalcule tout seul (155 x 1 min = 2 h 35).
+  var AVIS={texte:"",auteur:"",role:"Cookies An Nou"};
+     Colle ici la phrase de la gerante (sans guillemets) et son prenom. Tant que texte est
+     vide, le bloc avis reste cache : rien de faux ne s'affiche.
+  PLACES_PRISES, NUMERO_CONTACT, NUMERO_DEMO : inchanges.
 
-1. LES DEUX BOUTONS DU HAUT
----------------------------
-- "Tester la demo" passe en bouton principal rose, avec l'icone WhatsApp qui pulse
-  et un sous-titre "Sur votre WhatsApp, en 30 secondes" : il ouvre WhatsApp sur le bot
-  de demo avec "DEMO" deja ecrit. C'est l'action la moins engageante, donc la plus
-  cliquee : le prospect vit le produit sur son propre telephone.
-- "Commencer maintenant" en navy, sous-titre "On vous repond dans la journee", fleche
-  qui glisse au survol : il ouvre WhatsApp sur TON numero avec un message deja ecrit.
-- Reflet lumineux qui passe sur les deux boutons toutes les 4 secondes.
-- Tous les "Commencer", "Reserver ma place Fondateur" et "Poser une question" vont sur
-  ton numero ; tous les "Tester la demo" (menu, barre mobile, section demo) vont sur le bot.
-- Nouveau lien sous la demo interactive : "Et en vrai ? Testez-le sur votre WhatsApp".
+CE QUI CHANGE
+-------------
+1. "750 euros" remplace par un calculateur clair (section Pourquoi en direct)
+   Le visiteur fait glisser ses ventes en ligne du mois. Deux barres : la commission d'une
+   plateforme (30 %) qui grossit, et PFlow (49 euros fixes) qui reste minuscule. En dessous :
+   "Vous gardez 851 euros de plus chaque mois. Soit 10 212 euros par an." (a 3 000 euros).
+2. Nouvelle section "Ca tourne deja. En vrai." (juste apres Comment ca marche)
+   Carte Cookies An Nou + 3 chiffres reels qui se comptent a l'ecran : 155 messages
+   repondus, 2 h 35 rendues a la cuisine (estimation affichee : 1 min par reponse),
+   79 clients tous servis (et autant de contacts qui restent au resto). Source affichee.
+   Le badge "Deja adopte par Cookies An Nou" du haut renvoie maintenant sur cette section.
+3. Tarifs refaits avec ta grille
+   - 3 formules : Socle 49, Croissance 69 (barre 97 a la carte), Tout compris 99
+     (Recommande, 239 euros d'options offertes, Campagnes WhatsApp en Bientot).
+   - Socle : paiement en ligne et livraison par ses propres livreurs INCLUS.
+   - Mise en place : bandeau Offre Fondateur 290 au lieu de 390, jauge des places.
+   - A la carte : relance 29/mois, avis 19/mois, Instagram + Messenger 90 une fois,
+     mini-site 149 + 9/mois, Campagnes WhatsApp 39/mois et Livraison deleguee (Uber Direct)
+     150 + 39/mois en "Bientot".
+   - FAQ : nouvelle question sur les deux types de livraison, reponses mises a jour.
+4. Mobile refait
+   - Bandeau + menu plus fins (92 px au lieu de 118).
+   - Premier ecran : titre, les deux boutons pleine largeur, puis le telephone tout de
+     suite avec la conversation qui se joue.
+   - Duel plateforme / PFlow cote a cote au lieu de deux grandes cartes.
+   - Demo : sur telephone, le simulateur est remplace par "Testez-le en vrai" en 3 etapes
+     et le bouton vers la demo WhatsApp (le vrai test se fait sur le telephone).
+   - Formules en cartes qui glissent au doigt, options en lignes compactes.
+   - Verifie au rendu reel en 390 px et 1440 px : aucune erreur, aucun debordement.
+5. CGV et confidentialite a jour avec la nouvelle grille (les "Bientot" ne sont
+   commandables qu'a leur sortie).
 
-2. MENU DU HAUT
----------------
-Comment ca marche / Pourquoi en direct / Tarifs / Questions. Le lien Demo est retire.
-Le bouton de droite devient "Tester la demo".
-
-3. EXPERIENCE MOBILE
---------------------
-- Menu burger : plein ecran, gros liens, et les deux boutons en bas du pouce.
-- Hero : titre plus grand, boutons pleine largeur, pilules qui defilent au doigt.
-- Barre d'action collee en bas de l'ecran ("Tester la demo" / "Commencer") qui apparait
-  des qu'on a depasse les boutons du haut et se cache sur l'appel final. Le rond
-  WhatsApp flottant est retire sur mobile (doublon).
-- "Comment ca marche" : le telephone en haut, et les 4 etapes deviennent des cartes qui
-  glissent au doigt ; l'ecran du telephone change avec la carte, points de navigation
-  en dessous, et defilement automatique tant qu'on ne touche pas.
-- Chiffres corail et options tarifaires : cartes qui glissent au doigt au lieu d'une
-  longue colonne.
-- Verifie au rendu reel en 390 px, sans debordement ni erreur.
-
-4. NETTOYAGE
-------------
-"Food . People . Flow" et "Good food flows further." sont retires.
-
-5. PAGES LEGALES
-----------------
-- Mentions legales : editeur, hebergeur (Vercel), activite reservee aux professionnels,
-  propriete intellectuelle, credit Unsplash, demonstrations fictives.
-- Politique de confidentialite : donnees reellement collectees (echanges WhatsApp,
-  demo, clients, journaux), finalites et bases legales, durees (3 ans prospects, 5 ans
-  clients, 10 ans compta), sous-traitants (WhatsApp, UChat, Vercel), Google Fonts et
-  Unsplash, droits et CNIL, et le cas des donnees des clients des restaurants
-  (PFlow sous-traitant).
-- Cookies : le site n'en pose aucun (ni pub, ni audience) : pas de bandeau necessaire.
-- CGV professionnels : prix (390 / 290 Fondateur / 49 par mois / options), 0 %
-  commission, paiement et penalites legales de retard, abonnement sans engagement,
-  obligations, responsabilite, RGPD sous-traitant, propriete, litiges.
-- Pied de page : copyright + liens vers les 3 pages.
+IMPORTANT, COTE CRM
+-------------------
+Les prix du catalogue du CRM (Facturation > Reglages et tarifs) portent encore l'ancienne
+grille. Les aligner sur celle-ci, sinon les factures ne correspondront pas au site.
