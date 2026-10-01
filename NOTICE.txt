@@ -1,56 +1,34 @@
-PFLOW ORDER, SITE V14 : PREUVES, CALCULATEUR, NOUVEAUX TARIFS, MOBILE
-=====================================================================
+PFLOW ORDER, SITE V15 : TEXTES REPRIS + FORMULES PLUS HONNETES ET PLUS VENDEUSES
+================================================================================
 
-OU POSER LES FICHIERS (dossier site/ du repo, comme d'habitude)
----------------------------------------------------------------
+OU POSER LES FICHIERS (dossier site/ du repo)
+---------------------------------------------
 site/index.html             -> remplace l'existant
-site/cgv.html               -> remplace l'existant (nouveaux prix)
-site/confidentialite.html   -> remplace l'existant (Stripe, Instagram/Messenger, Uber Direct)
-mentions-legales.html ne change pas : inutile de le renvoyer.
+site/cgv.html               -> remplace l'existant
+site/confidentialite.html   -> remplace l'existant (identique a la v14 : a renvoyer
+                               seulement si tu n'as pas pousse la v14)
 
-REGLAGES (en haut du dernier <script> de index.html)
-----------------------------------------------------
-  var STATS={messages:155,clients:79,minutesParMessage:1};
-     Chiffres reels de Cookies An Nou (UChat, 30 derniers jours). A mettre a jour quand
-     tu veux : le temps gagne se recalcule tout seul (155 x 1 min = 2 h 35).
-  var AVIS={texte:"",auteur:"",role:"Cookies An Nou"};
-     Colle ici la phrase de la gerante (sans guillemets) et son prenom. Tant que texte est
-     vide, le bloc avis reste cache : rien de faux ne s'affiche.
-  PLACES_PRISES, NUMERO_CONTACT, NUMERO_DEMO : inchanges.
+CE QUI CHANGE PAR RAPPORT A LA V14
+----------------------------------
+1. Section preuves : "Ca tourne deja. En vrai." devient "Deja en service chez Cookies An Nou."
+   Carte : "Les 30 derniers jours, en chiffres." Chiffres : "155 reponses envoyees",
+   "2 h 35 de messagerie en moins", "79 clients pris en charge".
+2. Les formules ne vendent plus que ce qui existe aujourd'hui :
+   - Socle 49 : ecrit en benefices (vos clients commandent sur WhatsApp 24h/24, votre menu
+     en ligne, toutes les commandes sur un seul ecran, paiement et livraison inclus).
+   - Croissance 69 (97 barre) : "Paniers oublies relances" et "Plus d'avis Google", chacun
+     avec une ligne d'explication, + "Un panier recupere par semaine suffit a la rentabiliser."
+   - Tout compris 99 (106 barre = le prix reel a la carte) : "+ 149 euros de creation
+     offerts", votre site internet trouvable sur Google. Instagram/Messenger et Campagnes
+     WhatsApp ne sont plus dans la liste : ils sont dans un encadre a part, "Inclus des leur
+     sortie, sans supplement". C'est un vrai avantage, sans promettre ce qui n'existe pas.
+3. A la carte : les 3 options disponibles (relance 29, avis 19, mini-site 149 + 9), puis un
+   bloc "Prochainement" : Instagram et Messenger 90, Campagnes WhatsApp 39/mois,
+   Livraison deleguee Uber Direct 150 + 39/mois.
+4. CGV alignees : Instagram/Messenger passe dans les options "bientot", et le Tout compris
+   les inclut sans supplement des leur disponibilite.
 
-CE QUI CHANGE
--------------
-1. "750 euros" remplace par un calculateur clair (section Pourquoi en direct)
-   Le visiteur fait glisser ses ventes en ligne du mois. Deux barres : la commission d'une
-   plateforme (30 %) qui grossit, et PFlow (49 euros fixes) qui reste minuscule. En dessous :
-   "Vous gardez 851 euros de plus chaque mois. Soit 10 212 euros par an." (a 3 000 euros).
-2. Nouvelle section "Ca tourne deja. En vrai." (juste apres Comment ca marche)
-   Carte Cookies An Nou + 3 chiffres reels qui se comptent a l'ecran : 155 messages
-   repondus, 2 h 35 rendues a la cuisine (estimation affichee : 1 min par reponse),
-   79 clients tous servis (et autant de contacts qui restent au resto). Source affichee.
-   Le badge "Deja adopte par Cookies An Nou" du haut renvoie maintenant sur cette section.
-3. Tarifs refaits avec ta grille
-   - 3 formules : Socle 49, Croissance 69 (barre 97 a la carte), Tout compris 99
-     (Recommande, 239 euros d'options offertes, Campagnes WhatsApp en Bientot).
-   - Socle : paiement en ligne et livraison par ses propres livreurs INCLUS.
-   - Mise en place : bandeau Offre Fondateur 290 au lieu de 390, jauge des places.
-   - A la carte : relance 29/mois, avis 19/mois, Instagram + Messenger 90 une fois,
-     mini-site 149 + 9/mois, Campagnes WhatsApp 39/mois et Livraison deleguee (Uber Direct)
-     150 + 39/mois en "Bientot".
-   - FAQ : nouvelle question sur les deux types de livraison, reponses mises a jour.
-4. Mobile refait
-   - Bandeau + menu plus fins (92 px au lieu de 118).
-   - Premier ecran : titre, les deux boutons pleine largeur, puis le telephone tout de
-     suite avec la conversation qui se joue.
-   - Duel plateforme / PFlow cote a cote au lieu de deux grandes cartes.
-   - Demo : sur telephone, le simulateur est remplace par "Testez-le en vrai" en 3 etapes
-     et le bouton vers la demo WhatsApp (le vrai test se fait sur le telephone).
-   - Formules en cartes qui glissent au doigt, options en lignes compactes.
-   - Verifie au rendu reel en 390 px et 1440 px : aucune erreur, aucun debordement.
-5. CGV et confidentialite a jour avec la nouvelle grille (les "Bientot" ne sont
-   commandables qu'a leur sortie).
+Reglages inchanges en haut du dernier <script> : NUMERO_CONTACT, NUMERO_DEMO, PLACES_PRISES,
+STATS (chiffres reels), AVIS (phrase de la gerante, cachee tant que vide).
 
-IMPORTANT, COTE CRM
--------------------
-Les prix du catalogue du CRM (Facturation > Reglages et tarifs) portent encore l'ancienne
-grille. Les aligner sur celle-ci, sinon les factures ne correspondront pas au site.
+COTE CRM : aligner les prix du catalogue (Facturation > Reglages et tarifs) sur cette grille.

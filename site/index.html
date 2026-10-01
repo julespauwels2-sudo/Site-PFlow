@@ -227,6 +227,20 @@
   .forfait .reco{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:linear-gradient(180deg,#FF74C6,var(--pink));color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;box-shadow:0 10px 22px -8px var(--pink);}
   .bientot{display:inline-block;font-style:normal;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:rgba(42,139,255,.12);padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap;}
   .forfait.top .bientot{color:var(--cyan);background:rgba(116,221,251,.16);}
+  .nouv{margin:-8px 0 24px;border:1px dashed rgba(116,221,251,.45);border-radius:16px;padding:14px 14px 12px;background:rgba(116,221,251,.06);}
+  .nouv .nt{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .nouv .nt::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(116,221,251,.2);}
+  .nouv div{font-size:.86rem;font-weight:700;padding:3px 0;color:rgba(255,255,255,.92);}
+  .nouv small{display:block;font-size:.74rem;color:rgba(255,255,255,.6);margin-top:6px;font-weight:600;}
+  .forfait li small{display:block;font-size:.76rem;font-weight:600;color:var(--muted);margin-top:2px;}
+  .forfait.top li small{color:rgba(255,255,255,.62);}
+  .alacarte.trois{grid-template-columns:repeat(3,1fr);}
+  .prochain{margin-top:14px;border:1px dashed rgba(42,139,255,.35);border-radius:20px;padding:18px;background:linear-gradient(135deg,rgba(42,139,255,.04),rgba(116,221,251,.08));}
+  .prochain .tt{display:flex;align-items:center;gap:10px;font-family:var(--tit);font-weight:700;font-size:1.1rem;margin:0 2px 12px;}
+  .prochain .grille{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .prochain .ac{background:rgba(255,255,255,.75);}
+  .prochain .ac em{color:var(--muted);}
+  .forfait .gain-f{font-size:.78rem;color:var(--muted);margin:-12px 0 22px;padding-left:28px;font-style:italic;}
   /* mise en place */
   .install{margin-top:22px;}
   .install .fondateur{margin:0;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;padding:28px 30px 24px;background:#fff;box-shadow:var(--ombre-s);}
@@ -546,7 +560,7 @@
     .forfait{flex:0 0 min(84%,360px);scroll-snap-align:center;}
     .forfait:hover{transform:none;}
     .install .fondateur{grid-template-columns:1fr;gap:16px;}
-    .alacarte{grid-template-columns:1fr;}
+    .alacarte,.alacarte.trois,.prochain .grille{grid-template-columns:1fr;}
     .options{grid-template-columns:repeat(2,1fr);}
     h2{max-width:none;}
     .pas{min-height:0;}
@@ -936,24 +950,24 @@
 <!-- ============ PREUVE REELLE ============ -->
 <section id="preuve" data-fond="blanc">
   <div class="wrap">
-    <div class="st rv">Résultats réels</div>
-    <h2 class="rv" style="max-width:none">Ça tourne déjà. <span class="p">En&nbsp;vrai.</span></h2>
+    <div class="st rv">Cas client</div>
+    <h2 class="rv" style="max-width:none">Déjà en service <span class="p">chez Cookies An&nbsp;Nou.</span></h2>
     <div class="preuve">
       <div class="client-c rv">
         <div class="halo p"></div>
         <div class="id">
           <div class="lg"><img src="images/logo-cookiesannou.png" alt="" onerror="this.remove()">CA</div>
-          <div><div class="nm">Cookies An Nou</div><div class="tg">Équipé PFlow Order</div></div>
+          <div><div class="nm">Cookies An Nou</div><div class="tg">Client PFlow Order</div></div>
         </div>
-        <div class="per">30 jours<br><span>avec PFlow Order.</span></div>
+        <div class="per">Les 30 derniers jours,<br><span>en chiffres.</span></div>
         <blockquote class="avis" id="avis" hidden><span id="avisTxt"></span><cite id="avisAut"></cite></blockquote>
         <a class="insta" href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener">Voir Cookies An Nou &rarr;</a>
         <div class="src">Chiffres réels du chatbot, 30 derniers jours.</div>
       </div>
       <div class="stats">
-        <div class="stat rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><b data-compte="messages">0</b><span>messages répondus</span><small>Automatiquement, sans décrocher.</small></div>
-        <div class="stat rv" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><b data-compte="temps">0 min</b><span>rendues à la cuisine</span><small id="tempsNote">Estimation : 1 minute par réponse.</small></div>
-        <div class="stat rv" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.5 14.6c2.4.1 4.2 1.6 4.7 4.4"/></svg></div><b data-compte="clients">0</b><span>clients, tous servis</span><small>Et autant de contacts qui restent à vous.</small></div>
+        <div class="stat rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><b data-compte="messages">0</b><span>réponses envoyées</span><small>Automatiquement, sans décrocher le téléphone.</small></div>
+        <div class="stat rv" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><b data-compte="temps">0 min</b><span>de messagerie en moins</span><small id="tempsNote">Estimation : 1 minute par réponse.</small></div>
+        <div class="stat rv" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.5 14.6c2.4.1 4.2 1.6 4.7 4.4"/></svg></div><b data-compte="clients">0</b><span>clients pris en charge</span><small>Autant de contacts qui restent les vôtres.</small></div>
       </div>
     </div>
   </div>
@@ -1000,7 +1014,7 @@
   <div class="wrap">
     <div class="st rv">À vous de jouer</div>
     <h2 class="rv pc-only">Commandez ici. <span class="p">Recevez juste là.</span></h2>
-    <h2 class="rv mob-only">Testez-le <span class="p">en vrai.</span></h2>
+    <h2 class="rv mob-only">Essayez-le <span class="p">sur votre téléphone.</span></h2>
     <p class="lead rv pc-only" style="margin:14px 0 40px">Ajoutez. Validez. Regardez.</p>
     <div class="demo-mob rv">
       <div class="dm-steps"><div><i>1</i>Appuyez sur le bouton</div><div><i>2</i>Envoyez le message déjà écrit</div><div><i>3</i>Commandez comme un vrai client</div></div>
@@ -1048,43 +1062,48 @@
     <div class="forfaits" id="forfaits">
       <div class="forfait rv">
         <div class="fn">Socle</div>
-        <div class="fd">Tout pour prendre vos commandes sur WhatsApp.</div>
+        <div class="fd">Vos commandes WhatsApp, prises toutes seules.</div>
         <div class="fp">49 &euro;<small>/ mois</small></div>
         <div class="fx">Moins de 2 &euro; par jour</div>
         <ul>
-          <li>Réponse automatique WhatsApp, 24h/24</li>
-          <li>Page de commande à votre image : menu, photos, options</li>
-          <li>Dashboard de réception des commandes</li>
+          <li>Vos clients commandent sur WhatsApp, 24h/24</li>
+          <li>Votre menu en ligne, avec photos et options</li>
+          <li>Toutes les commandes sur un seul écran</li>
           <li>Paiement en ligne <em>Inclus</em></li>
-          <li>Livraison par vos livreurs : zones, frais, minimum <em>Inclus</em></li>
-          <li>Hébergement, maintenance, support</li>
+          <li>Livraison par vos livreurs <em>Inclus</em></li>
+          <li>Hébergement, maintenance et support</li>
         </ul>
         <a class="btn ghost lienwa" data-txt="Bonjour PFlow, la formule Socle à 49 euros par mois m'intéresse pour mon établissement." href="#">Choisir le Socle</a>
       </div>
       <div class="forfait rv" style="--d:.08s">
         <div class="fn">Croissance</div>
-        <div class="fd">Plus de paniers validés, plus d'avis.</div>
+        <div class="fd">Plus de paniers validés, plus d'avis Google.</div>
         <div class="fp">69 &euro;<small>/ mois</small><s>97 &euro;</s></div>
         <div class="fx">28 &euro; de moins qu'à la carte</div>
         <ul>
           <li class="plus">Tout le Socle</li>
-          <li>Relance automatique des paniers abandonnés</li>
-          <li>Demande d'avis Google après chaque commande</li>
+          <li>Paniers oubliés relancés<small>Le client reçoit un rappel et finit sa commande.</small></li>
+          <li>Plus d'avis Google<small>Demandés automatiquement après chaque commande.</small></li>
         </ul>
+        <div class="gain-f">Un panier récupéré par semaine suffit à la rentabiliser.</div>
         <a class="btn ghost lienwa" data-txt="Bonjour PFlow, la formule Croissance à 69 euros par mois m'intéresse pour mon établissement." href="#">Choisir Croissance</a>
       </div>
       <div class="forfait top rv" style="--d:.16s">
         <span class="reco">Recommandé</span>
         <div class="fn">Tout compris</div>
-        <div class="fd">Toute la puissance de PFlow, sans y penser.</div>
-        <div class="fp">99 &euro;<small>/ mois</small></div>
-        <div class="fx">239 &euro; d'options offertes</div>
+        <div class="fd">Votre restaurant en ligne, de A à Z.</div>
+        <div class="fp">99 &euro;<small>/ mois</small><s>106 &euro;</s></div>
+        <div class="fx">+ 149 &euro; de création offerts</div>
         <ul>
           <li class="plus">Tout Croissance</li>
-          <li>Réponses aussi sur Instagram et Messenger <em>Offert</em></li>
-          <li>Mini-site vitrine de votre établissement <em>Offert</em></li>
-          <li>Campagnes WhatsApp vers vos clients <i class="bientot">Bientôt</i></li>
+          <li>Votre site internet, trouvable sur Google <em>Offert</em><small>Une vitrine créée depuis votre menu, avec le bouton Commander.</small></li>
         </ul>
+        <div class="nouv">
+          <div class="nt">Inclus dès leur sortie</div>
+          <div>Réponses sur Instagram et Messenger</div>
+          <div>Campagnes WhatsApp vers vos clients</div>
+          <small>Sans supplément, activées chez vous dès leur lancement.</small>
+        </div>
         <a class="btn pink lienwa" data-txt="Bonjour PFlow, la formule Tout compris à 99 euros par mois m'intéresse pour mon établissement." href="#">Choisir Tout compris &rarr;</a>
       </div>
     </div>
@@ -1112,15 +1131,20 @@
 
     <div class="optitre rv">
       <h3>À la carte</h3>
-      <p>Une option à ajouter au Socle ? Quand vous voulez, sans changer de solution.</p>
+      <p>Juste une option en plus du Socle&nbsp;? Ajoutez-la quand vous voulez.</p>
     </div>
-    <div class="alacarte rv">
+    <div class="alacarte trois rv">
       <div class="ac"><div><b>Relance des paniers</b><span>Un panier oublié reçoit un rappel automatique.</span></div><em>29 &euro;<small>/ mois</small></em></div>
       <div class="ac"><div><b>Avis Google</b><span>Une invitation à laisser un avis après la commande.</span></div><em>19 &euro;<small>/ mois</small></em></div>
-      <div class="ac"><div><b>Instagram et Messenger</b><span>PFlow répond aussi sur Instagram et Facebook.</span></div><em>90 &euro;<small>une fois</small></em></div>
       <div class="ac"><div><b>Mini-site</b><span>Votre vitrine d'une page, créée depuis votre menu.</span></div><em>149 &euro;<small>+ 9 &euro; / mois</small></em></div>
-      <div class="ac soon"><div><b>Campagnes WhatsApp<i class="bientot">Bientôt</i></b><span>Vos offres envoyées à vos clients. 150 messages inclus.</span></div><em>39 &euro;<small>/ mois</small></em></div>
-      <div class="ac soon"><div><b>Livraison déléguée<i class="bientot">Bientôt</i></b><span>Un coursier Uber Direct livre pour vous. Le client et l'encaissement restent à vous.</span></div><em>150 &euro;<small>+ 39 &euro; / mois</small></em></div>
+    </div>
+    <div class="prochain rv">
+      <div class="tt">Prochainement<i class="bientot">Bientôt</i></div>
+      <div class="grille">
+        <div class="ac"><div><b>Instagram et Messenger</b><span>PFlow répond aussi en messages privés sur Instagram et Facebook.</span></div><em>90 &euro;<small>une fois</small></em></div>
+        <div class="ac"><div><b>Campagnes WhatsApp</b><span>Vos offres envoyées à vos clients. 150 messages inclus.</span></div><em>39 &euro;<small>/ mois</small></em></div>
+        <div class="ac"><div><b>Livraison déléguée</b><span>Un coursier Uber Direct livre pour vous. Client et encaissement restent à vous.</span></div><em>150 &euro;<small>+ 39 &euro; / mois</small></em></div>
+      </div>
     </div>
     <div class="tarifnote rv">Sans engagement, résiliable à tout moment. Les frais du prestataire de paiement en ligne restent à la charge du restaurant.</div>
   </div>
