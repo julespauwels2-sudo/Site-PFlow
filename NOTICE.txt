@@ -1,29 +1,31 @@
-PFLOW ORDER, SITE V16 : CARTE DES PRIX AVEC FIDELITE ET INSTAGRAM
-=================================================================
+PFLOW ORDER, SITE V17 : FIDELITE A 19 EUROS + SITE EN REGLE
+===========================================================
 
 OU POSER LES FICHIERS (dossier site/ du repo)
 ---------------------------------------------
-site/index.html   -> remplace l'existant
-site/cgv.html     -> remplace l'existant
-(confidentialite.html ne change pas depuis la v14.)
+site/index.html               -> remplace
+site/cgv.html                 -> remplace
+site/confidentialite.html     -> remplace
+site/mentions-legales.html    -> remplace
+site/infos-legales.js         -> NOUVEAU (a remplir, voir plus bas)
+site/fonts/fredoka.woff2      -> NOUVEAU (creer le dossier fonts dans site/)
+site/fonts/manrope.woff2      -> NOUVEAU
 
-LA NOUVELLE CARTE
------------------
-- Socle 49 / mois : inchange.
-- Croissance 69 / mois (97 barre) : relance des paniers + avis Google. Inchange.
-- Tout compris 99 / mois (131 barre = vrai prix a la carte : 49 + 29 + 19 + 25 + 9) :
-    Tout Croissance
-    + Programme de fidelite (nouveau, disponible)
-    + Commandes depuis Instagram et Facebook, offert (disponible)
-    + Site internet trouvable sur Google, offert
-    "+ 239 euros de creation offerts" (Instagram 90 + mini-site 149)
-    Encadre a part : Campagnes WhatsApp, incluses des leur sortie, sans supplement.
-- A la carte (disponible) : relance 29/mois, avis Google 19/mois, fidelite 25/mois,
-  Instagram et Messenger 90 une fois, mini-site 149 + 9/mois.
-- Prochainement : Campagnes WhatsApp 39/mois, Livraison deleguee 150 + 39/mois.
-- FAQ : nouvelle question "Comment marche le programme de fidelite ?"
-- CGV alignees (fidelite en option, recompenses definies et financees par le restaurant,
-  Instagram et Messenger disponibles).
+CE QUI CHANGE
+-------------
+- Fidelite : 19 euros par mois a la carte (site, FAQ, CGV). Tout compris : 125 euros barre
+  (49 + 29 + 19 + 19 + 9).
+- Polices hebergees sur le site : plus aucun appel a Google Fonts (recommande par la CNIL,
+  et le site charge plus vite).
+- Toutes les infos legales de PFlow sont dans UN SEUL fichier, infos-legales.js. On le
+  remplit une fois : les mentions legales, la confidentialite et les CGV se completent
+  toutes seules. Tant qu'un champ est vide, la page montre une case jaune.
+- Confidentialite : liste complete des prestataires (WhatsApp, UChat, Vercel, Stripe,
+  Meta pour Instagram/Messenger, Uber Direct, Supabase, OpenAI) et donnees de fidelite.
 
-COTE CRM : ajouter "Programme de fidelite" au catalogue (Facturation > Reglages et tarifs >
-Ajouter une option, 25 euros par mois) et passer Instagram et Messenger en Disponible.
+REMPLIR infos-legales.js (dans GitHub : ouvrir le fichier, crayon, ecrire entre les
+guillemets, Commit changes)
+---------------------------------------------------------------------------------------
+editeur, forme, adresse, siret, immatriculation, tva, email, telephone, directeur,
+prix, paiementMiseEnPlace, moyenPaiement, tribunal. Des exemples sont ecrits a cote
+de chaque ligne.

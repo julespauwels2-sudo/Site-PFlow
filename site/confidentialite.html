@@ -6,9 +6,13 @@
 <title>Politique de confidentialité | PFlow Order</title>
 <meta name="description" content="Politique de confidentialité de PFlow Order : données collectées, finalités, durées de conservation, vos droits.">
 <meta name="robots" content="index,follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/fredoka.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* polices hebergees sur le site : aucun appel a Google */
+  @font-face{font-family:'Fredoka';src:url('fonts/fredoka.woff2') format('woff2');font-weight:300 700;font-style:normal;font-display:swap;}
+  @font-face{font-family:'Manrope';src:url('fonts/manrope.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+</style>
 <style>
   :root{--navy:#101B4D;--pink:#FF4FB5;--muted:#5E6690;--rule:rgba(16,27,77,.1);--white:#F8F7FB;}
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -36,7 +40,7 @@
   dt{font-weight:800;color:var(--navy);}
   dd{color:#2B3566;}
   a{color:var(--navy);}
-  mark.todo{background:#FFF1A8;color:#6B5200;padding:1px 6px;border-radius:6px;font-weight:700;}
+  .todo{background:#FFF1A8;color:#6B5200;padding:1px 6px;border-radius:6px;font-weight:700;}
   footer{border-top:1px solid var(--rule);padding:26px 22px 40px;text-align:center;font-size:.84rem;color:var(--muted);}
   footer a{color:var(--muted);font-weight:700;margin:0 8px;}
   @media(max-width:640px){dl{grid-template-columns:1fr;gap:2px 0;}dd{margin-bottom:10px;}section{padding:20px;}header img{height:32px;}}
@@ -53,7 +57,7 @@
 </nav>
 
 <section id="resp"><h2><span>1.</span>Responsable du traitement</h2>
-<p>Le responsable du traitement est <mark class="todo">[Nom et prénom de l'entrepreneur, ou raison sociale de la société]</mark>, éditeur de PFlow Order, joignable à l'adresse <mark class="todo">[adresse e-mail de contact]</mark>.</p>
+<p>Le responsable du traitement est <span class="todo" data-l="editeur">[Nom et prénom de l'entrepreneur, ou raison sociale de la société]</span>, éditeur de PFlow Order, joignable à l'adresse <span class="todo" data-l="email">[adresse e-mail de contact]</span>.</p>
 </section>
 
 <section id="quoi"><h2><span>2.</span>Données collectées</h2>
@@ -91,13 +95,14 @@
 <li><b>Stripe</b> : paiement en ligne des commandes, lorsque le restaurant l'utilise.</li>
 <li><b>Instagram et Messenger</b> (Meta Platforms Ireland Ltd) : lorsque le restaurant active les réponses sur ces messageries.</li>
 <li><b>Uber Direct</b> : lorsque le restaurant utilisera la livraison déléguée, les informations nécessaires à la course (nom, adresse, téléphone du client).</li>
-<li><mark class="todo">[ajouter ici les autres outils utilisés : base de données, facturation...]</mark></li>
+<li><b>Supabase</b> : base de données (comptes, menus, commandes).</li>
+<li><b>OpenAI</b> : assistant automatique qui répond aux questions des clients sur WhatsApp.</li>
 </ul>
 <p>Certains de ces prestataires peuvent traiter des données en dehors de l'Union européenne. Ces transferts sont encadrés par les garanties prévues par le RGPD (décision d'adéquation de la Commission européenne ou clauses contractuelles types).</p>
 </section>
 
 <section id="tiers"><h2><span>6.</span>Services tiers chargés par la page</h2>
-<p>Pour s'afficher, le Site charge des polices de caractères depuis Google Fonts (Google Ireland Ltd) et certaines images d'illustration depuis Unsplash. Lors de ce chargement, votre adresse IP est transmise à ces services, qui peuvent la traiter selon leurs propres politiques de confidentialité.</p>
+<p>Les polices de caractères du Site sont hébergées sur le Site lui-même : aucun appel n'est fait à Google. Seules certaines photos d'illustration de la démonstration peuvent être chargées depuis la banque d'images Unsplash ; votre adresse IP est alors transmise à ce service, qui la traite selon sa propre politique de confidentialité.</p>
 </section>
 
 <section id="cookies"><h2><span>7.</span>Cookies et traceurs</h2>
@@ -106,14 +111,20 @@
 </section>
 
 <section id="clients"><h2><span>8.</span>Données des clients des restaurants</h2>
-<p>Lorsqu'un restaurant utilise PFlow Order, les données de ses propres clients (nom, numéro, commandes) sont traitées par PFlow Order <b>pour le compte du restaurant</b>, qui en reste responsable. PFlow Order agit alors en qualité de sous-traitant au sens de l'article 28 du RGPD, dans les conditions prévues par les <a href="cgv.html">conditions générales de vente</a>. Les personnes concernées peuvent exercer leurs droits auprès du restaurant ou auprès de nous, et nous transmettrons la demande.</p>
+<p>Lorsqu'un restaurant utilise PFlow Order, les données de ses propres clients (nom, numéro, commandes) sont traitées par PFlow Order <b>pour le compte du restaurant</b>, y compris l'historique des commandes utilisé par le programme de fidélité,, qui en reste responsable. PFlow Order agit alors en qualité de sous-traitant au sens de l'article 28 du RGPD, dans les conditions prévues par les <a href="cgv.html">conditions générales de vente</a>. Les personnes concernées peuvent exercer leurs droits auprès du restaurant ou auprès de nous, et nous transmettrons la demande.</p>
 </section>
 
 <section id="droits"><h2><span>9.</span>Vos droits</h2>
-<p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de définir des directives sur leur sort après votre décès. Pour les exercer, écrivez-nous à <mark class="todo">[adresse e-mail de contact]</mark> ou par WhatsApp. Nous répondons dans un délai d'un mois.</p>
+<p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données, ainsi que du droit de définir des directives sur leur sort après votre décès. Pour les exercer, écrivez-nous à <span class="todo" data-l="email">[adresse e-mail de contact]</span> ou par WhatsApp. Nous répondons dans un délai d'un mois.</p>
 <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
 </section>
 </main>
 <footer>&copy; 2026 PFlow Order &middot; <a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cgv.html">CGV</a></footer>
+<script src="infos-legales.js"></script>
+<script>
+(function(){var I=window.INFOS_LEGALES||{};
+document.querySelectorAll("[data-l]").forEach(function(e){var v=(I[e.getAttribute("data-l")]||"").trim();if(v){e.textContent=v;e.classList.remove("todo");}});
+})();
+</script>
 </body>
 </html>
