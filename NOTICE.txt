@@ -1,34 +1,29 @@
-PFLOW ORDER, SITE V15 : TEXTES REPRIS + FORMULES PLUS HONNETES ET PLUS VENDEUSES
-================================================================================
+PFLOW ORDER, SITE V16 : CARTE DES PRIX AVEC FIDELITE ET INSTAGRAM
+=================================================================
 
 OU POSER LES FICHIERS (dossier site/ du repo)
 ---------------------------------------------
-site/index.html             -> remplace l'existant
-site/cgv.html               -> remplace l'existant
-site/confidentialite.html   -> remplace l'existant (identique a la v14 : a renvoyer
-                               seulement si tu n'as pas pousse la v14)
+site/index.html   -> remplace l'existant
+site/cgv.html     -> remplace l'existant
+(confidentialite.html ne change pas depuis la v14.)
 
-CE QUI CHANGE PAR RAPPORT A LA V14
-----------------------------------
-1. Section preuves : "Ca tourne deja. En vrai." devient "Deja en service chez Cookies An Nou."
-   Carte : "Les 30 derniers jours, en chiffres." Chiffres : "155 reponses envoyees",
-   "2 h 35 de messagerie en moins", "79 clients pris en charge".
-2. Les formules ne vendent plus que ce qui existe aujourd'hui :
-   - Socle 49 : ecrit en benefices (vos clients commandent sur WhatsApp 24h/24, votre menu
-     en ligne, toutes les commandes sur un seul ecran, paiement et livraison inclus).
-   - Croissance 69 (97 barre) : "Paniers oublies relances" et "Plus d'avis Google", chacun
-     avec une ligne d'explication, + "Un panier recupere par semaine suffit a la rentabiliser."
-   - Tout compris 99 (106 barre = le prix reel a la carte) : "+ 149 euros de creation
-     offerts", votre site internet trouvable sur Google. Instagram/Messenger et Campagnes
-     WhatsApp ne sont plus dans la liste : ils sont dans un encadre a part, "Inclus des leur
-     sortie, sans supplement". C'est un vrai avantage, sans promettre ce qui n'existe pas.
-3. A la carte : les 3 options disponibles (relance 29, avis 19, mini-site 149 + 9), puis un
-   bloc "Prochainement" : Instagram et Messenger 90, Campagnes WhatsApp 39/mois,
-   Livraison deleguee Uber Direct 150 + 39/mois.
-4. CGV alignees : Instagram/Messenger passe dans les options "bientot", et le Tout compris
-   les inclut sans supplement des leur disponibilite.
+LA NOUVELLE CARTE
+-----------------
+- Socle 49 / mois : inchange.
+- Croissance 69 / mois (97 barre) : relance des paniers + avis Google. Inchange.
+- Tout compris 99 / mois (131 barre = vrai prix a la carte : 49 + 29 + 19 + 25 + 9) :
+    Tout Croissance
+    + Programme de fidelite (nouveau, disponible)
+    + Commandes depuis Instagram et Facebook, offert (disponible)
+    + Site internet trouvable sur Google, offert
+    "+ 239 euros de creation offerts" (Instagram 90 + mini-site 149)
+    Encadre a part : Campagnes WhatsApp, incluses des leur sortie, sans supplement.
+- A la carte (disponible) : relance 29/mois, avis Google 19/mois, fidelite 25/mois,
+  Instagram et Messenger 90 une fois, mini-site 149 + 9/mois.
+- Prochainement : Campagnes WhatsApp 39/mois, Livraison deleguee 150 + 39/mois.
+- FAQ : nouvelle question "Comment marche le programme de fidelite ?"
+- CGV alignees (fidelite en option, recompenses definies et financees par le restaurant,
+  Instagram et Messenger disponibles).
 
-Reglages inchanges en haut du dernier <script> : NUMERO_CONTACT, NUMERO_DEMO, PLACES_PRISES,
-STATS (chiffres reels), AVIS (phrase de la gerante, cachee tant que vide).
-
-COTE CRM : aligner les prix du catalogue (Facturation > Reglages et tarifs) sur cette grille.
+COTE CRM : ajouter "Programme de fidelite" au catalogue (Facturation > Reglages et tarifs >
+Ajouter une option, 25 euros par mois) et passer Instagram et Messenger en Disponible.

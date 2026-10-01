@@ -238,6 +238,7 @@
   .prochain{margin-top:14px;border:1px dashed rgba(42,139,255,.35);border-radius:20px;padding:18px;background:linear-gradient(135deg,rgba(42,139,255,.04),rgba(116,221,251,.08));}
   .prochain .tt{display:flex;align-items:center;gap:10px;font-family:var(--tit);font-weight:700;font-size:1.1rem;margin:0 2px 12px;}
   .prochain .grille{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .prochain .grille.deux{grid-template-columns:1fr 1fr;}
   .prochain .ac{background:rgba(255,255,255,.75);}
   .prochain .ac em{color:var(--muted);}
   .forfait .gain-f{font-size:.78rem;color:var(--muted);margin:-12px 0 22px;padding-left:28px;font-style:italic;}
@@ -560,7 +561,7 @@
     .forfait{flex:0 0 min(84%,360px);scroll-snap-align:center;}
     .forfait:hover{transform:none;}
     .install .fondateur{grid-template-columns:1fr;gap:16px;}
-    .alacarte,.alacarte.trois,.prochain .grille{grid-template-columns:1fr;}
+    .alacarte,.alacarte.trois,.prochain .grille,.prochain .grille.deux{grid-template-columns:1fr;}
     .options{grid-template-columns:repeat(2,1fr);}
     h2{max-width:none;}
     .pas{min-height:0;}
@@ -1091,16 +1092,17 @@
       <div class="forfait top rv" style="--d:.16s">
         <span class="reco">Recommandé</span>
         <div class="fn">Tout compris</div>
-        <div class="fd">Votre restaurant en ligne, de A à Z.</div>
-        <div class="fp">99 &euro;<small>/ mois</small><s>106 &euro;</s></div>
-        <div class="fx">+ 149 &euro; de création offerts</div>
+        <div class="fd">Vos clients reviennent, et vous trouvent partout.</div>
+        <div class="fp">99 &euro;<small>/ mois</small><s>131 &euro;</s></div>
+        <div class="fx">+ 239 &euro; de création offerts</div>
         <ul>
           <li class="plus">Tout Croissance</li>
+          <li>Programme de fidélité<small>Chaque commande rapproche le client de sa récompense.</small></li>
+          <li>Commandes depuis Instagram et Facebook <em>Offert</em><small>PFlow répond en messages privés et envoie votre menu.</small></li>
           <li>Votre site internet, trouvable sur Google <em>Offert</em><small>Une vitrine créée depuis votre menu, avec le bouton Commander.</small></li>
         </ul>
         <div class="nouv">
           <div class="nt">Inclus dès leur sortie</div>
-          <div>Réponses sur Instagram et Messenger</div>
           <div>Campagnes WhatsApp vers vos clients</div>
           <small>Sans supplément, activées chez vous dès leur lancement.</small>
         </div>
@@ -1136,13 +1138,14 @@
     <div class="alacarte trois rv">
       <div class="ac"><div><b>Relance des paniers</b><span>Un panier oublié reçoit un rappel automatique.</span></div><em>29 &euro;<small>/ mois</small></em></div>
       <div class="ac"><div><b>Avis Google</b><span>Une invitation à laisser un avis après la commande.</span></div><em>19 &euro;<small>/ mois</small></em></div>
+      <div class="ac"><div><b>Programme de fidélité</b><span>Vos clients cumulent à chaque commande et reviennent chercher leur récompense.</span></div><em>25 &euro;<small>/ mois</small></em></div>
+      <div class="ac"><div><b>Instagram et Messenger</b><span>PFlow répond aussi en messages privés sur Instagram et Facebook.</span></div><em>90 &euro;<small>une fois</small></em></div>
       <div class="ac"><div><b>Mini-site</b><span>Votre vitrine d'une page, créée depuis votre menu.</span></div><em>149 &euro;<small>+ 9 &euro; / mois</small></em></div>
     </div>
     <div class="prochain rv">
       <div class="tt">Prochainement<i class="bientot">Bientôt</i></div>
-      <div class="grille">
-        <div class="ac"><div><b>Instagram et Messenger</b><span>PFlow répond aussi en messages privés sur Instagram et Facebook.</span></div><em>90 &euro;<small>une fois</small></em></div>
-        <div class="ac"><div><b>Campagnes WhatsApp</b><span>Vos offres envoyées à vos clients. 150 messages inclus.</span></div><em>39 &euro;<small>/ mois</small></em></div>
+      <div class="grille deux">
+        <div class="ac"><div><b>Campagnes WhatsApp</b><span>Vos offres et nouveautés envoyées à vos clients. 150 messages inclus.</span></div><em>39 &euro;<small>/ mois</small></em></div>
         <div class="ac"><div><b>Livraison déléguée</b><span>Un coursier Uber Direct livre pour vous. Client et encaissement restent à vous.</span></div><em>150 &euro;<small>+ 39 &euro; / mois</small></em></div>
       </div>
     </div>
@@ -1165,6 +1168,7 @@
         <details><summary>Je garde mon numéro WhatsApp&nbsp;?</summary><p>Oui, ou on vous crée un numéro professionnel dédié. Dans les deux cas vous pouvez reprendre la main à tout moment : l'automatisation gère le répétitif, jamais votre relation client.</p></details>
         <details><summary>Combien de temps pour être en ligne&nbsp;?</summary><p>Vous fournissez votre menu, vos photos et vos horaires. On s'occupe de tout le reste, formation comprise. Le calendrier est confirmé dès notre premier échange.</p></details>
         <details><summary>Que comprend la formule Socle à 49 €&nbsp;?</summary><p>La réponse automatique WhatsApp, votre page de commande, le dashboard, le paiement en ligne, la livraison par vos propres livreurs, l'hébergement, la maintenance et le support. Seuls les frais du prestataire de paiement restent à votre charge.</p></details>
+        <details><summary>Comment marche le programme de fidélité&nbsp;?</summary><p>Chaque commande passée avec PFlow compte pour le client. Vous choisissez la récompense et le seuil, PFlow tient les comptes tout seul. Vos clients ont une vraie raison de commander chez vous en direct plutôt que sur une plateforme. Inclus dans Tout compris, ou 25 € par mois en option.</p></details>
         <details><summary>Comment fonctionne la livraison&nbsp;?</summary><p>Deux possibilités. Avec vos propres livreurs : inclus dans toutes les formules, vous fixez vos zones, vos frais et votre minimum de commande. Livraison déléguée : un coursier Uber Direct vient chercher la commande, et le client comme l'encaissement restent à vous, sans commission. Cette option arrive bientôt.</p></details>
         <details><summary>Comment fonctionne l'offre Fondateur&nbsp;?</summary><p>Les 10 premiers établissements qui rejoignent PFlow Order paient la création et la mise en place 290 € au lieu de 390 €, soit 100 € d'économie. Ensuite, vous choisissez votre formule, dès 49 € par mois, sans engagement. Une fois les 10 places prises, l'offre s'arrête.</p></details>
         <details><summary>Je peux changer de formule plus tard&nbsp;?</summary><p>Oui. Vous ajoutez une option ou passez à Croissance ou Tout compris quand votre activité en a besoin, sans changer de solution ni repayer la mise en place.</p></details>
