@@ -198,6 +198,9 @@
   .gain b{color:var(--pink);font-weight:700;white-space:nowrap;}
   .note-com{text-align:center;font-size:.76rem;color:var(--muted);margin-top:12px;}
 
+  .verdict{margin:40px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .verdict p{font-family:var(--tit);font-weight:600;font-size:clamp(1.35rem,2.6vw,1.9rem);line-height:1.25;}
+  .verdict p b{color:var(--pink);font-weight:700;}
   /* ===== DEMO MOBILE ===== */
   .demo-mob,.mob-only{display:none;}
   .demo-mob{background:#fff;border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--ombre);padding:22px 20px;}
@@ -716,6 +719,8 @@
     .cote ul{gap:7px;margin-top:12px;}
     .cote li{font-size:.72rem;gap:6px;align-items:flex-start;line-height:1.25;}
     .cote li::before{width:16px;height:16px;font-size:.52rem;}
+    .verdict{margin-top:26px;}
+    .verdict .cta2{width:100%;}
     .calc{margin-top:22px;padding:22px 18px;}
     .calc h3{font-size:1.4rem;}
     .calc output{font-size:1.8rem;}
@@ -952,32 +957,6 @@
   </div>
 </section>
 
-<!-- ============ PREUVE REELLE ============ -->
-<section id="preuve" data-fond="blanc">
-  <div class="wrap">
-    <div class="st rv">Cas client</div>
-    <h2 class="rv" style="max-width:none">Déjà en service <span class="p">chez Cookies An&nbsp;Nou.</span></h2>
-    <div class="preuve">
-      <div class="client-c rv">
-        <div class="halo p"></div>
-        <div class="id">
-          <div class="lg"><img src="images/logo-cookiesannou.png" alt="" onerror="this.remove()">CA</div>
-          <div><div class="nm">Cookies An Nou</div><div class="tg">Client PFlow Order</div></div>
-        </div>
-        <div class="per">Les 30 derniers jours,<br><span>en chiffres.</span></div>
-        <blockquote class="avis" id="avis" hidden><span id="avisTxt"></span><cite id="avisAut"></cite></blockquote>
-        <a class="insta" href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener">Voir Cookies An Nou &rarr;</a>
-        <div class="src">Chiffres réels du chatbot, 30 derniers jours.</div>
-      </div>
-      <div class="stats">
-        <div class="stat rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><b data-compte="messages">0</b><span>réponses envoyées</span><small>Automatiquement, sans décrocher le téléphone.</small></div>
-        <div class="stat rv" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><b data-compte="temps">0 min</b><span>de messagerie en moins</span><small id="tempsNote">Estimation : 1 minute par réponse.</small></div>
-        <div class="stat rv" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.5 14.6c2.4.1 4.2 1.6 4.7 4.4"/></svg></div><b data-compte="clients">0</b><span>clients pris en charge</span><small>Autant de contacts qui restent les vôtres.</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ POURQUOI EN DIRECT ============ -->
 <section id="direct" data-fond="blanc">
   <div class="wrap">
@@ -1000,17 +979,11 @@
         <ul><li>Le client est à vous</li><li>Vos prix, votre marge</li><li>Votre marque, votre lien</li></ul>
       </div>
     </div>
-    <div class="calc rv" id="calc">
-      <h3>Et sur un mois&nbsp;?</h3>
-      <div class="q"><label for="ca">Vos ventes en ligne par mois</label><output id="caVal">3 000 €</output></div>
-      <input type="range" id="ca" min="500" max="10000" step="250" value="3000">
-      <div class="barres">
-        <div class="br plat"><div class="lbl"><span>Commission d'une plateforme (30 %)</span><b id="cPlat">900 €</b></div><div class="tr"><div class="fill" id="fPlat" style="width:100%"></div></div></div>
-        <div class="br pf"><div class="lbl"><span>PFlow Order, abonnement fixe</span><b>49 €</b></div><div class="tr"><div class="fill" id="fPf" style="width:5%"></div></div></div>
-      </div>
-      <div class="gain">Vous gardez <b id="cGain">851 €</b> de plus chaque mois. Soit <b id="cAn">10 212 €</b> par an.</div>
+    <div class="verdict rv">
+      <p>Avec PFlow, <b>chaque euro de la commande reste à vous.</b><br>Un abonnement fixe. Zéro commission.</p>
+      <a class="cta2 cdemo liendemo" data-txt="DEMO" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg></span><span class="tx"><b>Tester la démo</b><small>Sur votre WhatsApp, en 30 secondes</small></span></a>
     </div>
-    <div class="note-com rv">Estimation. Commission des plateformes de livraison : jusqu'à 30 % selon la formule.</div>
+    <div class="note-com rv">Commission des plateformes de livraison : jusqu'à 30 % selon la formule.</div>
   </div>
 </section>
 
@@ -1058,6 +1031,32 @@
   </div>
 </section>
 
+<!-- ============ PREUVE REELLE ============ -->
+<section id="preuve" data-fond="blanc">
+  <div class="wrap">
+    <div class="st rv">Cas client</div>
+    <h2 class="rv" style="max-width:none">Déjà en service <span class="p">chez Cookies An&nbsp;Nou.</span></h2>
+    <div class="preuve">
+      <div class="client-c rv">
+        <div class="halo p"></div>
+        <div class="id">
+          <div class="lg"><img src="images/logo-cookiesannou.png" alt="" onerror="this.remove()">CA</div>
+          <div><div class="nm">Cookies An Nou</div><div class="tg">Client PFlow Order</div></div>
+        </div>
+        <div class="per">Les 30 derniers jours,<br><span>en chiffres.</span></div>
+        <blockquote class="avis" id="avis" hidden><span id="avisTxt"></span><cite id="avisAut"></cite></blockquote>
+        <a class="insta" href="https://www.instagram.com/cookiesannou/" target="_blank" rel="noopener">Voir Cookies An Nou &rarr;</a>
+        <div class="src">Chiffres réels du chatbot, 30 derniers jours.</div>
+      </div>
+      <div class="stats">
+        <div class="stat rv"><div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><b data-compte="messages">0</b><span>réponses envoyées</span><small>Automatiquement, sans décrocher le téléphone.</small></div>
+        <div class="stat rv" style="--d:.08s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><b data-compte="temps">0 min</b><span>de messagerie en moins</span><small id="tempsNote">Estimation : 1 minute par réponse.</small></div>
+        <div class="stat rv" style="--d:.16s"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><circle cx="17" cy="9.5" r="2.5"/><path d="M15.5 14.6c2.4.1 4.2 1.6 4.7 4.4"/></svg></div><b data-compte="clients">0</b><span>clients pris en charge</span><small>Autant de contacts qui restent les vôtres.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ TARIFS ============ -->
 <section id="tarifs" data-fond="blanc">
   <div class="wrap">
@@ -1084,7 +1083,7 @@
         <div class="fn">Croissance</div>
         <div class="fd">Plus de paniers validés, plus d'avis Google.</div>
         <div class="fp">69 &euro;<small>/ mois</small><s>97 &euro;</s></div>
-        <div class="fx">28 &euro; de moins qu'à la carte</div>
+        <div class="fx">Au lieu de 97 &euro; en options séparées</div>
         <ul>
           <li class="plus">Tout le Socle</li>
           <li>Paniers oubliés relancés<small>Le client reçoit un rappel et finit sa commande.</small></li>
@@ -1098,12 +1097,12 @@
         <div class="fn">Tout compris</div>
         <div class="fd">Vos clients reviennent, et vous trouvent partout.</div>
         <div class="fp">99 &euro;<small>/ mois</small><s>125 &euro;</s></div>
-        <div class="fx">+ 239 &euro; de création offerts</div>
+        <div class="fx">Au lieu de 125 &euro; en options séparées</div>
         <ul>
           <li class="plus">Tout Croissance</li>
           <li>Programme de fidélité<small>Chaque commande rapproche le client de sa récompense.</small></li>
-          <li>Commandes depuis Instagram et Facebook <em>Offert</em><small>PFlow répond en messages privés et envoie votre menu.</small></li>
-          <li>Votre site internet, trouvable sur Google <em>Offert</em><small>Une vitrine créée depuis votre menu, avec le bouton Commander.</small></li>
+          <li>Commandes depuis Instagram et Facebook <em>Sans frais de mise en place</em><small>PFlow répond en messages privés et envoie votre menu.</small></li>
+          <li>Votre site internet, trouvable sur Google <em>Création incluse</em><small>Une vitrine créée depuis votre menu, avec le bouton Commander.</small></li>
         </ul>
         <div class="nouv">
           <div class="nt">Inclus dès leur sortie</div>
@@ -1215,9 +1214,9 @@
 poseLogos();
 (function(){
   /* ================= REGLAGES ================= */
-  var NUMERO_CONTACT="590691266853"; /* TON numero perso : "Commencer maintenant", offre Fondateur, questions */
+  var NUMERO_CONTACT="590690938108"; /* TON numero perso : "Commencer maintenant", offre Fondateur, questions */
   var NUMERO_DEMO="590691266853";    /* numero WhatsApp du BOT de demo (UChat) : tous les boutons "Tester la demo" */
-  var MOT_DEMO="DEMO";               /* message pre-rempli qui declenche le parcours de demo dans le bot */
+  var MOT_DEMO="Bonjour, je souhaite commander";               /* message pre-rempli qui declenche le parcours de demo dans le bot */
   var PLACES_TOTAL=10;       /* nombre de places Fondateur */
   var PLACES_PRISES=1;       /* A METTRE A JOUR a chaque nouveau client (Cookies An Nou = 1) */
   /* chiffres REELS de la section "Ca tourne deja" (stats UChat de Cookies An Nou, 30 derniers jours) */

@@ -1,31 +1,8 @@
-PFLOW ORDER, SITE V17 : FIDELITE A 19 EUROS + SITE EN REGLE
-===========================================================
+PFLOW ORDER, SITE V19 : TUNNEL DE VENTE
+=======================================
+site/index.html -> remplace l existant (seul fichier modifie).
 
-OU POSER LES FICHIERS (dossier site/ du repo)
----------------------------------------------
-site/index.html               -> remplace
-site/cgv.html                 -> remplace
-site/confidentialite.html     -> remplace
-site/mentions-legales.html    -> remplace
-site/infos-legales.js         -> NOUVEAU (a remplir, voir plus bas)
-site/fonts/fredoka.woff2      -> NOUVEAU (creer le dossier fonts dans site/)
-site/fonts/manrope.woff2      -> NOUVEAU
-
-CE QUI CHANGE
--------------
-- Fidelite : 19 euros par mois a la carte (site, FAQ, CGV). Tout compris : 125 euros barre
-  (49 + 29 + 19 + 19 + 9).
-- Polices hebergees sur le site : plus aucun appel a Google Fonts (recommande par la CNIL,
-  et le site charge plus vite).
-- Toutes les infos legales de PFlow sont dans UN SEUL fichier, infos-legales.js. On le
-  remplit une fois : les mentions legales, la confidentialite et les CGV se completent
-  toutes seules. Tant qu'un champ est vide, la page montre une case jaune.
-- Confidentialite : liste complete des prestataires (WhatsApp, UChat, Vercel, Stripe,
-  Meta pour Instagram/Messenger, Uber Direct, Supabase, OpenAI) et donnees de fidelite.
-
-REMPLIR infos-legales.js (dans GitHub : ouvrir le fichier, crayon, ecrire entre les
-guillemets, Commit changes)
----------------------------------------------------------------------------------------
-editeur, forme, adresse, siret, immatriculation, tva, email, telephone, directeur,
-prix, paiementMiseEnPlace, moyenPaiement, tribunal. Des exemples sont ecrits a cote
-de chaque ligne.
+Ordre : promesse > probleme > solution > pourquoi en direct > demo > preuve client > prix > questions > appel final.
+- Preuve Cookies An Nou deplacee juste avant les prix.
+- Calculateur retire : le duel 17,50 / 25,00 euros + une phrase + bouton Tester la demo.
+- Prix : "Au lieu de 97 / 125 euros en options separees", "Creation incluse", "Sans frais de mise en place" (plus de "239 euros offerts").
