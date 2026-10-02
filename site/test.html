@@ -388,6 +388,21 @@
   }
   .tap-info{display:none;}
 
+  /* ===== MOBILE : le telephone reste fixe, les ecrans changent au scroll ===== */
+  .legende-tel,.points-tel{display:none;}
+  @media(max-width:700px){
+    html body #solution .histoire{display:block;height:250vh;margin-top:22px;}
+    html body #solution .histoire .tel-fixe{display:flex !important;position:sticky;top:72px;flex-direction:column;align-items:center;gap:14px;opacity:1;transform:none;}
+    html body #solution .tel-fixe .iphone{width:min(230px,58vw);}
+    html body #solution .etapes-liste,html body #solution .dots{display:none !important;}
+    html body .legende-tel{display:flex;align-items:center;gap:10px;font-family:var(--tit);font-weight:700;font-size:1.2rem;color:var(--fg);min-height:34px;transition:opacity .25s ease;}
+    html body .legende-tel i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+    html body .legende-tel.change{opacity:0;}
+    html body .points-tel{display:flex;gap:6px;}
+    html body .points-tel b{width:7px;height:7px;border-radius:999px;background:var(--ligne);transition:width .3s ease,background .3s ease;}
+    html body .points-tel b.on{width:22px;background:var(--pink);}
+  }
+
   /* nav */
   nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
   nav.colle{border-bottom-color:var(--rule);box-shadow:0 8px 30px rgba(16,27,77,.08);}
@@ -1620,7 +1635,7 @@ poseLogos();
     pas.forEach(function(p){iop.observe(p);});
   }else{
     /* mobile : on glisse les cartes, l'ecran du telephone suit ; defilement auto tant qu'on ne touche pas */
-    var iom=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)montreTout(pas.indexOf(e.target));});},{root:liste,threshold:.6});
+    var iom=new IntersectionObserver(function(){},{root:liste});
     pas.forEach(function(p){iom.observe(p);});
     function va(k){liste.scrollTo({left:pas[k].offsetLeft-liste.offsetLeft-20,behavior:reduced?"auto":"smooth"});}
     dots.forEach(function(d,k){d.addEventListener("click",function(){stopAuto();va(k);});});
@@ -1636,24 +1651,24 @@ poseLogos();
     }
   }
 
-  /* ---- TEST mobile : le telephone fait defiler les 4 etapes, la legende suit ---- */
+  /* ---- mobile : les ecrans du telephone suivent le scroll ---- */
   if(window.matchMedia("(max-width:700px)").matches){
-    var lt=document.getElementById("legendeTel"),pt=[].slice.call(document.querySelectorAll("#pointsTel b"));
+    var hist=document.querySelector("#solution .histoire"),lt=document.getElementById("legendeTel"),pt=[].slice.call(document.querySelectorAll("#pointsTel b"));
     var titres=[].slice.call(document.querySelectorAll(".pas h3")).map(function(h){return h.textContent;});
-    var etape=0,tick=null;
-    function montreEtape(k){
+    var etapeVue=-1,attenteTel=false;
+    function etapeTel(){
+      attenteTel=false;
+      var r=hist.getBoundingClientRect(),course=r.height-window.innerHeight*.7;
+      var p=Math.min(Math.max((window.innerHeight*.15-r.top)/course,0),.999);
+      var k=Math.floor(p*4);
+      if(k===etapeVue)return;etapeVue=k;
       ecrans.forEach(function(e){e.classList.toggle("on",parseInt(e.getAttribute("data-pas"),10)===k);});
       pt.forEach(function(b,i){b.classList.toggle("on",i===k);});
       lt.classList.add("change");
-      setTimeout(function(){lt.innerHTML="<i>"+(k+1)+"</i><span>"+titres[k]+"</span>";lt.classList.remove("change");},250);
+      setTimeout(function(){lt.innerHTML="<i>"+(k+1)+"</i><span>"+titres[k]+"</span>";lt.classList.remove("change");},180);
     }
-    if(reduced){montreEtape(0);}
-    else{
-      new IntersectionObserver(function(es){
-        if(es[0].isIntersecting&&!tick){tick=setInterval(function(){etape=(etape+1)%4;montreEtape(etape);},2600);}
-        else if(!es[0].isIntersecting&&tick){clearInterval(tick);tick=null;}
-      },{threshold:.4}).observe(document.getElementById("telSolution"));
-    }
+    window.addEventListener("scroll",function(){if(!attenteTel){attenteTel=true;requestAnimationFrame(etapeTel);}},{passive:true});
+    etapeTel();
   }
 
   /* ---- demo ---- */

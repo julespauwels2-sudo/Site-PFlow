@@ -1,4 +1,6 @@
-PFLOW ORDER : CORRECTIF + TEST MOBILE MINIMAL v2
-================================================
-site/index.html -> remplace (corrige le bug "Plateforme : vous touchez 25 euros" sur mobile).
-site/test.html  -> remplace (version minimale, a voir sur pflow.fr/test.html, sur telephone).
+PFLOW ORDER : TELEPHONE QUI SUIT LE SCROLL (MOBILE)
+===================================================
+site/index.html -> remplace
+site/test.html  -> remplace
+Sur telephone, section "PFlow repond a votre place" : le telephone reste fixe et ses 4 ecrans changent au scroll.
+Le site ordinateur ne change pas.
