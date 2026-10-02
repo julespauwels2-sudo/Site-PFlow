@@ -201,6 +201,8 @@
   .verdict{margin:40px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;}
   .verdict p{font-family:var(--tit);font-weight:600;font-size:clamp(1.35rem,2.6vw,1.9rem);line-height:1.25;}
   .verdict p b{color:var(--pink);font-weight:700;}
+  .options-plie>summary{list-style:none;}
+  @media(min-width:701px){.options-plie>summary{display:none;}}
   /* ===== DEMO MOBILE ===== */
   .demo-mob,.mob-only{display:none;}
   .demo-mob{background:#fff;border:1px solid var(--rule);border-radius:var(--r);box-shadow:var(--ombre);padding:22px 20px;}
@@ -753,6 +755,57 @@
     .final h2{font-size:2.2rem;}
     .final .ctas{flex-direction:column;align-items:stretch;}
     .final .btn{justify-content:center;}
+
+    /* ===== MOBILE SOBRE : l'essentiel seulement ===== */
+    .ruban{display:none;}
+    nav{top:0;}
+    body{padding-top:62px;}
+    html{scroll-padding-top:70px;}
+    body.sans-ruban{padding-top:62px;}
+    nav .droite .btn{display:none;}
+    .menu-mob{padding-top:90px;}
+    .halo,.bulle{display:none;}
+    section{padding:52px 0;}
+    h2{font-size:2rem;}
+    .lead{font-size:.95rem;}
+    /* hero : titre, une phrase, un bouton, le telephone */
+    .hero{padding:18px 0 0;}
+    .hero h1{font-size:clamp(2.2rem,10.5vw,2.8rem);}
+    .hero .cta2.go{display:none;}
+    .pills,.adopte{display:none !important;}
+    .scene{height:360px;margin-top:4px;}
+    .recu{display:none;}
+    .bandeau{display:none;}
+    /* probleme : le titre et une seule rangee de messages */
+    .chaos .rang.inv,.chiffres{display:none !important;}
+    .chaos{margin-top:24px;}
+    /* solution : telephone plus petit */
+    .tel-fixe .iphone,.iphone{width:210px;}
+    .pas p{display:none;}
+    .pas{padding:14px 16px;}
+    /* pourquoi en direct : le chiffre, sans les listes */
+    .cote ul,.cote .cmd25,.note-com,.verdict .cta2{display:none !important;}
+    .verdict{margin-top:20px;}
+    .verdict p{font-size:1.2rem;}
+    /* demo : le bouton du bas suffit */
+    #demo{display:none;}
+    /* preuve : les 3 chiffres */
+    .client-c .per,.client-c a.insta{display:none;}
+    .client-c{padding:16px 18px;}
+    .stat small{display:none;}
+    .stat{padding:12px 14px;}
+    .stat b{font-size:1.8rem;}
+    /* prix */
+    .forfait li small,.forfait .gain-f{display:none;}
+    .options-plie{margin-top:22px;border:1px solid var(--rule);border-radius:18px;background:#fff;padding:0 16px;color:var(--navy);}
+    .options-plie>summary{padding:16px 0;font-size:.95rem;}
+    .options-plie .optitre{margin:4px 0 12px;}
+    .options-plie .optitre p{display:none;}
+    .options-plie .prochain{margin-bottom:16px;}
+    .ac span{display:none;}
+    /* final : le titre et un bouton */
+    .final img,.final .btn.blanc,.final .rep{display:none;}
+    .final .ctas{margin-top:6px;}
   }
   @media(prefers-reduced-motion:reduce){
     .rv,.ecr,.pas,.m,.recu{opacity:1;transform:none;transition:none;}
@@ -1134,6 +1187,8 @@
       </div>
     </div>
 
+    <details class="options-plie" id="optionsPlie" open>
+      <summary>Voir les options à la carte</summary>
     <div class="optitre rv">
       <h3>À la carte</h3>
       <p>Juste une option en plus du Socle&nbsp;? Ajoutez-la quand vous voulez.</p>
@@ -1152,6 +1207,7 @@
         <div class="ac"><div><b>Livraison déléguée</b><span>Un coursier Uber Direct livre pour vous. Client et encaissement restent à vous.</span></div><em>150 &euro;<small>+ 39 &euro; / mois</small></em></div>
       </div>
     </div>
+    </details>
     <div class="tarifnote rv">Sans engagement, résiliable à tout moment. Les frais du prestataire de paiement en ligne restent à la charge du restaurant.</div>
   </div>
 </section>
@@ -1260,6 +1316,7 @@ poseLogos();
     a.href="https://wa.me/"+NUMERO_DEMO+"?text="+encodeURIComponent(MOT_DEMO);
     a.target="_blank";a.rel="noopener";
   });
+  var op=document.getElementById("optionsPlie");if(op&&window.matchMedia("(max-width:700px)").matches)op.removeAttribute("open");
   var an=document.getElementById("annee");if(an)an.textContent=new Date().getFullYear();
 
   /* ---- menu mobile ---- */

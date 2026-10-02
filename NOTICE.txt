@@ -1,8 +1,3 @@
-PFLOW ORDER, SITE V19 : TUNNEL DE VENTE
-=======================================
-site/index.html -> remplace l existant (seul fichier modifie).
-
-Ordre : promesse > probleme > solution > pourquoi en direct > demo > preuve client > prix > questions > appel final.
-- Preuve Cookies An Nou deplacee juste avant les prix.
-- Calculateur retire : le duel 17,50 / 25,00 euros + une phrase + bouton Tester la demo.
-- Prix : "Au lieu de 97 / 125 euros en options separees", "Creation incluse", "Sans frais de mise en place" (plus de "239 euros offerts").
+PFLOW ORDER, SITE V20 : MOBILE SOBRE
+====================================
+site/index.html -> remplace l existant (seul fichier modifie). Le site ordinateur ne change pas.
