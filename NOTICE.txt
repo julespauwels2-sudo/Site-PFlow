@@ -1,5 +1,4 @@
-PFLOW ORDER, TEST MOBILE MINIMAL
-================================
-site/test.html -> NOUVEAU fichier, a poser a cote de index.html.
-Visible sur pflow.fr/test.html. Le vrai site (index.html) ne change pas.
-La page test est cachee de Google (noindex). A supprimer apres le test, ou a renommer en index.html si tu la gardes.
+PFLOW ORDER : CORRECTIF + TEST MOBILE MINIMAL v2
+================================================
+site/index.html -> remplace (corrige le bug "Plateforme : vous touchez 25 euros" sur mobile).
+site/test.html  -> remplace (version minimale, a voir sur pflow.fr/test.html, sur telephone).

@@ -1065,7 +1065,7 @@
         <div class="et">Plateforme <small>type Uber Eats</small></div>
         <div class="cmd25">Commande de <b>25,00 &euro;</b></div>
         <div class="rail2"><div class="vous"></div><div class="com">-30 %</div></div>
-        <div class="touche">Vous touchez<b id="touchePlat">25,00 &euro;</b></div>
+        <div class="touche">Vous touchez<b id="touchePlat">17,50 &euro;</b></div>
         <ul><li>Le client est à la plateforme</li><li>Vos prix gonflés</li><li>Noyé parmi 100 restos</li></ul>
       </div>
       <div class="vs2 rv">VS</div>
@@ -1552,13 +1552,13 @@ poseLogos();
     pas.forEach(function(p){iom.observe(p);});
     function va(k){liste.scrollTo({left:pas[k].offsetLeft-liste.offsetLeft-20,behavior:reduced?"auto":"smooth"});}
     dots.forEach(function(d,k){d.addEventListener("click",function(){stopAuto();va(k);});});
-    var auto=null,touche=false,courant=0;
-    function stopAuto(){touche=true;if(auto){clearInterval(auto);auto=null;}}
+    var auto=null,doigt=false,courant=0;
+    function stopAuto(){doigt=true;if(auto){clearInterval(auto);auto=null;}}
     liste.addEventListener("touchstart",stopAuto,{passive:true});
     liste.addEventListener("pointerdown",stopAuto);
     if(!reduced){
       new IntersectionObserver(function(es){
-        if(es[0].isIntersecting&&!auto&&!touche){auto=setInterval(function(){courant=(pas.findIndex(function(p){return p.classList.contains("on");})+1)%pas.length;va(courant);},3200);}
+        if(es[0].isIntersecting&&!auto&&!doigt){auto=setInterval(function(){courant=(pas.findIndex(function(p){return p.classList.contains("on");})+1)%pas.length;va(courant);},3200);}
         else if(!es[0].isIntersecting&&auto){clearInterval(auto);auto=null;}
       },{threshold:.5}).observe(document.getElementById("telSolution"));
     }

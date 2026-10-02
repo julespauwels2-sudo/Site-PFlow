@@ -349,6 +349,45 @@
     .faqgrid h2{margin-bottom:6px;}
   }
 
+
+  /* ===== TEST v2 : VRAIMENT MINIMAL ===== */
+  @media(max-width:700px){
+    /* pourquoi en direct : nom + montant, rien d'autre */
+    html body .cote .et small,html body .cote .touche{font-size:0;}
+    html body .cote .touche b{font-size:1.7rem;}
+    /* prix : une seule carte, 3 lignes */
+    html body #tarifs h2{margin-bottom:18px;}
+    html body .forfaits{gap:0;padding:0;background:#fff;border:1px solid var(--rule);border-radius:20px;overflow:hidden;}
+    html body .forfait,html body .forfait.top{background:#fff;color:var(--navy);border:none;border-radius:0;box-shadow:none;padding:16px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;cursor:pointer;}
+    html body .forfait+.forfait{border-top:1px solid var(--rule);}
+    html body .forfait.top{box-shadow:inset 4px 0 0 var(--pink);}
+    html body .forfait .reco,html body .forfait .fd,html body .forfait .fx,html body .forfait .fp s,html body .forfait .btn,html body .forfait .voir-detail{display:none !important;}
+    html body .forfait .fn{font-size:1.15rem;}
+    html body .forfait .fp{margin:0;font-size:1.6rem;justify-content:flex-end;}
+    html body .forfait .fp small{font-size:.75rem;}
+    html body .forfait.top .fp small{color:var(--muted);}
+    html body .forfait.ouvert ul{grid-column:1/-1;margin:12px 0 2px;}
+    html body .forfait.top li.plus::before{background:var(--navy);color:#fff;}
+    html body .forfait.top li em{color:#0E8F4B;background:rgba(34,197,94,.12);}
+    html body .forfait.ouvert .nouv{display:none !important;}
+    html body .tap-info{display:block;text-align:center;font-size:.74rem;color:var(--fg-soft);margin-top:10px;}
+    /* offre fondateur : une ligne */
+    html body .install{margin-top:14px;}
+    html body .install .fondateur{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px;}
+    html body .install .fondateur>div:nth-child(3),html body .install .lab,html body .install .jauge,html body .install .d{display:none !important;}
+    html body .install .badge{position:static;order:-1;}
+    html body .install .p{font-size:1.6rem;}
+    html body .install .barre-prix{font-size:1rem;}
+    html body .install .fondateur .btn{display:none;}
+    html body .options-plie,html body .tarifnote{display:none !important;}
+    /* questions : retirees sur mobile (WhatsApp repond) */
+    html body #faq,html body .menu-mob a[href="#faq"]{display:none !important;}
+    /* preuve */
+    html body .client-c{padding:14px 18px;}
+    html body .stat span{font-size:.68rem;}
+  }
+  .tap-info{display:none;}
+
   /* nav */
   nav{position:fixed;top:40px;left:0;right:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease;}
   nav.colle{border-bottom-color:var(--rule);box-shadow:0 8px 30px rgba(16,27,77,.08);}
@@ -1097,7 +1136,7 @@
         <div class="et">Plateforme <small>type Uber Eats</small></div>
         <div class="cmd25">Commande de <b>25,00 &euro;</b></div>
         <div class="rail2"><div class="vous"></div><div class="com">-30 %</div></div>
-        <div class="touche">Vous touchez<b id="touchePlat">25,00 &euro;</b></div>
+        <div class="touche">Vous touchez<b id="touchePlat">17,50 &euro;</b></div>
         <ul><li>Le client est à la plateforme</li><li>Vos prix gonflés</li><li>Noyé parmi 100 restos</li></ul>
       </div>
       <div class="vs2 rv">VS</div>
@@ -1242,6 +1281,7 @@
         <a class="btn pink lienwa" data-txt="Bonjour PFlow, la formule Tout compris à 99 euros par mois m'intéresse pour mon établissement." href="#">Choisir Tout compris &rarr;</a>
       </div>
     </div>
+    <div class="tap-info">Touchez une formule pour voir ce qui est inclus</div>
     <div class="dots" id="dotsF"><button type="button" class="on" aria-label="Socle"></button><button type="button" aria-label="Croissance"></button><button type="button" aria-label="Tout compris"></button></div>
 
     <div class="install rv">
@@ -1397,7 +1437,7 @@ poseLogos();
     document.querySelectorAll(".forfait").forEach(function(f){
       var b=document.createElement("button");b.type="button";b.className="voir-detail";b.textContent="Voir ce qui est inclus";
       var cta=f.querySelector(".btn");f.insertBefore(b,cta);
-      b.addEventListener("click",function(){f.classList.toggle("ouvert");});
+      f.addEventListener("click",function(ev){if(ev.target.closest(".btn"))return;f.classList.toggle("ouvert");});
     });
   }
   var op=document.getElementById("optionsPlie");if(op&&window.matchMedia("(max-width:700px)").matches)op.removeAttribute("open");
@@ -1584,13 +1624,13 @@ poseLogos();
     pas.forEach(function(p){iom.observe(p);});
     function va(k){liste.scrollTo({left:pas[k].offsetLeft-liste.offsetLeft-20,behavior:reduced?"auto":"smooth"});}
     dots.forEach(function(d,k){d.addEventListener("click",function(){stopAuto();va(k);});});
-    var auto=null,touche=false,courant=0;
-    function stopAuto(){touche=true;if(auto){clearInterval(auto);auto=null;}}
+    var auto=null,doigt=false,courant=0;
+    function stopAuto(){doigt=true;if(auto){clearInterval(auto);auto=null;}}
     liste.addEventListener("touchstart",stopAuto,{passive:true});
     liste.addEventListener("pointerdown",stopAuto);
     if(!reduced){
       new IntersectionObserver(function(es){
-        if(es[0].isIntersecting&&!auto&&!touche){auto=setInterval(function(){courant=(pas.findIndex(function(p){return p.classList.contains("on");})+1)%pas.length;va(courant);},3200);}
+        if(es[0].isIntersecting&&!auto&&!doigt){auto=setInterval(function(){courant=(pas.findIndex(function(p){return p.classList.contains("on");})+1)%pas.length;va(courant);},3200);}
         else if(!es[0].isIntersecting&&auto){clearInterval(auto);auto=null;}
       },{threshold:.5}).observe(document.getElementById("telSolution"));
     }
