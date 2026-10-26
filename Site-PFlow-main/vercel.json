@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/reviews",
+      "destination": "https://pflow-automation.julespls.chatgpt.site/reviews"
+    },
+    {
+      "source": "/reviews/:path*",
+      "destination": "https://pflow-automation.julespls.chatgpt.site/reviews/:path*"
+    },
+    {
+      "source": "/r/:path*",
+      "destination": "https://pflow-automation.julespls.chatgpt.site/r/:path*"
+    }
+  ]
+}
