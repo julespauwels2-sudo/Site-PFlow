@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande en ligne pour restaurant en Guadeloupe | PFlow Order</title>
+<meta name="description" content="Snacks, bokits, pizzerias, food trucks en Guadeloupe : prenez vos commandes en ligne et sur WhatsApp, sans commission. Solution locale basée au Gosier, dès 49 €/mois.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.pflow.fr/commande-en-ligne-restaurant-guadeloupe">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="PFlow Order">
+<meta property="og:title" content="Commande en ligne pour restaurant en Guadeloupe | PFlow Order">
+<meta property="og:description" content="Snacks, bokits, pizzerias, food trucks en Guadeloupe : prenez vos commandes en ligne et sur WhatsApp, sans commission. Solution locale basée au Gosier, dès 49 €/mois.">
+<meta property="og:url" content="https://www.pflow.fr/commande-en-ligne-restaurant-guadeloupe">
+<meta property="og:image" content="https://www.pflow.fr/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F8F7FB">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/fredoka.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fredoka';src:url('/fonts/fredoka.woff2') format('woff2');font-weight:300 700;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('/fonts/manrope.woff2') format('woff2');font-weight:200 800;font-display:swap;}
+:root{--navy:#101B4D;--navy2:#1B2A6B;--pink:#FF4FB5;--pink2:#FF7CCB;--cyan:#74DDFB;--blue:#2A8BFF;--page:#F8F7FB;--muted:#5E6690;--ligne:rgba(16,27,77,.12);--wa:#22C55E;--tit:'Fredoka',system-ui,sans-serif;--txt:'Manrope',system-ui,sans-serif;--ombre:0 24px 60px rgba(16,27,77,.14);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--page);color:var(--navy);font-family:var(--txt);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;}
+img{display:block;max-width:100%;height:auto;}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+h1,h2,h3{font-family:var(--tit);font-weight:700;line-height:1.08;letter-spacing:-.01em;}
+nav{position:sticky;top:0;z-index:20;background:rgba(248,247,251,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ligne);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px;}
+nav .logo img{height:50px;width:auto;}
+nav .links{display:flex;gap:26px;font-weight:700;font-size:.95rem;}
+nav .links a{text-decoration:none;color:var(--muted);}
+nav .links a:hover{color:var(--pink);}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;border-radius:999px;padding:14px 26px;font-size:.95rem;transition:transform .2s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn.pink{background:linear-gradient(180deg,#FF74C6,var(--pink) 55%,#F03CA5);color:#fff;box-shadow:0 14px 30px -10px rgba(255,79,181,.6);}
+.btn.wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -12px rgba(34,197,94,.6);}
+.btn.ghost{background:#fff;color:var(--navy);border:1px solid var(--ligne);}
+.btn.blanc{background:#fff;color:var(--navy);}
+.btn svg{width:18px;height:18px;fill:currentColor;}
+.fil{font-size:.85rem;color:var(--muted);margin-bottom:22px;}
+.fil a{text-decoration:none;}.fil a:hover{color:var(--pink);}
+.hero{position:relative;padding:64px 0 72px;overflow:hidden;}
+.hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--cyan);filter:blur(110px);opacity:.32;top:-220px;left:-160px;pointer-events:none;}
+.hero::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--pink2);filter:blur(110px);opacity:.25;bottom:-220px;right:-120px;pointer-events:none;}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);max-width:17ch;}
+.hero .lead{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:52ch;}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+.hero .mini{margin-top:18px;font-size:.88rem;color:var(--muted);}
+.carte{background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,255,255,.78));border:1px solid #fff;box-shadow:var(--ombre);border-radius:28px;padding:22px;}
+.chat{background:#EFE9E1;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:.93rem;}
+.chat .tete{display:flex;align-items:center;gap:10px;margin:-16px -16px 6px;padding:12px 16px;background:#075E54;color:#fff;border-radius:20px 20px 0 0;font-weight:700;}
+.chat .tete i{width:30px;height:30px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-style:normal;font-size:.75rem;}
+.chat .tete small{display:block;font-weight:500;opacity:.8;font-size:.72rem;}
+.m{max-width:84%;padding:9px 13px;border-radius:14px;line-height:1.4;}
+.m.in{background:#fff;align-self:flex-start;border-top-left-radius:4px;}
+.m.out{background:#D9FDD3;align-self:flex-end;border-top-right-radius:4px;}
+.m .lk{display:block;margin-top:6px;color:#027EB5;font-weight:700;}
+.m b{font-weight:800;}
+.recu{margin-top:14px;padding:14px 16px;border-radius:16px;background:var(--navy);color:#fff;font-size:.9rem;}
+.recu small{display:block;color:var(--cyan);font-weight:700;font-size:.75rem;margin-bottom:2px;}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cmp div{border-radius:18px;padding:18px;}
+.cmp .plat{background:#fff;border:1px solid var(--ligne);}
+.cmp .pf{background:var(--navy);color:#fff;}
+.cmp small{display:block;font-size:.78rem;font-weight:700;opacity:.75;margin-bottom:8px;}
+.cmp b{display:block;font-family:var(--tit);font-size:2.2rem;line-height:1;}
+.cmp .plat b{color:#E5484D;}
+.cmp .pf b{color:var(--cyan);}
+.cmp span{display:block;font-size:.82rem;margin-top:8px;opacity:.8;}
+main section{padding:72px 0;border-top:1px solid var(--ligne);}
+.texte{max-width:68ch;}
+.texte.large{max-width:none;}
+.texte.large>p{max-width:68ch;}
+.texte h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:18px;max-width:22ch;}
+.texte h3{font-size:1.25rem;margin:26px 0 8px;}
+.texte p{margin-bottom:14px;}
+.texte p:last-child{margin-bottom:0;}
+.texte ul{margin:6px 0 14px 1.2em;}
+.texte li{margin-bottom:6px;}
+.texte strong{font-weight:800;}
+.texte a{color:var(--blue);font-weight:700;}
+.etapes{list-style:none;counter-reset:e;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
+.etapes li{counter-increment:e;background:#fff;border:1px solid var(--ligne);border-radius:20px;padding:22px 20px;}
+.etapes li::before{content:counter(e);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;font-family:var(--tit);font-weight:700;margin-bottom:12px;}
+.etapes b{display:block;font-family:var(--tit);font-size:1.12rem;margin-bottom:4px;}
+.etapes p{color:var(--muted);font-size:.95rem;}
+.tableau{overflow-x:auto;margin-top:26px;}
+table{width:100%;min-width:560px;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--ligne);border-radius:20px;overflow:hidden;font-size:.97rem;}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--ligne);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+thead th{background:var(--navy);color:#fff;font-family:var(--tit);font-weight:600;font-size:1.02rem;}
+thead th:last-child{background:var(--pink);}
+td:first-child{font-weight:700;width:30%;}
+.calc{margin-top:28px;background:#fff;border:1px solid var(--ligne);border-radius:24px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;}
+.calc label{display:block;font-weight:700;font-size:.92rem;margin-bottom:14px;}
+.calc label span{float:right;color:var(--pink);font-family:var(--tit);font-size:1.05rem;}
+.calc input{width:100%;accent-color:var(--pink);margin-top:8px;}
+.calc .res{background:var(--navy);color:#fff;border-radius:20px;padding:22px;}
+.calc .res small{display:block;color:var(--cyan);font-weight:700;font-size:.8rem;}
+.calc .res b{display:block;font-family:var(--tit);font-size:2.6rem;line-height:1.1;margin:4px 0 8px;}
+.calc .res p{font-size:.9rem;opacity:.85;}
+.faq{max-width:780px;}
+.faq h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:20px;}
+details{background:#fff;border:1px solid var(--ligne);border-radius:18px;margin-bottom:10px;}
+summary{cursor:pointer;padding:18px 22px;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:16px;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";color:var(--pink);font-family:var(--tit);font-size:1.4rem;line-height:1;}
+details[open] summary::after{content:"–";}
+details p{padding:0 22px 20px;color:var(--muted);}
+.final{background:var(--navy);color:#fff;padding:80px 0;text-align:center;border-top:none!important;position:relative;overflow:hidden;}
+.final img{height:64px;width:auto;margin:0 auto 22px;}
+.final h2{font-size:clamp(1.8rem,3.4vw,2.6rem);max-width:22ch;margin:0 auto 14px;}
+.final p{color:rgba(255,255,255,.75);max-width:56ch;margin:0 auto 28px;}
+.final .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+footer{background:#0A1447;color:rgba(255,255,255,.7);padding:48px 0 36px;font-size:.92rem;}
+footer .cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;}
+footer h3{font-family:var(--txt);font-size:.92rem;font-weight:800;color:#fff;margin-bottom:12px;}
+footer ul{list-style:none;}
+footer li{margin-bottom:8px;}
+footer a{text-decoration:none;}footer a:hover{color:var(--pink2);}
+footer img{height:38px;width:auto;margin-bottom:14px;}
+footer .legal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;}
+@media(max-width:900px){
+ .hero .wrap{grid-template-columns:1fr;gap:40px;}
+ .etapes{grid-template-columns:1fr 1fr;}
+ .calc{grid-template-columns:1fr;}
+ footer .cols{grid-template-columns:1fr;}
+ nav .links{display:none;}
+}
+@media(max-width:520px){
+ .etapes{grid-template-columns:1fr;}
+ nav .btn{padding:11px 18px;font-size:.88rem;}
+ nav .logo img{height:34px;}
+ main section{padding:56px 0;}
+}
+@media(prefers-reduced-motion:reduce){.btn{transition:none;}.btn:hover{transform:none;}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Commande en ligne pour restaurant en Guadeloupe | PFlow Order", "description": "Snacks, bokits, pizzerias, food trucks en Guadeloupe : prenez vos commandes en ligne et sur WhatsApp, sans commission. Solution locale basée au Gosier, dès 49 €/mois.", "url": "https://www.pflow.fr/commande-en-ligne-restaurant-guadeloupe", "inLanguage": "fr-FR", "isPartOf": {"@type": "WebSite", "name": "PFlow Order", "url": "https://www.pflow.fr/"}, "about": {"@id": "https://www.pflow.fr/#service"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.pflow.fr/"}, {"@type": "ListItem", "position": 2, "name": "Commande en ligne en Guadeloupe", "item": "https://www.pflow.fr/commande-en-ligne-restaurant-guadeloupe"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PFlow Order fonctionne-t-il partout en Guadeloupe ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. La commande se fait sur WhatsApp et sur un menu en ligne, donc elle fonctionne quelle que soit votre commune. Vous définissez vous-même vos zones de livraison."}}, {"@type": "Question", "name": "Qui est derrière PFlow Order ?", "acceptedAnswer": {"@type": "Answer", "text": "PFlow Order est une solution développée et gérée depuis Le Gosier, en Guadeloupe. Vous échangez directement avec la personne qui configure votre système."}}, {"@type": "Question", "name": "Combien ça coûte ?", "acceptedAnswer": {"@type": "Answer", "text": "Un abonnement fixe de 49, 69 ou 99 € par mois selon la formule, sans engagement et sans commission, plus une mise en place unique."}}, {"@type": "Question", "name": "Mes clients doivent-ils installer une application ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Ils vous écrivent sur WhatsApp et ouvrent votre menu dans leur navigateur."}}]}</script>
+</head>
+<body>
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="PFlow Order, accueil"><img src="/logo-pflow-order.webp" alt="PFlow Order" width="640" height="216"></a>
+    <div class="links"><a href="/#solution">Comment ça marche</a><a href="/#tarifs">Tarifs</a><a href="/#faq">Questions</a></div>
+    <a class="btn pink" href="https://wa.me/590691266853?text=Bonjour%2C%20je%20souhaite%20commander" target="_blank" rel="noopener">Tester la démo</a>
+  </div>
+</nav>
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="fil"><a href="/">Accueil</a> / Commande en ligne en Guadeloupe</p>
+      <h1>La commande en ligne pour les restaurants de Guadeloupe</h1>
+      <p class="lead">Snacks, bokits, pizzerias, food trucks : en Guadeloupe, les clients commandent déjà par WhatsApp. PFlow Order transforme ces messages en commandes complètes, sans commission.</p>
+      <div class="ctas">
+        <a class="btn wa" href="https://wa.me/590691266853?text=Bonjour%2C%20je%20souhaite%20commander" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C6.8 2.5 2.6 6.7 2.6 11.9c0 1.8.5 3.5 1.4 5L2.5 21.5l4.7-1.4c1.4.8 3 1.2 4.8 1.2 5.2 0 9.4-4.2 9.4-9.4S17.2 2.5 12 2.5zm4.6 11.3c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 2.1.9 2.5.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>Tester la démo sur WhatsApp</a>
+        <a class="btn ghost" href="/#tarifs">Voir les tarifs</a>
+      </div>
+      <p class="mini">0 % de commission. Dès 49 € par mois, sans engagement.</p>
+    </div>
+    <div class="carte"><div class="chat" aria-hidden="true"><div class="tete"><i>TB</i><div>Snack Ti Bokit<small>en ligne</small></div></div><div class="m in">Bonjour, vous avez encore des bokits poulet ?</div><div class="m out">Bonjour ! Oui, voici le menu du jour :<span class="lk">Ouvrir le menu</span></div><div class="m out">Commande <b>#057</b> confirmée : 3 bokits poulet, 2 jus maracudja. Prête à 12h30.</div></div><div class="recu"><small>Sur votre écran</small><b>Commande #057</b> · 3 bokits poulet, 2 jus · 12h30</div></div>
+  </div>
+</header>
+<section><div class="wrap"><div class="texte"><h2>Pensé pour la façon dont on commande ici</h2>
+<p>En Guadeloupe, beaucoup de commandes passent déjà par WhatsApp ou par téléphone. C'est pratique pour le client, mais pour le restaurant, ça veut dire des messages à gérer en plein service et des commandes notées à la main.</p>
+<p>PFlow Order garde ce que vos clients connaissent, c'est-à-dire WhatsApp, et ajoute ce qui manque : un menu en ligne clair, une réponse immédiate et un écran où toutes les commandes arrivent dans l'ordre.</p>
+<h3>Pour quels établissements ?</h3>
+<p>Snacks, bokits, pizzerias, burgers, tacos, pâtisseries, traiteurs, glaciers et food trucks. Si vous prenez des commandes directes, que ce soit à Pointe-à-Pitre, Baie-Mahault, au Gosier ou ailleurs sur l'archipel, le parcours s'adapte à votre menu et à votre organisation.</p></div></div></section><section><div class="wrap"><div class="texte large"><h2>Comment ça marche</h2>
+<p>Quatre étapes, sans application à installer pour vos clients.</p><ol class="etapes">
+<li><b>Il écrit</b><p>Le client envoie un message sur votre WhatsApp. PFlow répond en une seconde avec le lien de votre menu.</p></li>
+<li><b>Il choisit</b><p>Il compose son panier sur votre menu en ligne : photos, options, suppléments, retrait ou livraison.</p></li>
+<li><b>Il valide</b><p>Il reçoit un récapitulatif et un numéro de commande. Il peut payer en ligne s'il le souhaite.</p></li>
+<li><b>Vous préparez</b><p>La commande complète arrive sur votre écran. Vous la passez en préparation, puis en prête.</p></li>
+</ol></div></div></section><section><div class="wrap"><div class="texte"><h2>Une solution locale, sans commission</h2>
+<p>PFlow Order est basé au Gosier. Pas de commission sur vos ventes : un abonnement fixe dès 49 € par mois et une mise en place unique qui comprend la création de votre menu, l'installation, les tests et la formation. Les 10 premiers établissements profitent de l'offre Fondateur sur la mise en place.</p>
+<p>Cookies An Nou utilise déjà PFlow Order pour ses commandes WhatsApp.</p>
+<p>Pour aller plus loin : <a href="/commande-whatsapp-restaurant">la commande WhatsApp en détail</a>, ou <a href="/alternative-uber-eats">la comparaison avec Uber Eats</a>.</p></div></div></section>
+<section class="wrap faq" id="faq">
+  <h2>Questions fréquentes</h2>
+  <details><summary>PFlow Order fonctionne-t-il partout en Guadeloupe ?</summary><p>Oui. La commande se fait sur WhatsApp et sur un menu en ligne, donc elle fonctionne quelle que soit votre commune. Vous définissez vous-même vos zones de livraison.</p></details><details><summary>Qui est derrière PFlow Order ?</summary><p>PFlow Order est une solution développée et gérée depuis Le Gosier, en Guadeloupe. Vous échangez directement avec la personne qui configure votre système.</p></details><details><summary>Combien ça coûte ?</summary><p>Un abonnement fixe de 49, 69 ou 99 € par mois selon la formule, sans engagement et sans commission, plus une mise en place unique.</p></details><details><summary>Mes clients doivent-ils installer une application ?</summary><p>Non. Ils vous écrivent sur WhatsApp et ouvrent votre menu dans leur navigateur.</p></details>
+</section>
+<section class="final">
+  <div class="wrap">
+    <img src="/logo-pflow-order-blanc.webp" alt="" width="700" height="242">
+    <h2>Votre restaurant en Guadeloupe, en ligne cette semaine</h2>
+    <p>Envoyez le nom de votre établissement sur WhatsApp. On vous répond dans la journée avec une démo adaptée à votre menu.</p>
+    <div class="ctas">
+      <a class="btn pink" href="https://wa.me/590690938108?text=Bonjour%20PFlow%2C%20j%27ai%20un%20restaurant%20en%20Guadeloupe%20et%20je%20veux%20la%20commande%20en%20ligne." target="_blank" rel="noopener">Parler de mon restaurant</a>
+      <a class="btn blanc" href="https://wa.me/590691266853?text=Bonjour%2C%20je%20souhaite%20commander" target="_blank" rel="noopener">Tester la démo</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><img src="/logo-pflow-order-blanc.webp" alt="PFlow Order" width="700" height="242"><p>La commande en ligne et sur WhatsApp pour les restaurants, sans commission. Basé au Gosier, en Guadeloupe.</p></div>
+      <div><h3>Commande en ligne</h3><ul><li><a href="/alternative-uber-eats">Alternative à Uber Eats</a></li><li><a href="/commande-whatsapp-restaurant">Commande WhatsApp pour restaurant</a></li><li><a href="/commande-en-ligne-pizzeria">Commande en ligne pour pizzeria</a></li><li><a href="/commande-en-ligne-restaurant-guadeloupe">Commande en ligne en Guadeloupe</a></li><li><a href="/commande-en-ligne-restaurant-martinique">Commande en ligne en Martinique</a></li></ul></div>
+      <div><h3>PFlow Order</h3><ul><li><a href="/">Accueil</a></li><li><a href="/#tarifs">Tarifs</a></li><li><a href="/#faq">FAQ</a></li><li><a href="https://wa.me/590690938108?text=Bonjour%20PFlow." target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="legal">&copy; 2026 PFlow Order. Service réservé aux professionnels. <a href="/mentions-legales">Mentions légales</a> · <a href="/confidentialite">Confidentialité</a> · <a href="/cgv">CGV</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
