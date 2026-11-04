@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Teste la démo PFlow Order sur WhatsApp en 30 secondes</title>
+<meta name="description" content="Commande comme un de tes clients : écris au bot PFlow sur WhatsApp, passe ta commande, et regarde le ticket arriver chez le resto. 30 secondes, sans appli.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.pflow.fr/demo">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="PFlow Order">
+<meta property="og:title" content="Commande comme un de tes clients">
+<meta property="og:description" content="Teste la démo PFlow Order : 30 secondes, sur WhatsApp. Le ticket arrive tout seul chez le resto.">
+<meta property="og:url" content="https://www.pflow.fr/demo">
+<meta property="og:image" content="https://www.pflow.fr/og-demo.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PFlow Order : commande comme un de tes clients, 30 secondes sur WhatsApp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Commande comme un de tes clients">
+<meta name="twitter:description" content="Teste la démo PFlow Order : 30 secondes, sur WhatsApp.">
+<meta name="twitter:image" content="https://www.pflow.fr/og-demo.png">
+<meta name="theme-color" content="#0A1236">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/fredoka.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fredoka';src:url('/fonts/fredoka.woff2') format('woff2');font-weight:300 700;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('/fonts/manrope.woff2') format('woff2');font-weight:200 800;font-display:swap;}
+:root{--navy:#0A1236;--pink:#FF4FB5;--blue:#2AABFF;--creme:#F3EEE6;--cyan:#74DDFB;--txt2:rgba(243,238,230,.72);--ligne:rgba(243,238,230,.14);--tit:'Fredoka',system-ui,sans-serif;--txt:'Manrope',system-ui,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{background:radial-gradient(420px 420px at 12% -6%,rgba(42,171,255,.32),transparent 70%),radial-gradient(380px 380px at 100% 42%,rgba(255,79,181,.2),transparent 70%),var(--navy);color:var(--creme);font-family:var(--txt);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;}
+a{color:inherit;}
+img{display:block;max-width:100%;height:auto;}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:8px;}
+h1,h2{font-family:var(--tit);font-weight:700;line-height:1.05;letter-spacing:-.01em;}
+.page{position:relative;max-width:520px;margin:0 auto;padding:max(20px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom));overflow:hidden;}
+
+/* 1. le haut */
+.haut{text-align:center;padding-top:8px;}
+.haut .logo{width:164px;height:auto;margin:0 auto 26px;}
+h1{font-size:clamp(2.1rem,9.4vw,2.9rem);}
+h1 em{font-style:normal;color:var(--pink);}
+.sous{margin-top:12px;font-size:1.12rem;font-weight:700;color:var(--cyan);}
+
+/* 2. les boutons, comme sur pflow.fr */
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;font-weight:800;border-radius:999px;transition:transform .2s ease;-webkit-tap-highlight-color:transparent;}
+.btn:active{transform:scale(.98);}
+.btn.pink{width:100%;min-height:72px;margin-top:28px;padding:18px 20px;font-size:clamp(1.02rem,4.9vw,1.22rem);white-space:nowrap;color:#fff;background:linear-gradient(180deg,#FF74C6,var(--pink) 55%,#F03CA5);box-shadow:0 18px 40px -12px rgba(255,79,181,.75),inset 0 1px 0 rgba(255,255,255,.35);}
+.btn.pink svg{width:26px;height:26px;fill:currentColor;flex:none;}
+.mini{margin-top:12px;text-align:center;font-size:.88rem;color:var(--txt2);}
+.btn.ghost{display:inline-flex;padding:13px 22px;font-size:.95rem;color:var(--creme);border:1px solid var(--ligne);background:rgba(243,238,230,.04);}
+
+/* 3. les etapes et le ticket */
+.etapes{margin-top:52px;}
+.etapes ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;counter-reset:e;}
+.etapes ol>li{text-align:center;font-weight:800;font-size:.86rem;line-height:1.25;}
+.etapes ol>li>i{display:grid;place-items:center;width:52px;height:52px;margin:0 auto 9px;border-radius:16px;background:rgba(42,171,255,.14);border:1px solid rgba(116,221,251,.28);}
+.etapes ol>li:nth-child(2)>i{background:rgba(255,79,181,.14);border-color:rgba(255,79,181,.32);}
+.etapes ol>li:nth-child(3)>i{background:rgba(243,238,230,.1);border-color:rgba(243,238,230,.3);}
+.etapes ol svg{width:26px;height:26px;fill:none;stroke:var(--cyan);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.etapes ol>li:nth-child(2) svg{stroke:var(--pink);}
+.etapes ol>li:nth-child(3) svg{stroke:var(--creme);}
+.etapes ol>li>span{display:block;font-size:.7rem;font-weight:800;letter-spacing:.12em;color:var(--blue);margin-bottom:2px;}
+.imprimante{margin:30px auto 0;max-width:300px;}
+.fente{height:16px;border-radius:10px;background:#141E4A;border:1px solid var(--ligne);box-shadow:inset 0 4px 8px rgba(0,0,0,.45);}
+.sortie{overflow:hidden;margin:-8px 12px 0;padding-bottom:18px;}
+.ticket{background:var(--creme);color:var(--navy);padding:18px 18px 22px;font-size:.92rem;line-height:1.45;border-radius:0 0 6px 6px;box-shadow:0 22px 40px -18px rgba(0,0,0,.6);transform:translateY(-102%);transition:transform 1.6s cubic-bezier(.22,1,.36,1);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom/16px 8px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 6px at 8px 100%,transparent 6px,#000 6.5px) bottom/16px 8px repeat-x;}
+.ticket.sorti{transform:none;}
+.ticket .t1{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tit);font-size:1.15rem;font-weight:700;}
+.ticket .t1 small{font-family:var(--txt);font-size:.75rem;font-weight:800;color:var(--navy);background:var(--pink);border-radius:999px;padding:2px 9px;}
+.ticket .wa{margin-top:2px;font-size:.78rem;font-weight:700;opacity:.65;}
+.ticket ul{list-style:none;margin:12px 0;padding:10px 0;border-top:1.5px dashed rgba(10,18,54,.25);border-bottom:1.5px dashed rgba(10,18,54,.25);}
+.ticket li{display:flex;justify-content:space-between;gap:10px;font-weight:700;}
+.ticket li b{font-weight:800;}
+.ticket .tot{display:flex;justify-content:space-between;font-weight:800;}
+.ticket .heure{margin-top:8px;text-align:center;font-weight:800;color:#0B7A47;}
+
+/* 4. la preuve */
+.preuve{margin-top:46px;text-align:center;}
+.preuve h2{font-size:1.45rem;}
+.preuve h2 b{color:var(--pink);}
+.logos{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px;}
+.logos img{width:60px;height:60px;border-radius:16px;object-fit:contain;background:var(--creme);padding:6px;}
+
+/* 5 et 6 */
+.decouvrir{margin-top:40px;text-align:center;}
+.bas{margin-top:44px;padding-top:22px;border-top:1px solid var(--ligne);text-align:center;font-size:.95rem;color:var(--txt2);}
+.bas a.pro{font-weight:800;color:var(--creme);text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:4px;}
+.bas .legal{margin-top:16px;font-size:.75rem;opacity:.7;}
+.bas .legal a{text-decoration:none;}
+
+@media (min-width:700px){.page{padding-top:48px;}}
+@media (prefers-reduced-motion:reduce){.ticket{transition:none;transform:none;}.btn{transition:none;}}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<main class="page">
+
+  <!-- 1. Le haut -->
+  <header class="haut">
+    <a href="/" aria-label="PFlow Order, accueil" data-evt="logo"><img class="logo" src="/logo-pflow-order-blanc-360.webp" srcset="/logo-pflow-order-blanc-360.webp 360w, /logo-pflow-order-blanc.webp 700w" sizes="164px" alt="PFlow Order" width="360" height="124" fetchpriority="high"></a>
+    <h1>Commande comme un de <em>tes clients</em></h1>
+    <p class="sous">30 secondes, sur WhatsApp.</p>
+  </header>
+
+  <!-- 2. Le bouton principal -->
+  <a class="btn pink" id="cta-demo" data-evt="demo_test" href="https://wa.me/590690938108" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+    Tester la démo sur WhatsApp
+  </a>
+  <p class="mini">Gratuit, sans inscription. Tu joues le client.</p>
+
+  <!-- 3. Les 3 etapes et le ticket -->
+  <section class="etapes" aria-labelledby="t-etapes">
+    <h2 id="t-etapes" hidden>Comment ça marche</h2>
+    <ol>
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h6M9 14h4"/></svg></i><span>1</span>Tu écris</li>
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 10.5h10.2L20 7H6.3"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></i><span>2</span>Tu commandes</li>
+      <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></i><span>3</span>Le resto reçoit le ticket</li>
+    </ol>
+    <div class="imprimante" aria-label="Exemple de ticket reçu par le restaurant">
+      <div class="fente" aria-hidden="true"></div>
+      <div class="sortie">
+        <div class="ticket" id="ticket">
+          <div class="t1">Commande n° 37 <small>PAYÉE</small></div>
+          <div class="wa">Reçue sur WhatsApp · à emporter</div>
+          <ul>
+            <li><span><b>2</b> Bokits poulet</span><span>14,00 €</span></li>
+            <li><span><b>1</b> Jus de canne</span><span>5,00 €</span></li>
+          </ul>
+          <div class="tot"><span>Total</span><span>19,00 €</span></div>
+          <div class="heure">Prête à 20 h 40</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. La preuve -->
+  <section class="preuve">
+    <h2>Déjà utilisé par <b>5 restaurants</b> en Guadeloupe</h2>
+    <div class="logos" id="logos"></div>
+  </section>
+
+  <!-- 5. Le bouton secondaire -->
+  <div class="decouvrir"><a class="btn ghost" id="cta-pflow" data-evt="decouvrir_pflow" href="/">Découvrir PFlow</a></div>
+
+  <!-- 6. Le bas -->
+  <footer class="bas">
+    <p>Tu es restaurateur ? <a class="pro" id="cta-pro" data-evt="contact_pro" href="https://wa.me/590690938108" target="_blank" rel="noopener">Écris-moi</a></p>
+    <p class="legal">&copy; 2026 PFlow Order · <a href="/mentions-legales">Mentions légales</a> · <a href="/confidentialite">Confidentialité</a></p>
+  </footer>
+</main>
+
+<script>
+/* ==================================================================
+   A REMPLIR : le lien wa.me du bot de demo (ex. "https://wa.me/590690000000").
+   Tant qu'il est vide, le bouton ouvre la conversation pro avec « Je veux tester la démo ».
+   ================================================================== */
+var DEMO_WHATSAPP_URL = "";
+var DEMO_MESSAGE = "Bonjour, je veux tester la démo";          /* le message pré-rempli envoyé au bot */
+var PRO_WHATSAPP_URL = "https://wa.me/590690938108";           /* le WhatsApp pro de Jules (deja sur pflow.fr) */
+var PRO_MESSAGE = "Bonjour Jules, je suis restaurateur et j'ai vu la démo PFlow.";
+/* les logos clients, dans /clients/ (un fichier absent est simplement masque) */
+var CLIENTS = [
+  { fichier: "logo-1.webp", nom: "Restaurant client 1" },
+  { fichier: "logo-2.webp", nom: "Restaurant client 2" },
+  { fichier: "logo-3.webp", nom: "Restaurant client 3" },
+  { fichier: "logo-4.webp", nom: "Restaurant client 4" },
+  { fichier: "logo-5.webp", nom: "Restaurant client 5" }
+];
+
+(function () {
+  "use strict";
+  /* la source : les UTM de l'adresse, sinon Instagram reconnu par son navigateur ou son lien, sinon « site » */
+  var ici = new URLSearchParams(location.search), utm = [];
+  ici.forEach(function (v, k) { if (/^utm_/i.test(k)) utm.push([k, v]); });
+  var ua = navigator.userAgent || "", ref = document.referrer || "";
+  var source = ici.get("utm_source") || (/Instagram/i.test(ua) || /instagram\.com/i.test(ref) ? "instagram" : "site");
+
+  /* un lien wa.me : le message (+ la source, pour que le bot et le CRM sachent d'ou vient le test) et les UTM conserves */
+  function lienWa(base, message) {
+    var u;
+    try { u = new URL(base); } catch (e) { return base; }
+    var texte = (u.searchParams.get("text") || message) + " (réf : " + source + ")", q = [["text", texte]];
+    u.searchParams.forEach(function (v, k) { if (k !== "text" && !/^utm_/i.test(k)) q.push([k, v]); });
+    utm.forEach(function (p) { q.push(p); });
+    /* encodeURIComponent : des %20 et pas des « + » (WhatsApp affiche les « + » tels quels) */
+    return u.origin + u.pathname + "?" + q.map(function (p) { return encodeURIComponent(p[0]) + "=" + encodeURIComponent(p[1]); }).join("&");
+  }
+  var demo = document.getElementById("cta-demo"), pro = document.getElementById("cta-pro"), pf = document.getElementById("cta-pflow");
+  demo.href = DEMO_WHATSAPP_URL ? lienWa(DEMO_WHATSAPP_URL, DEMO_MESSAGE) : lienWa(PRO_WHATSAPP_URL, DEMO_MESSAGE);
+  pro.href = lienWa(PRO_WHATSAPP_URL, PRO_MESSAGE);
+  if (utm.length) pf.href = "/?" + utm.map(function (p) { return encodeURIComponent(p[0]) + "=" + encodeURIComponent(p[1]); }).join("&");
+
+  /* un evenement par bouton (Vercel Analytics ; ignore sans lui) */
+  document.querySelectorAll("[data-evt]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      try { window.va("event", { name: a.getAttribute("data-evt"), data: { source: source } }); } catch (e) {}
+    });
+  });
+
+  /* les logos clients */
+  var zone = document.getElementById("logos");
+  CLIENTS.forEach(function (c) {
+    var img = new Image();
+    img.width = 60; img.height = 60; img.loading = "lazy"; img.decoding = "async"; img.alt = c.nom;
+    img.onerror = function () { img.remove(); };
+    img.src = "/clients/" + c.fichier;
+    zone.appendChild(img);
+  });
+
+  /* le ticket sort de l'imprimante quand il arrive a l'ecran */
+  var t = document.getElementById("ticket");
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { t.classList.add("sorti"); return; }
+  var io = new IntersectionObserver(function (es) {
+    if (es[0].isIntersecting) { t.classList.add("sorti"); io.disconnect(); }
+  }, { threshold: 0.35, rootMargin: "0px 0px -10% 0px" });
+  io.observe(t.parentNode);
+})();
+</script>
+</body>
+</html>

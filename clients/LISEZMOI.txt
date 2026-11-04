@@ -1,0 +1,7 @@
+LOGOS CLIENTS DE LA PAGE /demo
+==============================
+Deposer ici les logos des restaurants clients, avec ces noms exacts :
+  logo-1.webp, logo-2.webp, logo-3.webp, logo-4.webp, logo-5.webp
+Format conseille : carre (240 x 240 px), WebP, fond transparent ou clair, moins de 20 Ko chacun.
+Ils s'affichent en petites vignettes creme sur la page /demo. Un fichier absent est simplement masque.
+Pour mettre le vrai nom du restaurant (texte lu par les lecteurs d'ecran), modifier la liste CLIENTS en bas de demo.html.
