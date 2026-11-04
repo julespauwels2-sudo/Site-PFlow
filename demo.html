@@ -41,7 +41,7 @@ h1,h2{font-family:var(--tit);font-weight:700;line-height:1.05;letter-spacing:-.0
 
 /* 1. le haut */
 .haut{text-align:center;padding-top:8px;}
-.haut .logo{width:164px;height:auto;margin:0 auto 26px;}
+.haut .logo{width:210px;height:auto;margin:0 auto 22px;filter:drop-shadow(0 10px 24px rgba(42,171,255,.25));}
 h1{font-size:clamp(2.1rem,9.4vw,2.9rem);}
 h1 em{font-style:normal;color:var(--pink);}
 .sous{margin-top:12px;font-size:1.12rem;font-weight:700;color:var(--cyan);}
@@ -106,7 +106,7 @@ h1 em{font-style:normal;color:var(--pink);}
 
   <!-- 1. Le haut -->
   <header class="haut">
-    <a href="/" aria-label="PFlow Order, accueil" data-evt="logo"><img class="logo" src="/logo-pflow-order-blanc-360.webp" srcset="/logo-pflow-order-blanc-360.webp 360w, /logo-pflow-order-blanc.webp 700w" sizes="164px" alt="PFlow Order" width="360" height="124" fetchpriority="high"></a>
+    <a href="/" aria-label="PFlow Order, accueil" data-evt="logo"><img class="logo" src="/logo-pflow-order-couleur-400.webp" srcset="/logo-pflow-order-couleur-400.webp 400w, /logo-pflow-order-couleur-800.webp 800w" sizes="210px" alt="PFlow Order" width="400" height="177" fetchpriority="high"></a>
     <h1>Commande comme un de <em>tes clients</em></h1>
     <p class="sous">30 secondes, sur WhatsApp.</p>
   </header>
@@ -161,10 +161,12 @@ h1 em{font-style:normal;color:var(--pink);}
 
 <script>
 /* ==================================================================
-   A REMPLIR : le lien wa.me du bot de demo (ex. "https://wa.me/590690000000").
-   Tant qu'il est vide, le bouton ouvre la conversation pro avec « Je veux tester la démo ».
+   Le lien du bot de demo (04/11). S'il est vide, le bouton ouvre la conversation pro avec « Je veux tester la démo ».
+   Son message (« Bonjour, je souhaite commander ») est garde tel quel ; la source est ajoutee a la fin
+   (« (réf : instagram) ») si AJOUTER_REF est vrai. Si le bot ne demarre plus, passer AJOUTER_REF a false.
    ================================================================== */
-var DEMO_WHATSAPP_URL = "";
+var DEMO_WHATSAPP_URL = "https://api.whatsapp.com/send/?phone=590691266853&text=Bonjour%2C+je+souhaite+commander&type=phone_number&app_absent=0";
+var AJOUTER_REF = true;
 var DEMO_MESSAGE = "Bonjour, je veux tester la démo";          /* le message pré-rempli envoyé au bot */
 var PRO_WHATSAPP_URL = "https://wa.me/590690938108";           /* le WhatsApp pro de Jules (deja sur pflow.fr) */
 var PRO_MESSAGE = "Bonjour Jules, je suis restaurateur et j'ai vu la démo PFlow.";
@@ -189,7 +191,7 @@ var CLIENTS = [
   function lienWa(base, message) {
     var u;
     try { u = new URL(base); } catch (e) { return base; }
-    var texte = (u.searchParams.get("text") || message) + " (réf : " + source + ")", q = [["text", texte]];
+    var texte = (u.searchParams.get("text") || message) + (AJOUTER_REF ? " (réf : " + source + ")" : ""), q = [["text", texte]];
     u.searchParams.forEach(function (v, k) { if (k !== "text" && !/^utm_/i.test(k)) q.push([k, v]); });
     utm.forEach(function (p) { q.push(p); });
     /* encodeURIComponent : des %20 et pas des « + » (WhatsApp affiche les « + » tels quels) */
