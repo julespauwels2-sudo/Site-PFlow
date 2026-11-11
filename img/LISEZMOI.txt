@@ -1,0 +1,15 @@
+IMAGES DU SITE PFLOW
+====================
+p-bulle-120.webp / -240 / -356 : le P bulle (mascotte), détouré automatiquement
+  depuis favicon-512.png. À REMPLACER par le vrai fichier de la charte
+  (img/charte/p-bulle.png du CRM), exporté en WebP aux mêmes largeurs
+  (120, 240 et 356 px), mêmes noms de fichiers.
+
+jules.webp : la photo de Jules pour le bloc final « Testez en 30 secondes ».
+  Format portrait 4:5, 800 × 1000 px, WebP, moins de 120 Ko.
+  Une vraie photo de Jules (charte), lumière en face, sourire.
+  Tant que le fichier manque, le cadre affiche [Photo de Jules à venir].
+
+Après avoir remplacé une image, les visiteurs déjà venus peuvent garder
+l'ancienne jusqu'à 30 jours (cache) : pour forcer, changer le nom du fichier
+et le nom dans index.html.

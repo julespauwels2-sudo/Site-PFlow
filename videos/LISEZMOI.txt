@@ -1,0 +1,22 @@
+VIDÉOS DU SITE PFLOW (page d'accueil)
+=====================================
+Déposer les fichiers ici, avec EXACTEMENT ces noms. Tant qu'un fichier manque,
+le site affiche son emplacement [entre crochets] : rien ne casse.
+
+Bloc « Ils l'utilisent déjà » (réels verticaux 9:16) :
+  cookies-an-nou.mp4   + cookies-an-nou.webp   (image d'aperçu)
+  mexico.mp4           + mexico.webp
+  ag-pizza.mp4         + ag-pizza.webp
+
+Bloc « Avec PFlow, c'est simple » (écran du parcours de commande, en boucle, sans son) :
+  parcours.mp4         + parcours.webp
+
+Conseils (pour que le site reste rapide sur téléphone) :
+- MP4 (H.264), 720 × 1280 maximum, 15 à 30 secondes, moins de 4 Mo par vidéo.
+- Image d'aperçu : la 1re image de la vidéo en WebP, 720 × 1280, moins de 80 Ko.
+- Aucune vraie donnée d'un client final à l'écran (noms, numéros).
+- Les vidéos ne se chargent que quand le visiteur arrive sur le bloc.
+
+Commande pour réduire une vidéo (si ffmpeg est installé) :
+  ffmpeg -i entree.mov -vf "scale=720:-2" -c:v libx264 -crf 28 -preset slow -an -movflags +faststart parcours.mp4
+(enlever « -an » pour garder le son des réels clients)

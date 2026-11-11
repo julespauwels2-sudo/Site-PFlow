@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Calcul de la commission Uber Eats pour votre restaurant | PFlow</title>
+<meta name="description" content="Combien vous coûte la commission Uber Eats ? Entrez vos commandes et votre panier moyen : le calcul par mois et par an. L'alternative en Guadeloupe : 49 €/mois, 0 % de commission.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://www.pflow.fr/calcul">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="PFlow Order">
+<meta property="og:title" content="Ce que vous coûte la commission">
+<meta property="og:description" content="Le calcul en 10 secondes : vos commandes, votre panier moyen, la commission. Par mois et par an.">
+<meta property="og:url" content="https://www.pflow.fr/calcul">
+<meta property="og:image" content="https://www.pflow.fr/og-calcul.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PFlow Order : ce que vous coûte la commission, le calcul">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.pflow.fr/og-calcul.jpg">
+<meta name="theme-color" content="#0A1236">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css?v=1">
+<style>
+  .calc .msg-moins{display:none;margin-top:14px;font-size:1.05rem;color:var(--reflet);}
+  .calc.moins-cher .msg-moins{display:block;}
+  .calc.moins-cher .garde{display:none;}
+  .garde{margin-top:22px;font-size:1.3rem;font-weight:800;line-height:1.35;}
+  .garde b{color:var(--rose);}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Calcul de la commission Uber Eats pour votre restaurant",
+  "url":"https://www.pflow.fr/calcul",
+  "inLanguage":"fr-FR",
+  "isPartOf":{"@type":"WebSite","name":"PFlow Order","url":"https://www.pflow.fr/"},
+  "about":{"@type":"Product","name":"PFlow Order","offers":{"@type":"Offer","price":"49","priceCurrency":"EUR","url":"https://www.pflow.fr/#tarifs"}}
+}
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/js/site.js?v=1"></script>
+</head>
+<body>
+
+<header class="entete f-nuit">
+  <div class="cadre">
+    <a class="marque" href="/" aria-label="Le calcul, PFlow Order : retour à l'accueil">
+      <img src="/img/p-bulle-120.webp" srcset="/img/p-bulle-120.webp 120w, /img/p-bulle-240.webp 240w" sizes="46px" width="120" height="130" alt="" fetchpriority="high">
+      <span class="pill pill-blanc">Le calcul</span>
+    </a>
+  </div>
+</header>
+
+<main class="calcul-page">
+  <section class="f-nuit haut">
+    <div class="cadre">
+      <span class="pill pill-blanc">Restaurants de Guadeloupe</span>
+      <h1>Ce que vous coûte <span class="acc">la commission</span></h1>
+      <p class="chapo">Mettez vos chiffres. Le résultat s'affiche tout de suite.</p>
+
+      <div class="calc" data-calc data-emp="calcul">
+        <div class="champs">
+          <div class="champ">
+            <label for="k-cmd">Commandes par mois</label>
+            <div class="boite"><input id="k-cmd" type="text" inputmode="numeric" autocomplete="off" maxlength="7" value="200" data-champ="commandes"><span class="unite">commandes</span></div>
+          </div>
+          <div class="champ">
+            <label for="k-panier">Panier moyen</label>
+            <div class="boite"><input id="k-panier" type="text" inputmode="decimal" autocomplete="off" maxlength="7" value="20" data-champ="panier"><span class="unite">€</span></div>
+          </div>
+          <div class="champ">
+            <label for="k-com">Commission de la plateforme</label>
+            <div class="boite"><input id="k-com" type="text" inputmode="decimal" autocomplete="off" maxlength="7" value="30" data-champ="commission"><span class="unite">%</span></div>
+          </div>
+        </div>
+
+        <div class="resultats" aria-live="polite">
+          <div class="res">
+            <p class="lib">Vous perdez chaque mois</p>
+            <span class="montant" data-res="mois">1&nbsp;200&nbsp;€</span>
+          </div>
+          <div class="res">
+            <p class="lib">Sur un an</p>
+            <span class="montant an" data-res="an">14&nbsp;400&nbsp;€</span>
+          </div>
+          <div class="res pflow">
+            <p class="lib">Avec PFlow</p>
+            <span class="montant">49&nbsp;€</span>
+            <p class="lib">par mois, soit <span data-res="pflow-an">588&nbsp;€</span> par an. 0&nbsp;% de commission.</p>
+          </div>
+        </div>
+
+        <p class="garde">Avec PFlow, vous gardez <b data-res="garde-an">13&nbsp;812&nbsp;€</b> par an.</p>
+        <p class="msg-moins">Avec ces chiffres, la commission vous coûte moins de 49&nbsp;€ par mois.</p>
+        <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres. La commission dépend de votre contrat avec la plateforme.</p>
+
+        <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="calcul">Tester la démo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied f-nuit">
+  <div class="cadre">
+    <p>PFlow Order&nbsp;: prise de commande WhatsApp pour les restaurants de Guadeloupe.</p>
+    <nav aria-label="Informations légales">
+      <a href="/">Accueil</a>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Confidentialité</a>
+      <a href="/cgv">CGV</a>
+    </nav>
+    <p>&copy; 2026 PFlow Order</p>
+  </div>
+</footer>
+</body>
+</html>

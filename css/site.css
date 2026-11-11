@@ -1,0 +1,292 @@
+/* =====================================================================
+   PFlow Order : styles du site (accueil, /calcul, mentions légales)
+   Charte : CHARTE.md. Fonds en aplat, aucun dégradé, aucun halo.
+   Ombres plates décalées uniquement : rgba(0,0,0,.28).
+   Après une modification, augmenter le ?v= dans les pages HTML.
+   ===================================================================== */
+@font-face{font-family:'Anton';src:url('/fonts/anton-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('/fonts/pjs-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('/fonts/pjs-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap;}
+
+:root{
+  --nuit:#0A1236;--nuit2:#141D4F;--rose:#FF4FB5;--bleu:#2AABFF;--creme:#F3EEE6;--reflet:#74DDFB;--blanc:#FFFFFF;
+  --titre:'Anton',Impact,'Arial Narrow',sans-serif;
+  --texte:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --ombre:10px 10px 0 rgba(0,0,0,.28);
+  --ombre-g:14px 14px 0 rgba(0,0,0,.28);
+  --rayon:28px;
+  --large:1120px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{background:var(--nuit);color:var(--blanc);font-family:var(--texte);font-weight:700;font-size:1.0625rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img,video{display:block;max-width:100%;}
+a{color:inherit;}
+button,input{font:inherit;color:inherit;}
+:focus-visible{outline:3px solid var(--reflet);outline-offset:3px;border-radius:10px;}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.cadre{max-width:var(--large);margin:0 auto;padding:0 20px;}
+
+/* ---------- les fonds (un fond = une couleur) ---------- */
+.f-nuit{background:var(--nuit);color:var(--blanc);}
+.f-nuit2{background:var(--nuit2);color:var(--blanc);}
+.f-rose{background:var(--rose);color:var(--nuit);}
+.f-bleu{background:var(--bleu);color:var(--nuit);}
+.bloc{padding:64px 0;}
+
+/* ---------- titres : Anton, majuscules, un seul segment en accent ---------- */
+h1,h2,.titre{font-family:var(--titre);font-weight:400;text-transform:uppercase;line-height:1.08;letter-spacing:.005em;}
+h1{font-size:clamp(3.1rem,14.6vw,6.4rem);line-height:1.02;}
+h2{font-size:clamp(2.4rem,11vw,4.4rem);}
+h3{font-size:1.3rem;font-weight:800;line-height:1.25;}
+.acc{color:var(--rose);}
+/* sur rose ou bleu : le segment d'accent devient une box nuit inclinée, texte rose */
+.f-rose .acc,.f-bleu .acc{display:inline-block;background:var(--nuit);color:var(--rose);padding:.04em .18em .02em;transform:rotate(-2deg);box-shadow:var(--ombre);margin:.08em 0;}
+.chapo{font-size:1.2rem;line-height:1.4;margin-top:16px;max-width:34ch;}
+
+/* ---------- pills ---------- */
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:60px;padding:8px 16px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;}
+.pill-blanc{background:var(--blanc);color:var(--nuit);}
+.pill-nuit{background:var(--nuit);color:var(--blanc);}
+.pill-rose{background:var(--rose);color:var(--nuit);}
+
+/* ---------- boutons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:60px;padding:14px 28px;border-radius:60px;font-weight:800;font-size:1.15rem;line-height:1.2;text-decoration:none;text-align:center;border:3px solid transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s ease,box-shadow .15s ease;}
+.btn:active{transform:translate(4px,4px);box-shadow:none;}
+.btn svg{width:24px;height:24px;flex:none;fill:currentColor;}
+.btn-demo{background:var(--rose);color:var(--nuit);box-shadow:var(--ombre);}
+.f-rose .btn-demo,.f-bleu .btn-demo{background:var(--nuit);color:var(--blanc);}
+.btn-wa{background:transparent;color:var(--blanc);border-color:var(--blanc);}
+.f-rose .btn-wa,.f-bleu .btn-wa{color:var(--nuit);border-color:var(--nuit);}
+.btn-large{width:100%;}
+@media (hover:hover){.btn:hover{transform:translate(-2px,-2px);}.btn-demo:hover{box-shadow:var(--ombre-g);}}
+.actions{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+.lien-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;font-weight:800;font-size:1.05rem;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;}
+.lien-wa svg{width:22px;height:22px;fill:currentColor;flex:none;}
+
+/* ---------- en-tête : P bulle + pill, et un seul bouton ---------- */
+.entete{padding:14px 0;}
+.entete .cadre{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.marque img{width:46px;height:auto;}
+.marque .pill{font-size:.72rem;padding:7px 12px;}
+.entete .btn{min-height:46px;padding:10px 18px;font-size:.95rem;box-shadow:6px 6px 0 rgba(0,0,0,.28);}
+
+/* ---------- 1. haut de page ---------- */
+.haut{padding:26px 0 64px;}
+.haut .grille{display:grid;gap:44px;}
+.haut h1{margin-top:20px;}
+.haut .chapo{color:var(--blanc);}
+.prix-ligne{margin-top:22px;font-size:1rem;font-weight:800;color:var(--reflet);}
+.preuve-ligne{margin-top:8px;font-size:.95rem;color:rgba(255,255,255,.82);max-width:36ch;}
+.preuve-ligne b{color:var(--blanc);font-weight:800;}
+
+/* le ticket de commande : crème, bord dentelé, incliné, ombre plate */
+.ticket-zone{display:flex;justify-content:center;padding:6px 0 14px;}
+.ticket-ombre{filter:drop-shadow(12px 12px 0 rgba(0,0,0,.28));transform:rotate(-3deg);width:min(330px,88vw);animation:sortie .9s cubic-bezier(.2,.9,.25,1.15) .25s both;}
+.ticket{background:var(--creme);color:var(--nuit);padding:24px 22px 40px;
+  -webkit-mask:radial-gradient(circle 11px at 50% 100%,transparent 10.5px,#000 11px) bottom/26px 26px repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 13px) no-repeat;
+          mask:radial-gradient(circle 11px at 50% 100%,transparent 10.5px,#000 11px) bottom/26px 26px repeat-x,linear-gradient(#000 0 0) top/100% calc(100% - 13px) no-repeat;}
+.t-tete{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+.t-tete .titre{font-size:1.7rem;line-height:1.05;}
+.t-num{font-family:var(--titre);font-size:1.45rem;line-height:1;background:var(--rose);color:var(--nuit);border-radius:60px;padding:6px 12px 5px;align-self:center;}
+.t-info{margin-top:6px;font-size:.85rem;opacity:.72;}
+.t-pointilles{border-top:2.5px dashed rgba(10,18,54,.35);margin:16px 0;}
+.ticket ul{list-style:none;display:grid;gap:8px;font-size:1.05rem;}
+.ticket li{display:flex;gap:10px;}
+.ticket li b{font-weight:800;min-width:2.2ch;}
+.t-recu{display:inline-flex;align-items:center;gap:8px;background:var(--nuit);color:var(--blanc);border-radius:60px;padding:9px 16px;font-weight:800;font-size:.92rem;}
+.t-recu svg{width:18px;height:18px;fill:none;stroke:var(--reflet);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+@keyframes sortie{from{opacity:0;transform:translateY(-28px) rotate(-3deg);}to{opacity:1;transform:rotate(-3deg);}}
+
+/* ---------- 2. problème (rose) ---------- */
+.cartes{list-style:none;display:grid;gap:16px;margin-top:32px;}
+.carte{background:var(--nuit);color:var(--blanc);border-radius:var(--rayon);padding:24px;box-shadow:var(--ombre);display:flex;align-items:center;gap:18px;}
+.carte .ico{flex:none;width:56px;height:56px;border-radius:18px;background:var(--rose);display:grid;place-items:center;}
+.carte .ico svg{width:30px;height:30px;fill:none;stroke:var(--nuit);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.carte p{font-size:1.25rem;font-weight:800;line-height:1.3;}
+
+/* ---------- 3. solution ---------- */
+.etapes{list-style:none;display:grid;gap:14px;margin-top:32px;counter-reset:e;}
+.etape{display:flex;align-items:center;gap:16px;background:var(--nuit2);border-radius:var(--rayon);padding:18px 20px;}
+.etape .num{flex:none;width:52px;height:52px;border-radius:50%;background:var(--bleu);color:var(--nuit);display:grid;place-items:center;font-family:var(--titre);font-size:1.7rem;line-height:1;}
+.etape p{font-size:1.2rem;font-weight:800;line-height:1.3;}
+.sans-appli{margin-top:22px;font-size:1.15rem;line-height:1.4;color:var(--reflet);}
+.sans-appli b{display:block;color:var(--blanc);font-weight:800;}
+
+/* le téléphone : vidéo du parcours, ou image en attendant */
+.tel-zone{display:flex;flex-direction:column;align-items:center;margin-top:40px;}
+.tel{position:relative;width:min(280px,76vw);aspect-ratio:9/17;border:12px solid var(--blanc);border-radius:46px;background:var(--creme);overflow:hidden;box-shadow:var(--ombre-g);transform:rotate(3deg);}
+.tel::before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:34%;height:24px;border-radius:20px;background:var(--nuit);z-index:3;}
+.tel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
+.ecran{position:absolute;inset:0;padding:52px 12px 14px;display:flex;flex-direction:column;gap:9px;color:var(--nuit);font-size:.82rem;line-height:1.35;}
+.ecran .resto{display:flex;align-items:center;gap:8px;padding-bottom:9px;border-bottom:2px solid rgba(10,18,54,.12);font-weight:800;font-size:.86rem;}
+.ecran .resto i{width:30px;height:30px;border-radius:50%;background:var(--rose);flex:none;}
+.ecran .resto small{display:block;font-weight:700;font-size:.7rem;opacity:.6;}
+.bul{max-width:84%;padding:8px 11px;border-radius:16px;font-weight:700;}
+.bul.cli{align-self:flex-end;background:var(--bleu);color:var(--nuit);border-bottom-right-radius:5px;}
+.bul.pf{align-self:flex-start;background:var(--blanc);border-bottom-left-radius:5px;}
+.bul .bt{display:block;margin-top:7px;background:var(--nuit);color:var(--blanc);border-radius:30px;padding:6px 10px;text-align:center;font-weight:800;}
+.mini-ticket{align-self:center;width:92%;background:var(--blanc);border-radius:14px;padding:9px 11px;border:2px dashed rgba(10,18,54,.25);}
+.mini-ticket b{display:block;font-family:var(--titre);font-weight:400;font-size:1rem;text-transform:uppercase;}
+.legende{margin-top:22px;font-size:.88rem;color:rgba(255,255,255,.7);text-align:center;}
+
+/* ---------- 4. Uber Eats ou PFlow ---------- */
+.duel{display:grid;gap:16px;margin-top:32px;}
+.duel .c{border-radius:var(--rayon);padding:26px 24px;}
+.duel .c .nom{font-weight:800;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;}
+.duel .c .gros{font-family:var(--titre);font-size:5.2rem;line-height:1;margin-top:8px;}
+.duel .c p{font-size:1.2rem;font-weight:800;line-height:1.3;margin-top:6px;}
+.duel .uber{border:3px solid rgba(255,255,255,.3);color:rgba(255,255,255,.75);}
+.duel .pflow{background:var(--rose);color:var(--nuit);box-shadow:var(--ombre-g);}
+
+.calc{background:var(--nuit);border-radius:var(--rayon);padding:26px 22px;margin-top:36px;}
+.calc h3{font-size:1.35rem;}
+.champs{display:grid;gap:14px;margin-top:18px;}
+.champ label{display:block;font-weight:800;font-size:1rem;margin-bottom:7px;}
+.champ .boite{display:flex;align-items:center;background:var(--blanc);color:var(--nuit);border-radius:18px;padding:0 18px;min-height:62px;}
+.champ input{width:100%;min-width:0;border:0;background:transparent;color:var(--nuit);font-weight:800;font-size:1.6rem;padding:10px 0;outline:none;-moz-appearance:textfield;appearance:textfield;}
+.champ input::-webkit-outer-spin-button,.champ input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.champ .unite{font-weight:800;font-size:1.2rem;opacity:.6;padding-left:8px;white-space:nowrap;}
+.champ .boite:focus-within{outline:3px solid var(--reflet);outline-offset:3px;}
+.resultat{margin-top:24px;}
+.resultat .perte{font-size:1.15rem;font-weight:800;line-height:1.35;}
+.resultat .montant{display:block;font-family:var(--titre);font-weight:400;font-size:clamp(3.8rem,19vw,6rem);line-height:1.05;color:var(--rose);margin:4px 0;}
+.resultat .avec{margin-top:12px;font-size:1.3rem;font-weight:800;color:var(--reflet);}
+.estim{margin-top:12px;font-size:.85rem;color:rgba(255,255,255,.7);}
+.calc .btn{margin-top:22px;}
+.lien-simple{display:inline-block;margin-top:16px;font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;}
+
+/* ---------- 5. livraison (bleu) ---------- */
+.livraison .cadre{display:grid;gap:22px;}
+.livraison .pill{justify-self:start;}
+.livraison p.zone{font-size:1.35rem;font-weight:800;line-height:1.35;}
+.livraison .ico-liv{width:92px;height:92px;}
+
+/* ---------- 6. preuves ---------- */
+.reels{display:grid;grid-auto-flow:column;grid-auto-columns:72%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 24px;margin:28px -20px 0;scrollbar-width:none;}
+.reels::-webkit-scrollbar{display:none;}
+.reel{scroll-snap-align:center;}
+.reel .video{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:var(--nuit2);border:3px dashed rgba(255,255,255,.3);display:grid;place-items:center;text-align:center;padding:18px;}
+.reel .video.ok{border:0;padding:0;background:#000;box-shadow:var(--ombre);}
+.reel .video video{width:100%;height:100%;object-fit:cover;}
+.reel .video .vide{font-size:.95rem;color:rgba(255,255,255,.75);}
+.reel figcaption{margin-top:12px;font-weight:800;font-size:1.05rem;}
+.reel figcaption small{display:block;font-weight:700;font-size:.85rem;color:rgba(255,255,255,.7);}
+.citation{margin-top:12px;background:var(--nuit2);border-radius:var(--rayon);padding:26px 24px;}
+.citation-vide{border:3px dashed rgba(255,255,255,.3);}
+.citation p{font-size:1.25rem;font-weight:800;line-height:1.4;}
+.citation footer{margin-top:10px;font-size:.92rem;color:var(--reflet);}
+
+/* ---------- 7. prix (carte blanche) ---------- */
+.prix-grille{display:grid;gap:18px;margin-top:32px;}
+.carte-prix{background:var(--blanc);color:var(--nuit);border-radius:36px;padding:30px 24px;box-shadow:var(--ombre-g);}
+.carte-prix .montant{font-family:var(--titre);font-size:5.4rem;line-height:1;}
+.carte-prix .montant span{font-size:2rem;}
+.carte-prix .sous{margin-top:10px;font-weight:800;font-size:1.05rem;line-height:1.4;}
+.carte-prix h3,.options h3{margin-top:24px;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;}
+.inclus{list-style:none;display:grid;gap:12px;margin-top:12px;}
+.inclus li{display:flex;align-items:flex-start;gap:12px;font-size:1.08rem;line-height:1.35;}
+.inclus svg{flex:none;width:26px;height:26px;margin-top:-1px;}
+.carte-prix .btn{margin-top:26px;}
+.options{border:3px solid rgba(255,255,255,.3);border-radius:36px;padding:6px 24px 26px;}
+.options ul{list-style:none;display:grid;gap:10px;margin-top:12px;}
+.options li{display:flex;justify-content:space-between;gap:12px;font-size:1.08rem;padding-bottom:10px;border-bottom:2px solid rgba(255,255,255,.12);}
+.options li:last-child{border-bottom:0;padding-bottom:0;}
+.options li span{color:var(--reflet);white-space:nowrap;}
+
+/* ---------- 8. FAQ ---------- */
+.faq{display:grid;gap:12px;margin-top:30px;}
+.faq details{background:var(--nuit2);border-radius:22px;}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 20px;font-size:1.12rem;font-weight:800;line-height:1.35;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--bleu);position:relative;}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:3px;border-radius:2px;background:var(--nuit);transform:translate(-50%,-50%);}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s ease;}
+.faq details[open] summary i::after{transform:translate(-50%,-50%);}
+.faq details p{padding:0 20px 22px;font-size:1.05rem;line-height:1.5;color:rgba(255,255,255,.88);}
+
+/* ---------- 9. fin (rose) ---------- */
+.fin .cadre{display:grid;gap:30px;}
+.nw{white-space:nowrap;}
+.photo{justify-self:center;width:min(250px,64vw);aspect-ratio:4/5;border:13px solid var(--blanc);border-radius:40px;background:var(--nuit2);color:var(--blanc);box-shadow:var(--ombre-g);transform:rotate(-3deg);overflow:hidden;position:relative;display:grid;place-items:center;text-align:center;padding:16px;font-size:.95rem;}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.fin .question{font-size:1.3rem;font-weight:800;line-height:1.35;}
+
+/* ---------- pied de page ---------- */
+.pied{padding:44px 0 40px;font-size:.92rem;color:rgba(255,255,255,.75);}
+.pied .cadre{display:grid;gap:18px;}
+.pied nav{display:flex;flex-wrap:wrap;gap:6px 18px;}
+.pied a{text-decoration:none;font-weight:800;color:var(--blanc);}
+.pied a:hover{text-decoration:underline;}
+.pied .seo a{font-weight:700;color:rgba(255,255,255,.75);}
+.pied .marque img{width:38px;}
+
+/* ---------- barre collée en bas (mobile) ---------- */
+.barre{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:10px 14px max(10px,env(safe-area-inset-bottom));background:var(--nuit);border-top:2px solid rgba(255,255,255,.14);transform:translateY(110%);transition:transform .25s ease;}
+.barre.vue{transform:none;}
+.barre .btn{min-height:54px;font-size:1.08rem;box-shadow:none;}
+.barre .btn-demo{flex:1;}
+.barre .btn-wa{width:58px;padding:0;border-width:3px;}
+.barre .btn-wa svg{width:28px;height:28px;}
+body.avec-barre{padding-bottom:84px;}
+
+/* ---------- page /calcul ---------- */
+.calcul-page .calc{margin-top:28px;padding:0;background:none;border-radius:0;}
+.calcul-page .resultats{display:grid;gap:14px;margin-top:24px;}
+.calcul-page .res{background:var(--nuit2);border-radius:24px;padding:20px 20px;}
+.calcul-page .res .lib{font-size:1rem;font-weight:800;}
+.calcul-page .res .montant{display:block;font-family:var(--titre);font-size:clamp(3.4rem,17vw,5.6rem);line-height:1.05;color:var(--rose);}
+.calcul-page .res .montant.an{color:var(--blanc);}
+.calcul-page .res.pflow{background:var(--rose);color:var(--nuit);}
+.calcul-page .res.pflow .montant{color:var(--nuit);}
+
+/* ---------- mentions légales ---------- */
+.legal h1{font-size:clamp(2.6rem,12vw,4.4rem);margin-top:16px;}
+.legal .maj{margin-top:10px;color:rgba(255,255,255,.7);font-size:.92rem;}
+.legal section{background:var(--nuit2);border-radius:24px;padding:22px 20px;margin-top:16px;}
+.legal h2{font-size:1.7rem;margin-bottom:10px;}
+.legal p,.legal li,.legal dd{font-size:1rem;line-height:1.6;color:rgba(255,255,255,.88);}
+.legal p+p{margin-top:10px;}
+.legal dl{display:grid;grid-template-columns:1fr;gap:2px 18px;}
+.legal dt{font-weight:800;color:var(--reflet);margin-top:8px;}
+.legal a{color:var(--blanc);text-decoration-thickness:2px;text-underline-offset:3px;}
+.legal .todo{background:var(--rose);color:var(--nuit);padding:1px 6px;border-radius:6px;}
+
+/* ---------- ordinateur ---------- */
+@media (min-width:760px){
+  .cadre{padding:0 32px;}
+  .bloc{padding:96px 0;}
+  .actions{flex-direction:row;align-items:center;flex-wrap:wrap;}
+  .actions .btn-large{width:auto;}
+  .cartes,.etapes{grid-template-columns:repeat(3,1fr);}
+  .carte{flex-direction:column;align-items:flex-start;}
+  .etape{flex-direction:column;align-items:flex-start;}
+  .duel,.prix-grille{grid-template-columns:1fr 1fr;align-items:start;}
+  .champs{grid-template-columns:1fr 1fr;}
+  .calcul-page .champs{grid-template-columns:1fr 1fr 1fr;}
+  .calcul-page .resultats{grid-template-columns:1fr 1fr 1fr;}
+  .reels{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,300px));grid-auto-columns:auto;overflow:visible;margin:28px 0 0;padding:6px 0 0;}
+  .legal dl{grid-template-columns:minmax(180px,240px) 1fr;}
+  .legal dt{margin-top:0;}
+  :root{--ombre:14px 14px 0 rgba(0,0,0,.28);--ombre-g:20px 20px 0 rgba(0,0,0,.28);}
+}
+@media (min-width:980px){
+  .haut{padding:40px 0 110px;}
+  .haut .grille{grid-template-columns:1.25fr .75fr;align-items:center;}
+  .ticket-ombre{width:380px;}
+  .solution .cadre{display:grid;grid-template-columns:1.2fr .8fr;gap:40px 60px;align-items:center;}
+  .tel-zone{margin-top:0;grid-row:1 / span 2;grid-column:2;}
+  .livraison .cadre{grid-template-columns:auto 1fr;align-items:center;column-gap:40px;}
+  .livraison .ico-liv{grid-row:1 / span 3;width:150px;height:150px;}
+  .fin .cadre{grid-template-columns:1fr auto;align-items:center;column-gap:60px;}
+  .fin .photo{grid-column:2;grid-row:1 / span 2;width:300px;}
+  .fin h2{align-self:end;}
+  .fin .suite{align-self:start;}
+  .barre{display:none;}
+  body.avec-barre{padding-bottom:0;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+}
