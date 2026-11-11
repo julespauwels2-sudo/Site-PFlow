@@ -55,4 +55,4 @@ Script `/_vercel/insights/script.js` (déjà utilisé). Événements : `clic_dem
 Title/description ciblant « prise de commande WhatsApp restaurant Guadeloupe » et « alternative Uber Eats Guadeloupe », un seul H1 par page, JSON-LD Organization + Product/Offer 49 €, OG, canonical, sitemap avec `/calcul`.
 
 ## Performance
-Aucune image dans le haut de page à part le P (8 Ko) : le LCP est le titre en Anton (police préchargée, 18 Ko). Une seule feuille de style (≈12 Ko) et un seul script différé, vidéos chargées seulement à l'approche (`preload="none"` + poster), `font-display: swap`.
+Aucune image dans le haut de page à part le P (8 Ko) : le LCP est le titre en Anton (police préchargée, 18 Ko). Une seule feuille de style (≈20 Ko) et un seul script différé, vidéos chargées seulement à l'approche (`preload="none"` + poster), `font-display: swap`.

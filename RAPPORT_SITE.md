@@ -48,7 +48,7 @@ En-tête sans menu : P bulle + pill « PFLOW ORDER » + bouton « Tester la dém
 
 Objectif LCP < 2,5 s : atteint. Mesuré en local (Lighthouse 12) sur exactement les mêmes fichiers : cette session ne peut pas joindre les adresses `vercel.app`. Le 96 en bonnes pratiques vient uniquement du script Vercel Analytics, absent en local (sur la prévisualisation, il répond bien). À refaire sur la prévisualisation depuis Chrome (Outils de développement, onglet Lighthouse, « Mobile ») pour confirmer.
 
-Poids de l'accueil au premier affichage : environ 90 Ko (HTML, CSS, 3 polices, P bulle, script). Les vidéos ne se téléchargent que quand le visiteur arrive sur le bloc.
+Poids de l’accueil au premier affichage : environ 100 Ko avant compression (HTML, CSS, 3 polices, P bulle, script). Les vidéos ne se téléchargent que quand le visiteur arrive sur le bloc.
 
 ## Ce que vous devez fournir
 
