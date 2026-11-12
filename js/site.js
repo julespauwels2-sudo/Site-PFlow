@@ -4,7 +4,8 @@
       chacun avec { emplacement } (hero, barre_mobile, calcul, preuves, prix, final, entete)
    2. Les paramètres UTM de l'adresse suivent vers /demo
    3. La barre collée en bas (mobile)
-   4. Les animations : apparition des blocs, chiffres qui comptent
+   4. Les animations : apparition des blocs, chiffres qui comptent,
+      profondeur au défilement, FAQ « Voir plus »
    5. Le calculateur de commission (accueil et /calcul), résultat animé
    6. Les vidéos, chargées seulement quand on s'en approche
    Après une modification, augmenter le ?v= dans les pages HTML.
@@ -89,6 +90,45 @@
       ioCpt.observe(el);
     });
   }
+
+  /* 4 bis. léger effet de profondeur au défilement (ticket, cartes) */
+  var prof = document.querySelectorAll("[data-prof]");
+  if (!calme && prof.length && "translate" in document.documentElement.style) {
+    var attente = false;
+    var majProf = function () {
+      attente = false;
+      var h = window.innerHeight;
+      prof.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > h + 200) return;
+        var f = parseFloat(el.getAttribute("data-prof")) || 0;
+        el.style.translate = "0 " + Math.max(-14, Math.min(14, (r.top + r.height / 2 - h / 2) * f)).toFixed(1) + "px";
+      });
+    };
+    window.addEventListener("scroll", function () { if (!attente) { attente = true; requestAnimationFrame(majProf); } }, { passive: true });
+    majProf();
+  }
+
+  /* calculateur replié sur téléphone : « Faire le calcul avec mes chiffres » */
+  document.querySelectorAll("[data-calc-ouvrir]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var c = b.closest(".calc"); if (!c) return;
+      c.classList.add("ouvert"); b.setAttribute("aria-expanded", "true"); b.hidden = true;
+      var champ = c.querySelector("input"); if (champ) champ.focus();
+    });
+  });
+
+  /* 4 ter. FAQ : « Voir plus » (téléphone) */
+  document.querySelectorAll("[data-voir-plus]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var faq = b.previousElementSibling;
+      if (!faq) return;
+      faq.classList.add("ouverte");
+      faq.querySelectorAll(".faq-plus").forEach(function (d) { d.classList.add("vu"); });
+      b.setAttribute("aria-expanded", "true");
+      b.hidden = true;
+    });
+  });
 
   /* 5. le calculateur */
   function nombre(input, defaut) {

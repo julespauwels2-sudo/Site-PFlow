@@ -1,0 +1,37 @@
+# PFlow Order
+
+> PFlow Order est un système de prise de commande WhatsApp pour les restaurants de Guadeloupe. Les clients du restaurant commandent seuls sur WhatsApp, via une carte en ligne aux couleurs du restaurant, et le restaurant reçoit la commande écrite. À partir de 49 €/mois, 0 % de commission, sans engagement, sans frais de mise en place.
+
+## Quoi
+- Prise de commande sur WhatsApp, 24h/24 : le client écrit, choisit sur la carte en ligne, paie en ligne s'il le souhaite (SumUp ou Stripe).
+- Le restaurant reçoit chaque commande écrite dans un espace de gestion, où il modifie aussi sa carte et ses prix.
+- Les clients n'installent aucune application. L'installation est faite par PFlow.
+- Une alternative à Uber Eats pour les commandes directes : aucune commission sur les ventes.
+
+## Pour qui
+- Restaurants, snacks, pizzerias, burgers, fast-food. Service réservé aux professionnels.
+- Déjà en place chez Cookies an nou, Mexico et AG Pizza.
+
+## Où
+- Guadeloupe en priorité (basé au Gosier), puis Martinique, Saint-Martin et Saint-Barthélemy.
+- Option livraison par PFlow : nouveau à Jarry et Baie-Mahault.
+
+## Prix (novembre 2026)
+- Abonnement de base : 49 €/mois. Inclus : commandes WhatsApp, carte en ligne, paiement en ligne, espace de gestion, gestion de vos propres livreurs, installation.
+- 0 % de commission, y compris avec les options. Sans engagement. Sans frais de mise en place.
+- Options : gestion du stock 9 €/mois, avis Google 9 €/mois, relance des paniers 19 €/mois, pack des 3 : 29 €/mois.
+- Livraison : Essentiel 59 €/mois (jusqu'à 100 livraisons), Pro 119 €/mois (jusqu'à 300), Illimité 190 €/mois. Le restaurant paie toujours le palier le plus avantageux.
+
+## Contact
+- PFlow Order, 615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe
+- Téléphone et WhatsApp : 0690 93 81 08 (+590 690 93 81 08)
+- Site : https://www.pflow.fr/ · Démo : https://www.pflow.fr/demo · Instagram : @pflow.gp
+
+## Pages utiles
+- [Accueil](https://www.pflow.fr/)
+- [Tester la démo sur WhatsApp](https://www.pflow.fr/demo)
+- [Calculer ce que coûte la commission](https://www.pflow.fr/calcul)
+- [Comment prendre les commandes de mon restaurant sur WhatsApp en Guadeloupe ?](https://www.pflow.fr/questions/commandes-whatsapp-restaurant-guadeloupe)
+- [Quelle alternative à Uber Eats pour un restaurant en Guadeloupe ?](https://www.pflow.fr/questions/alternative-uber-eats-guadeloupe)
+- [Combien coûte un système de commande en ligne sans commission ?](https://www.pflow.fr/questions/prix-commande-en-ligne-sans-commission)
+- [Conditions générales de vente](https://www.pflow.fr/cgv)

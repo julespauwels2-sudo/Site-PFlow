@@ -1,0 +1,21 @@
+{
+  "name": "pflow-video-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Vidéo de démo PFlow Order (resto de démo Mint Bun), faite avec Remotion",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render MintBunDemo out/demo.mp4 --codec=h264 --crf=26",
+    "still": "remotion still MintBunDemo out/apercu.png --frame=480"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}

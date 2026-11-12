@@ -188,7 +188,7 @@ Les réels **Mexico** et **AG Pizza** que vous avez envoyés sont en ligne (comp
 
 La date reste « Dernière mise à jour : 12 novembre 2026 ». Rien d'autre n'a changé dans les CGV.
 
-**À trancher (je n'ai rien inventé)** : les CGV ne disent pas **quand** les livraisons au-delà du palier sont facturées (avec le mois suivant ? sur la facture du mois en cours ?), ni si le Client peut changer de palier en cours de mois. L'article 5 ne parle que de l'abonnement « payable d'avance ». La clause de responsabilité pendant la livraison faite par PFlow reste aussi à voir avec un juriste.
+**À trancher (je n'ai rien inventé)** *(réglé le 12 novembre, voir section 11)* : les CGV ne disent pas **quand** les livraisons au-delà du palier sont facturées (avec le mois suivant ? sur la facture du mois en cours ?), ni si le Client peut changer de palier en cours de mois. L'article 5 ne parle que de l'abonnement « payable d'avance ». La clause de responsabilité pendant la livraison faite par PFlow reste aussi à voir avec un juriste.
 
 #### Lighthouse mobile après ces corrections
 
@@ -200,26 +200,132 @@ La date reste « Dernière mise à jour : 12 novembre 2026 ». Rien d'autre n'a 
 
 Le 93 en accessibilité des CGV vient de leur ancien style, que je n'ai pas modifié (numéros d'articles et petit titre en rose sur fond blanc, contraste insuffisant). Ce n'est pas lié aux corrections. Je peux passer les CGV et la politique de confidentialité dans la nouvelle DA si vous voulez.
 
+### 11. Série du 12 novembre (suite) : CGV livraison, intro, vidéo de démo, SEO
+
+#### CGV, article 4 : facturation et paliers de livraison
+- Avant : (rien ; la puce sur la livraison s'arrêtait à l'exemple du palier le plus avantageux)
+- Après, nouvelle puce juste sous le détail de la livraison : « Facturation de l'option livraison : les livraisons effectuées au-delà du palier souscrit sont facturées sur la facture du mois suivant. Le Client peut changer de palier à tout moment ; le changement prend effet au début du mois suivant. »
+
+#### CGV : nouvel article 10 « Option livraison » (à votre relecture)
+Inséré après l'article 9 (« Ventes réalisées par le Client »). Les articles suivants sont renumérotés : Responsabilité devient 11, Données personnelles 12, Propriété intellectuelle 13, Force majeure 14, Droit applicable et litiges 15 (aucun article ne renvoyait à un autre par son numéro ; le sommaire a un lien « Livraison » en plus). Le code de la page contient, en tête de l'article, le commentaire `<!-- À FAIRE VALIDER PAR UN JURISTE AVANT ACTIVATION DE L'OPTION LIVRAISON -->`.
+
+Texte complet :
+
+> **10. Option livraison**
+>
+> Dans le cadre de l'option livraison, PFlow fournit au Client un outil technique de gestion des commandes et de mise en relation entre le Client et des livreurs indépendants. PFlow n'est ni transporteur ni employeur des livreurs, qui exercent leur activité de manière indépendante, sous leur propre statut et sous leur seule responsabilité.
+>
+> PFlow est tenue d'une obligation de moyens quant au bon fonctionnement de l'outil, notamment la transmission des commandes à livrer et l'information du Client sur leur suivi.
+>
+> Le livreur indépendant est responsable de la bonne exécution du transport, de la prise en charge de la commande jusqu'à sa remise au client final. Le Client reste seul responsable de ses produits, de leur préparation et de leur emballage, y compris de leur aptitude à être transportés.
+>
+> Le contrat étant conclu entre professionnels, la responsabilité de PFlow au titre de l'option livraison est limitée aux dommages directs et prouvés résultant d'un manquement à ses propres obligations, et plafonnée au montant des sommes versées par le Client au titre de cette option au cours des 12 derniers mois. PFlow ne répond pas des dommages indirects, tels que perte de chiffre d'affaires, de clientèle ou d'image. Conformément à l'article 1170 du Code civil, cette limitation ne prive pas de sa substance l'obligation essentielle de PFlow, qui est de mettre à la disposition du Client un outil permettant de gérer et de transmettre les commandes à livrer ; elle ne s'applique pas en cas de faute lourde ou dolosive de PFlow.
+
+Points à faire regarder par le juriste : (1) le plafond reprend celui de l'article 11 (12 derniers mois), limité ici aux sommes de l'option ; (2) l'exclusion de la faute lourde ou dolosive est ajoutée parce qu'un plafond ne la couvre de toute façon pas en droit français ; (3) votre accueil dit « On livre pour vous » : il faut vérifier que ce message reste compatible avec le statut de simple intermédiaire décrit dans la clause ; (4) le statut des livreurs (auto-entrepreneurs, contrat de prestation entre eux et PFlow ou le resto) reste à cadrer à part.
+
+#### Intro (accueil)
+Refaite autour du ticket de la DA : le ticket « NOUVELLE COMMANDE #128 » tombe, imprime ses lignes une par une (heure, puis 2 plats), la pill « ✓ Reçue sur WhatsApp » rebondit, puis le ticket glisse vers le bas en rapetissant pendant que le fond nuit s'efface sur la page. Fermeture à 2,45 s, fin du fondu à 2,95 s. Bouton « Passer » visible dès la première image ; une fois par visite ; accueil seulement ; sautée si « réduire les animations ». La page est déjà affichée derrière : Lighthouse, qui la voit passer, donne toujours 100.
+
+#### Vidéo de démo (bloc « Avec PFlow, c'est simple »)
+- Rien n'était déposé dans `videos/demo-source/`, donc la vidéo a été créée avec **Remotion** dans `video-demo/` : verticale 9:16, 23,5 s, sans voix, dans la DA. Elle montre le parcours sur le resto de démo Mint Bun (resto fictif) : accroche « Vos clients commandent sans appeler », le client écrit sur WhatsApp, ouvre la carte, ajoute un Mint Burger, paie en ligne, puis le resto reçoit la notification et le ticket « NOUVELLE COMMANDE #129 », et la fin « Testez la démo · pflow.fr/demo ». Chaque étape a sa légende courte (« Le client écrit sur WhatsApp. », etc.).
+- Export : `videos/parcours.mp4` (720 × 1280, 658 Ko, sans piste son) + `videos/parcours.webp` (image d'aperçu, le ticket). Elle tourne en boucle, sans son, dans le téléphone du bloc, chargée seulement à l'approche ; l'image d'aperçu s'affiche en attendant.
+- **Ouvrir Remotion Studio chez vous** (Node.js 18 ou plus) :
+  ```bash
+  cd video-demo
+  npm install
+  npm run studio
+  ```
+  Puis http://localhost:3000. Textes, plats, prix et rythme se changent en haut de `video-demo/src/MintBunDemo.tsx` (`TEXTES`, `CARTE`, `SCENES`). Export et compression : voir `video-demo/LISEZMOI.md`.
+- Si vous déposez plus tard une vidéo dans `videos/demo-source/`, dites-le-moi : je la compresse et la mets à la place.
+
+#### Comparaison chiffrée avec livraison (bloc Uber Eats ou PFlow)
+« 100 commandes de 20 € livrées par mois : environ 500 € de commission avec une plateforme à 25 %, 108 € avec PFlow (49 € + livraison 59 €). », puis « Soit environ 392 € de plus pour vous chaque mois. » (compteur animé) et la note discrète « Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25 %). Exemple indicatif. ». Tous les chiffres sont calculés par `offre.js` : abonnement de base (nouveau champ `base: 49`), palier de livraison le moins cher pour 100 livraisons (Essentiel, 59 €), et l'exemple de 100 commandes à 20 € et 25 % est écrit dans la page (attributs `data-commandes`, `data-panier`, `data-taux`). Le même bloc est réutilisé sur la page-réponse « alternative à Uber Eats ».
+
+#### Animations en plus
+- Profondeur au défilement : le ticket du haut et les 3 cartes du problème glissent légèrement (14 px au plus) par rapport à la page. Je l'ai retirée des cartes « Uber Eats / PFlow », où elle faisait se chevaucher les blocs.
+- Soulignement du mot rose des titres : un trait plein rose se dessine de gauche à droite à l'apparition du titre (titre du haut compris). Techniquement, c'est un fond d'une seule couleur, pas un dégradé.
+- Bulles WhatsApp une à une à côté du téléphone (« Bonjour, je veux commander », « Voici notre carte 👇 », « ✓ Commande reçue »).
+- Compteur de l'économie (0 → 392 €) dans la comparaison.
+- Tout est coupé avec « réduire les animations » (vérifié : pas d'intro, pas de déplacement, bulles affichées directement).
+
+#### Version téléphone plus courte (hauteur à 390 px)
+
+| Bloc | Avant | Après |
+|---|---|---|
+| Haut de page | 1 040 | 918 |
+| Problème (cartes en carrousel horizontal) | 606 | 348 |
+| Solution (3 étapes sur une ligne, téléphone plus petit, bulles à côté) | 1 230 | 645 |
+| Uber Eats ou PFlow (cartes côte à côte, + comparaison chiffrée, calculateur replié derrière « Faire le calcul avec mes chiffres ») | 1 484 | 970 |
+| Livraison | 536 | 313 |
+| Preuves (réels en carrousel plus étroit) | 936 | 631 |
+| Prix (paliers en 3 cases) | 1 633 | 1 243 |
+| FAQ (3 questions + « Voir plus de questions ») | 594 | 428 |
+| Fin (photo et question côte à côte) | 820 | 428 |
+| Pied de page (avec les coordonnées en plus) | 442 | 523 |
+| **Page entière** | **9 508 px** | **6 635 px (−30 %)** |
+
+Ces −30 % incluent deux ajouts : la comparaison chiffrée (environ 300 px) et les coordonnées du pied de page. Sans eux, on est à environ −34 %. Hero, comparaison chiffrée, prix et bouton final restent en entier ; la barre collée en bas n'a pas changé. Sur ordinateur, rien ne change à part les ajouts (le calculateur reste ouvert, les 4 questions sont visibles).
+
+#### Contenus ajoutés
+- `img/jules.webp` : votre photo, recadrée en portrait 4:5 (800 × 1000, 97 Ko), dans le cadre blanc incliné du bloc final.
+- `videos/cookies-an-nou.mp4` (2,5 Mo) + aperçu : les 3 réels clients sont maintenant en ligne.
+
+#### SEO Google et IA
+- **Données structurées** : Organization (avec adresse et téléphone), **LocalBusiness** (Le Gosier, Guadeloupe ; zone desservie : Guadeloupe ; « À partir de 49 €/mois »), Product/Offer et FAQPage sur l'accueil. Organization + LocalBusiness aussi sur `/calcul`, les mentions légales et les 3 pages-réponses (qui ont en plus WebPage, FAQPage et fil d'Ariane). Tous les blocs JSON-LD ont été validés.
+- **Mêmes nom, adresse, téléphone, description partout** : « PFlow Order · 615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe · 0690 93 81 08 » et la description « Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49 €/mois, 0 % de commission, sans engagement. ». Ils figurent dans le pied de page de l'accueil, de `/calcul`, des mentions légales et des pages-réponses, ainsi que dans les données structurées et `llms.txt`. Dans `infos-legales.js` (mentions légales, CGV, confidentialité), l'adresse passe de « 615 Rue de l'aviation, Saint-Félix, Gosier, 97190 » à « 615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe », et le téléphone de « 0690938108 » à « 0690 93 81 08 » : même adresse, même numéro, seulement écrits pareil partout.
+- **robots.txt** : tout est autorisé, avec une autorisation explicite pour Googlebot, Bingbot, Google-Extended, GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot et ClaudeBot, plus le lien du sitemap.
+- **llms.txt** (racine) : PFlow en quelques lignes (quoi, pour qui, où, prix, contact, pages utiles). Il est écrit à la main : si vous changez un prix dans `offre.js`, changez-le aussi dans `llms.txt`.
+- **IndexNow** : clé `56805f00c3689eb0819d45f54f421434`, fichier de vérification `/56805f00c3689eb0819d45f54f421434.txt` à la racine, et script `scripts/indexnow.sh` qui envoie toutes les pages du sitemap à Bing. À lancer **après** la mise en ligne (voir la liste ci-dessous). Je ne pouvais pas l'envoyer d'ici : le site n'est pas encore en production.
+- **3 pages-réponses** (titre = la question, réponse courte en 2 phrases dans un encadré, puis les détails, liens vers l'accueil et `/calcul`, bouton démo, ajoutées au sitemap et au pied de page) :
+  - `/questions/commandes-whatsapp-restaurant-guadeloupe` : « Comment prendre les commandes de mon restaurant sur WhatsApp en Guadeloupe ? »
+  - `/questions/alternative-uber-eats-guadeloupe` : « Quelle alternative à Uber Eats pour un restaurant en Guadeloupe ? »
+  - `/questions/prix-commande-en-ligne-sans-commission` : « Combien coûte un système de commande en ligne sans commission ? »
+  Les chiffres viennent de `offre.js`, aucun n'est inventé. Les boutons envoient `clic_demo` / `clic_whatsapp` avec l'emplacement `question`.
+
+#### Lighthouse mobile après cette série
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| `/` (avec l'intro) | 100 | 100 | 96 | 100 | 1,5 s | 0 | 20 ms |
+| `/calcul` | 100 | 100 | 96 | 100 | 1,4 s | 0 | 0 ms |
+| `/questions/alternative-uber-eats-guadeloupe` | 100 | 100 | 96 | 100 | 1,5 s | 0 | 0 ms |
+| `/cgv` | 100 | 93 | 96 | 100 | 1,4 s | 0,017 | 0 ms |
+
+(96 en bonnes pratiques : seulement le script Vercel Analytics, absent en local. 93 sur les CGV : leur ancien style, inchangé.)
+
+## SEO : ce que vous devez faire vous-même
+
+Après la mise en ligne sur www.pflow.fr :
+1. **Google Search Console** (search.google.com/search-console) : ajouter le domaine `pflow.fr`, valider avec l'enregistrement DNS proposé, puis envoyer `https://www.pflow.fr/sitemap.xml` (menu Sitemaps). Demander l'indexation de l'accueil, de `/calcul` et des 3 pages-réponses (outil « Inspection de l'URL »).
+2. **Bing Webmaster Tools** (bing.com/webmasters) : importer le site depuis Search Console (1 clic), puis lancer une fois `bash scripts/indexnow.sh` depuis le dossier du site. Bing sert aussi de source à ChatGPT et Copilot. À relancer après chaque grosse mise à jour.
+3. **Fiche Google Business Profile** (business.google.com) : créer « PFlow Order », catégorie proche de « Concepteur de logiciels » ou « Service de marketing », avec **exactement** le même nom, la même adresse et le même téléphone que le site. Si vous ne recevez pas de public à cette adresse, choisissez « entreprise de services de proximité », masquez l'adresse et indiquez la zone desservie « Guadeloupe ». Ajoutez le lien `https://www.pflow.fr/`, des photos et la description du site.
+4. **Avis Google** : demandez un avis à Cookies an nou, Mexico et AG Pizza sur la fiche. C'est le signal local le plus fort.
+5. **Instagram** : bio avec le lien `pflow.fr/demo` (déjà fait) ; remplacez « 5 restos déjà équipés » par les 3 noms ou une formule sans chiffre.
+6. **Mêmes coordonnées partout ailleurs** : Pages Jaunes, annuaire de la CCI Îles de Guadeloupe, Facebook, LinkedIn. Même nom, même adresse, même numéro, au caractère près.
+7. **Liens vers le site** : demandez aux restos clients un lien « Commandes par PFlow » vers pflow.fr sur leur site ou leur bio. Visez un article dans un média local (ex. une page « entreprises » de la presse de Guadeloupe).
+8. **Vérifier les données structurées** : passez l'accueil et une page-réponse dans le test des résultats enrichis de Google (search.google.com/test/rich-results).
+9. **Suivi** : dans 4 à 6 semaines, regardez dans Search Console les requêtes « commande whatsapp restaurant », « alternative uber eats guadeloupe », « commande en ligne sans commission ». Dites-moi lesquelles montent : j'écrirai d'autres pages-réponses.
+10. **Quand un prix change** : modifiez `offre.js` (le site et les CGV suivent), puis `llms.txt` à la main, puis relancez `scripts/indexnow.sh`.
+
 ## Ce que vous devez encore fournir
 
 Tant qu'un élément manque, le site affiche son emplacement [entre crochets] : rien ne casse.
 
-1. **Le réel Cookies an nou** : `videos/cookies-an-nou.mp4` (envoyez-le-moi tel quel, je le compresse).
-2. **La vidéo courte du parcours de commande** (écran de démo, sans son) : `videos/parcours.mp4`.
-3. **Votre photo** pour le bloc final : `img/jules.webp`, portrait 4:5.
-4. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord).
-5. **CGV** : quand les livraisons au-delà du palier sont facturées, et une éventuelle clause de responsabilité pour l'option livraison (voir section 10).
-6. **Offre Vercel** : Pro ou Hobby ? Sans Pro, les 3 événements de clic ne seront pas enregistrés.
+1. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord), pour le bloc « Ils l'utilisent déjà ».
+2. **La relecture d'un juriste** de l'article 10 des CGV (option livraison) avant d'activer l'option.
+3. **Votre offre Vercel** : Pro ou Hobby ? Sans Pro, les 3 événements de clic ne sont pas enregistrés.
+4. **Facultatif** : une vidéo de démo à vous dans `videos/demo-source/`, si vous préférez votre ancienne vidéo à celle faite avec Remotion.
 
 ## Points à valider
 
 - Relire la carte prix et la ligne « + options selon vos besoins » sur la prévisualisation.
 - Relire les passages des CGV ci-dessus (avant / après).
 - Bio Instagram : remplacer « 5 restos déjà équipés ».
-- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=4` et `js/site.js?v=3`) (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
+- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=5` et `js/site.js?v=5`) (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
 
 ## Fichiers
 
 Nouveaux : `PLAN_SITE.md`, `RAPPORT_SITE.md`, `CHARTE.md`, `calcul.html`, `css/site.css`, `js/site.js`, `fonts/anton-400.woff2`, `fonts/pjs-700.woff2`, `fonts/pjs-800.woff2`, `img/p-bulle-*.webp`, `img/LISEZMOI.txt`, `videos/LISEZMOI.txt`, `og-accueil.jpg`, `og-calcul.jpg`.
 Modifiés : `index.html`, `mentions-legales.html`, `sitemap.xml`, `vercel.json` (cache long pour `/css`, `/js`, `/img`, `/videos`).
 Ajoutés le 12 novembre : `offre.js`, `img/p-bulle.png`, `img/p-bulle-96.webp`, `videos/mexico.mp4` + `.webp`, `videos/ag-pizza.mp4` + `.webp`. Modifiés : pages SEO, `demo.html` (une ligne), `cgv.html`, `confidentialite.html`, favicons, images de partage, `vercel.json` (redirections `/test` et `/site`). Supprimés : `test.html`, `site/`.
+Série suivante (12 novembre) : `questions/` (3 pages-réponses), `video-demo/` (projet Remotion, sans `node_modules/` ni `out/`), `videos/parcours.mp4` + `.webp`, `videos/cookies-an-nou.mp4` + `.webp`, `img/jules.webp`, `llms.txt`, `56805f00c3689eb0819d45f54f421434.txt` (clé IndexNow), `scripts/indexnow.sh`. Modifiés : `index.html`, `calcul.html`, `mentions-legales.html`, `cgv.html`, `offre.js`, `infos-legales.js`, `css/site.css`, `js/site.js`, `robots.txt`, `sitemap.xml`.

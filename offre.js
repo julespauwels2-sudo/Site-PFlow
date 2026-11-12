@@ -3,7 +3,9 @@
    C'est le SEUL endroit à modifier : les prix s'affichent tout seuls
    sur la page d'accueil (carte « Options en plus ») et dans les CGV
    (article 4, détail de la livraison compris).
-   L'abonnement de base (49 €/mois) est écrit directement dans les pages.
+   ABONNEMENT DE BASE : « base » sert au calcul de la comparaison
+   « avec livraison » de l'accueil (le 49 € des textes est écrit dans
+   les pages).
 
    LIVRAISON : 3 paliers. Écrire des nombres (pas de « € »), avec un
    point pour les centimes : 0.60 et non 0,60.
@@ -20,6 +22,7 @@
    Un prix vide ou entre crochets [ ] s'affiche « [prix à venir] ».
    ===================================================================== */
 var OFFRE = {
+  base: 49,
   livraison: [
     { nom: "Essentiel", prix: 59,  inclus: 100,  depassement: 0.60 },
     { nom: "Pro",       prix: 119, inclus: 300,  depassement: 0.50 },
@@ -94,6 +97,30 @@ var OFFRE = {
     }
   }
 
+  /* le palier le moins cher pour n livraisons */
+  function meilleurPalier(n) {
+    var P = OFFRE.livraison || [], best = null;
+    P.forEach(function (p) { var c = cout(p, n); if (!best || c < best.cout) best = { palier: p, cout: c }; });
+    return best;
+  }
+
+  /* accueil : « 100 commandes de 20 € livrées par mois… » (chiffres calculés ici) */
+  function comparaison(zone) {
+    var n = parseFloat(zone.getAttribute("data-commandes")) || 100;
+    var panier = parseFloat(zone.getAttribute("data-panier")) || 20;
+    var taux = parseFloat(zone.getAttribute("data-taux")) || 25;
+    var b = meilleurPalier(n); if (!b) return;
+    var commission = n * panier * taux / 100, pflow = (OFFRE.base || 49) + b.cout, eco = commission - pflow;
+    var v = { commandes: String(n), panier: euros(panier), taux: String(taux).replace(".", ",") + NBSP + "%",
+      commission: euros(commission), pflow: euros(pflow), base: euros(OFFRE.base || 49), livraison: euros(b.cout),
+      palier: b.palier.nom, economie: euros(Math.max(eco, 0)) };
+    zone.querySelectorAll("[data-cmp]").forEach(function (e) {
+      var k = e.getAttribute("data-cmp");
+      if (k in v) e.textContent = v[k];
+      if (k === "economie-nb") { e.textContent = String(Math.round(Math.max(eco, 0))); e.setAttribute("data-compte", String(Math.round(Math.max(eco, 0)))); }
+    });
+  }
+
   function remplir() {
     document.querySelectorAll("[data-offre]").forEach(function (e) {
       var cle = e.getAttribute("data-offre");
@@ -103,6 +130,7 @@ var OFFRE = {
     });
     document.querySelectorAll("[data-offre-paliers]").forEach(paliersSite);
     document.querySelectorAll("[data-offre-livraison-cgv]").forEach(livraisonCgv);
+    document.querySelectorAll("[data-offre-comparaison]").forEach(comparaison);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", remplir);
   else remplir();

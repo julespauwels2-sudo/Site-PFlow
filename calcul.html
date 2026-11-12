@@ -26,7 +26,7 @@
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=4">
+<link rel="stylesheet" href="/css/site.css?v=5">
 <style>
   .calc .msg-moins{display:none;margin-top:14px;font-size:1.05rem;color:var(--reflet);}
   .calc.moins-cher .msg-moins{display:block;}
@@ -45,9 +45,67 @@
   "about":{"@type":"Product","name":"PFlow Order","offers":{"@type":"Offer","price":"49","priceCurrency":"EUR","url":"https://www.pflow.fr/#tarifs"}}
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://www.pflow.fr/#organisation",
+   "name": "PFlow Order",
+   "url": "https://www.pflow.fr/",
+   "logo": "https://www.pflow.fr/favicon-512.png",
+   "description": "Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49 €/mois, 0 % de commission, sans engagement.",
+   "telephone": "+590 690 93 81 08",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "615 Rue de l'aviation, Saint-Félix",
+    "postalCode": "97190",
+    "addressLocality": "Le Gosier",
+    "addressRegion": "Guadeloupe",
+    "addressCountry": "GP"
+   },
+   "areaServed": [
+    "Guadeloupe",
+    "Martinique",
+    "Saint-Martin",
+    "Saint-Barthélemy"
+   ],
+   "sameAs": [
+    "https://www.instagram.com/pflow.gp/"
+   ]
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://www.pflow.fr/#entreprise",
+   "name": "PFlow Order",
+   "url": "https://www.pflow.fr/",
+   "image": "https://www.pflow.fr/og-accueil.jpg",
+   "description": "Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49 €/mois, 0 % de commission, sans engagement.",
+   "telephone": "+590 690 93 81 08",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "615 Rue de l'aviation, Saint-Félix",
+    "postalCode": "97190",
+    "addressLocality": "Le Gosier",
+    "addressRegion": "Guadeloupe",
+    "addressCountry": "GP"
+   },
+   "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Guadeloupe"
+   },
+   "priceRange": "À partir de 49 €/mois",
+   "parentOrganization": {
+    "@id": "https://www.pflow.fr/#organisation"
+   }
+  }
+ ]
+}
+</script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=3"></script>
+<script defer src="/js/site.js?v=5"></script>
 </head>
 <body>
 
@@ -111,9 +169,17 @@
 
 <footer class="pied f-nuit">
   <div class="cadre">
-    <p>PFlow Order&nbsp;: prise de commande WhatsApp pour les restaurants de Guadeloupe.</p>
-    <nav aria-label="Informations légales">
+    <a class="marque" href="/" aria-label="PFlow Order, accueil"><img src="/img/p-bulle-96.webp" width="96" height="104" alt="" loading="lazy" decoding="async"><span class="pill pill-blanc">PFlow Order</span></a>
+    <p>Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49&nbsp;€/mois, 0&nbsp;% de commission, sans engagement.</p>
+    <p class="nap"><b>PFlow Order</b><br>615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
+    <nav class="seo" aria-label="Pages utiles">
       <a href="/">Accueil</a>
+      <a href="/calcul">Calculer votre commission</a>
+      <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
+      <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
+      <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
+    </nav>
+    <nav aria-label="Informations légales">
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/confidentialite">Confidentialité</a>
       <a href="/cgv">CGV</a>

@@ -4,12 +4,12 @@ Déposer les fichiers ici, avec EXACTEMENT ces noms. Tant qu'un fichier manque,
 le site affiche son emplacement [entre crochets] : rien ne casse.
 
 Bloc « Ils l'utilisent déjà » (réels verticaux 9:16) :
-  cookies-an-nou.mp4   + cookies-an-nou.webp   (image d'aperçu)
+  cookies-an-nou.mp4   + cookies-an-nou.webp   (en place le 12/11/2026)
   mexico.mp4           + mexico.webp     (en place le 12/11/2026)
   ag-pizza.mp4         + ag-pizza.webp   (en place le 12/11/2026)
 
-Bloc « Avec PFlow, c'est simple » (écran du parcours de commande, en boucle, sans son) :
-  parcours.mp4         + parcours.webp
+Bloc « Avec PFlow, c'est simple » (vidéo de démo Mint Bun, en boucle, sans son) :
+  parcours.mp4         + parcours.webp   (faite avec Remotion : voir video-demo/LISEZMOI.md)
 
 Conseils (pour que le site reste rapide sur téléphone) :
 - MP4 (H.264), 720 × 1280 maximum, 15 à 30 secondes, moins de 4 Mo par vidéo.
