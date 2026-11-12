@@ -43,7 +43,7 @@
   setTimeout(function () { if (!window.PFLOW_OK) h.classList.remove("js"); }, 4000);
 })(document.documentElement);
 </script>
-<link rel="stylesheet" href="/css/site.css?v=3">
+<link rel="stylesheet" href="/css/site.css?v=4">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -268,9 +268,9 @@
   <section class="bloc f-bleu livraison" id="livraison">
     <div class="cadre">
       <svg class="ico-liv" data-rv viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke="#0A1236" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="68" r="11"/><circle cx="74" cy="68" r="11"/><path d="M35 68h28l-8-26H42M55 42l-4-14h-9M63 68l10-22h-9"/><rect x="10" y="30" width="24" height="18" rx="3"/></g></svg>
-      <span class="pill pill-nuit" data-rv>Nouveau</span>
+      <span class="pill pill-nuit" data-rv>Nouveau à Jarry et Baie-Mahault</span>
       <h2 data-rv>Pas de livreur&nbsp;? <span class="acc">On livre</span></h2>
-      <p class="zone" data-rv>Nouveau à Jarry et Baie-Mahault.</p>
+      <p class="zone" data-rv>Vous avez vos livreurs&nbsp;? Gérez‑les depuis PFlow. Vous n'en avez pas&nbsp;? On livre pour vous.</p>
     </div>
   </section>
 
@@ -321,17 +321,24 @@
             <li><svg aria-hidden="true"><use href="#ok"/></svg>Carte en ligne aux couleurs de votre resto</li>
             <li><svg aria-hidden="true"><use href="#ok"/></svg>Paiement en ligne (SumUp ou Stripe)</li>
             <li><svg aria-hidden="true"><use href="#ok"/></svg>Espace de gestion&nbsp;: suivez vos commandes, modifiez votre carte et vos prix</li>
+            <li><svg aria-hidden="true"><use href="#ok"/></svg>Gestion de vos propres livreurs</li>
             <li><svg aria-hidden="true"><use href="#ok"/></svg>Installation faite par nous</li>
           </ul>
           <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="prix">Tester la démo</a>
         </div>
         <div class="options" data-rv style="--d:.12s">
           <h3>Options en plus</h3>
+          <p class="opt-titre">Livraison, on livre pour vous</p>
+          <ul class="paliers" data-offre-paliers>
+            <li>[Paliers de livraison à venir]</li>
+          </ul>
+          <p class="opt-regle">Vous payez toujours le palier le plus avantageux.</p>
+          <p class="opt-titre">Pour vendre plus</p>
           <ul>
-            <li>Livraison <span data-offre="livraison">[prix à venir]</span></li>
             <li>Gestion du stock <span data-offre="stock">[prix à venir]</span></li>
-            <li>Relance des paniers <span data-offre="paniers">[prix à venir]</span></li>
             <li>Avis Google <span data-offre="avis">[prix à venir]</span></li>
+            <li>Relance des paniers <span data-offre="paniers">[prix à venir]</span></li>
+            <li class="pack">Pack des 3 options <span><span data-offre="pack">[prix à venir]</span><small data-offre="pack-avant"></small></span></li>
           </ul>
           <p class="options-note">0&nbsp;% de commission, même avec les options.</p>
         </div>

@@ -16,7 +16,6 @@ var INFOS_LEGALES={
   telephone:"0690938108",           /* ex. "0690 00 00 00" */
   directeur:"Jules Pauwels",           /* prenom et nom du directeur de la publication */
   prix:"nets, TVA non applicable (article 293 B du CGI)",                /* CGV : "nets, TVA non applicable (article 293 B du CGI)" ou "hors taxes, TVA en sus au taux en vigueur" */
-  paiementMiseEnPlace:"à la commande", /* CGV : ex. "à la commande" ou "50 % à la commande et 50 % à la mise en ligne" */
   moyenPaiement:"virement ou prélèvement SEPA",       /* CGV : ex. "virement ou prélèvement SEPA" */
   tribunal:"le tribunal mixte de commerce de Pointe-à-Pitre"             /* CGV : ex. "le tribunal mixte de commerce de Pointe-à-Pitre" */
 };

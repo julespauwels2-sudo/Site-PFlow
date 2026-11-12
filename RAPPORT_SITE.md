@@ -93,7 +93,7 @@ Seuls l'article 2 (puces « Abonnement mensuel » et « Options »), l'article 4
 - Avant : « … PFlow ne prélève **aucune commission** sur les ventes du Client. Les frais facturés par des services tiers (prestataire de paiement en ligne, coûts éventuels de la messagerie WhatsApp Business, course facturée par le service de livraison déléguée) restent à la charge du Client et sont précisés au devis. … »
 - Après : « … PFlow ne prélève **aucune commission** sur les ventes du Client, y compris sur les commandes passées avec les options. Les frais facturés par des services tiers (prestataire de paiement en ligne, coûts éventuels de la messagerie WhatsApp Business) restent à la charge du Client et sont précisés au devis. … » (le début, « Les prix sont exprimés en euros, … », et la fin, sur l'évolution des prix avec 30 jours de préavis, sont inchangés)
 
-**À relire de votre côté (clauses non touchées, comme demandé, mais qui parlent encore de frais de mise en place) :**
+**À relire de votre côté (clauses non touchées, comme demandé, mais qui parlent encore de frais de mise en place) :** *(réglé le 12 novembre, voir section 10)*
 - Article 3 : « … et, le cas échéant, le paiement des frais de mise en place. » (reste juste grâce à « le cas échéant », mais devient inutile)
 - Article 5 : « Les frais de mise en place sont payables à la commande. » (ces frais n'existent plus)
 - Article 6 : « Les sommes versées pour la mise en place correspondent à un travail réalisé et ne sont pas remboursables une fois celui-ci commencé. »
@@ -143,24 +143,80 @@ CSS et IntersectionObserver uniquement, aucune librairie, chacune ≤ 0,6 s :
 ### 9. Réels clients
 Les réels **Mexico** et **AG Pizza** que vous avez envoyés sont en ligne (compressés en 720 × 1280 : 2,4 Mo et 3,5 Mo, image d'aperçu à 16 s). Ils ne se chargent que lorsque le visiteur arrive sur le bloc. Les 3 réels du carrousel se chargent ensemble (avant, le 3e attendait d'être balayé).
 
+### 10. Dernières corrections avant mise en ligne (12 novembre 2026, suite)
+
+**Livraison : 3 paliers** (dans `offre.js`, en nombres) : Essentiel 59 €/mois (jusqu'à 100 livraisons, puis 0,60 € par livraison), Pro 119 €/mois (jusqu'à 300, puis 0,50 €), Illimité 190 €/mois.
+- Accueil, carte « Options en plus » : les 3 paliers et leur prix, chacun avec son volume (« jusqu'à 100 livraisons/mois », « jusqu'à 300 livraisons/mois », « livraisons illimitées ») pour qu'on comprenne la différence, puis « Vous payez toujours le palier le plus avantageux. » Aucun détail des dépassements sur le site.
+- CGV, article 4 : le détail complet (paliers, dépassements, règle du palier le plus avantageux, exemple). Le texte est construit à partir de `offre.js` : si vous changez un prix, les CGV suivent, et l'exemple est recalculé tout seul.
+
+**Autres options** (`offre.js`) : gestion du stock 9 €/mois, avis Google 9 €/mois, relance des paniers 19 €/mois, pack des 3 options 29 €/mois avec « au lieu de 37 € » sur l'accueil (9 + 9 + 19 = 37, vérifié). Le pack figure aussi dans l'article 4 des CGV, sans le « au lieu de ».
+
+**Inclus dans les 49 €** : ajout de « Gestion de vos propres livreurs » (accueil, page SEO Martinique, et article 2 des CGV pour que les CGV restent identiques à l'offre). La FAQ Martinique « Puis-je garder mes livreurs ? » précise maintenant : « Leur gestion est incluse dans l'abonnement. »
+
+**Bloc livraison de l'accueil** : la phrase devient « Vous avez vos livreurs ? Gérez-les depuis PFlow. Vous n'en avez pas ? On livre pour vous. ». Pour ne pas perdre la zone desservie, « Jarry et Baie-Mahault » passe dans la pill du haut du bloc : « Nouveau à Jarry et Baie-Mahault ».
+
+**Frais de mise en place** : retirés des articles 3, 5 et 6 des CGV. Ailleurs sur le site, « mise en place » n'apparaît plus que pour décrire l'installation (« Une mise en place clé en main », « on s'en occupe pendant la mise en place ») ou pour dire « sans frais de mise en place ». Le champ `paiementMiseEnPlace` de `infos-legales.js` (« à la commande »), qui ne servait plus qu'à l'article 5, a été retiré.
+
+#### CGV : passages modifiés, mot pour mot
+
+**Article 2, puce « Abonnement mensuel de base »**
+- Avant : « … espace de gestion permettant au Client de suivre ses commandes et de modifier sa carte et ses prix, installation réalisée par PFlow, ainsi que l'hébergement, le fonctionnement du service, la maintenance et le support. »
+- Après : « … espace de gestion permettant au Client de suivre ses commandes et de modifier sa carte et ses prix, installation réalisée par PFlow, gestion des propres livreurs du Client, ainsi que l'hébergement, le fonctionnement du service, la maintenance et le support. »
+
+**Article 3 (Commande)**
+- Avant : « La commande est formée par l'acceptation écrite du devis par le Client (signature, e-mail ou message WhatsApp) et, le cas échéant, le paiement des frais de mise en place. Le Client fournit ensuite les éléments nécessaires (menu, photos, horaires, logo). … »
+- Après : « La commande est formée par l'acceptation écrite du devis par le Client (signature, e-mail ou message WhatsApp). Le Client fournit ensuite les éléments nécessaires (menu, photos, horaires, logo). … » (la phrase suivante, « Les délais de mise en place sont indiqués au devis… », parle du délai d'installation, pas de frais : inchangée)
+
+**Article 4 (Prix), puce des options**
+- Avant : « Options, facturées en plus de l'abonnement de base : livraison : [prix à venir] ; gestion du stock : [prix à venir] ; relance des paniers : [prix à venir] ; avis Google : [prix à venir]. »
+- Après, deux puces :
+  - « Options, facturées en plus de l'abonnement de base : gestion du stock : 9 €/mois ; avis Google : 9 €/mois ; relance des paniers : 19 €/mois ; pack des trois options (gestion du stock, avis Google et relance des paniers) : 29 €/mois. »
+  - « Livraison, en supplément de l'abonnement de base, selon trois paliers :
+    - Essentiel : 59 € par mois, jusqu'à 100 commandes livrées par mois ; au-delà, 0,60 € par livraison.
+    - Pro : 119 € par mois, jusqu'à 300 commandes livrées par mois ; au-delà, 0,50 € par livraison.
+    - Illimité : 190 € par mois, sans limite de commandes livrées.
+
+    Le Client paie toujours le montant le moins élevé entre son palier, dépassements compris, et le palier supérieur. Exemple : un Client au palier Essentiel qui fait 250 livraisons dans le mois devrait payer 59 € + 150 × 0,60 € = 149 € ; il paie 119 €, prix du palier Pro. »
+
+**Article 5 (Paiement), premier paragraphe**
+- Avant : « Les frais de mise en place sont payables à la commande. L'abonnement est payable mensuellement et d'avance, par virement ou prélèvement SEPA. »
+- Après : « L'abonnement est payable mensuellement et d'avance, par virement ou prélèvement SEPA. »
+
+**Article 6 (Durée et résiliation), premier paragraphe**
+- Avant : « L'abonnement est sans engagement de durée. Il est reconduit chaque mois et peut être résilié à tout moment par le Client, par écrit (e-mail ou message WhatsApp), avec effet à la fin du mois en cours. Les sommes versées pour la mise en place correspondent à un travail réalisé et ne sont pas remboursables une fois celui-ci commencé. »
+- Après : « L'abonnement est sans engagement de durée. Il est reconduit chaque mois et peut être résilié à tout moment par le Client, par écrit (e-mail ou message WhatsApp), avec effet à la fin du mois en cours. »
+
+La date reste « Dernière mise à jour : 12 novembre 2026 ». Rien d'autre n'a changé dans les CGV.
+
+**À trancher (je n'ai rien inventé)** : les CGV ne disent pas **quand** les livraisons au-delà du palier sont facturées (avec le mois suivant ? sur la facture du mois en cours ?), ni si le Client peut changer de palier en cours de mois. L'article 5 ne parle que de l'abonnement « payable d'avance ». La clause de responsabilité pendant la livraison faite par PFlow reste aussi à voir avec un juriste.
+
+#### Lighthouse mobile après ces corrections
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|
+| `/` (avec l'intro) | 100 | 100 | 96 | 100 | 1,5 s | 0 | 80 ms |
+| `/calcul` | 100 | 100 | 96 | 100 | 1,4 s | 0 | 0 ms |
+| `/cgv` | 100 | 93 | 96 | 100 | 1,4 s | 0,021 | 0 ms |
+
+Le 93 en accessibilité des CGV vient de leur ancien style, que je n'ai pas modifié (numéros d'articles et petit titre en rose sur fond blanc, contraste insuffisant). Ce n'est pas lié aux corrections. Je peux passer les CGV et la politique de confidentialité dans la nouvelle DA si vous voulez.
+
 ## Ce que vous devez encore fournir
 
 Tant qu'un élément manque, le site affiche son emplacement [entre crochets] : rien ne casse.
 
-1. **Les prix des 4 options** (livraison, gestion du stock, relance des paniers, avis Google), à écrire dans `offre.js`. Pour mémoire, votre premier message indiquait « livraison dès 59 €/mois » ; je ne l'ai pas repris puisque le nouveau texte laissait `[PRIX_LIVRAISON]`.
-2. **Le réel Cookies an nou** : `videos/cookies-an-nou.mp4` (envoyez-le-moi tel quel, je le compresse).
-3. **La vidéo courte du parcours de commande** (écran de démo, sans son) : `videos/parcours.mp4`.
-4. **Votre photo** pour le bloc final : `img/jules.webp`, portrait 4:5.
-5. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord).
-6. **CGV** : votre décision sur les articles 3, 5 et 6 (frais de mise en place) et sur une éventuelle clause pour l'option livraison (voir plus haut).
-7. **Offre Vercel** : Pro ou Hobby ? Sans Pro, les 3 événements de clic ne seront pas enregistrés.
+1. **Le réel Cookies an nou** : `videos/cookies-an-nou.mp4` (envoyez-le-moi tel quel, je le compresse).
+2. **La vidéo courte du parcours de commande** (écran de démo, sans son) : `videos/parcours.mp4`.
+3. **Votre photo** pour le bloc final : `img/jules.webp`, portrait 4:5.
+4. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord).
+5. **CGV** : quand les livraisons au-delà du palier sont facturées, et une éventuelle clause de responsabilité pour l'option livraison (voir section 10).
+6. **Offre Vercel** : Pro ou Hobby ? Sans Pro, les 3 événements de clic ne seront pas enregistrés.
 
 ## Points à valider
 
 - Relire la carte prix et la ligne « + options selon vos besoins » sur la prévisualisation.
 - Relire les passages des CGV ci-dessus (avant / après).
 - Bio Instagram : remplacer « 5 restos déjà équipés ».
-- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le `?v=3` dans les pages HTML (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
+- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=4` et `js/site.js?v=3`) (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
 
 ## Fichiers
 
