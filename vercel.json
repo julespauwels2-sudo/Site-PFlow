@@ -1,6 +1,23 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/test",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/site",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/site/:path*",
+      "destination": "/:path*",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/reviews",

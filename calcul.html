@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Calcul de la commission Uber Eats pour votre restaurant | PFlow</title>
-<meta name="description" content="Combien vous coûte la commission Uber Eats ? Entrez vos commandes et votre panier moyen : le calcul par mois et par an. L'alternative en Guadeloupe : 49 €/mois, 0 % de commission.">
+<meta name="description" content="Combien vous coûte la commission Uber Eats ? Entrez vos commandes et votre panier moyen : le calcul par mois et par an. L'alternative en Guadeloupe : à partir de 49 €/mois, 0 % de commission, sans engagement.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://www.pflow.fr/calcul">
 <meta property="og:type" content="website">
@@ -25,7 +25,8 @@
 <link rel="preload" href="/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/site.css?v=1">
+<script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
+<link rel="stylesheet" href="/css/site.css?v=3">
 <style>
   .calc .msg-moins{display:none;margin-top:14px;font-size:1.05rem;color:var(--reflet);}
   .calc.moins-cher .msg-moins{display:block;}
@@ -46,14 +47,14 @@
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=1"></script>
+<script defer src="/js/site.js?v=3"></script>
 </head>
 <body>
 
 <header class="entete f-nuit">
   <div class="cadre">
     <a class="marque" href="/" aria-label="Le calcul, PFlow Order : retour à l'accueil">
-      <img src="/img/p-bulle-120.webp" srcset="/img/p-bulle-120.webp 120w, /img/p-bulle-240.webp 240w" sizes="46px" width="120" height="130" alt="" fetchpriority="high">
+      <img src="/img/p-bulle-120.webp" srcset="/img/p-bulle-96.webp 96w, /img/p-bulle-120.webp 120w, /img/p-bulle-240.webp 240w" sizes="46px" width="120" height="130" alt="" fetchpriority="high" class="p-entree">
       <span class="pill pill-blanc">Le calcul</span>
     </a>
   </div>
@@ -83,24 +84,24 @@
         </div>
 
         <div class="resultats" aria-live="polite">
-          <div class="res">
+          <div class="res" data-rv>
             <p class="lib">Vous perdez chaque mois</p>
             <span class="montant" data-res="mois">1&nbsp;200&nbsp;€</span>
           </div>
-          <div class="res">
+          <div class="res" data-rv style="--d:.08s">
             <p class="lib">Sur un an</p>
             <span class="montant an" data-res="an">14&nbsp;400&nbsp;€</span>
           </div>
-          <div class="res pflow">
-            <p class="lib">Avec PFlow</p>
+          <div class="res pflow" data-rv style="--d:.16s">
+            <p class="lib">Avec PFlow, à partir de</p>
             <span class="montant">49&nbsp;€</span>
-            <p class="lib">par mois, soit <span data-res="pflow-an">588&nbsp;€</span> par an. 0&nbsp;% de commission.</p>
+            <p class="lib">par mois, soit <span data-res="pflow-an">588&nbsp;€</span> par an, hors options. 0&nbsp;% de commission.</p>
           </div>
         </div>
 
         <p class="garde">Avec PFlow, vous gardez <b data-res="garde-an">13&nbsp;812&nbsp;€</b> par an.</p>
         <p class="msg-moins">Avec ces chiffres, la commission vous coûte moins de 49&nbsp;€ par mois.</p>
-        <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres. La commission dépend de votre contrat avec la plateforme.</p>
+        <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres. La commission dépend de votre contrat avec la plateforme. Calcul fait avec l'abonnement de base à 49&nbsp;€/mois, hors options.</p>
 
         <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="calcul">Tester la démo</a>
       </div>

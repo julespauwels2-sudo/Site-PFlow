@@ -5,8 +5,8 @@ le site affiche son emplacement [entre crochets] : rien ne casse.
 
 Bloc « Ils l'utilisent déjà » (réels verticaux 9:16) :
   cookies-an-nou.mp4   + cookies-an-nou.webp   (image d'aperçu)
-  mexico.mp4           + mexico.webp
-  ag-pizza.mp4         + ag-pizza.webp
+  mexico.mp4           + mexico.webp     (en place le 12/11/2026)
+  ag-pizza.mp4         + ag-pizza.webp   (en place le 12/11/2026)
 
 Bloc « Avec PFlow, c'est simple » (écran du parcours de commande, en boucle, sans son) :
   parcours.mp4         + parcours.webp

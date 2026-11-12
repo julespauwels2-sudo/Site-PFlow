@@ -1,9 +1,10 @@
 IMAGES DU SITE PFLOW
 ====================
-p-bulle-120.webp / -240 / -356 : le P bulle (mascotte), détouré automatiquement
-  depuis favicon-512.png. À REMPLACER par le vrai fichier de la charte
-  (img/charte/p-bulle.png du CRM), exporté en WebP aux mêmes largeurs
-  (120, 240 et 356 px), mêmes noms de fichiers.
+p-bulle.png : le vrai P bulle (mascotte), fond transparent, fourni par Jules.
+p-bulle-96/-120/-240/-356.webp : le même, en WebP aux largeurs utilisées
+  par le site (en-tête, intro, pied de page). Les favicons (favicon*.png,
+  favicon.ico, apple-touch-icon.png) et les images de partage
+  (og-accueil.jpg, og-calcul.jpg) sont faits à partir de p-bulle.png.
 
 jules.webp : la photo de Jules pour le bloc final « Testez en 30 secondes ».
   Format portrait 4:5, 800 × 1000 px, WebP, moins de 120 Ko.

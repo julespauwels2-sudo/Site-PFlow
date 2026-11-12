@@ -54,7 +54,7 @@
 <main>
 <div class="st">Professionnels</div>
 <h1>Conditions générales de vente</h1>
-<div class="maj">Dernière mise à jour : 1er octobre 2026</div>
+<div class="maj">Dernière mise à jour : 12 novembre 2026</div>
 <nav class="som"><b>Sommaire</b>
 <a href="#a1">Objet</a><a href="#a2">Services</a><a href="#a3">Commande</a><a href="#a4">Prix</a><a href="#a5">Paiement</a><a href="#a6">Durée</a><a href="#a7">Client</a><a href="#a8">PFlow</a><a href="#a9">Ventes du client</a><a href="#a10">Responsabilité</a><a href="#a11">Données</a><a href="#a12">Propriété</a><a href="#a13">Force majeure</a><a href="#a14">Litiges</a>
 </nav>
@@ -66,8 +66,8 @@
 <section id="a2"><h2><span>2.</span>Description des services</h2>
 <ul>
 <li><b>Création et mise en place</b> : page de commande à l'image de l'établissement, intégration du menu (produits, options, prix), paramétrage de la réponse automatique WhatsApp, accès au tableau de bord de réception des commandes, tests, mise en ligne et formation à l'utilisation.</li>
-<li><b>Abonnement mensuel</b>, selon la formule choisie (Socle, Croissance ou Tout compris) : hébergement, fonctionnement du service, maintenance et support. Toutes les formules incluent le paiement en ligne et la gestion de la livraison assurée par les propres livreurs du Client (zones, frais, minimum de commande).</li>
-<li><b>Options</b> : relance des paniers abandonnés, invitation à laisser un avis Google, programme de fidélité, réponses sur Instagram et Messenger, mini-site, et, dès leur disponibilité, campagnes WhatsApp et livraison déléguée à un service de coursiers (Uber Direct). Les récompenses accordées dans le cadre du programme de fidélité sont définies et financées par le Client.</li>
+<li><b>Abonnement mensuel de base</b> : prise de commande sur WhatsApp, carte en ligne aux couleurs de l'établissement, paiement en ligne (SumUp ou Stripe), espace de gestion permettant au Client de suivre ses commandes et de modifier sa carte et ses prix, installation réalisée par PFlow, ainsi que l'hébergement, le fonctionnement du service, la maintenance et le support.</li>
+<li><b>Options</b>, souscrites au choix du Client et facturées en plus de l'abonnement de base : livraison, gestion du stock, relance des paniers abandonnés et invitation à laisser un avis Google.</li>
 </ul></section>
 
 <section id="a3"><h2><span>3.</span>Commande</h2>
@@ -76,15 +76,11 @@
 
 <section id="a4"><h2><span>4.</span>Prix</h2>
 <ul>
-<li>Création et mise en place : 390 €, paiement unique.</li>
-<li>Offre Fondateur : 290 € au lieu de 390 € pour la mise en place, réservée aux 10 premiers établissements clients, dans la limite des places disponibles au jour de la commande.</li>
-<li>Formule Socle : 49 € par mois.</li>
-<li>Formule Croissance : 69 € par mois (Socle, relance des paniers abandonnés et avis Google).</li>
-<li>Formule Tout compris : 99 € par mois (Croissance, programme de fidélité, réponses sur Instagram et Messenger, mini-site, ainsi que les campagnes WhatsApp dès leur disponibilité, sans supplément).</li>
-<li>Options à la carte : relance des paniers 29 € par mois ; avis Google 19 € par mois ; programme de fidélité 19 € par mois ; réponses sur Instagram et Messenger 90 €, une fois ; mini-site 149 €, une fois, puis 9 € par mois.</li>
-<li>Options annoncées « bientôt » : campagnes WhatsApp 39 € par mois, 150 messages inclus, les messages au-delà étant facturés au coût de la messagerie ; livraison déléguée 150 €, une fois, puis 39 € par mois. Elles ne peuvent être commandées qu'à partir de leur mise à disposition.</li>
+<li>Abonnement de base : 49 € par mois.</li>
+<li>Création et mise en place : sans frais.</li>
+<li>Options, facturées en plus de l'abonnement de base : livraison : <span data-offre="livraison">[prix à venir]</span> ; gestion du stock : <span data-offre="stock">[prix à venir]</span> ; relance des paniers : <span data-offre="paniers">[prix à venir]</span> ; avis Google : <span data-offre="avis">[prix à venir]</span>.</li>
 </ul>
-<p>Les prix sont exprimés en euros, <span class="todo" data-l="prix">[hors taxes, TVA en sus au taux applicable / ou : TVA non applicable, article 293 B du CGI]</span>. PFlow ne prélève <b>aucune commission</b> sur les ventes du Client. Les frais facturés par des services tiers (prestataire de paiement en ligne, coûts éventuels de la messagerie WhatsApp Business, course facturée par le service de livraison déléguée) restent à la charge du Client et sont précisés au devis. Les prix peuvent évoluer ; les nouveaux tarifs d'abonnement ne s'appliquent au Client qu'après information préalable d'au moins 30 jours.</p>
+<p>Les prix sont exprimés en euros, <span class="todo" data-l="prix">[hors taxes, TVA en sus au taux applicable / ou : TVA non applicable, article 293 B du CGI]</span>. PFlow ne prélève <b>aucune commission</b> sur les ventes du Client, y compris sur les commandes passées avec les options. Les frais facturés par des services tiers (prestataire de paiement en ligne, coûts éventuels de la messagerie WhatsApp Business) restent à la charge du Client et sont précisés au devis. Les prix peuvent évoluer ; les nouveaux tarifs d'abonnement ne s'appliquent au Client qu'après information préalable d'au moins 30 jours.</p>
 </section>
 
 <section id="a5"><h2><span>5.</span>Paiement</h2>
@@ -134,6 +130,7 @@
 </main>
 <footer>&copy; 2026 PFlow Order &middot; <a href="/mentions-legales">Mentions légales</a><a href="/confidentialite">Confidentialité</a><a href="/cgv">CGV</a></footer>
 <script src="infos-legales.js"></script>
+<script src="/offre.js"></script>
 <script>
 (function(){var I=window.INFOS_LEGALES||{};
 document.querySelectorAll("[data-l]").forEach(function(e){var v=(I[e.getAttribute("data-l")]||"").trim();if(v){e.textContent=v;e.classList.remove("todo");}});
