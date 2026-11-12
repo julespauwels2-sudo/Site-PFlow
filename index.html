@@ -35,7 +35,7 @@
   try {
     var calme = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!calme && !location.hash && !sessionStorage.getItem("pflow-intro")) {
-      h.classList.add("intro-en-cours");
+      h.classList.add("intro-en-cours", "intro-vue");
       sessionStorage.setItem("pflow-intro", "1");
     }
   } catch (e) {}
@@ -43,7 +43,7 @@
   setTimeout(function () { if (!window.PFLOW_OK) h.classList.remove("js"); }, 4000);
 })(document.documentElement);
 </script>
-<link rel="stylesheet" href="/css/site.css?v=5">
+<link rel="stylesheet" href="/css/site.css?v=6">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -110,7 +110,7 @@
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/offre.js"></script>
-<script defer src="/js/site.js?v=5"></script>
+<script defer src="/js/site.js?v=6"></script>
 </head>
 <body class="avec-barre">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -118,21 +118,19 @@
   <symbol id="ok" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#FF4FB5"/><path d="M7.5 13.5l3.6 3.6 7.4-8" fill="none" stroke="#0A1236" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
-<!-- Intro (3 s max, une fois par visite, accueil seulement). La page se charge derrière. -->
+<!-- Intro (3 s max, une fois par visite, accueil seulement). Le ticket disparaît entièrement avant que la page apparaisse. -->
 <div class="intro" id="intro">
-  <div class="intro-scene" aria-hidden="true">
-    <div class="intro-ticket">
-      <div class="ticket">
-        <div class="t-tete"><span class="titre">Nouvelle commande</span><span class="t-num">#128</span></div>
-        <p class="t-info ii" style="--i:0">À emporter · prête à 20&nbsp;h&nbsp;15</p>
-        <div class="t-pointilles"></div>
-        <ul>
-          <li class="ii" style="--i:1"><b>2</b> Pizzas reine</li>
-          <li class="ii" style="--i:2"><b>1</b> Bokit poulet</li>
-        </ul>
-        <div class="t-pointilles"></div>
-        <span class="t-recu intro-recu"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Reçue sur WhatsApp</span>
-      </div>
+  <div class="intro-ticket" aria-hidden="true">
+    <div class="ticket">
+      <div class="t-tete"><span class="titre">Nouvelle commande</span><span class="t-num">#128</span></div>
+      <p class="t-info ii" style="--i:0">À emporter · prête à 20&nbsp;h&nbsp;15</p>
+      <div class="t-pointilles"></div>
+      <ul>
+        <li class="ii" style="--i:1"><b>2</b> Pizzas reine</li>
+        <li class="ii" style="--i:2"><b>1</b> Bokit poulet</li>
+      </ul>
+      <div class="t-pointilles"></div>
+      <span class="t-recu intro-recu"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Reçue sur WhatsApp</span>
     </div>
   </div>
   <button class="intro-passer" id="passer" type="button">Passer</button>
@@ -145,20 +143,19 @@
   var fini = false;
   function fermer() {
     if (fini) return; fini = true;
-    i.classList.add("part");
-    h.classList.remove("intro-en-cours");
-    setTimeout(function () { i.remove(); }, 520);
+    i.classList.add("part");                 /* 0 à 0,28 s : le ticket s'efface */
+    setTimeout(function () { h.classList.remove("intro-en-cours"); }, 300);   /* puis la page */
+    setTimeout(function () { i.remove(); }, 600);
   }
   document.getElementById("passer").addEventListener("click", fermer);
-  setTimeout(fermer, 2450);
+  setTimeout(fermer, 2300);
 })();
 </script>
 
-<!-- En-tête : le P bulle + la pill, et un seul bouton -->
 <header class="entete f-nuit">
   <div class="cadre">
     <a class="marque" href="/" aria-label="PFlow Order, accueil">
-      <img class="p-entree" src="/img/p-bulle-120.webp" srcset="/img/p-bulle-96.webp 96w, /img/p-bulle-120.webp 120w, /img/p-bulle-240.webp 240w" sizes="46px" width="120" height="130" alt="" fetchpriority="high">
+      <img src="/img/p-bulle-120.webp" srcset="/img/p-bulle-96.webp 96w, /img/p-bulle-120.webp 120w, /img/p-bulle-240.webp 240w" sizes="42px" width="120" height="130" alt="" fetchpriority="high">
       <span class="pill pill-blanc">PFlow Order</span>
     </a>
     <a class="btn btn-demo" href="/demo" data-evt="clic_demo" data-emp="entete">Tester la démo</a>
@@ -181,9 +178,8 @@
         <p class="prix-ligne"><span class="nw">À partir de 49&nbsp;€/mois</span> · <span class="nw">0&nbsp;% de commission</span> · <span class="nw">sans engagement</span></p>
         <p class="preuve-ligne">Déjà en place chez <b>Cookies an nou</b>, <b>Mexico</b> et <b>AG Pizza</b>.</p>
       </div>
-
       <div class="ticket-zone">
-        <div class="ticket-ombre" data-prof="-0.06">
+        <div class="ticket-ombre">
           <div class="ticket" role="img" aria-label="Exemple de ticket : nouvelle commande numéro 128, reçue sur WhatsApp">
             <div class="t-tete"><span class="titre">Nouvelle commande</span><span class="t-num">#128</span></div>
             <p class="t-info t-imp" style="--i:0">À emporter · prête à 20&nbsp;h&nbsp;15</p>
@@ -200,103 +196,52 @@
     </div>
   </section>
 
-  <!-- 2. Le problème -->
+  <!-- 2. Le rush -->
   <section class="bloc f-rose" id="probleme">
     <div class="cadre">
-      <h2 data-rv>Le rush, <span class="acc">vous connaissez</span></h2>
-      <ul class="cartes defile">
-        <li class="carte" data-rv data-prof="0.05" style="--d:.05s">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-          <p>Le téléphone sonne sans arrêt.</p>
-        </li>
-        <li class="carte" data-rv data-prof="0.05" style="--d:.15s">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9.5 13.5l5 5M14.5 13.5l-5 5"/></svg></span>
-          <p>Des commandes mal notées.</p>
-        </li>
-        <li class="carte" data-rv data-prof="0.05" style="--d:.25s">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
-          <p>30&nbsp;% pour Uber Eats.</p>
-        </li>
+      <h2>Le rush, <span class="acc">vous connaissez</span></h2>
+      <ul class="carte lignes-ico" data-rv>
+        <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>Le téléphone sonne sans arrêt.</li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9.5 13.5l5 5M14.5 13.5l-5 5"/></svg></span>Des commandes mal notées.</li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>30&nbsp;% pour Uber Eats.</li>
       </ul>
     </div>
   </section>
 
   <!-- 3. La solution -->
-  <section class="bloc f-nuit solution" id="solution">
-    <div class="cadre">
+  <section class="bloc f-nuit" id="solution">
+    <div class="cadre deux-col">
       <div>
-        <h2 data-rv>Avec PFlow, <span class="acc">c'est simple</span></h2>
-        <ol class="etapes" data-rv>
-          <li class="etape"><span class="num" aria-hidden="true">1</span><p>Le client vous écrit sur WhatsApp.</p></li>
-          <li class="etape"><span class="num" aria-hidden="true">2</span><p>Le client choisit sur votre carte.</p></li>
-          <li class="etape"><span class="num" aria-hidden="true">3</span><p>Vous recevez la commande écrite.</p></li>
+        <h2>Avec PFlow, <span class="acc">c'est simple</span></h2>
+        <ol class="carte lignes-ico" data-rv>
+          <li><span class="num" aria-hidden="true">1</span>Le client vous écrit sur WhatsApp.</li>
+          <li><span class="num" aria-hidden="true">2</span>Le client choisit sur votre carte.</li>
+          <li><span class="num" aria-hidden="true">3</span>Vous recevez la commande écrite.</li>
         </ol>
-        <p class="sans-appli" data-rv><b>Pas d'appli à installer.</b>Ni pour vous, ni pour vos clients.</p>
       </div>
-
-      <!-- Vidéo de démo (resto fictif Mint Bun), faite avec Remotion : voir video-demo/ et RAPPORT_SITE.md -->
+      <!-- Vidéo de démo (resto fictif Mint Bun), faite avec Remotion : voir video-demo/ -->
       <div class="tel-zone" data-rv>
-        <div class="tel-bulles">
-          <div class="tel" data-video="/videos/parcours.mp4" data-poster="/videos/parcours.webp" data-boucle>
-            <img class="tel-apercu" src="/videos/parcours.webp" width="540" height="960" alt="Démo : le client commande un burger chez Mint Bun (resto fictif) sur WhatsApp, le resto reçoit le ticket" loading="lazy" decoding="async">
-          </div>
-          <p class="fb fb1"><span>Bonjour, je veux commander</span></p>
-          <p class="fb fb2"><span>Voici notre carte&nbsp;👇</span></p>
-          <p class="fb fb3"><span>✓ Commande reçue</span></p>
+        <div class="tel" data-video="/videos/parcours.mp4?v=2" data-poster="/videos/parcours.webp?v=2" data-boucle>
+          <img class="tel-apercu" src="/videos/parcours.webp?v=2" width="540" height="960" alt="Démo : un client commande un burger chez Mint Bun (resto fictif) sur WhatsApp, et le resto reçoit le ticket" loading="lazy" decoding="async">
         </div>
+        <p class="sans-appli"><b>Pas d'appli à installer.</b><span>Ni pour vous, ni pour vos clients.</span></p>
       </div>
     </div>
   </section>
 
-  <!-- 4. Uber Eats ou PFlow -->
-  <section class="bloc f-nuit2" id="comparer">
+  <!-- 4. Uber Eats ou PFlow : une seule comparaison (chiffres calculés par /offre.js) -->
+  <section class="bloc f-nuit" id="comparer">
     <div class="cadre">
-      <h2 data-rv>Uber Eats ou <span class="acc">PFlow</span>&nbsp;?</h2>
-      <div class="duel">
-        <div class="c uber" data-rv>
-          <p class="nom">Uber Eats</p>
-          <p class="gros"><span data-compte="30">30</span>&nbsp;%</p>
-          <p>Jusqu'à 30&nbsp;% sur chaque commande.</p>
+      <h2>Uber Eats ou <span class="acc">PFlow</span>&nbsp;?</h2>
+      <div class="carte compar" data-rv data-offre-comparaison data-commandes="100" data-panier="20" data-taux="25">
+        <p class="compar-titre"><span data-cmp="commandes">100</span> commandes de <span data-cmp="panier">20&nbsp;€</span> livrées par mois</p>
+        <div class="compar-chiffres">
+          <p class="chiffre chiffre-plat"><b data-cmp="commission">500&nbsp;€</b><span>environ, de commission avec une plateforme à <span data-cmp="taux">25&nbsp;%</span></span></p>
+          <p class="chiffre chiffre-pflow"><b data-cmp="pflow">108&nbsp;€</b><span>avec PFlow (<span data-cmp="base">49&nbsp;€</span> + livraison <span data-cmp="livraison">59&nbsp;€</span>)</span></p>
         </div>
-        <div class="c pflow" data-rv style="--d:.12s">
-          <p class="nom">PFlow</p>
-          <p class="gros"><span data-compte="0" data-depart="30">0</span>&nbsp;%</p>
-          <p>À partir de 49&nbsp;€ par mois. Sans commission.</p>
-        </div>
-      </div>
-
-      <div class="preuve-liv" data-rv data-offre-comparaison data-commandes="100" data-panier="20" data-taux="25">
-        <p class="pl-titre"><span data-cmp="commandes">100</span> commandes de <span data-cmp="panier">20&nbsp;€</span> livrées par mois&nbsp;:</p>
-        <div class="pl-grille">
-          <p class="pl-c pl-plat">environ <b data-cmp="commission">500&nbsp;€</b> de commission avec une plateforme à <span data-cmp="taux">25&nbsp;%</span>,</p>
-          <p class="pl-c pl-pflow"><b data-cmp="pflow">108&nbsp;€</b> avec PFlow (<span data-cmp="base">49&nbsp;€</span> + livraison <span data-cmp="livraison">59&nbsp;€</span>).</p>
-        </div>
-        <p class="pl-eco">Soit environ <b><span data-cmp="economie-nb">392</span>&nbsp;€</b> de plus pour vous chaque mois.</p>
-        <p class="pl-note">Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25&nbsp;%). Exemple indicatif.</p>
-      </div>
-
-      <div class="calc" data-calc data-commission="30" data-rv>
-        <h3>Combien vous coûte la commission&nbsp;?</h3>
-        <button class="calc-ouvrir" type="button" aria-expanded="false" data-calc-ouvrir>Faire le calcul avec mes chiffres</button>
-        <div class="calc-corps">
-        <div class="champs">
-          <div class="champ">
-            <label for="c-cmd">Commandes par mois</label>
-            <div class="boite"><input id="c-cmd" type="text" inputmode="numeric" autocomplete="off" maxlength="7" value="200" data-champ="commandes"><span class="unite unite-longue">commandes</span></div>
-          </div>
-          <div class="champ">
-            <label for="c-panier">Panier moyen</label>
-            <div class="boite"><input id="c-panier" type="text" inputmode="decimal" autocomplete="off" maxlength="7" value="20" data-champ="panier"><span class="unite">€</span></div>
-          </div>
-        </div>
-        <div class="resultat" aria-live="polite">
-          <p class="perte">Vous perdez <span class="montant" data-res="mois">1&nbsp;200&nbsp;€</span> par mois avec 30&nbsp;% de commission.</p>
-          <p class="avec">Avec PFlow&nbsp;: à partir de 49&nbsp;€.</p>
-          <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres.</p>
-        </div>
-        </div>
-        <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="calcul">Tester la démo</a>
-        <br><a class="lien-simple" href="/calcul">Faire le calcul sur un an</a>
+        <p class="compar-eco">Soit environ <b><span data-cmp="economie-nb">392</span>&nbsp;€</b> de plus pour vous chaque mois.</p>
+        <p class="note">Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25&nbsp;%). Exemple indicatif.</p>
+        <a class="lien" href="/calcul">Faire mon calcul</a>
       </div>
     </div>
   </section>
@@ -304,54 +249,48 @@
   <!-- 5. Livraison -->
   <section class="bloc f-bleu livraison" id="livraison">
     <div class="cadre">
-      <svg class="ico-liv" data-rv viewBox="0 0 96 96" aria-hidden="true"><g fill="none" stroke="#0A1236" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="68" r="11"/><circle cx="74" cy="68" r="11"/><path d="M35 68h28l-8-26H42M55 42l-4-14h-9M63 68l10-22h-9"/><rect x="10" y="30" width="24" height="18" rx="3"/></g></svg>
-      <span class="pill pill-nuit" data-rv>Nouveau à Jarry et Baie-Mahault</span>
-      <h2 data-rv>Pas de livreur&nbsp;? <span class="acc">On livre</span></h2>
-      <p class="zone" data-rv>Vous avez vos livreurs&nbsp;? Gérez‑les depuis PFlow. Vous n'en avez pas&nbsp;? On livre pour vous.</p>
+      <span class="pill pill-nuit">Nouveau à Jarry et Baie-Mahault</span>
+      <h2>Pas de livreur&nbsp;? <span class="acc">On livre</span></h2>
+      <p class="zone">Vous avez vos livreurs&nbsp;? <span class="nw">Gérez-les</span> depuis PFlow. Vous n'en avez pas&nbsp;? On livre pour vous.</p>
     </div>
   </section>
 
-  <!-- 6. Les preuves -->
+  <!-- 6. Les preuves (un réel absent est masqué, jamais d'emplacement visible) -->
   <section class="bloc f-nuit" id="preuve">
     <div class="cadre">
-      <h2 data-rv>Ils l'utilisent <span class="acc">déjà</span></h2>
-      <!-- Déposer les réels dans /videos/ (voir videos/LISEZMOI.txt). Tant qu'un fichier manque, son emplacement reste visible. -->
+      <h2>Ils l'utilisent <span class="acc">déjà</span></h2>
       <div class="reels" data-rv>
         <figure class="reel">
-          <div class="video" data-video="/videos/cookies-an-nou.mp4" data-poster="/videos/cookies-an-nou.webp" data-nom="Cookies an nou"><p class="vide">[Réel Cookies an nou à venir]</p></div>
+          <div class="video" data-video="/videos/cookies-an-nou.mp4?v=2" data-poster="/videos/cookies-an-nou.webp?v=2" data-nom="Cookies an nou" data-masquer-si-absent><img src="/videos/cookies-an-nou.webp?v=2" width="540" height="960" alt="Réel de Cookies an nou" loading="lazy" decoding="async"></div>
           <figcaption>Cookies an nou</figcaption>
         </figure>
         <figure class="reel">
-          <div class="video" data-video="/videos/mexico.mp4" data-poster="/videos/mexico.webp" data-nom="Mexico"><p class="vide">[Réel Mexico à venir]</p></div>
+          <div class="video" data-video="/videos/mexico.mp4?v=2" data-poster="/videos/mexico.webp?v=2" data-nom="Mexico" data-masquer-si-absent><img src="/videos/mexico.webp?v=2" width="540" height="960" alt="Réel de Mexico" loading="lazy" decoding="async"></div>
           <figcaption>Mexico</figcaption>
         </figure>
         <figure class="reel">
-          <div class="video" data-video="/videos/ag-pizza.mp4" data-poster="/videos/ag-pizza.webp" data-nom="AG Pizza"><p class="vide">[Réel AG Pizza à venir]</p></div>
+          <div class="video" data-video="/videos/ag-pizza.mp4?v=2" data-poster="/videos/ag-pizza.webp?v=2" data-nom="AG Pizza" data-masquer-si-absent><img src="/videos/ag-pizza.webp?v=2" width="540" height="960" alt="Réel de AG Pizza" loading="lazy" decoding="async"></div>
           <figcaption>AG Pizza</figcaption>
         </figure>
       </div>
-
-      <!-- Phrase d'un client : remplacer le texte entre crochets, puis retirer la classe "citation-vide" -->
-      <blockquote class="citation citation-vide" data-rv>
-        <p>[Phrase d'un client à venir]</p>
-        <footer>[Prénom, restaurant]</footer>
+      <!-- Témoignage : masqué tant qu'il n'y a pas de vraie phrase. Pour l'afficher : remplir puis retirer l'attribut hidden.
+      <blockquote class="carte citation" hidden>
+        <p>Phrase exacte du client.</p>
+        <footer>Prénom, restaurant</footer>
       </blockquote>
-
-      <div class="actions">
-        <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="preuves">Tester la démo</a>
-      </div>
+      -->
     </div>
   </section>
 
-  <!-- 7. Le prix (les prix des options se changent dans /offre.js) -->
-  <section class="bloc f-nuit2" id="tarifs">
+  <!-- 7. Le prix (prix des options : /offre.js) -->
+  <section class="bloc f-nuit" id="tarifs">
     <div class="cadre">
-      <h2 data-rv>Un prix <span class="acc">simple</span></h2>
+      <h2>Un prix <span class="acc">simple</span></h2>
       <div class="prix-grille">
         <div class="carte-prix" data-rv>
-          <p class="montant"><span data-compte="49">49</span>&nbsp;€<span class="par">/mois</span></p>
+          <p class="montant">49&nbsp;€<span class="par">/mois</span></p>
           <p class="plus-options">+ options selon vos besoins</p>
-          <p class="sous"><span class="nw">0&nbsp;% de commission,</span> <span class="nw">y compris sur les options</span> · <span class="nw">sans engagement</span> · <span class="nw">sans frais de mise en place</span></p>
+          <p class="sous">0&nbsp;% de commission, y compris sur les options · sans engagement · sans frais de mise en place</p>
           <h3>Inclus dans les 49&nbsp;€</h3>
           <ul class="inclus">
             <li><svg aria-hidden="true"><use href="#ok"/></svg>Commandes sur WhatsApp</li>
@@ -363,22 +302,22 @@
           </ul>
           <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="prix">Tester la démo</a>
         </div>
-        <div class="options" data-rv style="--d:.12s">
-          <h3>Options en plus</h3>
-          <p class="opt-titre">Livraison, on livre pour vous</p>
-          <ul class="paliers" data-offre-paliers>
-            <li>[Paliers de livraison à venir]</li>
-          </ul>
-          <p class="opt-regle">Vous payez toujours le palier le plus avantageux.</p>
-          <p class="opt-titre">Pour vendre plus</p>
-          <ul>
-            <li>Gestion du stock <span data-offre="stock">[prix à venir]</span></li>
-            <li>Avis Google <span data-offre="avis">[prix à venir]</span></li>
-            <li>Relance des paniers <span data-offre="paniers">[prix à venir]</span></li>
-            <li class="pack">Pack des 3 options <span><span data-offre="pack">[prix à venir]</span><small data-offre="pack-avant"></small></span></li>
-          </ul>
-          <p class="options-note">0&nbsp;% de commission, même avec les options.</p>
-        </div>
+        <details class="carte options">
+          <summary>Voir les options et la livraison<span class="plus" aria-hidden="true"></span></summary>
+          <div class="corps">
+            <h3 class="sous-titre">Livraison, on livre pour vous</h3>
+            <ul class="lignes" data-offre-paliers></ul>
+            <p class="note">Vous payez toujours le palier le plus avantageux.</p>
+            <h3 class="sous-titre">Pour vendre plus</h3>
+            <ul class="lignes">
+              <li><span>Gestion du stock</span><span data-offre="stock"></span></li>
+              <li><span>Avis Google</span><span data-offre="avis"></span></li>
+              <li><span>Relance des paniers</span><span data-offre="paniers"></span></li>
+              <li><span>Pack des 3 options</span><span><span data-offre="pack"></span><small data-offre="pack-avant"></small></span></li>
+            </ul>
+            <p class="note">0&nbsp;% de commission, même avec les options.</p>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -386,41 +325,38 @@
   <!-- 8. FAQ -->
   <section class="bloc f-nuit" id="faq">
     <div class="cadre">
-      <h2 data-rv>Vos <span class="acc">questions</span></h2>
-      <div class="faq">
-        <details data-rv>
-          <summary>Je ne suis pas à l'aise avec la technologie.<i aria-hidden="true"></i></summary>
+      <h2>Vos <span class="acc">questions</span></h2>
+      <div class="faq" data-rv>
+        <details class="carte">
+          <summary>Je ne suis pas à l'aise avec la technologie.<span class="plus" aria-hidden="true"></span></summary>
           <p>Pas besoin. On installe tout pour vous et on vous montre. Si vous savez utiliser WhatsApp, ça suffit.</p>
         </details>
-        <details data-rv style="--d:.06s">
-          <summary>Mes clients doivent installer quelque chose&nbsp;?<i aria-hidden="true"></i></summary>
+        <details class="carte">
+          <summary>Mes clients doivent installer quelque chose&nbsp;?<span class="plus" aria-hidden="true"></span></summary>
           <p>Non. Ils commandent sur WhatsApp ou en cliquant sur un lien.</p>
         </details>
-        <details data-rv style="--d:.12s">
-          <summary>Et si j'ai beaucoup de commandes&nbsp;?<i aria-hidden="true"></i></summary>
+        <details class="carte">
+          <summary>Et si j'ai beaucoup de commandes&nbsp;?<span class="plus" aria-hidden="true"></span></summary>
           <p>C'est fait pour ça. Plus besoin de répondre au téléphone pour chaque commande&nbsp;: elles arrivent toutes écrites.</p>
         </details>
-        <details class="faq-plus" data-rv style="--d:.18s">
-          <summary>Je peux arrêter quand je veux&nbsp;?<i aria-hidden="true"></i></summary>
+        <details class="carte">
+          <summary>Je peux arrêter quand je veux&nbsp;?<span class="plus" aria-hidden="true"></span></summary>
           <p>Oui. C'est sans engagement.</p>
         </details>
       </div>
-      <button class="voir-plus" type="button" aria-expanded="false" data-voir-plus>Voir plus de questions</button>
     </div>
   </section>
 
   <!-- 9. Fin -->
   <section class="bloc f-rose fin" id="fin">
     <div class="cadre">
-      <h2 data-rv>Testez en <span class="acc">30&nbsp;secondes</span></h2>
-      <!-- Photo de Jules : déposer /img/jules.webp (format portrait 4:5, 800 × 1000 px) -->
-      <div class="photo" data-rv><span>[Photo de Jules à venir]</span><img src="/img/jules.webp" alt="Jules, fondateur de PFlow, devant son ordinateur" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()"></div>
-      <div class="suite" data-rv>
-        <p class="question">Une question&nbsp;? Jules vous répond directement.</p>
-        <div class="actions">
-          <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="final">Tester la démo</a>
-          <a class="btn btn-wa btn-large" href="https://wa.me/590690938108?text=Bonjour%2C%20je%20veux%20en%20savoir%20plus%20sur%20PFlow%20pour%20mon%20resto" target="_blank" rel="noopener" data-evt="clic_whatsapp" data-emp="final"><svg aria-hidden="true"><use href="#wa"/></svg>Nous écrire sur WhatsApp</a>
-        </div>
+      <h2>Testez en <span class="acc">30&nbsp;secondes</span></h2>
+      <!-- Photo : /img/jules.webp (portrait 4:5). Si elle manque, le cadre est masqué. -->
+      <div class="photo"><img src="/img/jules.webp?v=2" alt="Jules, fondateur de PFlow, devant son ordinateur" width="800" height="1000" loading="lazy" decoding="async" onerror="this.parentNode.hidden=true"></div>
+      <p class="question">Une question&nbsp;? Jules vous répond directement.</p>
+      <div class="actions">
+        <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="final">Tester la démo</a>
+        <a class="lien-wa" href="https://wa.me/590690938108?text=Bonjour%2C%20je%20veux%20en%20savoir%20plus%20sur%20PFlow%20pour%20mon%20resto" target="_blank" rel="noopener" data-evt="clic_whatsapp" data-emp="final"><svg aria-hidden="true"><use href="#wa"/></svg>Nous écrire sur WhatsApp</a>
       </div>
     </div>
   </section>
@@ -430,31 +366,32 @@
 <footer class="pied f-nuit">
   <div class="cadre">
     <a class="marque" href="/" aria-label="PFlow Order, accueil"><img src="/img/p-bulle-96.webp" width="96" height="104" alt="" loading="lazy" decoding="async"><span class="pill pill-blanc">PFlow Order</span></a>
-    <p>Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49&nbsp;€/mois, 0&nbsp;% de commission, sans engagement.</p>
-    <p class="nap"><b>PFlow Order</b><br>615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
-    <nav class="seo" aria-label="Pages utiles">
-      <a href="/calcul">Calculer votre commission</a>
-      <a href="/alternative-uber-eats">Alternative à Uber Eats</a>
-      <a href="/commande-whatsapp-restaurant">Commande WhatsApp</a>
-      <a href="/commande-en-ligne-restaurant-guadeloupe">Commande en ligne en Guadeloupe</a>
-      <a href="/commande-en-ligne-restaurant-martinique">Commande en ligne en Martinique</a>
-      <a href="/commande-en-ligne-pizzeria">Commande en ligne pour pizzeria</a>
-      <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
-      <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
-      <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
-    </nav>
+    <p class="nap">615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
     <nav aria-label="Informations légales">
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/confidentialite">Confidentialité</a>
       <a href="/cgv">CGV</a>
     </nav>
+    <details class="ressources">
+      <summary>Ressources</summary>
+      <nav aria-label="Ressources">
+        <a href="/calcul">Calculer votre commission</a>
+        <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
+        <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
+        <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
+        <a href="/alternative-uber-eats">Alternative à Uber Eats</a>
+        <a href="/commande-whatsapp-restaurant">Commande WhatsApp</a>
+        <a href="/commande-en-ligne-restaurant-guadeloupe">Commande en ligne en Guadeloupe</a>
+        <a href="/commande-en-ligne-restaurant-martinique">Commande en ligne en Martinique</a>
+        <a href="/commande-en-ligne-pizzeria">Commande en ligne pour pizzeria</a>
+      </nav>
+    </details>
     <p>&copy; 2026 PFlow Order</p>
   </div>
 </footer>
 
-<!-- Barre collée en bas (mobile), visible après le haut de page -->
+<!-- Barre collée en bas (téléphone) : visible après le haut de page, cachée sur le bloc final -->
 <div class="barre" id="barre">
-  <p class="barre-prix">À partir de 49&nbsp;€/mois · 0&nbsp;% de commission · sans engagement</p>
   <a class="btn btn-demo" href="/demo" data-evt="clic_demo" data-emp="barre_mobile">Tester la démo</a>
   <a class="btn btn-wa" href="https://wa.me/590690938108?text=Bonjour%2C%20je%20veux%20en%20savoir%20plus%20sur%20PFlow%20pour%20mon%20resto" target="_blank" rel="noopener" data-evt="clic_whatsapp" data-emp="barre_mobile" aria-label="Nous écrire sur WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 </div>

@@ -19,7 +19,7 @@
    AUTRES OPTIONS : écrire le prix entre guillemets, par exemple
      "9 €/mois"   -> affiché tel quel
      "sur demande" -> affiché « prix sur demande »
-   Un prix vide ou entre crochets [ ] s'affiche « [prix à venir] ».
+   Un prix vide ou entre crochets [ ] : la ligne n'est pas affichée.
    ===================================================================== */
 var OFFRE = {
   base: 49,
@@ -39,7 +39,7 @@ var OFFRE = {
   var NBSP = " ";
   function texte(v) {
     v = String(v == null ? "" : v).trim();
-    if (!v || /^\[.*\]$/.test(v)) return "[prix à venir]";
+    if (!v || /^\[.*\]$/.test(v)) return "";
     if (/sur demande/i.test(v)) return "prix sur demande";
     return v.replace(/ (€|%)/g, NBSP + "$1");
   }
@@ -127,6 +127,8 @@ var OFFRE = {
       if (cle === "pack") e.textContent = texte(OFFRE.pack && OFFRE.pack.prix);
       else if (cle === "pack-avant") e.textContent = OFFRE.pack && OFFRE.pack.auLieuDe ? "au lieu de " + texte(OFFRE.pack.auLieuDe) : "";
       else e.textContent = texte(OFFRE[cle]);
+      /* prix manquant : on masque la ligne plutôt que d'afficher un emplacement */
+      if (!e.textContent && cle !== "pack-avant") { var li = e.closest(".lignes li"); if (li) li.hidden = true; }
     });
     document.querySelectorAll("[data-offre-paliers]").forEach(paliersSite);
     document.querySelectorAll("[data-offre-livraison-cgv]").forEach(livraisonCgv);

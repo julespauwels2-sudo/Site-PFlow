@@ -23,7 +23,7 @@
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=5">
+<link rel="stylesheet" href="/css/site.css?v=6">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -140,7 +140,7 @@
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/offre.js"></script>
-<script defer src="/js/site.js?v=5"></script>
+<script defer src="/js/site.js?v=6"></script>
 </head>
 <body>
 <header class="entete f-nuit">
@@ -157,7 +157,7 @@
   <article class="cadre">
     <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <span>Alternative à Uber Eats en Guadeloupe</span></nav>
     <h1>Quelle alternative à Uber Eats pour un restaurant en Guadeloupe ?</h1>
-    <div class="reponse-courte" data-rv>
+    <div class="carte reponse-courte">
       <p class="rc-lib">La réponse courte</p>
       <p>La commande directe sur WhatsApp&nbsp;: vos clients commandent chez vous, sans plateforme au milieu, et vous ne versez aucune commission sur vos ventes. Avec PFlow Order, c'est à partir de 49&nbsp;€/mois, 0&nbsp;% de commission, sans engagement.</p>
     </div>
@@ -168,13 +168,14 @@
     </section>
     <section class="q-sec" data-rv>
       <h2>Un exemple chiffré</h2>
-      <div class="preuve-liv q-compar" data-offre-comparaison data-commandes="100" data-panier="20" data-taux="25">
-        <p class="pl-titre"><span data-cmp="commandes">100</span> commandes de <span data-cmp="panier">20&nbsp;€</span> livrées par mois&nbsp;:</p>
-        <div class="pl-grille">
-          <p class="pl-c pl-plat">environ <b data-cmp="commission">500&nbsp;€</b> de commission avec une plateforme à <span data-cmp="taux">25&nbsp;%</span>,</p>
-          <p class="pl-c pl-pflow"><b data-cmp="pflow">108&nbsp;€</b> avec PFlow (<span data-cmp="base">49&nbsp;€</span> + livraison <span data-cmp="livraison">59&nbsp;€</span>).</p>
+      <div class="carte compar" data-offre-comparaison data-commandes="100" data-panier="20" data-taux="25">
+        <p class="compar-titre"><span data-cmp="commandes">100</span> commandes de <span data-cmp="panier">20&nbsp;€</span> livrées par mois</p>
+        <div class="compar-chiffres">
+          <p class="chiffre chiffre-plat"><b data-cmp="commission">500&nbsp;€</b><span>environ, de commission avec une plateforme à <span data-cmp="taux">25&nbsp;%</span></span></p>
+          <p class="chiffre chiffre-pflow"><b data-cmp="pflow">108&nbsp;€</b><span>avec PFlow (<span data-cmp="base">49&nbsp;€</span> + livraison <span data-cmp="livraison">59&nbsp;€</span>)</span></p>
         </div>
-        <p class="pl-note">Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25&nbsp;%). Exemple indicatif.</p>
+        <p class="compar-eco">Soit environ <b><span data-cmp="economie-nb">392</span>&nbsp;€</b> de plus pour vous chaque mois.</p>
+        <p class="note">Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25&nbsp;%). Exemple indicatif.</p>
       </div>
       <p>Faites le calcul avec vos chiffres&nbsp;: <a href="/calcul">calculer ce que vous coûte la commission</a>.</p>
     </section>
@@ -198,20 +199,22 @@
 <footer class="pied f-nuit">
   <div class="cadre">
     <a class="marque" href="/" aria-label="PFlow Order, accueil"><img src="/img/p-bulle-96.webp" width="96" height="104" alt="" loading="lazy" decoding="async"><span class="pill pill-blanc">PFlow Order</span></a>
-    <p>Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49&nbsp;€/mois, 0&nbsp;% de commission, sans engagement.</p>
-    <p class="nap"><b>PFlow Order</b><br>615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
-    <nav class="seo" aria-label="Pages utiles">
-      <a href="/">Accueil</a>
-      <a href="/calcul">Calculer votre commission</a>
-      <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
-      <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
-      <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
-    </nav>
+    <p class="nap">615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
     <nav aria-label="Informations légales">
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/confidentialite">Confidentialité</a>
       <a href="/cgv">CGV</a>
     </nav>
+    <details class="ressources">
+      <summary>Ressources</summary>
+      <nav aria-label="Ressources">
+        <a href="/">Accueil</a>
+        <a href="/calcul">Calculer votre commission</a>
+        <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
+        <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
+        <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
+      </nav>
+    </details>
     <p>&copy; 2026 PFlow Order</p>
   </div>
 </footer>

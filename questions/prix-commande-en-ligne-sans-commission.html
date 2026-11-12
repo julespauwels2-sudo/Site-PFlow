@@ -23,7 +23,7 @@
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=5">
+<link rel="stylesheet" href="/css/site.css?v=6">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -148,7 +148,7 @@
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/offre.js"></script>
-<script defer src="/js/site.js?v=5"></script>
+<script defer src="/js/site.js?v=6"></script>
 </head>
 <body>
 <header class="entete f-nuit">
@@ -165,13 +165,13 @@
   <article class="cadre">
     <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> › <span>Prix de la commande en ligne sans commission</span></nav>
     <h1>Combien coûte un système de commande en ligne sans commission ?</h1>
-    <div class="reponse-courte" data-rv>
+    <div class="carte reponse-courte">
       <p class="rc-lib">La réponse courte</p>
       <p>Avec PFlow Order, l'abonnement de base coûte 49&nbsp;€ par mois, sans commission sur les commandes, sans frais de mise en place et sans engagement. Vous ajoutez seulement les options dont vous avez besoin, comme la livraison ou la relance des paniers.</p>
     </div>
     <section class="q-sec" data-rv>
       <h2>Ce qui est inclus dans les 49&nbsp;€</h2>
-      <ul class="q-liste">
+      <ul class="carte q-liste">
         <li>Les commandes sur WhatsApp, 24h/24.</li>
         <li>Une carte en ligne aux couleurs de votre resto.</li>
         <li>Le paiement en ligne (SumUp ou Stripe).</li>
@@ -182,18 +182,20 @@
     </section>
     <section class="q-sec" data-rv>
       <h2>Les options, si vous en avez besoin</h2>
-      <div class="options q-options">
-        <p class="opt-titre">Livraison, on livre pour vous</p>
-        <ul class="paliers" data-offre-paliers><li>[Paliers de livraison à venir]</li></ul>
-        <p class="opt-regle">Vous payez toujours le palier le plus avantageux.</p>
-        <p class="opt-titre">Pour vendre plus</p>
-        <ul>
-          <li>Gestion du stock <span data-offre="stock">[prix à venir]</span></li>
-          <li>Avis Google <span data-offre="avis">[prix à venir]</span></li>
-          <li>Relance des paniers <span data-offre="paniers">[prix à venir]</span></li>
-          <li class="pack">Pack des 3 options <span><span data-offre="pack">[prix à venir]</span><small data-offre="pack-avant"></small></span></li>
-        </ul>
-        <p class="options-note">0&nbsp;% de commission, même avec les options.</p>
+      <div class="carte options">
+        <div class="corps">
+          <h3 class="sous-titre">Livraison, on livre pour vous</h3>
+          <ul class="lignes" data-offre-paliers></ul>
+          <p class="note">Vous payez toujours le palier le plus avantageux.</p>
+          <h3 class="sous-titre">Pour vendre plus</h3>
+          <ul class="lignes">
+            <li><span>Gestion du stock</span><span data-offre="stock"></span></li>
+            <li><span>Avis Google</span><span data-offre="avis"></span></li>
+            <li><span>Relance des paniers</span><span data-offre="paniers"></span></li>
+            <li><span>Pack des 3 options</span><span><span data-offre="pack"></span><small data-offre="pack-avant"></small></span></li>
+          </ul>
+          <p class="note">0&nbsp;% de commission, même avec les options.</p>
+        </div>
       </div>
     </section>
     <section class="q-sec" data-rv>
@@ -216,20 +218,22 @@
 <footer class="pied f-nuit">
   <div class="cadre">
     <a class="marque" href="/" aria-label="PFlow Order, accueil"><img src="/img/p-bulle-96.webp" width="96" height="104" alt="" loading="lazy" decoding="async"><span class="pill pill-blanc">PFlow Order</span></a>
-    <p>Prise de commande WhatsApp pour les restaurants de Guadeloupe : vos clients commandent sur WhatsApp, vous recevez la commande écrite. À partir de 49&nbsp;€/mois, 0&nbsp;% de commission, sans engagement.</p>
-    <p class="nap"><b>PFlow Order</b><br>615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
-    <nav class="seo" aria-label="Pages utiles">
-      <a href="/">Accueil</a>
-      <a href="/calcul">Calculer votre commission</a>
-      <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
-      <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
-      <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
-    </nav>
+    <p class="nap">615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe<br><a href="tel:+590690938108">0690 93 81 08</a></p>
     <nav aria-label="Informations légales">
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/confidentialite">Confidentialité</a>
       <a href="/cgv">CGV</a>
     </nav>
+    <details class="ressources">
+      <summary>Ressources</summary>
+      <nav aria-label="Ressources">
+        <a href="/">Accueil</a>
+        <a href="/calcul">Calculer votre commission</a>
+        <a href="/questions/commandes-whatsapp-restaurant-guadeloupe">Prendre les commandes sur WhatsApp</a>
+        <a href="/questions/alternative-uber-eats-guadeloupe">Quelle alternative à Uber Eats&nbsp;?</a>
+        <a href="/questions/prix-commande-en-ligne-sans-commission">Combien coûte la commande en ligne&nbsp;?</a>
+      </nav>
+    </details>
     <p>&copy; 2026 PFlow Order</p>
   </div>
 </footer>

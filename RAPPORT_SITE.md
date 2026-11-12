@@ -293,6 +293,54 @@ Ces −30 % incluent deux ajouts : la comparaison chiffrée (environ 300 px) et 
 
 (96 en bonnes pratiques : seulement le script Vercel Analytics, absent en local. 93 sur les CGV : leur ancien style, inchangé.)
 
+### 12. Nettoyage après le test sur iPhone (12 novembre)
+
+Objectif : une page propre, aérée, cohérente, en enlevant plutôt qu'en ajoutant. La feuille de style a été **réécrite entièrement** (`css/site.css`, v6) au lieu d'être corrigée une fois de plus : les retouches successives étaient la cause du manque de rigueur.
+
+**Captures à 390 px, toute la page** (dans le dépôt, non publiées sur le site) :
+- avant : `rapport/avant-390.jpg`
+- après : `rapport/apres-390.jpg`
+- côte à côte : `rapport/avant-apres-390.jpg`
+
+**Règles appliquées partout**
+- **Une seule carte** : fond #141D4F, arrondi 24 px, marge intérieure 22 px (28 px sur ordinateur), sans bordure ni ombre. Plus aucune carte à contour, à bordure en pointillés ou à ombre propre. Seule exception : la carte prix blanche, avec le même arrondi et la même marge.
+- **Une seule échelle d'espacement** : marges latérales de 20 px sur téléphone, 72 px entre deux blocs (104 px sur ordinateur), 24 px entre un titre et son contenu. Deux blocs nuit qui se suivent ne cumulent plus leurs marges.
+- **Fonds** : nuit partout, sauf les trois coupures de la DA (rose pour « Le rush » et le bloc final, bleu pour la livraison). Les fonds #141D4F de section ont disparu, puisque c'est la couleur des cartes.
+- **Plus aucun carrousel horizontal**. Rien ne dépasse de l'écran : vérifié automatiquement sur l'accueil, `/calcul`, une page-réponse et les mentions légales.
+- **Boutons** : 4 boutons « Tester la démo » sur la page (haut de page, carte prix, bloc final, barre du bas), plus celui de l'en-tête. Aucun bloc n'en a plus d'un. Le bouton du bloc « preuves » et celui du calculateur ont été retirés.
+- **Animations** : restent l'intro, l'impression du ticket et le compteur de l'économie. Supprimés : l'effet de profondeur, les bulles WhatsApp, le soulignement animé, les étapes qui s'allument, le P qui « pop », les compteurs 30 % / 0 % / 49 €. Les apparitions au défilement sont un simple fondu de 0,35 s, et les titres ne s'animent plus jamais (ils étaient en cause dans le titre « Vos questions » à moitié transparent).
+
+**Bloc par bloc**
+1. **Intro** : le ticket avait une animation d'entrée qui l'empêchait de disparaître, d'où le chevauchement avec le titre. Il a maintenant sa propre animation de sortie. Mesuré : ticket complètement invisible à 2,6 s, puis le fond s'efface de 2,6 à 2,85 s, intro retirée à 2,9 s.
+2. **Haut de page** : titre, sous-titre, bouton, lien WhatsApp, ligne de prix, « Déjà en place chez… », puis le ticket, une seule fois, plus petit (250 px). Si l'intro vient de jouer, ce ticket ne se « réimprime » pas : plus d'effet de doublon.
+3. **Le rush** : une seule carte avec les 3 problèmes en lignes (icône + texte).
+4. **Avec PFlow, c'est simple** : les 3 étapes en liste verticale dans une carte, puis le téléphone seul et centré avec la vidéo, puis « Pas d'appli à installer ».
+5. **Uber Eats ou PFlow** : une seule carte. « 100 commandes de 20 € livrées par mois », deux gros chiffres côte à côte (500 € environ / 108 €), « Soit environ 392 € de plus pour vous chaque mois » avec le compteur, la note, et le lien « Faire mon calcul » vers `/calcul`. Les cartes 30 % / 0 % et le calculateur de l'accueil sont supprimés (le calculateur reste sur `/calcul`).
+6. **Livraison** : inchangé. La page a maintenant un espace en bas égal à la hauteur de la barre (plus la zone de sécurité de l'iPhone) : aucun texte ne reste caché derrière.
+7. **Ils l'utilisent déjà** : les 3 réels en grille de 3 colonnes (aucun ne déborde). Chacun montre son image d'aperçu et un bouton lecture blanc ; les commandes de la vidéo n'apparaissent qu'au premier appui. Un réel absent est masqué, pas remplacé par un emplacement. Le bloc témoignage est retiré de la page (gardé en commentaire dans le code, prêt à remplir).
+8. **Prix** : la carte blanche à 49 € reste. Les options sont dans un bloc replié « Voir les options et la livraison ». Une fois ouvert : les 3 paliers en 3 lignes, « Vous payez toujours le palier le plus avantageux », puis les 3 options et le pack en lignes. Si un prix manque dans `offre.js`, sa ligne est masquée (plus de « [prix à venir] »).
+9. **FAQ** : le titre est toujours opaque. Les 4 questions sont visibles (le « Voir plus » est retiré, une chose de moins).
+10. **Bloc final et photo** : la photo existait bien, mais votre iPhone gardait en mémoire l'erreur « fichier introuvable » d'une visite précédente, car les images étaient mises en cache 30 jours, erreurs comprises. Les adresses de la photo et des vidéos portent maintenant un numéro de version (`?v=2`), donc l'iPhone les recharge. Si la photo manque un jour, le cadre est masqué : plus d'emplacement « [Photo de Jules à venir] ». Le bouton WhatsApp devient un lien, pour garder un seul bouton principal.
+11. **Barre du bas** : seulement « Tester la démo » et le bouton WhatsApp (la ligne de prix est retirée). Elle disparaît quand le bloc final est à l'écran.
+12. **Pied de page** : logo, coordonnées sur 2 lignes (adresse ; téléphone), liens légaux, et une petite section repliable « Ressources » avec les liens SEO. Même pied de page sur `/calcul`, les mentions légales et les pages-réponses.
+
+**Vérifications**
+- Aucun texte entre crochets visible (contrôle automatique sur tout le texte affiché de l'accueil, de `/calcul`, d'une page-réponse et des mentions légales). Les CGV affichaient « [prix à venir] » en secours si le script ne se chargeait pas : remplacé par les vrais prix.
+- Aucun élément ne dépasse de l'écran à 390 px.
+- Photo chargée (800 px), 4 vidéos chargées, aucun réel masqué.
+- Hauteur de l'accueil à 390 px : 6 635 px avant ce nettoyage, **6 451 px après**, avec plus d'air entre les blocs.
+
+**Lighthouse mobile**
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO | LCP | CLS |
+|---|---|---|---|---|---|---|
+| `/` (avec l'intro) | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/calcul` | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/questions/prix-commande-en-ligne-sans-commission` | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/mentions-legales` | 100 | 100 | 96 | 100 | 1,2 s | 0 |
+
+**Mesure** : sur l'accueil, les emplacements `preuves` et `calcul` n'existent plus (boutons retirés). Restent `entete`, `hero`, `prix`, `final`, `barre_mobile`, plus `calcul` sur la page `/calcul` et `question` sur les pages-réponses.
+
 ## SEO : ce que vous devez faire vous-même
 
 Après la mise en ligne sur www.pflow.fr :
@@ -311,7 +359,7 @@ Après la mise en ligne sur www.pflow.fr :
 
 Tant qu'un élément manque, le site affiche son emplacement [entre crochets] : rien ne casse.
 
-1. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord), pour le bloc « Ils l'utilisent déjà ».
+1. **Une phrase d'un client** (texte exact + prénom + restaurant, avec son accord). Le bloc témoignage est masqué tant qu'elle manque ; il est prêt, en commentaire, dans `index.html`.
 2. **La relecture d'un juriste** de l'article 10 des CGV (option livraison) avant d'activer l'option.
 3. **Votre offre Vercel** : Pro ou Hobby ? Sans Pro, les 3 événements de clic ne sont pas enregistrés.
 4. **Facultatif** : une vidéo de démo à vous dans `videos/demo-source/`, si vous préférez votre ancienne vidéo à celle faite avec Remotion.
@@ -321,7 +369,7 @@ Tant qu'un élément manque, le site affiche son emplacement [entre crochets] : 
 - Relire la carte prix et la ligne « + options selon vos besoins » sur la prévisualisation.
 - Relire les passages des CGV ci-dessus (avant / après).
 - Bio Instagram : remplacer « 5 restos déjà équipés ».
-- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=5` et `js/site.js?v=5`) (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
+- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=6` et `js/site.js?v=6`). Même chose pour une photo ou une vidéo remplacée : changer son `?v=` dans `index.html` (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
 
 ## Fichiers
 

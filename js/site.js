@@ -4,8 +4,7 @@
       chacun avec { emplacement } (hero, barre_mobile, calcul, preuves, prix, final, entete)
    2. Les paramètres UTM de l'adresse suivent vers /demo
    3. La barre collée en bas (mobile)
-   4. Les animations : apparition des blocs, chiffres qui comptent,
-      profondeur au défilement, FAQ « Voir plus »
+   4. Les animations : apparition des blocs (fondu court), compteur de l'économie
    5. Le calculateur de commission (accueil et /calcul), résultat animé
    6. Les vidéos, chargées seulement quand on s'en approche
    Après une modification, augmenter le ?v= dans les pages HTML.
@@ -71,7 +70,7 @@
       es.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("vu"); ioRv.unobserve(e.target); }
       });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    }, { rootMargin: "0px 0px -5% 0px", threshold: 0 });
     aReveler.forEach(function (el) { ioRv.observe(el); });
 
     var ioCpt = new IntersectionObserver(function (es) {
@@ -90,45 +89,6 @@
       ioCpt.observe(el);
     });
   }
-
-  /* 4 bis. léger effet de profondeur au défilement (ticket, cartes) */
-  var prof = document.querySelectorAll("[data-prof]");
-  if (!calme && prof.length && "translate" in document.documentElement.style) {
-    var attente = false;
-    var majProf = function () {
-      attente = false;
-      var h = window.innerHeight;
-      prof.forEach(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > h + 200) return;
-        var f = parseFloat(el.getAttribute("data-prof")) || 0;
-        el.style.translate = "0 " + Math.max(-14, Math.min(14, (r.top + r.height / 2 - h / 2) * f)).toFixed(1) + "px";
-      });
-    };
-    window.addEventListener("scroll", function () { if (!attente) { attente = true; requestAnimationFrame(majProf); } }, { passive: true });
-    majProf();
-  }
-
-  /* calculateur replié sur téléphone : « Faire le calcul avec mes chiffres » */
-  document.querySelectorAll("[data-calc-ouvrir]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var c = b.closest(".calc"); if (!c) return;
-      c.classList.add("ouvert"); b.setAttribute("aria-expanded", "true"); b.hidden = true;
-      var champ = c.querySelector("input"); if (champ) champ.focus();
-    });
-  });
-
-  /* 4 ter. FAQ : « Voir plus » (téléphone) */
-  document.querySelectorAll("[data-voir-plus]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var faq = b.previousElementSibling;
-      if (!faq) return;
-      faq.classList.add("ouverte");
-      faq.querySelectorAll(".faq-plus").forEach(function (d) { d.classList.add("vu"); });
-      b.setAttribute("aria-expanded", "true");
-      b.hidden = true;
-    });
-  });
 
   /* 5. le calculateur */
   function nombre(input, defaut) {
@@ -187,7 +147,11 @@
   function brancher(zone) {
     var src = zone.getAttribute("data-video"), poster = zone.getAttribute("data-poster");
     Promise.all([existe(src), poster ? existe(poster) : Promise.resolve(false)]).then(function (ok) {
-      if (!ok[0]) return;
+      if (!ok[0]) {
+        /* un réel absent est masqué : jamais d'emplacement vide sur le site */
+        if (zone.hasAttribute("data-masquer-si-absent")) { var fig = zone.closest("figure"); if (fig) fig.hidden = true; }
+        return;
+      }
       var v = document.createElement("video");
       v.setAttribute("playsinline", "");
       v.setAttribute("aria-label", zone.hasAttribute("data-nom") ? "Réel de " + zone.getAttribute("data-nom") : "Vidéo du parcours de commande");
@@ -196,7 +160,14 @@
         v.muted = true; v.loop = true; v.autoplay = !calme; v.preload = "auto";
         var leg = zone.parentNode.querySelector("[data-legende]"); if (leg) leg.remove();
       } else {
-        v.controls = true; v.preload = "none";
+        /* petit réel : image d'aperçu propre + bouton lecture ; les commandes apparaissent au premier appui */
+        v.controls = false; v.preload = "none";
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "lecture";
+        b.setAttribute("aria-label", "Lire le réel de " + (zone.getAttribute("data-nom") || "ce restaurant"));
+        b.innerHTML = '<span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span>';
+        b.addEventListener("click", function () { b.remove(); v.controls = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+        setTimeout(function () { zone.appendChild(b); }, 0);
       }
       v.src = src;
       if (zone.hasAttribute("data-boucle")) { zone.appendChild(v); }
