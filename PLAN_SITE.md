@@ -35,13 +35,13 @@ Non touchés : `demo.html`, `cgv.html`, `confidentialite.html`, `suppression-don
 
 En-tête : P bulle + pill « PFLOW ORDER » à gauche, bouton « Tester la démo » à droite. Pas de menu.
 
-1. **Haut de page** (nuit) : pill « Restaurants de Guadeloupe », H1 « VOS CLIENTS COMMANDENT **SANS APPELER** », sous-titre, bouton « Tester la démo » (`/demo`), lien « Nous écrire sur WhatsApp », « 49 €/mois · 0 % de commission · sans engagement », ligne de preuve (3 clients). Ticket « NOUVELLE COMMANDE #128 » (crème, dentelé, incliné) à droite / en dessous sur mobile.
+1. **Haut de page** (nuit) : pill « Restaurants de Guadeloupe », H1 « VOS CLIENTS COMMANDENT **SANS APPELER** », sous-titre, bouton « Tester la démo » (`/demo`), lien « Nous écrire sur WhatsApp », « À partir de 49 €/mois · 0 % de commission · sans engagement », ligne de preuve (3 clients). Ticket « NOUVELLE COMMANDE #128 » (crème, dentelé, incliné) à droite / en dessous sur mobile.
 2. **Problème** (rose) : « LE RUSH, **VOUS CONNAISSEZ** » + 3 cartes nuit.
 3. **Solution** (nuit) : « AVEC PFLOW, **C'EST SIMPLE** » + 3 étapes + « Pas d'appli à installer… » + emplacement vidéo du parcours (image en attendant).
 4. **Uber Eats ou PFlow** (#141D4F) : 2 cartes + mini-calculateur (estimation) + bouton démo.
 5. **Livraison** (bleu) : « PAS DE LIVREUR ? **ON LIVRE** » + « Nouveau à Jarry et Baie-Mahault ».
 6. **Preuves** (nuit) : « ILS L'UTILISENT **DÉJÀ** » + 3 vidéos verticales en différé (emplacements si absentes) + emplacement phrase client + bouton démo.
-7. **Prix** (#141D4F) : carte blanche « 49 € / mois » + inclus + options + bouton démo.
+7. **Prix** (#141D4F) : carte blanche « 49 €/mois » + « + options selon vos besoins » + inclus + options avec prix (fichier `offre.js`) + bouton démo.
 8. **FAQ** (nuit) : 4 accordéons natifs (`<details>`), sans JS.
 9. **Fin** (rose) : « TESTEZ EN **30 SECONDES** » + emplacement photo de Jules + les deux boutons.
 - Barre collée en bas sur mobile (« Tester la démo » + WhatsApp), visible après le haut de page.
