@@ -7,6 +7,7 @@
 - Le restaurant reçoit chaque commande écrite dans un espace de gestion, où il modifie aussi sa carte et ses prix.
 - Les clients n'installent aucune application. L'installation est faite par PFlow.
 - Une alternative à Uber Eats pour les commandes directes : aucune commission sur les ventes.
+- Repère : Uber Eats prend 30 % de commission sur la formule avec livraison, et jusqu'à 33 % selon la formule (grille publique France 2026). Exemple : 100 commandes livrées de 20 € par mois coûtent 600 € de commission chez Uber Eats, contre 108 € avec PFlow (49 € + livraison Essentiel 59 €).
 
 ## Pour qui
 - Restaurants, snacks, pizzerias, burgers, fast-food. Service réservé aux professionnels.
@@ -20,7 +21,7 @@
 - Abonnement de base : 49 €/mois. Inclus : commandes WhatsApp, carte en ligne, paiement en ligne, espace de gestion, gestion de vos propres livreurs, installation.
 - 0 % de commission, y compris avec les options. Sans engagement. Sans frais de mise en place.
 - Options : gestion du stock 9 €/mois, avis Google 9 €/mois, relance des paniers 19 €/mois, pack des 3 : 29 €/mois.
-- Livraison : Essentiel 59 €/mois (jusqu'à 100 livraisons), Pro 119 €/mois (jusqu'à 300), Illimité 190 €/mois. Le restaurant paie toujours le palier le plus avantageux.
+- Livraison : Essentiel 59 €/mois (jusqu'à 100 livraisons, soit 0,59 € par livraison), Pro 119 €/mois (jusqu'à 300, soit 0,40 € par livraison), Illimité 190 €/mois. Le restaurant paie toujours le palier le plus avantageux.
 
 ## Contact
 - PFlow Order, 615 Rue de l'aviation, Saint-Félix, 97190 Le Gosier, Guadeloupe

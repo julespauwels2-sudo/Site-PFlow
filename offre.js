@@ -3,8 +3,8 @@
    C'est le SEUL endroit à modifier : les prix s'affichent tout seuls
    sur la page d'accueil (carte « Options en plus ») et dans les CGV
    (article 4, détail de la livraison compris).
-   ABONNEMENT DE BASE : « base » sert au calcul de la comparaison
-   « avec livraison » de l'accueil (le 49 € des textes est écrit dans
+   ABONNEMENT DE BASE : « base » sert au calcul du simulateur
+   « Uber Eats ou PFlow » de l'accueil (le 49 € des textes est écrit dans
    les pages).
 
    LIVRAISON : 3 paliers. Écrire des nombres (pas de « € »), avec un
@@ -23,6 +23,9 @@
    ===================================================================== */
 var OFFRE = {
   base: 49,
+  /* Uber Eats : le SEUL endroit où est écrit le taux de commission.
+     taux = taux de référence (formule avec livraison), max = taux le plus haut de la grille. */
+  uber: { taux: 30, max: 33 },
   livraison: [
     { nom: "Essentiel", prix: 59,  inclus: 100,  depassement: 0.60 },
     { nom: "Pro",       prix: 119, inclus: 300,  depassement: 0.50 },
@@ -59,7 +62,9 @@ var OFFRE = {
     return p.prix + (n - p.inclus) * (p.depassement || 0);
   }
 
-  /* accueil : les 3 paliers et leur prix, sans le détail des dépassements */
+  function pourcent(n) { return String(n).replace(".", ",") + NBSP + "%"; }
+
+  /* accueil : les 3 paliers, leur prix et le coût par livraison (sans le détail des dépassements) */
   function paliersSite(zone) {
     zone.textContent = "";
     (OFFRE.livraison || []).forEach(function (p) {
@@ -67,9 +72,17 @@ var OFFRE = {
       var nom = el("span", "pal-nom", p.nom);
       nom.appendChild(el("small", null, p.inclus == null ? "livraisons illimitées" : "jusqu'à " + p.inclus + " livraisons/mois"));
       li.appendChild(nom);
-      li.appendChild(el("span", null, euros(p.prix) + "/mois"));
+      var prix = el("span", null, euros(p.prix) + "/mois");
+      prix.appendChild(el("small", null, p.inclus == null ? "plus vous livrez, moins ça coûte" : "soit " + euros(Math.round(p.prix / p.inclus * 100) / 100) + " par livraison"));
+      li.appendChild(prix);
       zone.appendChild(li);
     });
+  }
+
+  /* « Avec Uber Eats à 30 %, une commande de 20 € vous coûte 6 €. » */
+  function uberCommande(zone) {
+    var panier = parseFloat(zone.getAttribute("data-panier")) || 20, t = OFFRE.uber.taux;
+    zone.textContent = "Avec Uber Eats à " + pourcent(t) + ", une commande de " + euros(panier) + " vous coûte " + euros(panier * t / 100) + ".";
   }
 
   /* CGV : le détail complet de l'option livraison */
@@ -104,21 +117,48 @@ var OFFRE = {
     return best;
   }
 
-  /* accueil : « 100 commandes de 20 € livrées par mois… » (chiffres calculés ici) */
-  function comparaison(zone) {
-    var n = parseFloat(zone.getAttribute("data-commandes")) || 100;
-    var panier = parseFloat(zone.getAttribute("data-panier")) || 20;
-    var taux = parseFloat(zone.getAttribute("data-taux")) || 25;
-    var b = meilleurPalier(n); if (!b) return;
-    var commission = n * panier * taux / 100, pflow = (OFFRE.base || 49) + b.cout, eco = commission - pflow;
-    var v = { commandes: String(n), panier: euros(panier), taux: String(taux).replace(".", ",") + NBSP + "%",
-      commission: euros(commission), pflow: euros(pflow), base: euros(OFFRE.base || 49), livraison: euros(b.cout),
-      palier: b.palier.nom, economie: euros(Math.max(eco, 0)) };
-    zone.querySelectorAll("[data-cmp]").forEach(function (e) {
-      var k = e.getAttribute("data-cmp");
-      if (k in v) e.textContent = v[k];
-      if (k === "economie-nb") { e.textContent = String(Math.round(Math.max(eco, 0))); e.setAttribute("data-compte", String(Math.round(Math.max(eco, 0)))); }
-    });
+  /* simulateur « Uber Eats ou PFlow » : un curseur, tout est calculé ici */
+  var calme = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function compte(e, de, a) {
+    if (calme || de === a || !window.requestAnimationFrame) { e.textContent = String(Math.round(a)); return; }
+    var t0 = null;
+    function pas(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / 450, 1), v = de + (a - de) * (1 - Math.pow(1 - p, 3));
+      e.textContent = Math.round(v).toLocaleString("fr-FR").replace(/[\u202f\u2009]/g, NBSP);
+      if (p < 1) requestAnimationFrame(pas);
+    }
+    requestAnimationFrame(pas);
+  }
+  function simulateur(zone) {
+    var curseur = zone.querySelector("input[type=range]");
+    var panier = parseFloat(zone.getAttribute("data-panier")) || 20, t = OFFRE.uber.taux;
+    var ecoAff = 0, vu = false;
+    function ecrire(k, v) { zone.querySelectorAll('[data-s="' + k + '"]').forEach(function (e) { e.textContent = v; }); }
+    function maj() {
+      var n = parseFloat(curseur.value) || 100;
+      var uber = n * panier * t / 100, b = meilleurPalier(n), pflow = (OFFRE.base || 49) + b.cout, eco = Math.max(uber - pflow, 0);
+      ecrire("n", String(n)); ecrire("panier", euros(panier)); ecrire("taux", pourcent(t));
+      ecrire("uber", euros(Math.round(uber))); ecrire("uber-cmd", euros(Math.round(panier * t) / 100));
+      ecrire("pflow", euros(Math.round(pflow))); ecrire("base", euros(OFFRE.base || 49));
+      ecrire("livraison", euros(Math.round(b.cout))); ecrire("palier", b.palier.nom);
+      ecrire("pflow-cmd", euros(Math.round(pflow / n * 100) / 100));
+      curseur.setAttribute("aria-valuetext", n + " commandes livrées par mois");
+      zone.querySelectorAll('[data-s="eco"]').forEach(function (e) { if (vu) compte(e, ecoAff, eco); else e.textContent = String(Math.round(eco)); });
+      ecoAff = eco;
+    }
+    curseur.addEventListener("input", maj);
+    maj();
+    /* le compteur de l'économie défile quand le bloc arrive à l'écran */
+    if (!calme && "IntersectionObserver" in window) {
+      zone.querySelectorAll('[data-s="eco"]').forEach(function (e) { e.textContent = "0"; });
+      var io = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        io.disconnect(); vu = true;
+        zone.querySelectorAll('[data-s="eco"]').forEach(function (e) { compte(e, 0, ecoAff); });
+      }, { threshold: 0.4 });
+      io.observe(zone);
+    } else { vu = true; }
   }
 
   function remplir() {
@@ -132,7 +172,11 @@ var OFFRE = {
     });
     document.querySelectorAll("[data-offre-paliers]").forEach(paliersSite);
     document.querySelectorAll("[data-offre-livraison-cgv]").forEach(livraisonCgv);
-    document.querySelectorAll("[data-offre-comparaison]").forEach(comparaison);
+    document.querySelectorAll("[data-simulateur]").forEach(simulateur);
+    document.querySelectorAll("[data-offre-uber-commande]").forEach(uberCommande);
+    document.querySelectorAll("[data-offre-taux]").forEach(function (e) { e.textContent = pourcent(OFFRE.uber.taux); });
+    document.querySelectorAll("[data-offre-taux-max]").forEach(function (e) { e.textContent = pourcent(OFFRE.uber.max); });
+    document.querySelectorAll("input[data-offre-taux-defaut]").forEach(function (e) { if (!e.dataset.modifie) e.value = String(OFFRE.uber.taux); });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", remplir);
   else remplir();

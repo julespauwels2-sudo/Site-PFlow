@@ -49,26 +49,33 @@ export const CARTE = [
   { nom: "Frites maison", detail: "Portion généreuse", prix: "3,50 €" },
 ];
 
-/* début et durée de chaque scène, en images */
+/* VITESSE : 1 = rythme d'origine (23,5 s) ; 1,75 = version courte du site (13,8 s).
+   Les animations à l'intérieur des scènes vont VITESSE fois plus vite.
+   Chaque texte reste au moins 1,2 s (36 images) à l'écran. */
+const VITESSE = 1.75;
+
+/* début et durée de chaque scène, en images (30 images = 1 s) */
 const SCENES = {
-  accroche: [0, 75],
-  whatsapp: [75, 140],
-  carte: [215, 160],
-  paiement: [375, 105],
-  resto: [480, 135],
-  fin: [615, 90],
+  accroche: [0, 48],
+  whatsapp: [48, 70],
+  carte: [118, 84],
+  paiement: [202, 68],
+  resto: [270, 92],
+  fin: [362, 54],
 } as const;
 export const DUREE = SCENES.fin[0] + SCENES.fin[1];
 
 /* ---------- outils ---------- */
+/* l'image courante, accélérée selon VITESSE */
+const useFrame = () => useCurrentFrame() * VITESSE;
 const useAppear = (debut: number, duree = 10) => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   return interpolate(f, [debut, debut + duree], [0, 1], {
     extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic),
   });
 };
 const usePop = (debut: number) => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   const { fps } = useVideoConfig();
   return spring({ frame: f - debut, fps, config: { damping: 11, stiffness: 160 } });
 };
@@ -157,7 +164,7 @@ const Bulle: React.FC<{ de: "client" | "resto"; debut: number; children: React.R
 };
 
 const WhatsApp: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   const ecrit = f > 32 && f < 60;
   const tap = interpolate(f, [104, 110, 122], [0, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const enfonce = f >= 106 && f <= 116 ? 0.95 : 1;
@@ -191,7 +198,7 @@ const WhatsApp: React.FC = () => {
 
 /* ---------- 3. la carte ---------- */
 const Carte: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   const entree = useAppear(0, 12);
   const ajoute = f >= 62;
   const pop = usePop(62);
@@ -238,7 +245,7 @@ const Carte: React.FC = () => {
 
 /* ---------- 4. le paiement ---------- */
 const Paiement: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   const entree = useAppear(0, 10);
   const tap = interpolate(f, [36, 42, 54], [0, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const ok = f >= 52;
@@ -281,7 +288,7 @@ const LigneTicket: React.FC<{ debut: number; children: React.ReactNode; style?: 
 };
 
 const Resto: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useFrame();
   const notif = usePop(8);
   const sortie = interpolate(f, [26, 46], [-420, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   const pill = usePop(92);

@@ -26,7 +26,7 @@
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=6">
+<link rel="stylesheet" href="/css/site.css?v=7">
 <style>
   .calc .msg-moins{display:none;margin-top:14px;font-size:1.05rem;color:var(--reflet);}
   .calc.moins-cher .msg-moins{display:block;}
@@ -105,7 +105,8 @@
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/js/site.js?v=6"></script>
+<script defer src="/offre.js"></script>
+<script defer src="/js/site.js?v=7"></script>
 </head>
 <body>
 
@@ -137,7 +138,7 @@
           </div>
           <div class="champ">
             <label for="k-com">Commission de la plateforme</label>
-            <div class="boite"><input id="k-com" type="text" inputmode="decimal" autocomplete="off" maxlength="7" value="30" data-champ="commission"><span class="unite">%</span></div>
+            <div class="boite"><input id="k-com" type="text" inputmode="decimal" autocomplete="off" maxlength="7" value="30" data-champ="commission" data-offre-taux-defaut><span class="unite">%</span></div>
           </div>
         </div>
 
@@ -158,8 +159,9 @@
         </div>
 
         <p class="garde">Avec PFlow, vous gardez <b data-res="garde-an">13&nbsp;812&nbsp;€</b> par an.</p>
+        <p class="prix-gonfles">Sur Uber Eats, beaucoup de restos augmentent leurs prix pour couvrir la commission. Ce sont vos clients qui paient. Avec PFlow, ils paient le vrai prix de votre carte.</p>
         <p class="msg-moins">Avec ces chiffres, la commission vous coûte moins de 49&nbsp;€ par mois.</p>
-        <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres. La commission dépend de votre contrat avec la plateforme. Calcul fait avec l'abonnement de base à 49&nbsp;€/mois, hors options.</p>
+        <p class="estim">Estimation. Les chiffres de départ sont un exemple&nbsp;: mettez les vôtres. La commission dépend de votre contrat avec la plateforme : sur la grille publique Uber Eats France 2026, 15&nbsp;%, 30&nbsp;% ou 33&nbsp;% selon la formule (30&nbsp;% pour la formule avec livraison). Calcul fait avec l'abonnement de base à 49&nbsp;€/mois, hors options.</p>
 
         <a class="btn btn-demo btn-large" href="/demo" data-evt="clic_demo" data-emp="calcul">Tester la démo</a>
       </div>

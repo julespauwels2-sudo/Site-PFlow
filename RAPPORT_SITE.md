@@ -341,6 +341,52 @@ Objectif : une page propre, aérée, cohérente, en enlevant plutôt qu'en ajout
 
 **Mesure** : sur l'accueil, les emplacements `preuves` et `calcul` n'existent plus (boutons retirés). Restent `entete`, `hero`, `prix`, `final`, `barre_mobile`, plus `calcul` sur la page `/calcul` et `question` sur les pages-réponses.
 
+### 13. Série du 14 novembre : vidéo plus rapide, simulateur, chiffres cohérents, domaine
+
+**Captures à 390 px des blocs modifiés** (dans `rapport/`, non publiées) : `bloc-probleme-390.jpg`, `bloc-solution-390.jpg` (téléphone avec la vidéo), `bloc-comparer-390.jpg` (simulateur), `bloc-options-390.jpg` (options ouvertes), `bloc-calcul-390.jpg` (page `/calcul`).
+
+#### 1. Vidéo de démo : 23,5 s → 13,9 s
+- Un réglage `VITESSE` (1,75) dans `video-demo/src/MintBunDemo.tsx` accélère toutes les animations, et les scènes sont raccourcies : accroche 1,6 s, WhatsApp 2,3 s, carte 2,8 s, paiement 2,3 s, ticket 3,1 s, fin 1,8 s.
+- Chaque texte reste au moins 1,2 s à l'écran : accroche environ 1,3 s, « Paiement accepté » 1,27 s, pill « Reçue sur WhatsApp » 1,3 s, « pflow.fr/demo » 1,2 s, légendes des étapes de 2 à 3 s.
+- Export : `videos/parcours.mp4` (502 Ko, sans son) + aperçu `videos/parcours.webp` (le ticket, image à 11,6 s), appelés en `?v=3`.
+
+#### 2. Comparaison « Uber Eats ou PFlow » interactive
+- Un seul réglage : un curseur « Vos commandes livrées par mois » de 50 à 500 (par pas de 10, départ 100), avec un rond de 38 px et une zone de 48 px de haut, facile au doigt. Le panier moyen est fixé à 20 € et affiché.
+- À gauche, « Avec Uber Eats (30 %) » : coût par mois en très gros, puis « soit 6 € par commande ». À droite, en rose, « Avec PFlow » : 49 € + le palier de livraison le plus avantageux, en très gros, puis « soit X € par commande ».
+- En dessous : « Soit environ X € de plus pour vous chaque mois » (le compteur défile à l'arrivée sur le bloc et à chaque mouvement du curseur), la phrase sur les prix gonflés, la note « Grille publique Uber Eats France 2026 : 15 %, 30 % ou 33 % selon la formule… », et le lien « Faire mon calcul détaillé » vers `/calcul`.
+- Valeurs vérifiées : 50 commandes → 300 € contre 108 € (192 € de plus) ; 100 → 600 € contre 108 € (492 €) ; 250 → 1 500 € contre 168 € (palier Pro, car Essentiel avec dépassements ferait 149 €) ; 500 → 3 000 € contre 239 € (palier Illimité).
+- Tout est calculé dans `offre.js`. Le taux est écrit à **un seul endroit** : `uber: { taux: 30, max: 33 }`. Le même simulateur remplace l'ancien exemple figé sur la page-réponse « alternative à Uber Eats ».
+
+#### 3. Coût par livraison dans les options (bloc prix, replié)
+Sous chaque palier : Essentiel 59 €/mois « soit 0,59 € par livraison », Pro 119 €/mois « soit 0,40 € par livraison », Illimité 190 €/mois « plus vous livrez, moins ça coûte ». Puis, en rose : « Avec Uber Eats à 30 %, une commande de 20 € vous coûte 6 €. » Tout est calculé depuis `offre.js`.
+
+#### 4. Cohérence des chiffres
+- « Le rush » : « Jusqu'à 33 % pour Uber Eats. » (le 33 vient de `offre.js`).
+- Partout ailleurs : 30 % comme référence, « jusqu'à 33 % » comme maximum. Corrigé :
+  - la page-réponse « alternative à Uber Eats » (« autour de 25 % » devient « 30 % sur la formule avec livraison, et jusqu'à 33 % selon la formule ») ;
+  - l'ancienne page `/alternative-uber-eats` (« jusqu'à 30 % » devient « 30 %, jusqu'à 33 % » ; son curseur allait jusqu'à 35 %, il s'arrête maintenant à 33 %) ;
+  - `llms.txt` (ajout du repère 30 % / jusqu'à 33 % et de l'exemple 600 € contre 108 €).
+- Recherche dans tout le site : plus aucun 25 % ni 35 %. Les seuls taux de commission restants sont 30 %, 33 % et le 15 % de la grille citée dans la note. Les données structurées ne citent aucun taux de plateforme (seulement « 0 % de commission »).
+- `/calcul` : taux par défaut 30 %, lu dans `offre.js` ; la note cite la grille 15 / 30 / 33 %.
+- Phrase sur les prix gonflés ajoutée sur l'accueil, sur `/calcul` et sur la page-réponse « Quelle alternative à Uber Eats pour un restaurant en Guadeloupe ? ».
+
+#### 5. Domaine principal (vérifié dans Vercel, rien modifié)
+- Domaine principal en production : **www.pflow.fr**. `pflow.fr` redirige vers `www.pflow.fr`.
+- Canonical, sitemap, `robots.txt`, `llms.txt`, données structurées, images de partage et script IndexNow utilisent tous exactement `https://www.pflow.fr` (vérifié : aucune autre forme dans le code).
+- **À changer dans Vercel** : la redirection de `pflow.fr` est en **308**, pas en 301. Les deux sont des redirections permanentes et Google les traite pareil, mais si vous voulez exactement un 301 : Vercel → projet `pflow-site-v7` → Settings → Domains → ligne `pflow.fr` → Edit → « Redirect to www.pflow.fr », code **301 Moved Permanently** → Save.
+- À savoir : l'adresse technique `pflow-site-v7.vercel.app` sert aussi le site de production sans rediriger. Les balises canonical indiquent `www.pflow.fr` à Google, donc pas de doublon. Pour aller plus loin, la même page Domains permet de la rediriger aussi vers `www.pflow.fr`.
+
+#### Lighthouse mobile
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO | LCP | CLS |
+|---|---|---|---|---|---|---|
+| `/` (avec l'intro) | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/calcul` | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/questions/alternative-uber-eats-guadeloupe` | 100 | 100 | 96 | 100 | 1,4 s | 0 |
+| `/alternative-uber-eats` (ancienne page SEO) | 100 | 96 | 96 | 100 | 1,7 s | 0 |
+
+Vérifications à 390 px : aucun élément ne dépasse de l'écran, aucun texte entre crochets visible (accueil, `/calcul`, page-réponse). Le 96 de l'ancienne page SEO vient de son ancien style (contraste, tableau), que je n'ai pas modifié.
+
 ## SEO : ce que vous devez faire vous-même
 
 Après la mise en ligne sur www.pflow.fr :
@@ -353,7 +399,8 @@ Après la mise en ligne sur www.pflow.fr :
 7. **Liens vers le site** : demandez aux restos clients un lien « Commandes par PFlow » vers pflow.fr sur leur site ou leur bio. Visez un article dans un média local (ex. une page « entreprises » de la presse de Guadeloupe).
 8. **Vérifier les données structurées** : passez l'accueil et une page-réponse dans le test des résultats enrichis de Google (search.google.com/test/rich-results).
 9. **Suivi** : dans 4 à 6 semaines, regardez dans Search Console les requêtes « commande whatsapp restaurant », « alternative uber eats guadeloupe », « commande en ligne sans commission ». Dites-moi lesquelles montent : j'écrirai d'autres pages-réponses.
-10. **Quand un prix change** : modifiez `offre.js` (le site et les CGV suivent), puis `llms.txt` à la main, puis relancez `scripts/indexnow.sh`.
+10. **Quand un prix ou le taux Uber Eats change** : modifiez `offre.js` (le site, le simulateur et les CGV suivent), puis `llms.txt` à la main, puis relancez `scripts/indexnow.sh`.
+11. **Redirection pflow.fr** : passez-la de 308 à 301 si vous y tenez (section 13).
 
 ## Ce que vous devez encore fournir
 
@@ -369,7 +416,7 @@ Tant qu'un élément manque, le site affiche son emplacement [entre crochets] : 
 - Relire la carte prix et la ligne « + options selon vos besoins » sur la prévisualisation.
 - Relire les passages des CGV ci-dessus (avant / après).
 - Bio Instagram : remplacer « 5 restos déjà équipés ».
-- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=6` et `js/site.js?v=6`). Même chose pour une photo ou une vidéo remplacée : changer son `?v=` dans `index.html` (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
+- Après chaque modification de `css/site.css` ou `js/site.js`, augmenter le numéro `?v=` dans les pages HTML (aujourd'hui `css/site.css?v=7` et `js/site.js?v=7`). Même chose pour une photo ou une vidéo remplacée : changer son `?v=` dans `index.html` (ces fichiers sont mis en cache un an). `offre.js` n'a pas besoin de cette manipulation.
 
 ## Fichiers
 

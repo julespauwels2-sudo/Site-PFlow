@@ -164,7 +164,7 @@ h3{font-size:1.05rem;font-weight:800;line-height:1.3;}
 /* ---------- 4. comparaison chiffrée ---------- */
 .compar-titre{font-size:1.1rem;font-weight:800;line-height:1.35;}
 .compar-chiffres{display:grid;grid-template-columns:1fr 1fr;gap:var(--e3);margin-top:var(--e3);}
-.chiffre b{display:block;font-family:var(--titre);font-weight:400;font-size:clamp(2.6rem,12vw,3.6rem);line-height:1.05;}
+.chiffre b{display:block;font-family:var(--titre);font-weight:400;font-size:clamp(2.2rem,10vw,3.6rem);line-height:1.05;}
 .chiffre > span{display:block;margin-top:4px;font-size:.88rem;line-height:1.35;color:var(--texte-doux);}
 .chiffre-plat b{color:var(--texte-doux);}
 .chiffre-pflow b{color:var(--rose);}
@@ -172,6 +172,24 @@ h3{font-size:1.05rem;font-weight:800;line-height:1.3;}
 .compar-eco b{font-family:var(--titre);font-weight:400;font-size:2.2rem;line-height:1;color:var(--reflet);}
 .compar .note{margin-top:var(--e2);}
 .compar .lien{margin-top:var(--e2);}
+
+/* simulateur : un seul réglage, un grand curseur facile au doigt */
+.simu-lib{display:block;font-size:1.08rem;font-weight:800;line-height:1.35;}
+.simu-lib b{font-family:var(--titre);font-weight:400;font-size:1.6rem;color:var(--reflet);}
+.curseur{-webkit-appearance:none;appearance:none;display:block;width:100%;height:48px;margin-top:var(--e1);background:transparent;cursor:pointer;}
+.curseur:focus-visible{outline:3px solid var(--reflet);outline-offset:2px;}
+.curseur::-webkit-slider-runnable-track{height:10px;border-radius:10px;background:rgba(255,255,255,.2);}
+.curseur::-webkit-slider-thumb{-webkit-appearance:none;width:38px;height:38px;margin-top:-14px;border-radius:50%;background:var(--rose);border:4px solid var(--blanc);box-shadow:3px 3px 0 rgba(0,0,0,.28);}
+.curseur::-moz-range-track{height:10px;border-radius:10px;background:rgba(255,255,255,.2);}
+.curseur::-moz-range-thumb{width:30px;height:30px;border-radius:50%;background:var(--rose);border:4px solid var(--blanc);box-shadow:3px 3px 0 rgba(0,0,0,.28);}
+.simu-panier{font-size:.9rem;color:var(--texte-doux);}
+.simu .compar-chiffres{margin-top:var(--e4);}
+.chiffre-lib{display:block;font-size:.88rem;font-weight:800;margin-bottom:4px;}
+.simu .chiffre-lib{min-height:2.7em;}
+.chiffre-plat .chiffre-lib{color:var(--texte-doux);}
+.chiffre-pflow .chiffre-lib{color:var(--rose);}
+.prix-gonfles{margin-top:var(--e4);font-size:1.05rem;font-weight:800;line-height:1.45;color:var(--blanc);}
+.ligne-uber{margin-top:var(--e2);padding:var(--e2) 0;font-size:1rem;font-weight:800;line-height:1.4;color:var(--rose);}
 
 /* ---------- 5. livraison ---------- */
 .livraison p.zone{font-size:1.12rem;font-weight:800;line-height:1.45;max-width:34ch;}
@@ -211,7 +229,7 @@ details.options .corps{padding:0 var(--carte-pad) var(--carte-pad);}
 .lignes li+li{border-top:1px solid var(--filet);}
 .lignes li > span:last-child{white-space:nowrap;font-weight:800;}
 .lignes small{display:block;font-size:.8rem;color:var(--texte-doux);font-weight:700;}
-.lignes li > span:last-child small{text-align:right;}
+.lignes li > span:last-child small{text-align:right;white-space:normal;max-width:16ch;margin-left:auto;}
 .options .note{margin-top:var(--e1);}
 
 /* ---------- 8. FAQ ---------- */

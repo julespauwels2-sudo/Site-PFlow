@@ -23,7 +23,7 @@
 <link rel="preload" href="/fonts/pjs-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/pjs-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(h){h.classList.add("js");setTimeout(function(){if(!window.PFLOW_OK)h.classList.remove("js");},4000);})(document.documentElement);</script>
-<link rel="stylesheet" href="/css/site.css?v=6">
+<link rel="stylesheet" href="/css/site.css?v=7">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -140,7 +140,7 @@
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/offre.js"></script>
-<script defer src="/js/site.js?v=6"></script>
+<script defer src="/js/site.js?v=7"></script>
 </head>
 <body>
 <header class="entete f-nuit">
@@ -163,21 +163,27 @@
     </div>
     <section class="q-sec" data-rv>
       <h2>Ce que coûte une plateforme</h2>
-      <p>Les plateformes de livraison prennent une commission sur chaque commande&nbsp;: jusqu'à 30&nbsp;%, et autour de 25&nbsp;% pour leur formule standard. Plus vous vendez, plus vous payez.</p>
+      <p>Les plateformes de livraison prennent une commission sur chaque commande. Chez Uber Eats, c'est 30&nbsp;% sur la formule avec livraison, et jusqu'à 33&nbsp;% selon la formule. Plus vous vendez, plus vous payez.</p>
       <p>Avec PFlow, vous payez un abonnement, quel que soit le nombre de commandes.</p>
     </section>
     <section class="q-sec" data-rv>
       <h2>Un exemple chiffré</h2>
-      <div class="carte compar" data-offre-comparaison data-commandes="100" data-panier="20" data-taux="25">
-        <p class="compar-titre"><span data-cmp="commandes">100</span> commandes de <span data-cmp="panier">20&nbsp;€</span> livrées par mois</p>
+      <div class="carte compar simu" data-simulateur data-panier="20">
+        <label class="simu-lib" for="simu-n">Vos commandes livrées par mois&nbsp;: <b data-s="n">100</b></label>
+        <input id="simu-n" class="curseur" type="range" min="50" max="500" step="10" value="100">
+        <p class="simu-panier">Panier moyen&nbsp;: <span data-s="panier">20&nbsp;€</span></p>
         <div class="compar-chiffres">
-          <p class="chiffre chiffre-plat"><b data-cmp="commission">500&nbsp;€</b><span>environ, de commission avec une plateforme à <span data-cmp="taux">25&nbsp;%</span></span></p>
-          <p class="chiffre chiffre-pflow"><b data-cmp="pflow">108&nbsp;€</b><span>avec PFlow (<span data-cmp="base">49&nbsp;€</span> + livraison <span data-cmp="livraison">59&nbsp;€</span>)</span></p>
+          <p class="chiffre chiffre-plat"><span class="chiffre-lib">Avec Uber Eats (<span data-s="taux">30&nbsp;%</span>)</span><b data-s="uber">600&nbsp;€</b><span>par mois, soit <span data-s="uber-cmd">6&nbsp;€</span> par commande</span></p>
+          <p class="chiffre chiffre-pflow"><span class="chiffre-lib">Avec PFlow</span><b data-s="pflow">108&nbsp;€</b><span><span data-s="base">49&nbsp;€</span> + livraison <span data-s="livraison">59&nbsp;€</span>, soit <span data-s="pflow-cmd">1,08&nbsp;€</span> par commande</span></p>
         </div>
-        <p class="compar-eco">Soit environ <b><span data-cmp="economie-nb">392</span>&nbsp;€</b> de plus pour vous chaque mois.</p>
-        <p class="note">Taux public des plateformes de livraison en France en 2026 (formule standard autour de 25&nbsp;%). Exemple indicatif.</p>
+        <p class="compar-eco">Soit environ <b><span data-s="eco">492</span>&nbsp;€</b> de plus pour vous chaque mois.</p>
+        <p class="note">Grille publique Uber Eats France 2026&nbsp;: 15&nbsp;%, 30&nbsp;% ou 33&nbsp;% selon la formule. Calcul sur la formule avec livraison à 30&nbsp;%, hors TVA et frais annexes. Exemple indicatif.</p>
       </div>
       <p>Faites le calcul avec vos chiffres&nbsp;: <a href="/calcul">calculer ce que vous coûte la commission</a>.</p>
+    </section>
+    <section class="q-sec" data-rv>
+      <h2>Les prix de votre carte</h2>
+      <p class="prix-gonfles">Sur Uber Eats, beaucoup de restos augmentent leurs prix pour couvrir la commission. Ce sont vos clients qui paient. Avec PFlow, ils paient le vrai prix de votre carte.</p>
     </section>
     <section class="q-sec" data-rv>
       <h2>Et les livraisons&nbsp;?</h2>
